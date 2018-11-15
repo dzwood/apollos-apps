@@ -6,6 +6,7 @@ import * as Auth from '@apollosproject/data-connector-rock-auth';
 import {
   ContentItem,
   ContentChannel,
+  Sharable,
 } from '@apollosproject/data-connector-rock-content';
 import RockConstants from '../connectors/rock/rock-constants';
 
@@ -15,7 +16,6 @@ import * as LiveStream from './live';
 import * as Theme from './theme';
 import * as Scripture from './bible';
 import * as Interactions from './interactions';
-import * as Sharable from './sharable';
 import * as Analytics from './analytics';
 import * as Family from './family';
 

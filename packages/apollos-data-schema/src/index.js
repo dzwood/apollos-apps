@@ -137,3 +137,16 @@ export const themeSchema = gql`
     alert: Color
   }
 `;
+
+export const scriptureSchema = gql`
+  type Scripture {
+    id: String
+    html: String
+    reference: String
+    copyright: String
+  }
+
+  extend type Query {
+    scripture(query: String!): Scripture
+  }
+`;
