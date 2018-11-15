@@ -3,10 +3,20 @@ import { fetch } from 'apollo-server-env';
 import { makeExecutableSchema } from 'apollo-server';
 import { createGlobalId } from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
+import { createApolloServerConfig } from '@apollosproject/server-core';
 
-import { getTestContext } from '../../../utils/testUtils';
+import {
+  mediaSchema,
+  testSchema,
+  themeSchema,
+} from '@apollosproject/data-schema';
+
+import { buildContext } from '../../test-utils';
 // we import the root-level schema and resolver so we test the entire integration:
-import { testSchema as typeDefs, resolvers } from '../..';
+import { ContentChannel, ContentItem } from '../..';
+
+const serverConfig = createApolloServerConfig({ ContentChannel, ContentItem });
+const getTestContext = buildContext(serverConfig);
 
 ApollosConfig.loadJs({
   ROCK: {
@@ -50,8 +60,12 @@ describe('ContentChannel', () => {
   beforeEach(() => {
     fetch.resetMocks();
     fetch.mockRockDataSourceAPI();
-    schema = makeExecutableSchema({ typeDefs, resolvers });
+    schema = makeExecutableSchema({
+      typeDefs: [...serverConfig.schema, mediaSchema, testSchema, themeSchema],
+      resolvers: serverConfig.resolvers,
+    });
     context = getTestContext();
+    console.log(serverConfig);
   });
 
   it('gets a list of content channels', async () => {

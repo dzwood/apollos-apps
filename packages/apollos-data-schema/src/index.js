@@ -115,3 +115,25 @@ export const mediaSchema = gql`
     AUDIO
   }
 `;
+
+export const themeSchema = gql`
+  type Theme {
+    type: ThemeType
+    colors: ThemeColors
+  }
+
+  enum ThemeType {
+    LIGHT
+    DARK
+  }
+
+  scalar Color
+
+  type ThemeColors {
+    primary: Color
+    secondary: Color
+    screen: Color
+    paper: Color
+    alert: Color
+  }
+`;

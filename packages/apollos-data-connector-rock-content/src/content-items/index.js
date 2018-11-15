@@ -5,10 +5,12 @@ import omitBy from 'lodash/fp/omitBy';
 import pickBy from 'lodash/fp/pickBy';
 import mapValues from 'lodash/fp/mapValues';
 import values from 'lodash/fp/values';
-import { createGlobalId } from '@apollosproject/server-core';
+import {
+  createGlobalId,
+  withEdgePagination,
+} from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
-import sanitizeHtml from '../../utils/sanitize-html';
-import { withEdgePagination } from '../pagination/utils';
+import sanitizeHtml from '../sanitize-html';
 
 const { ROCK_CONSTANTS, ROCK_MAPPINGS } = ApollosConfig;
 const mapValuesWithKey = mapValues.convert({ cap: false });

@@ -3,9 +3,12 @@ import { gql } from 'apollo-server';
 import { createApolloServerConfig } from '@apollosproject/server-core';
 
 import * as Auth from '@apollosproject/data-connector-rock-auth';
+import {
+  ContentItem,
+  ContentChannel,
+} from '@apollosproject/data-connector-rock-content';
 import RockConstants from '../connectors/rock/rock-constants';
-import * as ContentChannel from './content-channels';
-import * as ContentItem from './content-items';
+
 import * as Person from './people';
 import * as Media from './media';
 import * as LiveStream from './live';
@@ -15,7 +18,6 @@ import * as Interactions from './interactions';
 import * as Sharable from './sharable';
 import * as Analytics from './analytics';
 import * as Family from './family';
-import * as Pagination from './pagination';
 
 const data = {
   ContentChannel,
