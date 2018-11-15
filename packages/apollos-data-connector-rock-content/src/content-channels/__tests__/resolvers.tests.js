@@ -1,9 +1,11 @@
 import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
 import { makeExecutableSchema } from 'apollo-server';
-import { createGlobalId } from '@apollosproject/server-core';
+import {
+  createGlobalId,
+  createApolloServerConfig,
+} from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
-import { createApolloServerConfig } from '@apollosproject/server-core';
 
 import {
   mediaSchema,

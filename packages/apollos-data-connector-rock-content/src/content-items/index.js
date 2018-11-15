@@ -12,8 +12,15 @@ import {
 import ApollosConfig from '@apollosproject/config';
 import sanitizeHtml from '../sanitize-html';
 
-const { ROCK_CONSTANTS, ROCK_MAPPINGS } = ApollosConfig;
+const { ROCK_CONSTANTS, ROCK_MAPPINGS, ROCK } = ApollosConfig;
 const mapValuesWithKey = mapValues.convert({ cap: false });
+
+const enforceProtocol = (uri) => (uri.startsWith('//') ? `https:${uri}` : uri);
+
+const createImageUrl = (uri) =>
+  uri.split('-').length === 5
+    ? `${ROCK.IMAGE_URL}?guid=${uri}`
+    : enforceProtocol(uri);
 
 // export { default as model } from './model';
 export { default as dataSource } from './data-source';
@@ -179,7 +186,7 @@ export const defaultContentItemResolvers = {
       key,
       name: attributes[key].name,
       sources: attributeValues[key].value
-        ? [{ uri: attributeValues[key].value }]
+        ? [{ uri: createImageUrl(attributeValues[key].value) }]
         : [],
     }));
   },
