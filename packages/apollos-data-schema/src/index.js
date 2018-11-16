@@ -196,3 +196,136 @@ export const analyticsSchema = gql`
     trackEvent(input: AnalyticsTrackInput!): AnalyticsResult
   }
 `;
+
+export const contentItemSchema = gql`
+  type SharableContentItem implements Sharable {
+    url: String
+    message: String
+    title: String
+  }
+
+  interface ContentItem {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    images: [ImageMedia]
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+    htmlContent: String
+    childContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    siblingContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    parentChannel: ContentChannel
+
+    sharing: SharableContentItem
+    theme: Theme
+    isLiked: Boolean
+  }
+
+  type UniversalContentItem implements ContentItem & Node {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    images: [ImageMedia]
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+    htmlContent: String
+    childContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    siblingContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    parentChannel: ContentChannel
+    terms(match: String): [Term]
+
+    sharing: SharableContentItem
+    theme: Theme
+    isLiked: Boolean
+  }
+
+  type DevotionalContentItem implements ContentItem & Node {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    images: [ImageMedia]
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+    htmlContent: String
+    childContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    siblingContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    parentChannel: ContentChannel
+
+    sharing: SharableContentItem
+    theme: Theme
+    isLiked: Boolean
+    scriptures: [Scripture]
+  }
+
+  type Term {
+    key: String
+    value: String
+  }
+
+  input ContentItemsConnectionInput {
+    first: Int
+    after: String
+  }
+
+  type ContentItemsConnection {
+    edges: [ContentItemsConnectionEdge]
+    # TODO totalCount: Int
+    pageInfo: PaginationInfo
+  }
+
+  type ContentItemsConnectionEdge {
+    node: ContentItem
+    cursor: String
+  }
+
+  extend type Query {
+    userFeed(first: Int, after: String): ContentItemsConnection
+    getAllLikedContent: [ContentItem]
+  }
+`;
+
+export const contentChannelSchema = gql`
+  type ContentChannel implements Node {
+    id: ID!
+    name: String!
+    description: String
+
+    childContentChannels: [ContentChannel]
+    childContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+
+    iconName: String
+  }
+
+  extend type Query {
+    contentChannels: [ContentChannel]
+  }
+`;
+
+export const contentSharableSchema = gql`
+  interface Sharable {
+    url: String
+    message: String
+    title: String
+  }
+`;
