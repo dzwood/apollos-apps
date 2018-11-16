@@ -1,4 +1,3 @@
-import { gql } from 'apollo-server';
 import { createGlobalId } from '@apollosproject/server-core';
 
 // export { default as model } from './model';

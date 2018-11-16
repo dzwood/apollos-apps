@@ -1,4 +1,3 @@
-import { gql } from 'apollo-server';
 import { get } from 'lodash';
 import flow from 'lodash/fp/flow';
 import omitBy from 'lodash/fp/omitBy';
