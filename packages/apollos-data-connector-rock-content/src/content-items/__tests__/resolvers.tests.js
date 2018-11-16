@@ -20,8 +20,10 @@ import { buildContext } from '../../test-utils';
 import { ContentChannel, ContentItem, Sharable } from '../..';
 
 class Scripture {
+  // eslint-disable-next-line class-methods-use-this
   initialize() {}
 
+  // eslint-disable-next-line class-methods-use-this
   getScriptures() {
     return [
       {
