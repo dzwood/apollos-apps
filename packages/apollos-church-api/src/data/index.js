@@ -33,7 +33,6 @@ const data = {
   Sharable,
   Analytics,
   Family,
-  Pagination,
   UniversalContentItem: {
     dataSource: ContentItem.dataSource,
   }, // alias

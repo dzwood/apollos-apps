@@ -31,6 +31,12 @@
     lodash "^4.17.11"
     moment "^2.22.2"
 
+"@apollosproject/data-connector-rock-content@file:packages/apollos-data-connector-rock-content":
+  version "0.6.0"
+  dependencies:
+    "@apollosproject/data-schema" "file:../../Library/Caches/Yarn/v2/npm-@apollosproject/apollos-data-schema"
+    "@apollosproject/server-core" "file:../../Library/Caches/Yarn/v2/npm-@apollosproject/apollos-server-core"
+
 "@apollosproject/data-schema@file:packages/apollos-data-schema":
   version "0.6.0"
   dependencies:
@@ -4340,6 +4346,7 @@ apollo@^1.9.2:
   dependencies:
     "@apollosproject/config" "file:../../Library/Caches/Yarn/v2/apollos-config"
     "@apollosproject/data-connector-rock-auth" "file:../../Library/Caches/Yarn/v2/apollos-data-connector-rock-auth"
+    "@apollosproject/data-connector-rock-content" "file:../../Library/Caches/Yarn/v2/apollos-data-connector-rock-content"
     "@apollosproject/rock-apollo-data-source" "file:../../Library/Caches/Yarn/v2/apollos-rock-apollo-data-source"
     "@apollosproject/server-core" "file:../../Library/Caches/Yarn/v2/apollos-server-core"
     analytics-node "^3.3.0"
