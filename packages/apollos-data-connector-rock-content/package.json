@@ -17,15 +17,15 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "@apollosproject/data-schema": "file:../apollos-data-schema",
-    "@apollosproject/server-core": "file:../apollos-server-core"
+    "@apollosproject/data-schema": "^0.6.0",
+    "@apollosproject/server-core": "^0.6.0"
   },
   "peerDependencies": {
-    "@apollosproject/config": "file:../apollos-config",
-    "@apollosproject/rock-apollo-data-source": "file:../apollos-rock-apollo-data-source"
+    "@apollosproject/config": "*",
+    "@apollosproject/rock-apollo-data-source": "*"
   },
   "devDependencies": {
-    "babel-preset-apollos": "file:../babel-preset-apollos",
+    "babel-preset-apollos": "^0.6.0",
     "jest": "^23.6.0"
   }
 }
