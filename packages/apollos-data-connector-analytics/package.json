@@ -28,8 +28,8 @@
     "universal-analytics": "^0.4.20"
   },
   "peerDependencies": {
-    "@apollosproject/config": "^0.6.0",
-    "@apollosproject/rock-apollo-data-source": "^0.6.0"
+    "@apollosproject/config": "*",
+    "@apollosproject/rock-apollo-data-source": "*"
   },
   "devDependencies": {
     "@apollosproject/babel-preset-apollos": "^0.7.0"
