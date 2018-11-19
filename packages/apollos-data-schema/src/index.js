@@ -329,3 +329,9 @@ export const contentSharableSchema = gql`
     title: String
   }
 `;
+
+export const familySchema = gql`
+  extend type Person {
+    location: String
+  }
+`;
