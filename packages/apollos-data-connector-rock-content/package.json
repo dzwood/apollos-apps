@@ -27,5 +27,6 @@
   "devDependencies": {
     "@apollosproject/babel-preset-apollos": "^0.7.0",
     "jest": "^23.6.0"
-  }
+  },
+  "gitHead": "5c3bccdfe37c8bd7a275ecd1f67053f2962449d8"
 }
