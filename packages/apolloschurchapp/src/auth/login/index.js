@@ -1,11 +1,11 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 import { Formik } from 'formik';
-import * as Yup from 'yup';
+import Yup from 'yup';
 import PropTypes from 'prop-types';
 
 import handleLogin from '../handleLogin';
-import { client } from '../../client'; //eslint-disable-line
+import { client } from '../../client';
 import authenticateMutation from './authenticate';
 import LoginForm from './Form';
 
