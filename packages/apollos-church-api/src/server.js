@@ -1,4 +1,4 @@
-import { ApolloServer } from 'apollo-server';
+import { ApolloServer } from 'apollo-server-express';
 
 import { resolvers, schema, testSchema, context, dataSources } from './data';
 

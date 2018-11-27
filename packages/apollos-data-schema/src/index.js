@@ -204,7 +204,7 @@ export const contentItemSchema = gql`
     title: String
   }
 
-  interface ContentItem {
+  interface ContentItem @cacheControl(maxAge: 3600){
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -226,10 +226,10 @@ export const contentItemSchema = gql`
     sharing: SharableContentItem
     theme: Theme
     likedCount: Int
-    isLiked: Boolean
+    isLiked: Boolean @cacheControl(scope: PRIVATE)
   }
 
-  type UniversalContentItem implements ContentItem & Node {
+  type UniversalContentItem implements ContentItem & Node @cacheControl(maxAge: 3600) {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -250,10 +250,10 @@ export const contentItemSchema = gql`
     sharing: SharableContentItem
     theme: Theme
     likedCount: Int
-    isLiked: Boolean
+    isLiked: Boolean @cacheControl(scope: PRIVATE)
   }
 
-  type DevotionalContentItem implements ContentItem & Node {
+  type DevotionalContentItem implements ContentItem & Node @cacheControl(maxAge: 3600) {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -275,11 +275,11 @@ export const contentItemSchema = gql`
     sharing: SharableContentItem
     theme: Theme
     likedCount: Int
-    isLiked: Boolean
+    isLiked: Boolean @cacheControl(scope: PRIVATE)
     scriptures: [Scripture]
   }
 
-  type MediaContentItem implements ContentItem & Node {
+  type MediaContentItem implements ContentItem & Node @cacheControl(maxAge: 3600) {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -301,11 +301,11 @@ export const contentItemSchema = gql`
     sharing: SharableContentItem
     theme: Theme
     likedCount: Int
-    isLiked: Boolean
+    isLiked: Boolean @cacheControl(scope: PRIVATE)
     scriptures: [Scripture]
   }
 
-  type ContentSeriesContentItem implements ContentItem & Node {
+  type ContentSeriesContentItem implements ContentItem & Node @cacheControl(maxAge: 3600) {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -327,7 +327,7 @@ export const contentItemSchema = gql`
     sharing: SharableContentItem
     theme: Theme
     likedCount: Int
-    isLiked: Boolean
+    isLiked: Boolean @cacheControl(scope: PRIVATE)
     scriptures: [Scripture]
   }
 
@@ -348,7 +348,7 @@ export const contentItemSchema = gql`
   }
 
   extend type Query {
-    userFeed(first: Int, after: String): ContentItemsConnection
+    userFeed(first: Int, after: String): ContentItemsConnection @cacheControl(scope: PRIVATE, maxAge: 500)
     getAllLikedContent: [ContentItem]
   }
 `;
