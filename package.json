@@ -28,7 +28,9 @@
     "nuke": "./scripts/boom.sh && yarn nuke:node && yarn nuke:cache",
     "nuke:node": "rm -rdf ./node_modules packages/*/node_modules && yarn cache clean && yarn",
     "nuke:cache": "watchman watch-del-all && ./node_modules/.bin/lerna run start --scope apolloschurchapp --stream -- --reset-cache",
-    "postinstall": "lerna run build --parallel"
+    "postinstall": "lerna run build --parallel",
+    "release-npm": "node-publisher release",
+    "ci": "yarn ci-test"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
@@ -43,6 +45,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
+    "babel-plugin-module-resolver": "3.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
@@ -54,8 +57,8 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-react-native": "^3.2.1",
-    "babel-plugin-module-resolver": "3.1.1",
     "lerna": "^3.0.6",
+    "node-publisher": "^1.1.0",
     "prettier": "^1.14.2",
     "prop-types": "15.6.1",
     "react": "16.6.1",
