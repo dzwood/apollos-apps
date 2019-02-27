@@ -280,7 +280,7 @@ export const contentChannelSchema = gql`
 `;
 
 export const contentItemDefaultTypes = gql`
-  type UniversalContentItem implements ContentItem & ContentMedia & Node & Themeable & Shareable & FeedNode {
+  type UniversalContentItem implements ContentItem & ContentMedia & Node & Themeable & Shareable & CardFeedable {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -289,9 +289,12 @@ export const contentItemDefaultTypes = gql`
 
     videos: [VideoMedia]
     audios: [AudioMedia]
+
+    sharing: Share
+    theme: Theme
   }
 
-  type DevotionalContentItem implements ContentItem & ContentItemInSeries & Node & Themeable & Shareable & FeedNode & Scriptureable {
+  type DevotionalContentItem implements ContentItem & ContentItemInSeries & Node & Themeable & Shareable & CardFeedable & Scriptureable {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -305,7 +308,7 @@ export const contentItemDefaultTypes = gql`
     scripture: [Scripture]
   }
 
-  type MediaContentItem implements ContentItem & ContentMedia & ContentItemInSeries & Node & Themeable & Shareable & FeedNode {
+  type MediaContentItem implements ContentItem & ContentMedia & ContentItemInSeries & Node & Themeable & Shareable & CardFeedable {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -313,9 +316,12 @@ export const contentItemDefaultTypes = gql`
     summary: String
 
     contentSeriesFeed(input: FeedInput): Feed
+
+    sharing: Share
+    theme: Theme
   }
 
-  type ContentSeriesContentItem implements ContentItem & ContentMedia & ContentItemInSeries & Node & Themeable & Shareable & FeedNode {
+  type ContentSeriesContentItem implements ContentItem & ContentMedia & ContentItemInSeries & Node & Themeable & Shareable & CardFeedable {
     id: ID!
     title: String
     coverImage: ImageMedia
@@ -326,6 +332,9 @@ export const contentItemDefaultTypes = gql`
     audios: [AudioMedia]
 
     contentSeriesFeed(input: FeedInput): Feed
+
+    sharing: Share
+    theme: Theme
   }
 `;
 
