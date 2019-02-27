@@ -135,6 +135,10 @@ export const themeSchema = gql`
     colors: ThemeColors
   }
 
+  interface Themeable {
+    theme: Theme
+  }
+
   enum ThemeType {
     LIGHT
     DARK
@@ -159,9 +163,8 @@ export const scriptureSchema = gql`
     copyright: String
   }
 
-  extend type Query {
-    scripture(query: String!): Scripture
-    scriptures(query: String!): [Scripture]
+  interface Scriptureable {
+    scripture: [Scripture]
   }
 `;
 
@@ -211,127 +214,50 @@ export const analyticsSchema = gql`
   }
 `;
 
+export const feedSchema = gql`
+  interface CardFeedable {
+    id: ID!
+    title: String
+    summary: String
+    coverImage: ImageMedia
+    hasMedia: Boolean
+  }
+
+  type Feed {
+    edges: [FeedEdge]
+    pageInfo: PaginationInfo
+  }
+
+  type FeedEdge {
+    node: FeedNode
+    cursor: String
+  }
+
+  input FeedInput {
+    first: Int
+    after: String
+  }
+`;
+
 export const contentItemSchema = gql`
   interface ContentItem {
     id: ID!
     title: String
     coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
     htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-
-    theme: Theme
   }
 
-  type UniversalContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-    theme: Theme
+  interface ContentItemInSeries {
+    contentSeriesFeed(input: FeedInput): Feed
   }
 
-  type DevotionalContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
+  interface ContentMedia {
     videos: [VideoMedia]
     audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-
-    theme: Theme
-    scriptures: [Scripture]
-  }
-
-  type MediaContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-
-    theme: Theme
-    scriptures: [Scripture]
-  }
-
-  type ContentSeriesContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-
-    theme: Theme
-    scriptures: [Scripture]
-  }
-
-  input ContentItemsConnectionInput {
-    first: Int
-    after: String
   }
 
   type ContentItemsConnection {
     edges: [ContentItemsConnectionEdge]
-    # TODO totalCount: Int
     pageInfo: PaginationInfo
   }
 
@@ -339,49 +265,80 @@ export const contentItemSchema = gql`
     node: ContentItem
     cursor: String
   }
-
-  extend type Query {
-    userFeed(first: Int, after: String): ContentItemsConnection
-      @cacheControl(maxAge: 0)
-  }
 `;
 
 export const contentChannelSchema = gql`
-  type ContentChannel implements Node {
+  type ContentChannel implements Node & CardFeedable {
     id: ID!
-    name: String!
-    description: String
+    title: String
+    summary: String
+    coverImage: ImageMedia
+    hasMedia: Boolean
 
-    childContentChannels: [ContentChannel]
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
+    feed(first: Int, after: String): Feed
+  }
+`;
 
-    iconName: String
+export const contentItemDefaultTypes = gql`
+  type UniversalContentItem implements ContentItem & ContentMedia & Node & Themeable & Shareable & FeedNode {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    htmlContent: String
+    summary: String
+
+    videos: [VideoMedia]
+    audios: [AudioMedia]
   }
 
-  extend type Query {
-    contentChannels: [ContentChannel]
+  type DevotionalContentItem implements ContentItem & ContentItemInSeries & Node & Themeable & Shareable & FeedNode & Scriptureable {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    htmlContent: String
+    summary: String
+
+    contentSeriesFeed(input: FeedInput): Feed
+
+    theme: Theme
+    sharing: sharing
+    scripture: [Scripture]
+  }
+
+  type MediaContentItem implements ContentItem & ContentMedia & ContentItemInSeries & Node & Themeable & Shareable & FeedNode {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    htmlContent: String
+    summary: String
+
+    contentSeriesFeed(input: FeedInput): Feed
+  }
+
+  type ContentSeriesContentItem implements ContentItem & ContentMedia & ContentItemInSeries & Node & Themeable & Shareable & FeedNode {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    htmlContent: String
+    summary: String
+
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+
+    contentSeriesFeed(input: FeedInput): Feed
   }
 `;
 
 export const contentSharableSchema = gql`
-  interface Sharable {
+  interface Share {
     url: String
     message: String
     title: String
   }
 
-  type SharableContentItem implements Sharable {
-    url: String
-    message: String
-    title: String
+  interface Shareable {
+    sharing: Share
   }
-
-  ${extendForEachContentItemType(`
-    sharing: SharableContentItem
-`)}
 `;
 
 export const familySchema = gql`
