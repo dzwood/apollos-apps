@@ -8,12 +8,12 @@ const resolver = {
   ContentChannel: {
     id: ({ id }, args, context, { parentType }) =>
       createGlobalId(id, parentType.name),
-    childContentItemsConnection: ({ id }, args, { dataSources }) =>
+    contentSeriesFeed: ({ id }, args, { dataSources }) =>
       dataSources.ContentItem.paginate({
         cursor: dataSources.ContentItem.byContentChannelId(id),
         args,
       }),
-    iconName: () => 'text', // TODO
+    // iconName: () => 'text', // TODO
   },
 };
 

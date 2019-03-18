@@ -39,7 +39,6 @@ export const feedSchema = gql`
     title: String
     summary: String
     coverImage: ImageMedia
-    hasMedia: Boolean
   }
 
   type Feed {
@@ -53,13 +52,18 @@ export const feedSchema = gql`
   }
 
   type FeedEdge {
-    node: FeedNode
+    node: CardFeedable
     cursor: String
   }
 
   input FeedInput {
     first: Int
     after: String
+  }
+
+  extend type Query {
+    userFeed(first: Int, after: String): Feed
+    personaFeed(first: Int, after: String): Feed
   }
 `;
 
@@ -73,6 +77,11 @@ export const scriptureSchema = gql`
 
   interface Scriptureable {
     scripture: [Scripture]
+  }
+
+  extend type Query {
+    scripture(query: String!): Scripture
+    scriptures(query: String!): [Scripture]
   }
 `;
 

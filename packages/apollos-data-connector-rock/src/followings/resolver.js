@@ -1,7 +1,7 @@
 import { createGlobalId } from '@apollosproject/server-core';
 
 const defaultContentItemResolvers = {
-  likedCount: ({ id }, args, { dataSources }) =>
+  likeCount: ({ id }, args, { dataSources }) =>
     dataSources.Followings.getFollowingsCountByNodeId({
       nodeId: createGlobalId(id, 'ContentItem'),
     }),

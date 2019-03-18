@@ -13,7 +13,7 @@ export const defaultContentItemResolvers = {
   id: ({ id }, args, context, { parentType }) =>
     createGlobalId(id, parentType.name),
   htmlContent: ({ content }) => sanitizeHtml(content),
-  childContentItemsConnection: async ({ id }, args, { dataSources }) =>
+  contentSeriesFeed: async ({ id }, args, { dataSources }) =>
     dataSources.ContentItem.paginate({
       cursor: await dataSources.ContentItem.getCursorByParentContentItemId(id),
       args,
@@ -22,7 +22,7 @@ export const defaultContentItemResolvers = {
   parentChannel: ({ contentChannelId }, args, { dataSources }) =>
     dataSources.ContentChannel.getFromId(contentChannelId),
 
-  siblingContentItemsConnection: async ({ id }, args, { dataSources }) =>
+  siblingFeed: async ({ id }, args, { dataSources }) =>
     dataSources.ContentItem.paginate({
       cursor: await dataSources.ContentItem.getCursorBySiblingContentItemId(id),
       args,
@@ -31,21 +31,27 @@ export const defaultContentItemResolvers = {
   summary: (root, args, { dataSources: { ContentItem } }) =>
     ContentItem.createSummary(root),
 
-  images: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getImages(root),
-
-  videos: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getVideos(root),
-
-  audios: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getAudios(root),
+  // images: (root, args, { dataSources: { ContentItem } }) =>
+  //   ContentItem.getImages(root),
 
   coverImage: (root, args, { dataSources: { ContentItem } }) =>
     ContentItem.getCoverImage(root),
 
   theme: () => null, // todo: integrate themes from Rock
 
-  sharing: (root) => ({ __type: 'SharableContentItem', ...root }),
+  sharing: ({ title }) => ({
+    url: 'https://apollosrock.newspring.cc/', // todo: return a dynamic url that links to the content item
+    title,
+    message: '',
+  }),
+};
+
+const mediaResolvers = {
+  videos: (root, args, { dataSources: { ContentItem } }) =>
+    ContentItem.getVideos(root),
+
+  audios: (root, args, { dataSources: { ContentItem } }) =>
+    ContentItem.getAudios(root),
 };
 
 const resolver = {
@@ -65,7 +71,7 @@ const resolver = {
   },
   DevotionalContentItem: {
     ...defaultContentItemResolvers,
-    scriptures: ({ attributeValues }, args, { dataSources }) => {
+    scripture: ({ attributeValues }, args, { dataSources }) => {
       const reference = get(attributeValues, 'scriptures.value');
       if (reference && reference != null) {
         return dataSources.Scripture.getScriptures(reference);
@@ -75,15 +81,18 @@ const resolver = {
   },
   UniversalContentItem: {
     ...defaultContentItemResolvers,
+    ...mediaResolvers,
   },
   ContentSeriesContentItem: {
     ...defaultContentItemResolvers,
+    ...mediaResolvers,
   },
   MediaContentItem: {
     ...defaultContentItemResolvers,
+    ...mediaResolvers,
   },
   ContentItem: {
-    ...defaultContentItemResolvers,
+    // ...defaultContentItemResolvers,
     __resolveType: async (
       { attributeValues, attributes, contentChannelTypeId },
       { dataSources: { ContentItem } }
@@ -112,14 +121,9 @@ const resolver = {
       return 'UniversalContentItem';
     },
   },
-  SharableContentItem: {
-    url: () => 'https://apollosrock.newspring.cc/', // todo: return a dynamic url that links to the content item
-    title: ({ title }) => title,
-    message: () => '',
-  },
-  ContentItemsConnection: {
-    pageInfo: withEdgePagination,
-  },
+  // Feed: {
+  //   pageInfo: withEdgePagination,
+  // },
 };
 
 export default resolver;

@@ -1,3 +1,8 @@
+import { featureSchema } from '@apollosproject/data-schema';
+
 export { default as dataSource } from './data-source';
-export { contentChannelSchema as schema } from '@apollosproject/data-schema';
+
+const { contentChannelSchema } = featureSchema;
+
+export { contentChannelSchema as schema };
 export { default as resolver } from './resolver';

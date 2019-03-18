@@ -1,5 +1,7 @@
+import { featureSchema } from '@apollosproject/data-schema';
 import dataSource from './data-source';
 import resolver from './resolver';
 
-export { followingsSchema as schema } from '@apollosproject/data-schema';
-export { resolver, dataSource };
+const { followingsSchema } = featureSchema;
+
+export { resolver, dataSource, followingsSchema as schema };

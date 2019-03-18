@@ -1,8 +1,12 @@
 import { get } from 'lodash';
+import { featureSchema } from '@apollosproject/data-schema';
 import { registerToken } from './token';
 
 export { registerToken, generateToken } from './token';
-export { authSchema as schema } from '@apollosproject/data-schema';
+
+const { authSchema } = featureSchema;
+
+export { authSchema as schema };
 export { default as dataSource } from './data-source';
 export { default as resolver } from './resolver';
 

@@ -1,12 +1,4 @@
-import { gql } from 'apollo-server';
-
-export const schema = gql`
-  type PaginationInfo {
-    startCursor: String
-    endCursor: String
-  }
-`;
-
+// eslint-disable-next-line
 export const resolver = {
   PaginationInfo: {},
 };

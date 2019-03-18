@@ -37,11 +37,19 @@ export const authSchema = gql`
 `;
 
 export const peopleSchema = gql`
+  enum GENDER {
+    Male
+    Female
+    Unknown
+  }
+
   enum UPDATEABLE_PROFILE_FIELDS {
     FirstName
     LastName
     Email
     NickName
+    Gender
+    BirthDate
   }
 
   input UpdateProfileInput {
@@ -55,6 +63,8 @@ export const peopleSchema = gql`
     lastName: String!
     nickName: String
     email: String
+    gender: GENDER
+    birthDate: String
     photo: ImageMediaSource
   }
 
@@ -121,19 +131,12 @@ export const contentChannelSchema = gql`
     title: String
     summary: String
     coverImage: ImageMedia
-    hasMedia: Boolean
 
     contentSeriesFeed(input: FeedInput): Feed
   }
 
   extend type Query {
     contentChannels: [ContentChannel]
-  }
-`;
-
-export const familySchema = gql`
-  extend type Person {
-    location: String
   }
 `;
 
@@ -178,6 +181,14 @@ export const campusSchema = gql`
     campuses(location: CampusLocationInput): [Campus]
   }
 
+  extend type Mutation {
+    updateUserCampus(campusId: ID!): Person
+  }
+
+  extend type Person {
+    campus: Campus
+  }
+
   input CampusLocationInput {
     latitude: Float!
     longitude: Float!
@@ -195,12 +206,17 @@ export const followingsSchema = gql`
     operation: LIKE_OPERATION!
   }
 
+  interface Followable {
+    likeCount: Int
+    isLiked: Boolean
+  }
+
   extend type Mutation {
     updateLikeEntity(input: LikeEntityInput!): ContentItem
   }
 
   extend type Query {
-    getAllLikedContent: [ContentItem] @cacheControl(maxAge: 0)
+    likedContent: [ContentItem] @cacheControl(maxAge: 0)
   }
 `;
 

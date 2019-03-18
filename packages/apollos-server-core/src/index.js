@@ -1,6 +1,7 @@
 import { compact, mapValues, merge, values } from 'lodash';
 import gql from 'graphql-tag';
 import { InMemoryLRUCache } from 'apollo-server-caching';
+import { coreSchema } from '@apollosproject/data-schema';
 
 import * as Node from './node';
 import * as Pagination from './pagination';
@@ -23,6 +24,7 @@ export const createSchema = (data) => [
       _placeholder: Boolean # needed, empty schema defs aren't supported
     }
   `,
+  coreSchema,
   ...compact(values({ ...builtInData, ...data }).map((datum) => datum.schema)),
 ];
 
