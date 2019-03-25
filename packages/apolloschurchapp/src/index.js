@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 // import { Sentry } from 'react-native-sentry';
 
 import { BackgroundView, withTheme } from '@apollosproject/ui-kit';
@@ -46,11 +46,13 @@ const AppNavigator = createStackNavigator(
   }
 );
 
+const AppNavigatorContainer = createAppContainer(AppNavigator);
+
 const App = () => (
   <Providers>
     <BackgroundView>
       <AppStatusBar barStyle="dark-content" />
-      <AppNavigator
+      <AppNavigatorContainer
         ref={(navigatorRef) => {
           NavigationService.setTopLevelNavigator(navigatorRef);
         }}
