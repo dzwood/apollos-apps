@@ -17,4 +17,5 @@ ContentSingleNavigator.navigationOptions = {
   header: null,
 };
 
+export { default as getContentItem } from './getContentItem';
 export default ContentSingleNavigator;

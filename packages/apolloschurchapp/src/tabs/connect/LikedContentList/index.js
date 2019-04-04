@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { get } from 'lodash';
 
 import { BackgroundView, FeedView } from '@apollosproject/ui-kit';
-import ContentCardConnected from '../../../ui/ContentCardConnected';
+import ContentCardConnected from '@apollosproject/ui-content';
 
 import getLikedContent from '../getLikedContent';
 /** A FeedView wrapped in a query to pull content data. */
