@@ -3,8 +3,8 @@ import renderer from 'react-test-renderer';
 import { TouchableWithoutFeedback } from 'react-native';
 import { get } from 'lodash';
 
+import ContentCard from '@apollosproject/ui-content';
 import Providers from '../Providers';
-import ContentCard from '../ContentCard';
 
 import FeedView from '.';
 

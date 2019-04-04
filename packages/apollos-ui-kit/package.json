@@ -43,6 +43,7 @@
     "react-native-svg": "*"
   },
   "dependencies": {
+    "@apollosproject/ui-content": "^0.8.1",
     "color": "^3.1.0",
     "lodash": "^4.17.11",
     "react-native-modal-datetime-picker": "6.0.0",

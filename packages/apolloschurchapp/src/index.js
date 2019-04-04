@@ -8,9 +8,9 @@ import Passes from '@apollosproject/ui-passes';
 
 import MediaPlayer from 'apolloschurchapp/src/ui/MediaPlayer';
 import Auth from '@apollosproject/ui-auth';
+import ContentSingle from '@apollosproject/ui-content';
 import Providers from './Providers';
 import NavigationService from './NavigationService';
-import ContentSingle from './content-single';
 import Tabs from './tabs';
 import PersonalDetails from './user-settings/PersonalDetails';
 import ChangePassword from './user-settings/ChangePassword';

@@ -62,6 +62,7 @@
   },
   "dependencies": {
     "@apollosproject/ui-auth": "^0.8.1",
+    "@apollosproject/ui-content": "^0.8.1",
     "@apollosproject/ui-kit": "^0.8.1",
     "@apollosproject/ui-passes": "^0.8.1",
     "apollo-cache-inmemory": "1.5.1",
