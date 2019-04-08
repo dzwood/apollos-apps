@@ -11,6 +11,10 @@ import {
   withIsLoading,
 } from '@apollosproject/ui-kit';
 
+import ImageHeader from './ImageHeader';
+import ContentText from './ContentText';
+import TextHeader from './TextHeader';
+
 import Metrics from './Metrics';
 import CardFooter from './CardFooter';
 

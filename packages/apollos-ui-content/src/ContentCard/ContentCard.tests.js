@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Providers from '../Providers';
+import Providers from '@apollosproject/ui-kit';
 
 import ContentCard from '.';
 

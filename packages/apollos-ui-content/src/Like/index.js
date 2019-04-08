@@ -5,6 +5,7 @@ import { Icon, withTheme } from '@apollosproject/ui-kit';
 import { ProtectedTouchable } from '@apollosproject/ui-auth';
 
 import { withNavigation } from 'react-navigation';
+import getLikedContent from './getLikedContent';
 
 const LikeIcon = withTheme(
   ({ theme: { colors: { secondary } = {} } = {}, isLiked } = {}) => ({
@@ -33,4 +34,4 @@ Like.propTypes = {
   toggleLike: PropTypes.func,
 };
 
-export { Like as default, LikeIcon };
+export { Like as default, LikeIcon, getLikedContent };
