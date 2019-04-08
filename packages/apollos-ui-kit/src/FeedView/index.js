@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { pure, compose, branch, withProps, defaultProps } from 'recompose';
 import { get } from 'lodash';
 
-import ContentCard from '../ContentCard';
+import ContentCard from '@apollosproject/ui-content';
 import { enhancer as mediaQuery } from '../MediaQuery';
 import { withTheme } from '../theme';
 import { ErrorCard } from '../Card';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 
-import getLikedContent from '../getLikedContent';
+import getLikedContent from '@apollosproject/ui-content';
 import RecentlyLikedTileFeed from './RecentlyLikedTileFeed';
 
 const RecentlyLikedTileFeedConnected = ({ navigation }) => (

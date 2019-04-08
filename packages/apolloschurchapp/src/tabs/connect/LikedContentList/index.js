@@ -4,9 +4,11 @@ import { Query } from 'react-apollo';
 import { get } from 'lodash';
 
 import { BackgroundView, FeedView } from '@apollosproject/ui-kit';
-import ContentCardConnected from '@apollosproject/ui-content';
+import {
+  ContentCardConnected,
+  getLikedContent,
+} from '@apollosproject/ui-content';
 
-import getLikedContent from '../getLikedContent';
 /** A FeedView wrapped in a query to pull content data. */
 class LikedContentList extends PureComponent {
   /** Function for React Navigation to set information in the header. */
