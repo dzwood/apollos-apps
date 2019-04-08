@@ -4,9 +4,7 @@ import { View } from 'react-native';
 import numeral from 'numeral';
 import Color from 'color';
 
-import ChannelLabel from '../ChannelLabel';
-import styled from '../styled';
-import { withTheme } from '../theme';
+import { ChannelLabel, styled, withTheme } from '@apollosproject/ui-kit';
 
 const Container = styled({
   flexDirection: 'column',

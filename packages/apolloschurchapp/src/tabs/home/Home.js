@@ -12,7 +12,7 @@ import {
   H3,
   H6,
 } from '@apollosproject/ui-kit';
-import ContentCardConnected from '../../ui/ContentCardConnected';
+import ContentCardConnected from '@apollosproject/ui-content';
 
 import { LiveButton } from '../../live';
 

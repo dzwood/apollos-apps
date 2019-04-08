@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { get } from 'lodash';
 
-import Share from 'apolloschurchapp/src/ui/Share';
+import {
+  SideBySideView,
+  styled,
+  MediaPlayerSpacer,
+} from '@apollosproject/ui-kit';
+import Share from '../../Share';
 
-import { SideBySideView, styled } from '@apollosproject/ui-kit';
-import LikeButton from 'apolloschurchapp/src/ui/LikeButton';
-import { MediaPlayerSpacer } from 'apolloschurchapp/src/ui/MediaPlayer';
+import LikeButton from '../../LikeButton';
 
 import getShareContent from './getShareContent';
 

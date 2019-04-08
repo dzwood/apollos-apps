@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 
-import ContentFeed from 'apolloschurchapp/src/content-feed';
+import ContentFeed from '@apollosproject/ui-content';
 
 import tabBarIcon from '../tabBarIcon';
 

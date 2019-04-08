@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
-import { largeCardFragment } from 'apolloschurchapp/src/ui/ContentCardConnected';
-import { contentItemFragment } from '../content-single/getContentItem';
+import { largeCardFragment } from '../ContentCardConnected';
+import { contentItemFragment } from '../ContentSingle/getContentItem';
 
 export default gql`
   query getContentFeed($itemId: ID!) {

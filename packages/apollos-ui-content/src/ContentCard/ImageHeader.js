@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageSourceType } from '../ConnectedImage';
-import { CardImage } from '../Card';
-import { withTheme } from '../theme';
+import { ImageSourceType, CardImage, withTheme } from '@apollosproject/ui-kit';
 
 const ImageHeader = ({ coverImage, forceRatio, overlayColor }) => (
   <CardImage

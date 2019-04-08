@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from '../styled';
-import { CardActions } from '../Card';
+import styled, { CardActions } from '@apollosproject/ui-kit';
 
 const Spacer = styled(({ theme }) => ({ height: theme.sizing.baseUnit * 2 }))(
   CardActions

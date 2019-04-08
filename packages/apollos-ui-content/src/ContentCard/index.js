@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { Dimensions } from 'react-native';
 
-import Card from '../Card';
-import { ImageSourceType } from '../ConnectedImage';
-import { ThemeMixin } from '../theme';
-import { withIsLoading } from '../isLoading';
-import styled from '../styled';
+import {
+  Card,
+  styled,
+  ImageSourceType,
+  ThemeMixin,
+  withIsLoading,
+} from '@apollosproject/ui-kit';
 
-import ImageHeader from './ImageHeader';
-import TextHeader from './TextHeader';
-import ContentText from './ContentText';
 import Metrics from './Metrics';
 import CardFooter from './CardFooter';
 

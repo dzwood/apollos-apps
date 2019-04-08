@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardContent } from '../Card';
-import { H3, H4, H6, BodyText } from '../typography';
-import styled from '../styled';
+import styled, {
+  CardContent,
+  H3,
+  H4,
+  H6,
+  BodyText,
+} from '@apollosproject/ui-kit';
 
 const StyledCardContent = styled(({ theme, tile }) => ({
   ...(tile ? { paddingTop: theme.sizing.baseUnit } : {}),
