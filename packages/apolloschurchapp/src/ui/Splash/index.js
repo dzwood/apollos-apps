@@ -1,14 +1,16 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
   styled,
   withTheme,
+  ThemeMixin,
   Icon,
   H1,
   H4,
   PaddedView,
+  BackgroundView,
 } from '@apollosproject/ui-kit';
 
 import Slide from '../Onboarding/Slide';
@@ -18,17 +20,15 @@ const Content = styled({
   justifyContent: 'center',
 })(PaddedView);
 
-const BrandIcon = withTheme(({ theme, isLight }) => ({
+const BrandIcon = withTheme(({ theme }) => ({
   name: 'brand-icon',
   size: theme.sizing.baseUnit * 3.0,
-  fill: isLight ? theme.colors.text.primary : theme.colors.white,
   style: {
     marginBottom: theme.sizing.baseUnit,
   },
 }))(Icon);
 
-const Title = styled(({ theme, isLight }) => ({
-  color: isLight ? theme.colors.text.primary : theme.colors.white,
+const Title = styled(({ theme }) => ({
   marginBottom: theme.sizing.baseUnit * 2,
 }))(H1);
 
@@ -37,22 +37,20 @@ const CoverImage = styled({
   position: 'absolute',
 })(Image);
 
-const StyledH4 = styled(({ theme, isLight }) => ({
-  color: isLight ? theme.colors.text.primary : theme.colors.white,
-}))(H4);
-
-// eslint-disable-next-line react/display-name
-const Splash = memo(
-  ({ slideTitle, description, imgSrc, isLight, ...props }) => (
+// TODO: react-navigation does not like `memo` ... doesn't see it as a react component
+const Splash = ({ slideTitle, description, imgSrc, isLight, ...props }) => (
+  <ThemeMixin mixin={{ type: isLight ? 'light' : 'dark' }}>
     <Slide {...props}>
-      {imgSrc ? <CoverImage source={imgSrc} /> : null}
-      <Content>
-        <BrandIcon isLight={isLight} />
-        <Title isLight={isLight}>{slideTitle}</Title>
-        <StyledH4 isLight={isLight}>{description}</StyledH4>
-      </Content>
+      <BackgroundView>
+        {imgSrc ? <CoverImage source={imgSrc} /> : null}
+        <Content>
+          <BrandIcon />
+          <Title>{slideTitle}</Title>
+          <H4>{description}</H4>
+        </Content>
+      </BackgroundView>
     </Slide>
-  )
+  </ThemeMixin>
 );
 
 Splash.propTypes = {
@@ -62,14 +60,18 @@ Splash.propTypes = {
   slideTitle: PropTypes.string,
   description: PropTypes.string,
   imgSrc: PropTypes.string,
-  isLight: PropTypes.boolean,
+  isLight: PropTypes.bool,
 };
 
 Splash.defaultProps = {
   slideTitle: "We're glad you're here.".toUpperCase(),
   description:
     "We're not just a building you go to, but a family to belong to.",
-  isLight: true,
+  isLight: false,
+};
+
+Splash.navigationOptions = {
+  header: null,
 };
 
 export default Splash;
