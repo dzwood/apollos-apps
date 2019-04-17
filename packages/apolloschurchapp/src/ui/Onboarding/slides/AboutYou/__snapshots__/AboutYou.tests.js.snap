@@ -43,8 +43,7 @@ exports[`The Onboarding AboutYou component should pass additional props to Slide
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -52,38 +51,40 @@ exports[`The Onboarding AboutYou component should pass additional props to Slide
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -759,8 +760,7 @@ exports[`The Onboarding AboutYou component should render 1`] = `
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -768,38 +768,40 @@ exports[`The Onboarding AboutYou component should render 1`] = `
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -1281,8 +1283,7 @@ exports[`The Onboarding AboutYou component should render a custom date picker 1`
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -1290,38 +1291,40 @@ exports[`The Onboarding AboutYou component should render a custom date picker 1`
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -1803,8 +1806,7 @@ exports[`The Onboarding AboutYou component should render a custom date picker wh
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -1812,38 +1814,40 @@ exports[`The Onboarding AboutYou component should render a custom date picker wh
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -2325,8 +2329,7 @@ exports[`The Onboarding AboutYou component should render a custom description 1`
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -2334,38 +2337,40 @@ exports[`The Onboarding AboutYou component should render a custom description 1`
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Custom description text
-          </Text>
+            >
+              Custom description text
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -2847,8 +2852,7 @@ exports[`The Onboarding AboutYou component should render a custom gender list 1`
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -2856,38 +2860,40 @@ exports[`The Onboarding AboutYou component should render a custom gender list 1`
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -3369,61 +3375,48 @@ exports[`The Onboarding AboutYou component should render a custom image 1`] = `
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
-        <Image
-          source={
-            Object {
-              "uri": "https://picsum.photos/1200/1200?random",
-            }
-          }
-          style={
-            Object {
-              "flex": 2,
-              "marginBottom": 32,
-              "resizeMode": "contain",
-            }
-          }
-        />
         <View
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -3905,8 +3898,7 @@ exports[`The Onboarding AboutYou component should render a custom title 1`] = `
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -3914,38 +3906,40 @@ exports[`The Onboarding AboutYou component should render a custom title 1`] = `
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Custom title text
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              Custom title text
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={
@@ -4427,8 +4421,7 @@ exports[`The Onboarding AboutYou component should render the selected gender 1`]
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -4436,38 +4429,40 @@ exports[`The Onboarding AboutYou component should render the selected gender 1`]
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={

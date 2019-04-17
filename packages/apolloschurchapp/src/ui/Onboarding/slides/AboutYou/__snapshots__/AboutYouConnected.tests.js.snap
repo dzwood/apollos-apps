@@ -43,8 +43,7 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -52,38 +51,40 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            This one's easy.
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "marginBottom": 16,
+            >
+              This one's easy.
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "marginBottom": 16,
+                }
               }
-            }
-          >
-            Help us understand who you are so we can connect you with the best ministries and events.
-          </Text>
+            >
+              Help us understand who you are so we can connect you with the best ministries and events.
+            </Text>
+          </View>
           <View>
             <Text
               style={

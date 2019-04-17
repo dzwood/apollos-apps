@@ -51,43 +51,39 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
           style={
             Object {
               "flex": 1,
-            }
-          }
-        />
-        <View
-          style={
-            Object {
-              "justifyContent": "flex-end",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                }
               }
-            }
-          >
-            Can we keep you informed?
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "paddingBottom": 24,
+            >
+              Can we keep you informed?
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "paddingBottom": 24,
+                }
               }
-            }
-          >
-            We'll let you know when important things are happening and keep you in the loop
-          </Text>
+            >
+              We'll let you know when important things are happening and keep you in the loop
+            </Text>
+          </View>
           <View
             accessible={true}
             isTVSelectable={true}
@@ -390,43 +386,39 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
           style={
             Object {
               "flex": 1,
-            }
-          }
-        />
-        <View
-          style={
-            Object {
-              "justifyContent": "flex-end",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                }
               }
-            }
-          >
-            Can we keep you informed?
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "paddingBottom": 24,
+            >
+              Can we keep you informed?
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "paddingBottom": 24,
+                }
               }
-            }
-          >
-            We'll let you know when important things are happening and keep you in the loop
-          </Text>
+            >
+              We'll let you know when important things are happening and keep you in the loop
+            </Text>
+          </View>
           <View
             accessible={true}
             isTVSelectable={true}
@@ -562,43 +554,39 @@ exports[`The Onboarding AskNotificationsConnected component should render with n
           style={
             Object {
               "flex": 1,
-            }
-          }
-        />
-        <View
-          style={
-            Object {
-              "justifyContent": "flex-end",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                }
               }
-            }
-          >
-            Can we keep you informed?
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-                "paddingBottom": 24,
+            >
+              Can we keep you informed?
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                  "paddingBottom": 24,
+                }
               }
-            }
-          >
-            We'll let you know when important things are happening and keep you in the loop
-          </Text>
+            >
+              We'll let you know when important things are happening and keep you in the loop
+            </Text>
+          </View>
           <View
             accessible={true}
             isTVSelectable={true}

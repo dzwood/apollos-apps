@@ -43,8 +43,7 @@ exports[`The Onboarding SlideWrapper component should pass additional props to S
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -52,37 +51,39 @@ exports[`The Onboarding SlideWrapper component should pass additional props to S
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Hey friend!
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+            >
+              Hey friend!
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-            }
-          >
-            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-          </Text>
+            >
+              We'd like to help personalize your mobile experience so we can help you with every step on your journey.
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -327,8 +328,7 @@ exports[`The Onboarding SlideWrapper component should render 1`] = `
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -336,37 +336,39 @@ exports[`The Onboarding SlideWrapper component should render 1`] = `
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Hey friend!
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+            >
+              Hey friend!
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-            }
-          >
-            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-          </Text>
+            >
+              We'd like to help personalize your mobile experience so we can help you with every step on your journey.
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -417,8 +419,7 @@ exports[`The Onboarding SlideWrapper component should render a custom descriptio
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -426,37 +427,39 @@ exports[`The Onboarding SlideWrapper component should render a custom descriptio
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Hey friend!
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+            >
+              Hey friend!
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-            }
-          >
-            Custom description text
-          </Text>
+            >
+              Custom description text
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -507,8 +510,7 @@ exports[`The Onboarding SlideWrapper component should render a custom first name
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -516,37 +518,39 @@ exports[`The Onboarding SlideWrapper component should render a custom first name
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Hey firstName!
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+            >
+              Hey firstName!
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-            }
-          >
-            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-          </Text>
+            >
+              We'd like to help personalize your mobile experience so we can help you with every step on your journey.
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -597,60 +601,47 @@ exports[`The Onboarding SlideWrapper component should render a custom image 1`] 
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
-        <Image
-          source={
-            Object {
-              "uri": "https://picsum.photos/1200/1200?random",
-            }
-          }
-          style={
-            Object {
-              "flex": 3,
-              "marginBottom": 16,
-              "resizeMode": "contain",
-            }
-          }
-        />
         <View
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Hey friend!
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+            >
+              Hey friend!
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-            }
-          >
-            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-          </Text>
+            >
+              We'd like to help personalize your mobile experience so we can help you with every step on your journey.
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -701,8 +692,7 @@ exports[`The Onboarding SlideWrapper component should render a custom title 1`] 
       <View
         style={
           Object {
-            "flex": 1,
-            "justifyContent": "center",
+            "height": "100%",
           }
         }
       >
@@ -710,37 +700,39 @@ exports[`The Onboarding SlideWrapper component should render a custom title 1`] 
           style={
             Object {
               "flex": 1,
-              "justifyContent": "center",
+              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
-                "marginBottom": 8,
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                  "marginBottom": 8,
+                }
               }
-            }
-          >
-            Hey friend!
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+            >
+              Hey friend!
+            </Text>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-            }
-          >
-            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-          </Text>
+            >
+              We'd like to help personalize your mobile experience so we can help you with every step on your journey.
+            </Text>
+          </View>
         </View>
       </View>
     </View>
