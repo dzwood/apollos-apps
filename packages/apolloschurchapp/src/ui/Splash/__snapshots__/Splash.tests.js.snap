@@ -40,110 +40,82 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
         }
       }
     >
-      <View
+      <BVLinearGradient
+        colors={
+          Array [
+            4281348144,
+            4278190080,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           Object {
             "flex": 1,
-            "justifyContent": "center",
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "height": "100%",
           }
         }
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          isLight={true}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 16,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "flex": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "marginBottom": 16,
+                },
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4281348144,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -160,6 +132,16 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -177,37 +159,80 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "marginBottom": 32,
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4294506484,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "marginBottom": 32,
+              }
             }
-          }
-        >
-          WE'RE GLAD YOU'RE HERE.
-        </Text>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Bold",
-              "fontSize": 16,
-              "lineHeight": 23.04,
+          >
+            WE'RE GLAD YOU'RE HERE.
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Bold",
+                "fontSize": 16,
+                "lineHeight": 23.04,
+              }
             }
-          }
-        >
-          We're not just a building you go to, but a family to belong to.
-        </Text>
-      </View>
+          >
+            We're not just a building you go to, but a family to belong to.
+          </Text>
+        </View>
+      </BVLinearGradient>
     </View>
     <View
       style={
@@ -244,8 +269,8 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
+              "backgroundColor": "#000000",
+              "borderColor": "#000000",
               "borderRadius": 48,
               "borderWidth": 2,
               "elevation": 2,
@@ -447,110 +472,82 @@ exports[`The Onboarding Splash component should render 1`] = `
         }
       }
     >
-      <View
+      <BVLinearGradient
+        colors={
+          Array [
+            4281348144,
+            4278190080,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           Object {
             "flex": 1,
-            "justifyContent": "center",
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "height": "100%",
           }
         }
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          isLight={true}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 16,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "flex": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "marginBottom": 16,
+                },
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4281348144,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -567,6 +564,16 @@ exports[`The Onboarding Splash component should render 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -584,37 +591,80 @@ exports[`The Onboarding Splash component should render 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "marginBottom": 32,
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4294506484,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "marginBottom": 32,
+              }
             }
-          }
-        >
-          WE'RE GLAD YOU'RE HERE.
-        </Text>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Bold",
-              "fontSize": 16,
-              "lineHeight": 23.04,
+          >
+            WE'RE GLAD YOU'RE HERE.
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Bold",
+                "fontSize": 16,
+                "lineHeight": 23.04,
+              }
             }
-          }
-        >
-          We're not just a building you go to, but a family to belong to.
-        </Text>
-      </View>
+          >
+            We're not just a building you go to, but a family to belong to.
+          </Text>
+        </View>
+      </BVLinearGradient>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -660,110 +710,82 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
         }
       }
     >
-      <View
+      <BVLinearGradient
+        colors={
+          Array [
+            4281348144,
+            4278190080,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           Object {
             "flex": 1,
-            "justifyContent": "center",
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "height": "100%",
           }
         }
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          isLight={true}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 16,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "flex": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "marginBottom": 16,
+                },
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4281348144,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -780,6 +802,16 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -797,37 +829,80 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "marginBottom": 32,
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4294506484,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "marginBottom": 32,
+              }
             }
-          }
-        >
-          WE'RE GLAD YOU'RE HERE.
-        </Text>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Bold",
-              "fontSize": 16,
-              "lineHeight": 23.04,
+          >
+            WE'RE GLAD YOU'RE HERE.
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Bold",
+                "fontSize": 16,
+                "lineHeight": 23.04,
+              }
             }
-          }
-        >
-          Custom description text
-        </Text>
-      </View>
+          >
+            Custom description text
+          </Text>
+        </View>
+      </BVLinearGradient>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -873,110 +948,82 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
         }
       }
     >
-      <View
+      <BVLinearGradient
+        colors={
+          Array [
+            4281348144,
+            4278190080,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0.5,
+            "y": 1,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0.5,
+            "y": 0,
+          }
+        }
         style={
           Object {
             "flex": 1,
-            "justifyContent": "center",
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "height": "100%",
           }
         }
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          isLight={true}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 16,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "flex": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "marginBottom": 16,
+                },
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4281348144,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -993,6 +1040,16 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -1010,37 +1067,80 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "marginBottom": 32,
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4294506484,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "marginBottom": 32,
+              }
             }
-          }
-        >
-          Custom title text
-        </Text>
-        <Text
-          isLight={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Bold",
-              "fontSize": 16,
-              "lineHeight": 23.04,
+          >
+            Custom title text
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Bold",
+                "fontSize": 16,
+                "lineHeight": 23.04,
+              }
             }
-          }
-        >
-          We're not just a building you go to, but a family to belong to.
-        </Text>
-      </View>
+          >
+            We're not just a building you go to, but a family to belong to.
+          </Text>
+        </View>
+      </BVLinearGradient>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -1086,125 +1186,97 @@ exports[`The Onboarding Splash component should render light text on a dark back
         }
       }
     >
-      <Image
-        source={
+      <BVLinearGradient
+        colors={
+          Array [
+            4281348144,
+            4278190080,
+          ]
+        }
+        endPoint={
           Object {
-            "height": 1200,
-            "uri": "https://picsum.photos/1200/1200?random",
-            "width": 1200,
+            "x": 0.5,
+            "y": 1,
           }
         }
-        style={
+        locations={null}
+        startPoint={
           Object {
-            "position": "absolute",
-            "resizeMode": "cover",
+            "x": 0.5,
+            "y": 0,
           }
         }
-      />
-      <View
         style={
           Object {
             "flex": 1,
-            "justifyContent": "center",
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "height": "100%",
           }
         }
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          isLight={false}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 16,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+        <Image
+          source={
+            Object {
+              "height": 1200,
+              "uri": "https://picsum.photos/1200/1200?random",
+              "width": 1200,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
+          style={
+            Object {
+              "position": "absolute",
+              "resizeMode": "cover",
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "justifyContent": "center",
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
+            }
+          }
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                Object {
+                  "marginBottom": 16,
+                },
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4294967295,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -1221,6 +1293,16 @@ exports[`The Onboarding Splash component should render light text on a dark back
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -1238,37 +1320,80 @@ exports[`The Onboarding Splash component should render light text on a dark back
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
-          isLight={false}
-          style={
-            Object {
-              "color": "#FFFFFF",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "marginBottom": 32,
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4294506484,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "marginBottom": 32,
+              }
             }
-          }
-        >
-          WE'RE GLAD YOU'RE HERE.
-        </Text>
-        <Text
-          isLight={false}
-          style={
-            Object {
-              "color": "#FFFFFF",
-              "fontFamily": "InterUI-Bold",
-              "fontSize": 16,
-              "lineHeight": 23.04,
+          >
+            WE'RE GLAD YOU'RE HERE.
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Bold",
+                "fontSize": 16,
+                "lineHeight": 23.04,
+              }
             }
-          }
-        >
-          We're not just a building you go to, but a family to belong to.
-        </Text>
-      </View>
+          >
+            We're not just a building you go to, but a family to belong to.
+          </Text>
+        </View>
+      </BVLinearGradient>
     </View>
   </View>
 </RCTSafeAreaView>
