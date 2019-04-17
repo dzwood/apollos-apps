@@ -47,7 +47,7 @@ class Onboarding extends Component {
   }
 
   // Creates ref to Swiper to be passed as a prop to children.
-  setSwiperRef = (r) => {
+  setSwiperRef = r => {
     this.swiper = r;
 
     return this.swiper;
@@ -72,14 +72,16 @@ class Onboarding extends Component {
             swiperRef={this.setSwiperRef}
           >
             <AskNameConnected onPressPrimary={this.handleOnPressPrimary} />
-            <Features
-              imgSrc={{ uri: 'https://picsum.photos/1200/1200?random' }}
-              onPressPrimary={this.handleOnPressPrimary}
-            />
-            <AboutYouConnected
-              imgSrc={{ uri: 'https://picsum.photos/1200/1200?random' }}
-              onPressPrimary={this.handleOnPressPrimary}
-            />
+            <Features onPressPrimary={this.handleOnPressPrimary}>
+              <GradientOverlayImage
+                source={'https://picsum.photos/640/640/?random'}
+              />
+            </Features>
+            <AboutYouConnected onPressPrimary={this.handleOnPressPrimary}>
+              <GradientOverlayImage
+                source={'https://picsum.photos/640/640/?random'}
+              />
+            </AboutYouConnected>
             <LocationFinderConnected onPressPrimary={this.handleOnPressPrimary}>
               <GradientOverlayImage
                 source={'https://picsum.photos/640/640/?random'}

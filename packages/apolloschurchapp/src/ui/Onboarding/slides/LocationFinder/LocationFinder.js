@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 import {
   PaddedView,
-  FlexedView,
   styled,
   H2,
   H5,
@@ -23,8 +22,9 @@ const ContentWrapper = styled({
 })(View);
 
 const Content = styled({
-  justifyContent: 'flex-end',
-})(PaddedView);
+  flex: 1,
+  justifyContent: 'space-between',
+})(View);
 
 const Title = styled(({ theme }) => ({
   color: theme.colors.primary,
@@ -69,31 +69,33 @@ const LocationFinder = memo(
       {...props}
     >
       <ContentWrapper>
-        <FlexedView>{children}</FlexedView>
+        {children}
         <Content>
-          <Title>{slideTitle}</Title>
-          <StyledH5>{description}</StyledH5>
+          <PaddedView>
+            <Title>{slideTitle}</Title>
+            <StyledH5>{description}</StyledH5>
+          </PaddedView>
+          {campus ? (
+            <Touchable onPress={onPressButton}>
+              <StyledCampusCard
+                key={campus.id}
+                distance={campus.distanceFromLocation}
+                title={campus.name}
+                description={getCampusAddress(campus)}
+                images={[campus.image]}
+              />
+            </Touchable>
+          ) : (
+            <PaddedView>
+              <Button
+                title={buttonText}
+                onPress={onPressButton}
+                disabled={buttonDisabled}
+                pill={false}
+              />
+            </PaddedView>
+          )}
         </Content>
-        {campus ? (
-          <Touchable onPress={onPressButton}>
-            <StyledCampusCard
-              key={campus.id}
-              distance={campus.distanceFromLocation}
-              title={campus.name}
-              description={getCampusAddress(campus)}
-              images={[campus.image]}
-            />
-          </Touchable>
-        ) : (
-          <Content>
-            <Button
-              title={buttonText}
-              onPress={onPressButton}
-              disabled={buttonDisabled}
-              pill={false}
-            />
-          </Content>
-        )}
       </ContentWrapper>
     </Slide>
   )

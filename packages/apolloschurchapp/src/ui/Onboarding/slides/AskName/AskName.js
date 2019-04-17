@@ -55,35 +55,38 @@ const AskName = memo(
           <BrandIcon />
           <Title>{slideTitle}</Title>
           <StyledH5>{description}</StyledH5>
-          <TextInput
-            label={'First Name'}
-            type={'text'}
-            textContentType={'givenName'} // ios autofill
-            returnKeyType={'next'}
-            value={get(values, 'firstName')}
-            error={
-              get(touched, 'firstName', false) && get(errors, 'firstName', null)
-            }
-            onChangeText={(text) => setFieldValue('firstName', text)}
-            onSubmitEditing={() => LastNameInput.focus()}
-            enablesReturnKeyAutomatically
-          />
-          <TextInput
-            label={'Last Name'}
-            type={'text'}
-            textContentType={'familyName'} // ios autofill
-            returnKeyType={'next'}
-            value={get(values, 'lastName')}
-            error={
-              get(touched, 'lastName', false) && get(errors, 'lastName', null)
-            }
-            onChangeText={(text) => setFieldValue('lastName', text)}
-            onSubmitEditing={onPressPrimary}
-            enablesReturnKeyAutomatically
-            inputRef={(r) => {
-              LastNameInput = r;
-            }}
-          />
+          <PaddedView horizontal={false}>
+            <TextInput
+              label={'First Name'}
+              type={'text'}
+              textContentType={'givenName'} // ios autofill
+              returnKeyType={'next'}
+              value={get(values, 'firstName')}
+              error={
+                get(touched, 'firstName', false) &&
+                get(errors, 'firstName', null)
+              }
+              onChangeText={(text) => setFieldValue('firstName', text)}
+              onSubmitEditing={() => LastNameInput.focus()}
+              enablesReturnKeyAutomatically
+            />
+            <TextInput
+              label={'Last Name'}
+              type={'text'}
+              textContentType={'familyName'} // ios autofill
+              returnKeyType={'next'}
+              value={get(values, 'lastName')}
+              error={
+                get(touched, 'lastName', false) && get(errors, 'lastName', null)
+              }
+              onChangeText={(text) => setFieldValue('lastName', text)}
+              onSubmitEditing={onPressPrimary}
+              enablesReturnKeyAutomatically
+              inputRef={(r) => {
+                LastNameInput = r;
+              }}
+            />
+          </PaddedView>
         </PaddedView>
       </Slide>
     );

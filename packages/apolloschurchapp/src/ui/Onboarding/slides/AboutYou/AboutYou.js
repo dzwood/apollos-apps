@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { get } from 'lodash';
@@ -12,25 +12,18 @@ import {
   RadioButton,
   H6,
   DateInput,
-  FlexedView,
   PaddedView,
 } from '@apollosproject/ui-kit';
 
 import Slide from '../../Slide';
 
+const ContentWrapper = styled({
+  height: '100%',
+})(View);
+
 const Content = styled({
-  justifyContent: 'center',
-})(FlexedView);
-
-const StyledImage = styled(({ theme }) => ({
-  flex: 2,
-  resizeMode: 'contain',
-  marginBottom: theme.sizing.baseUnit * 2,
-}))(Image);
-
-const TextContent = styled({
   flex: 1,
-  justifyContent: 'center',
+  justifyContent: 'space-between',
 })(PaddedView);
 
 const Title = styled(({ theme }) => ({
@@ -65,7 +58,6 @@ const RadioLabel = styled(({ theme }) => ({
 const AboutYou = memo(
   ({
     onPressPrimary,
-    imgSrc,
     slideTitle,
     description,
     defaultDate,
@@ -74,14 +66,17 @@ const AboutYou = memo(
     touched,
     errors,
     setFieldValue,
+    children,
     ...props
   }) => (
     <Slide onPressPrimary={onPressPrimary} {...props}>
-      <Content>
-        {imgSrc ? <StyledImage source={imgSrc} /> : null}
-        <TextContent>
-          <Title>{slideTitle}</Title>
-          <Description>{description}</Description>
+      <ContentWrapper>
+        {children}
+        <Content>
+          <View>
+            <Title>{slideTitle}</Title>
+            <Description>{description}</Description>
+          </View>
           <View>
             <Label>Gender</Label>
             <StyledRadio
@@ -101,7 +96,6 @@ const AboutYou = memo(
               ])}
             </StyledRadio>
           </View>
-          {/* TODO: getting some warning with this DateInput */}
           <View>
             <Label>Birthday</Label>
             <StyledDate
@@ -117,8 +111,8 @@ const AboutYou = memo(
               onChange={(value) => setFieldValue('birthDate', value)}
             />
           </View>
-        </TextContent>
-      </Content>
+        </Content>
+      </ContentWrapper>
     </Slide>
   )
 );
@@ -130,13 +124,13 @@ AboutYou.propTypes = {
   setFieldValue: PropTypes.func.isRequired,
   slideTitle: PropTypes.string,
   description: PropTypes.string,
-  imgSrc: Image.propTypes,
   defaultDate: PropTypes.instanceOf(Date),
   genderList: PropTypes.arrayOf(PropTypes.number),
   values: PropTypes.shape({}),
   touched: PropTypes.shape({}),
   errors: PropTypes.shape({}),
   onPressPrimary: PropTypes.func,
+  children: PropTypes.node,
 };
 
 AboutYou.defaultProps = {

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { styled, H2, H5, PaddedView } from '@apollosproject/ui-kit';
@@ -15,34 +15,31 @@ const StyledH5 = styled(({ theme }) => ({
   color: theme.colors.text.secondary,
 }))(H5);
 
-const StyledImage = styled(({ theme }) => ({
-  flex: 3,
-  resizeMode: 'contain',
-  marginBottom: theme.sizing.baseUnit,
-}))(Image);
+const ContentWrapper = styled({
+  height: '100%',
+})(View);
 
 const Content = styled({
   flex: 1,
-  justifyContent: 'center',
-})(View);
-
-const TextContent = styled({
-  flex: 1,
-  justifyContent: 'center',
+  justifyContent: 'space-between',
 })(PaddedView);
 
 // eslint-disable-next-line react/display-name
-const Features = memo(({ firstName, description, imgSrc, ...props }) => (
-  <Slide {...props}>
-    <Content>
-      {imgSrc ? <StyledImage source={imgSrc} /> : null}
-      <TextContent>
-        <Title>{`Hey ${firstName}!`}</Title>
-        <StyledH5>{description}</StyledH5>
-      </TextContent>
-    </Content>
-  </Slide>
-));
+const Features = memo(
+  ({ firstName, description, children, imgSrc, ...props }) => (
+    <Slide {...props}>
+      <ContentWrapper>
+        {children}
+        <Content>
+          <View>
+            <Title>{`Hey ${firstName}!`}</Title>
+            <StyledH5>{description}</StyledH5>
+          </View>
+        </Content>
+      </ContentWrapper>
+    </Slide>
+  )
+);
 
 Features.propTypes = {
   /* The `Swiper` component used in `<onBoarding>` looks for and hijacks the title prop of it's
@@ -51,6 +48,7 @@ Features.propTypes = {
   firstName: PropTypes.string,
   description: PropTypes.string,
   imgSrc: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Features.defaultProps = {

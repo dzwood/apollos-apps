@@ -1,14 +1,7 @@
 import React, { memo } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import {
-  PaddedView,
-  FlexedView,
-  styled,
-  H2,
-  H5,
-  Button,
-} from '@apollosproject/ui-kit';
+import { PaddedView, styled, H2, H5, Button } from '@apollosproject/ui-kit';
 
 import Slide from '../../Slide';
 
@@ -17,7 +10,8 @@ const ContentWrapper = styled({
 })(View);
 
 const Content = styled({
-  justifyContent: 'flex-end',
+  flex: 1,
+  justifyContent: 'space-between',
 })(PaddedView);
 
 const Title = styled(({ theme }) => ({
@@ -43,10 +37,12 @@ const AskNotifications = memo(
   }) => (
     <Slide {...props}>
       <ContentWrapper>
-        <FlexedView>{children}</FlexedView>
+        {children}
         <Content>
-          <Title>{slideTitle}</Title>
-          <StyledH5>{description}</StyledH5>
+          <View>
+            <Title>{slideTitle}</Title>
+            <StyledH5>{description}</StyledH5>
+          </View>
           {buttonDisabled || onPressButton ? (
             <Button
               title={buttonText}
