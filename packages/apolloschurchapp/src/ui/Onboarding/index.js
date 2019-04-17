@@ -47,7 +47,7 @@ class Onboarding extends Component {
   }
 
   // Creates ref to Swiper to be passed as a prop to children.
-  setSwiperRef = r => {
+  setSwiperRef = (r) => {
     this.swiper = r;
 
     return this.swiper;
