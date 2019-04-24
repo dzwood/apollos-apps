@@ -40,16 +40,16 @@ const CoverImage = styled({
 // TODO: react-navigation does not like `memo` ... doesn't see it as a react component
 const Splash = ({ slideTitle, description, imgSrc, isLight, ...props }) => (
   <ThemeMixin mixin={{ type: isLight ? 'light' : 'dark' }}>
-    <Slide {...props}>
-      <BackgroundView>
+    <BackgroundView>
+      <Slide {...props}>
         {imgSrc ? <CoverImage source={imgSrc} /> : null}
         <Content>
           <BrandIcon />
           <Title>{slideTitle}</Title>
           <H4>{description}</H4>
         </Content>
-      </BackgroundView>
-    </Slide>
+      </Slide>
+    </BackgroundView>
   </ThemeMixin>
 );
 

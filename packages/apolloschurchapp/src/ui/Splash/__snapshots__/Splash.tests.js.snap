@@ -33,37 +33,37 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
       }
     }
   >
-    <View
+    <BVLinearGradient
+      colors={
+        Array [
+          4281348144,
+          4278190080,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
       style={
         Object {
           "flex": 1,
+          "height": "100%",
         }
       }
     >
-      <BVLinearGradient
-        colors={
-          Array [
-            4281348144,
-            4278190080,
-          ]
-        }
-        endPoint={
-          Object {
-            "x": 0.5,
-            "y": 1,
-          }
-        }
-        locations={null}
-        startPoint={
-          Object {
-            "x": 0.5,
-            "y": 0,
-          }
-        }
+      <View
         style={
           Object {
             "flex": 1,
-            "height": "100%",
           }
         }
       >
@@ -232,163 +232,108 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
             We're not just a building you go to, but a family to belong to.
           </Text>
         </View>
-      </BVLinearGradient>
-    </View>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row-reverse",
-          "justifyContent": "space-between",
-          "marginBottom": 8,
-          "paddingHorizontal": 16,
-          "paddingVertical": 0,
-        }
-      }
-      vertical={false}
-    >
+      </View>
       <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "opacity": 1,
+            "alignItems": "center",
+            "flexDirection": "row-reverse",
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "paddingHorizontal": 16,
+            "paddingVertical": 0,
           }
         }
+        vertical={false}
       >
         <View
-          bordered={false}
-          disabled={false}
-          pill={true}
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#000000",
-              "borderColor": "#000000",
-              "borderRadius": 48,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
               "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
             }
           }
         >
-          <Text
+          <View
+            bordered={false}
+            disabled={false}
+            pill={true}
             style={
               Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
+                "alignItems": "center",
+                "backgroundColor": "#000000",
+                "borderColor": "#000000",
+                "borderRadius": 48,
+                "borderWidth": 2,
+                "elevation": 2,
+                "flexDirection": "row",
+                "height": 48,
+                "justifyContent": "center",
+                "opacity": 1,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
               }
             }
           >
-            Next
-          </Text>
-          <RNSVGSvgView
-            align="xMidYMid"
-            bbHeight={20}
-            bbWidth={20}
-            height={20}
-            meetOrSlice={0}
-            minX={0}
-            minY={0}
-            style={
-              Array [
+            <Text
+              style={
                 Object {
-                  "backgroundColor": "transparent",
-                  "borderWidth": 0,
-                },
-                Object {
-                  "marginLeft": 8,
-                  "marginRight": -8,
-                },
-                null,
-                Object {
-                  "flex": 0,
-                  "height": 20,
-                  "width": 20,
-                },
-              ]
-            }
-            vbHeight={24}
-            vbWidth={24}
-            width={20}
-          >
-            <RNSVGGroup
-              fill={
-                Array [
-                  0,
-                  4278190080,
-                ]
+                  "color": "#FFFFFF",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
               }
-              fillOpacity={1}
-              fillRule={1}
-              font={Object {}}
-              matrix={
-                Array [
-                  1,
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                ]
-              }
-              opacity={1}
-              originX={0}
-              originY={0}
-              propList={
-                Array [
-                  "fill",
-                  "fillOpacity",
-                  "fillRule",
-                  "stroke",
-                  "strokeWidth",
-                  "strokeOpacity",
-                  "strokeDasharray",
-                  "strokeDashoffset",
-                  "strokeLinecap",
-                  "strokeLinejoin",
-                  "strokeMiterlimit",
-                ]
-              }
-              rotation={0}
-              scaleX={1}
-              scaleY={1}
-              skewX={0}
-              skewY={0}
-              stroke={null}
-              strokeDasharray={null}
-              strokeDashoffset={null}
-              strokeLinecap={0}
-              strokeLinejoin={0}
-              strokeMiterlimit={4}
-              strokeOpacity={1}
-              strokeWidth={1}
-              x={0}
-              y={0}
             >
-              <RNSVGPath
-                d="M9.65 21L8 20.1l7.72-8.1L8 3.9 9.65 3l8.16 8.54c.27.28.27.64 0 .92L9.67 21z"
+              Next
+            </Text>
+            <RNSVGSvgView
+              align="xMidYMid"
+              bbHeight={20}
+              bbWidth={20}
+              height={20}
+              meetOrSlice={0}
+              minX={0}
+              minY={0}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  Object {
+                    "marginLeft": 8,
+                    "marginRight": -8,
+                  },
+                  null,
+                  Object {
+                    "flex": 0,
+                    "height": 20,
+                    "width": 20,
+                  },
+                ]
+              }
+              vbHeight={24}
+              vbWidth={24}
+              width={20}
+            >
+              <RNSVGGroup
                 fill={
                   Array [
                     0,
-                    4294967295,
+                    4278190080,
                   ]
                 }
                 fillOpacity={1}
                 fillRule={1}
+                font={Object {}}
                 matrix={
                   Array [
                     1,
@@ -405,6 +350,16 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
                 propList={
                   Array [
                     "fill",
+                    "fillOpacity",
+                    "fillRule",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeOpacity",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                    "strokeLinecap",
+                    "strokeLinejoin",
+                    "strokeMiterlimit",
                   ]
                 }
                 rotation={0}
@@ -422,12 +377,57 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
                 strokeWidth={1}
                 x={0}
                 y={0}
-              />
-            </RNSVGGroup>
-          </RNSVGSvgView>
+              >
+                <RNSVGPath
+                  d="M9.65 21L8 20.1l7.72-8.1L8 3.9 9.65 3l8.16 8.54c.27.28.27.64 0 .92L9.67 21z"
+                  fill={
+                    Array [
+                      0,
+                      4294967295,
+                    ]
+                  }
+                  fillOpacity={1}
+                  fillRule={1}
+                  matrix={
+                    Array [
+                      1,
+                      0,
+                      0,
+                      1,
+                      0,
+                      0,
+                    ]
+                  }
+                  opacity={1}
+                  originX={0}
+                  originY={0}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rotation={0}
+                  scaleX={1}
+                  scaleY={1}
+                  skewX={0}
+                  skewY={0}
+                  stroke={null}
+                  strokeDasharray={null}
+                  strokeDashoffset={null}
+                  strokeLinecap={0}
+                  strokeLinejoin={0}
+                  strokeMiterlimit={4}
+                  strokeOpacity={1}
+                  strokeWidth={1}
+                  x={0}
+                  y={0}
+                />
+              </RNSVGGroup>
+            </RNSVGSvgView>
+          </View>
         </View>
       </View>
-    </View>
+    </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
 `;
@@ -465,37 +465,37 @@ exports[`The Onboarding Splash component should render 1`] = `
       }
     }
   >
-    <View
+    <BVLinearGradient
+      colors={
+        Array [
+          4281348144,
+          4278190080,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
       style={
         Object {
           "flex": 1,
+          "height": "100%",
         }
       }
     >
-      <BVLinearGradient
-        colors={
-          Array [
-            4281348144,
-            4278190080,
-          ]
-        }
-        endPoint={
-          Object {
-            "x": 0.5,
-            "y": 1,
-          }
-        }
-        locations={null}
-        startPoint={
-          Object {
-            "x": 0.5,
-            "y": 0,
-          }
-        }
+      <View
         style={
           Object {
             "flex": 1,
-            "height": "100%",
           }
         }
       >
@@ -664,8 +664,8 @@ exports[`The Onboarding Splash component should render 1`] = `
             We're not just a building you go to, but a family to belong to.
           </Text>
         </View>
-      </BVLinearGradient>
-    </View>
+      </View>
+    </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
 `;
@@ -703,37 +703,37 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
       }
     }
   >
-    <View
+    <BVLinearGradient
+      colors={
+        Array [
+          4281348144,
+          4278190080,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
       style={
         Object {
           "flex": 1,
+          "height": "100%",
         }
       }
     >
-      <BVLinearGradient
-        colors={
-          Array [
-            4281348144,
-            4278190080,
-          ]
-        }
-        endPoint={
-          Object {
-            "x": 0.5,
-            "y": 1,
-          }
-        }
-        locations={null}
-        startPoint={
-          Object {
-            "x": 0.5,
-            "y": 0,
-          }
-        }
+      <View
         style={
           Object {
             "flex": 1,
-            "height": "100%",
           }
         }
       >
@@ -902,8 +902,8 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
             Custom description text
           </Text>
         </View>
-      </BVLinearGradient>
-    </View>
+      </View>
+    </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
 `;
@@ -941,37 +941,37 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
       }
     }
   >
-    <View
+    <BVLinearGradient
+      colors={
+        Array [
+          4281348144,
+          4278190080,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
       style={
         Object {
           "flex": 1,
+          "height": "100%",
         }
       }
     >
-      <BVLinearGradient
-        colors={
-          Array [
-            4281348144,
-            4278190080,
-          ]
-        }
-        endPoint={
-          Object {
-            "x": 0.5,
-            "y": 1,
-          }
-        }
-        locations={null}
-        startPoint={
-          Object {
-            "x": 0.5,
-            "y": 0,
-          }
-        }
+      <View
         style={
           Object {
             "flex": 1,
-            "height": "100%",
           }
         }
       >
@@ -1140,8 +1140,8 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
             We're not just a building you go to, but a family to belong to.
           </Text>
         </View>
-      </BVLinearGradient>
-    </View>
+      </View>
+    </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
 `;
@@ -1179,37 +1179,37 @@ exports[`The Onboarding Splash component should render light text on a dark back
       }
     }
   >
-    <View
+    <BVLinearGradient
+      colors={
+        Array [
+          4281348144,
+          4278190080,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 0.5,
+          "y": 1,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0.5,
+          "y": 0,
+        }
+      }
       style={
         Object {
           "flex": 1,
+          "height": "100%",
         }
       }
     >
-      <BVLinearGradient
-        colors={
-          Array [
-            4281348144,
-            4278190080,
-          ]
-        }
-        endPoint={
-          Object {
-            "x": 0.5,
-            "y": 1,
-          }
-        }
-        locations={null}
-        startPoint={
-          Object {
-            "x": 0.5,
-            "y": 0,
-          }
-        }
+      <View
         style={
           Object {
             "flex": 1,
-            "height": "100%",
           }
         }
       >
@@ -1393,8 +1393,8 @@ exports[`The Onboarding Splash component should render light text on a dark back
             We're not just a building you go to, but a family to belong to.
           </Text>
         </View>
-      </BVLinearGradient>
-    </View>
+      </View>
+    </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
 `;
