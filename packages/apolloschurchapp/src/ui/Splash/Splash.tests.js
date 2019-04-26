@@ -14,21 +14,6 @@ describe('The Onboarding Splash component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  it('should render light text on a dark background', () => {
-    const tree = renderer.create(
-      <Providers>
-        <Splash
-          imgSrc={{
-            uri: 'https://picsum.photos/1200/1200?random',
-            height: 1200,
-            width: 1200,
-          }}
-          isLight={false}
-        />
-      </Providers>
-    );
-    expect(tree).toMatchSnapshot();
-  });
   it('should render a custom title', () => {
     const tree = renderer.create(
       <Providers>
@@ -41,6 +26,14 @@ describe('The Onboarding Splash component', () => {
     const tree = renderer.create(
       <Providers>
         <Splash description={'Custom description text'} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render with a custom text color', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Splash textColor={'salmon'} />
       </Providers>
     );
     expect(tree).toMatchSnapshot();

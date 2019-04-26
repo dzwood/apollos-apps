@@ -36,8 +36,8 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
     <BVLinearGradient
       colors={
         Array [
-          4281348144,
-          4278190080,
+          4294967295,
+          4294506484,
         ]
       }
       endPoint={
@@ -165,7 +165,7 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
                 fill={
                   Array [
                     0,
-                    4294506484,
+                    4281348144,
                   ]
                 }
                 fillOpacity={1}
@@ -209,7 +209,7 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Black",
                 "fontSize": 43,
                 "lineHeight": 49.45,
@@ -222,7 +222,7 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 23.04,
@@ -268,8 +268,8 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#000000",
-                "borderColor": "#000000",
+                "backgroundColor": "#00676D",
+                "borderColor": "#00676D",
                 "borderRadius": 48,
                 "borderWidth": 2,
                 "elevation": 2,
@@ -468,8 +468,8 @@ exports[`The Onboarding Splash component should render 1`] = `
     <BVLinearGradient
       colors={
         Array [
-          4281348144,
-          4278190080,
+          4294967295,
+          4294506484,
         ]
       }
       endPoint={
@@ -597,7 +597,7 @@ exports[`The Onboarding Splash component should render 1`] = `
                 fill={
                   Array [
                     0,
-                    4294506484,
+                    4281348144,
                   ]
                 }
                 fillOpacity={1}
@@ -641,7 +641,7 @@ exports[`The Onboarding Splash component should render 1`] = `
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Black",
                 "fontSize": 43,
                 "lineHeight": 49.45,
@@ -654,7 +654,7 @@ exports[`The Onboarding Splash component should render 1`] = `
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 23.04,
@@ -706,8 +706,8 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
     <BVLinearGradient
       colors={
         Array [
-          4281348144,
-          4278190080,
+          4294967295,
+          4294506484,
         ]
       }
       endPoint={
@@ -835,7 +835,7 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
                 fill={
                   Array [
                     0,
-                    4294506484,
+                    4281348144,
                   ]
                 }
                 fillOpacity={1}
@@ -879,7 +879,7 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Black",
                 "fontSize": 43,
                 "lineHeight": 49.45,
@@ -892,7 +892,7 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 23.04,
@@ -944,8 +944,8 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
     <BVLinearGradient
       colors={
         Array [
-          4281348144,
-          4278190080,
+          4294967295,
+          4294506484,
         ]
       }
       endPoint={
@@ -1073,7 +1073,7 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
                 fill={
                   Array [
                     0,
-                    4294506484,
+                    4281348144,
                   ]
                 }
                 fillOpacity={1}
@@ -1117,7 +1117,7 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Black",
                 "fontSize": 43,
                 "lineHeight": 49.45,
@@ -1130,7 +1130,7 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
           <Text
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "#303030",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 23.04,
@@ -1146,7 +1146,7 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`The Onboarding Splash component should render light text on a dark background 1`] = `
+exports[`The Onboarding Splash component should render with a custom text color 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -1182,8 +1182,8 @@ exports[`The Onboarding Splash component should render light text on a dark back
     <BVLinearGradient
       colors={
         Array [
-          4281348144,
-          4278190080,
+          4294967295,
+          4294506484,
         ]
       }
       endPoint={
@@ -1213,21 +1213,6 @@ exports[`The Onboarding Splash component should render light text on a dark back
           }
         }
       >
-        <Image
-          source={
-            Object {
-              "height": 1200,
-              "uri": "https://picsum.photos/1200/1200?random",
-              "width": 1200,
-            }
-          }
-          style={
-            Object {
-              "position": "absolute",
-              "resizeMode": "cover",
-            }
-          }
-        />
         <View
           style={
             Object {
@@ -1242,6 +1227,7 @@ exports[`The Onboarding Splash component should render light text on a dark back
             align="xMidYMid"
             bbHeight={48}
             bbWidth={48}
+            color="salmon"
             height={48}
             meetOrSlice={0}
             minX={0}
@@ -1263,6 +1249,7 @@ exports[`The Onboarding Splash component should render light text on a dark back
                 },
               ]
             }
+            tintColor="salmon"
             vbHeight={24}
             vbWidth={24}
             width={48}
@@ -1326,7 +1313,7 @@ exports[`The Onboarding Splash component should render light text on a dark back
                 fill={
                   Array [
                     0,
-                    4294506484,
+                    4294606962,
                   ]
                 }
                 fillOpacity={1}
@@ -1368,9 +1355,10 @@ exports[`The Onboarding Splash component should render light text on a dark back
             </RNSVGGroup>
           </RNSVGSvgView>
           <Text
+            color="salmon"
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "salmon",
                 "fontFamily": "InterUI-Black",
                 "fontSize": 43,
                 "lineHeight": 49.45,
@@ -1381,9 +1369,10 @@ exports[`The Onboarding Splash component should render light text on a dark back
             WE'RE GLAD YOU'RE HERE.
           </Text>
           <Text
+            color="salmon"
             style={
               Object {
-                "color": "#F8F7F4",
+                "color": "salmon",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 23.04,

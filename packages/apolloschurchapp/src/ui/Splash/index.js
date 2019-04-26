@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import {
   styled,
   withTheme,
-  ThemeMixin,
   Icon,
   H1,
   H4,
@@ -20,37 +19,40 @@ const Content = styled({
   justifyContent: 'center',
 })(PaddedView);
 
-const BrandIcon = withTheme(({ theme }) => ({
+const BrandIcon = withTheme(({ theme, color }) => ({
   name: 'brand-icon',
-  size: theme.sizing.baseUnit * 3.0,
+  size: theme.sizing.baseUnit * 3,
+  ...(color ? { fill: color } : {}),
   style: {
     marginBottom: theme.sizing.baseUnit,
   },
 }))(Icon);
 
-const Title = styled(({ theme }) => ({
+const Title = styled(({ theme, color }) => ({
   marginBottom: theme.sizing.baseUnit * 2,
+  ...(color ? { color } : {}),
 }))(H1);
+
+const StyledH4 = styled(({ color }) => ({
+  ...(color ? { color } : {}),
+}))(H4);
 
 const CoverImage = styled({
   resizeMode: 'cover',
   position: 'absolute',
 })(Image);
 
-// TODO: react-navigation does not like `memo` ... doesn't see it as a react component
-const Splash = ({ slideTitle, description, imgSrc, isLight, ...props }) => (
-  <ThemeMixin mixin={{ type: isLight ? 'light' : 'dark' }}>
-    <BackgroundView>
-      <Slide {...props}>
-        {imgSrc ? <CoverImage source={imgSrc} /> : null}
-        <Content>
-          <BrandIcon />
-          <Title>{slideTitle}</Title>
-          <H4>{description}</H4>
-        </Content>
-      </Slide>
-    </BackgroundView>
-  </ThemeMixin>
+const Splash = ({ slideTitle, description, textColor, imgSrc, ...props }) => (
+  <BackgroundView>
+    <Slide {...props}>
+      {imgSrc ? <CoverImage source={imgSrc} /> : null}
+      <Content>
+        <BrandIcon color={textColor} />
+        <Title color={textColor}>{slideTitle}</Title>
+        <StyledH4 color={textColor}>{description}</StyledH4>
+      </Content>
+    </Slide>
+  </BackgroundView>
 );
 
 Splash.propTypes = {
@@ -60,14 +62,13 @@ Splash.propTypes = {
   slideTitle: PropTypes.string,
   description: PropTypes.string,
   imgSrc: PropTypes.string,
-  isLight: PropTypes.bool,
+  textColor: PropTypes.string,
 };
 
 Splash.defaultProps = {
   slideTitle: "We're glad you're here.".toUpperCase(),
   description:
     "We're not just a building you go to, but a family to belong to.",
-  isLight: false,
 };
 
 Splash.navigationOptions = {
