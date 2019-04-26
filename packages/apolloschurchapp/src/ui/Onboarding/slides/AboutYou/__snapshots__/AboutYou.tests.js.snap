@@ -43,15 +43,15 @@ exports[`The Onboarding AboutYou component should pass additional props to Slide
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -760,15 +760,15 @@ exports[`The Onboarding AboutYou component should render 1`] = `
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -1283,60 +1283,60 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
       <View
         style={
           Object {
+            "backgroundColor": "#A5A5A5",
+            "overflow": "hidden",
+            "width": "100%",
+          }
+        }
+      >
+        <View
+          animate={null}
+          customAnimate={null}
+          onReady={false}
+          style={
+            Object {
+              "aspectRatio": 1,
+              "backgroundColor": "#A5A5A5",
+              "width": "100%",
+            }
+          }
+        >
+          <Image
+            defaultDate="2019-02-14"
+            onLoad={[Function]}
+            setFieldValue={[MockFunction]}
+            source={
+              Array [
+                Object {
+                  "cache": "force-cache",
+                  "uri": "https://picsum.photos/640/640/?random",
+                  "url": "https://picsum.photos/640/640/?random",
+                },
+              ]
+            }
+            style={
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "opacity": 0,
+                "resizeMode": "cover",
+                "width": "100%",
+              }
+            }
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "backgroundColor": "#A5A5A5",
-              "overflow": "hidden",
-              "width": "100%",
-            }
-          }
-        >
-          <View
-            animate={null}
-            customAnimate={null}
-            onReady={false}
-            style={
-              Object {
-                "aspectRatio": 1,
-                "backgroundColor": "#A5A5A5",
-                "width": "100%",
-              }
-            }
-          >
-            <Image
-              defaultDate="2019-02-14"
-              onLoad={[Function]}
-              setFieldValue={[MockFunction]}
-              source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/640/640/?random",
-                    "url": "https://picsum.photos/640/640/?random",
-                  },
-                ]
-              }
-              style={
-                Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
-                }
-              }
-            />
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -1677,7 +1677,7 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
                       onStartShouldSetResponderCapture={[Function]}
                     >
                       <DatePicker
-                        date={2019-04-26T20:43:48.759Z}
+                        date={2019-04-26T21:29:31.756Z}
                         minuteInterval={1}
                         mode="date"
                         onCancel={[Function]}
@@ -1851,15 +1851,15 @@ exports[`The Onboarding AboutYou component should render a custom date picker 1`
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -2374,15 +2374,15 @@ exports[`The Onboarding AboutYou component should render a custom date picker wh
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -2897,15 +2897,15 @@ exports[`The Onboarding AboutYou component should render a custom description 1`
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -3420,15 +3420,15 @@ exports[`The Onboarding AboutYou component should render a custom gender list 1`
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -3943,15 +3943,15 @@ exports[`The Onboarding AboutYou component should render a custom title 1`] = `
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }
@@ -4466,15 +4466,15 @@ exports[`The Onboarding AboutYou component should render the selected gender 1`]
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }

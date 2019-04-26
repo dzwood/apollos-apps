@@ -43,15 +43,15 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
       <View
         style={
           Object {
+            "flex": 1,
             "height": "100%",
+            "justifyContent": "center",
           }
         }
       >
         <View
           style={
             Object {
-              "flex": 1,
-              "justifyContent": "space-between",
               "paddingHorizontal": 16,
               "paddingVertical": 16,
             }

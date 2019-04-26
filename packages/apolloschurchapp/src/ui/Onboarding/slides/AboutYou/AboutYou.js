@@ -17,14 +17,11 @@ import {
 
 import Slide from '../../Slide';
 
-const ContentWrapper = styled({
-  height: '100%',
-})(View);
-
 const Content = styled({
+  height: '100%',
+  justifyContent: 'center',
   flex: 1,
-  justifyContent: 'space-between',
-})(PaddedView);
+})(View);
 
 const Title = styled(({ theme }) => ({
   color: theme.colors.primary,
@@ -70,9 +67,9 @@ const AboutYou = memo(
     ...props
   }) => (
     <Slide onPressPrimary={onPressPrimary} {...props}>
-      <ContentWrapper>
-        {BackgroundComponent}
-        <Content>
+      {BackgroundComponent}
+      <Content>
+        <PaddedView>
           <View>
             <Title>{slideTitle}</Title>
             <Description>{description}</Description>
@@ -111,8 +108,8 @@ const AboutYou = memo(
               onChange={(value) => setFieldValue('birthDate', value)}
             />
           </View>
-        </Content>
-      </ContentWrapper>
+        </PaddedView>
+      </Content>
     </Slide>
   )
 );
