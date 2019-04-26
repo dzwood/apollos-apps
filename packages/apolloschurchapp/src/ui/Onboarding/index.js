@@ -32,6 +32,7 @@ class Onboarding extends Component {
   static navigationOptions = () => ({
     title: 'Onboarding',
     header: null,
+    gesturesEnabled: false,
   });
 
   swiper = null;
