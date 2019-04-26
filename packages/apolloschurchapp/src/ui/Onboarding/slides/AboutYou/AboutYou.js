@@ -66,12 +66,12 @@ const AboutYou = memo(
     touched,
     errors,
     setFieldValue,
-    children,
+    BackgroundComponent,
     ...props
   }) => (
     <Slide onPressPrimary={onPressPrimary} {...props}>
       <ContentWrapper>
-        {children}
+        {BackgroundComponent}
         <Content>
           <View>
             <Title>{slideTitle}</Title>
@@ -130,7 +130,15 @@ AboutYou.propTypes = {
   touched: PropTypes.shape({}),
   errors: PropTypes.shape({}),
   onPressPrimary: PropTypes.func,
-  children: PropTypes.node,
+  /* Recommended usage:
+   * - `Image` (react-native)
+   * - `GradientOverlayImage` (@apollosproject/ui-kit) for increased readability
+   * - `Video` (react-native-video) because moving pictures!
+   */
+  BackgroundComponent: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 AboutYou.defaultProps = {

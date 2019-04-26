@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { GradientOverlayImage } from '@apollosproject/ui-kit';
 
 import Providers from 'apolloschurchapp/src/Providers';
 
@@ -12,20 +13,6 @@ describe('The Onboarding AboutYou component', () => {
     const tree = renderer.create(
       <Providers>
         <AboutYou defaultDate={'2019-02-14'} setFieldValue={jest.fn()} />
-      </Providers>
-    );
-    expect(tree).toMatchSnapshot();
-  });
-  it('should render a custom image', () => {
-    /* we have to pass in a date via defaultDate or the DateInput component will create a current date
-     * object and invalidate the snapshots every time. */
-    const tree = renderer.create(
-      <Providers>
-        <AboutYou
-          imgSrc={{ uri: 'https://picsum.photos/1200/1200?random' }}
-          defaultDate={'2019-02-14'}
-          setFieldValue={jest.fn()}
-        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();
@@ -104,6 +91,25 @@ describe('The Onboarding AboutYou component', () => {
           values={{ birthDate: null }}
           setFieldValue={jest.fn()}
           defaultDate={'2019-02-14'}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render a BackgroundComponent', () => {
+    /* we have to pass in a date via defaultDate or the DateInput component will create a current date
+     * object and invalidate the snapshots every time. */
+    const tree = renderer.create(
+      <Providers>
+        <AboutYou
+          BackgroundComponent={
+            <GradientOverlayImage
+              source={'https://picsum.photos/640/640/?random'}
+              defaultDate={'2019-02-14'}
+              setFieldValue={jest.fn()}
+            />
+          }
+          setFieldValue={() => {}}
         />
       </Providers>
     );
