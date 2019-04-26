@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
@@ -37,15 +36,16 @@ const StyledH4 = styled(({ color }) => ({
   ...(color ? { color } : {}),
 }))(H4);
 
-const CoverImage = styled({
-  resizeMode: 'cover',
-  position: 'absolute',
-})(Image);
-
-const Splash = ({ slideTitle, description, textColor, imgSrc, ...props }) => (
+const Splash = ({
+  slideTitle,
+  description,
+  textColor,
+  BackgroundComponent,
+  ...props
+}) => (
   <BackgroundView>
     <Slide {...props}>
-      {imgSrc ? <CoverImage source={imgSrc} /> : null}
+      {BackgroundComponent}
       <Content>
         <BrandIcon color={textColor} />
         <Title color={textColor}>{slideTitle}</Title>
@@ -61,12 +61,20 @@ Splash.propTypes = {
    */
   slideTitle: PropTypes.string,
   description: PropTypes.string,
-  imgSrc: PropTypes.string,
   textColor: PropTypes.string, // Use for custom text and `BrandIcon` color when overlaying text on an image or video needs more clarity. Defaults to theme driven colors.
+  /* Recommended usage:
+   * - `Image` (react-native)
+   * - `GradientOverlayImage` (@apollosproject/ui-kit) for increased readability
+   * - `Video` (react-native-video) because moving pictures!
+   */
+  BackgroundComponent: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 Splash.defaultProps = {
-  slideTitle: "We're glad you're here.".toUpperCase(),
+  slideTitle: "We're glad you're here.",
   description:
     "We're not just a building you go to, but a family to belong to.",
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { GradientOverlayImage } from '@apollosproject/ui-kit';
 
 import Providers from 'apolloschurchapp/src/Providers';
 
@@ -34,6 +35,20 @@ describe('The Onboarding Splash component', () => {
     const tree = renderer.create(
       <Providers>
         <Splash textColor={'salmon'} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render with an ImageComponent', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Splash
+          BackgroundComponent={
+            <GradientOverlayImage
+              source={'https://picsum.photos/375/812/?random'}
+            />
+          }
+        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();
