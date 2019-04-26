@@ -62,7 +62,7 @@ Splash.propTypes = {
   slideTitle: PropTypes.string,
   description: PropTypes.string,
   imgSrc: PropTypes.string,
-  textColor: PropTypes.string,
+  textColor: PropTypes.string, // Use for custom text and `BrandIcon` color when overlaying text on an image or video needs more clarity. Defaults to theme driven colors.
 };
 
 Splash.defaultProps = {
