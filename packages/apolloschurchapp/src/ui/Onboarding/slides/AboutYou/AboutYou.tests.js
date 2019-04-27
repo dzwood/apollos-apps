@@ -105,11 +105,10 @@ describe('The Onboarding AboutYou component', () => {
           BackgroundComponent={
             <GradientOverlayImage
               source={'https://picsum.photos/640/640/?random'}
-              defaultDate={'2019-02-14'}
-              setFieldValue={jest.fn()}
             />
           }
-          setFieldValue={() => {}}
+          defaultDate={'2019-02-14'}
+          setFieldValue={jest.fn()}
         />
       </Providers>
     );

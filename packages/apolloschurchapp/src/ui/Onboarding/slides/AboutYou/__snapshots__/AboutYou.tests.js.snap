@@ -1270,9 +1270,7 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
           }
         >
           <Image
-            defaultDate="2019-02-14"
             onLoad={[Function]}
-            setFieldValue={[MockFunction]}
             source={
               Array [
                 Object {
@@ -1517,7 +1515,7 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
                   }
                 }
               >
-                04/27/2019
+                02/14/2019
               </Text>
             </View>
           </View>
@@ -1631,7 +1629,7 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
                   onStartShouldSetResponderCapture={[Function]}
                 >
                   <DatePicker
-                    date={2019-04-27T19:44:41.631Z}
+                    date={2019-02-14T00:00:00.000Z}
                     minuteInterval={1}
                     mode="date"
                     onCancel={[Function]}
