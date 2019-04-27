@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { get } from 'lodash';
@@ -16,12 +15,6 @@ import {
 } from '@apollosproject/ui-kit';
 
 import Slide from '../../Slide';
-
-const Content = styled({
-  height: '100%',
-  justifyContent: 'center',
-  flex: 1,
-})(View);
 
 const Title = styled(({ theme }) => ({
   color: theme.colors.primary,
@@ -54,7 +47,6 @@ const RadioLabel = styled(({ theme }) => ({
 
 const AboutYou = memo(
   ({
-    onPressPrimary,
     slideTitle,
     description,
     defaultDate,
@@ -66,50 +58,42 @@ const AboutYou = memo(
     BackgroundComponent,
     ...props
   }) => (
-    <Slide onPressPrimary={onPressPrimary} {...props}>
+    <Slide {...props}>
       {BackgroundComponent}
-      <Content>
-        <PaddedView>
-          <View>
-            <Title>{slideTitle}</Title>
-            <Description>{description}</Description>
-          </View>
-          <View>
-            <Label>Gender</Label>
-            <StyledRadio
-              label="Gender"
-              type="radio"
-              value={get(values, 'gender')}
-              error={get(touched, 'gender') && get(errors, 'gender')}
-              onChange={(value) => setFieldValue('gender', value)}
-            >
-              {genderList.map((gender) => [
-                <RadioButton
-                  key={gender}
-                  value={gender}
-                  label={() => <RadioLabel>{gender}</RadioLabel>}
-                  underline={false}
-                />,
-              ])}
-            </StyledRadio>
-          </View>
-          <View>
-            <Label>Birthday</Label>
-            <StyledDate
-              type={'DateInput'}
-              placeholder={'Select a date...'}
-              value={moment
-                .utc(get(values, 'birthDate', defaultDate) || defaultDate)
-                .toDate()}
-              error={get(touched, 'birthDate') && get(errors, 'birthDate')}
-              displayValue={moment(
-                get(values, 'birthDate', defaultDate) || defaultDate
-              ).format('MM/DD/YYYY')}
-              onChange={(value) => setFieldValue('birthDate', value)}
-            />
-          </View>
-        </PaddedView>
-      </Content>
+      <PaddedView>
+        <Title>{slideTitle}</Title>
+        <Description>{description}</Description>
+        <Label>Gender</Label>
+        <StyledRadio
+          label="Gender"
+          type="radio"
+          value={get(values, 'gender')}
+          error={get(touched, 'gender') && get(errors, 'gender')}
+          onChange={(value) => setFieldValue('gender', value)}
+        >
+          {genderList.map((gender) => [
+            <RadioButton
+              key={gender}
+              value={gender}
+              label={() => <RadioLabel>{gender}</RadioLabel>}
+              underline={false}
+            />,
+          ])}
+        </StyledRadio>
+        <Label>Birthday</Label>
+        <StyledDate
+          type={'DateInput'}
+          placeholder={'Select a date...'}
+          value={moment
+            .utc(get(values, 'birthDate', defaultDate) || defaultDate)
+            .toDate()}
+          error={get(touched, 'birthDate') && get(errors, 'birthDate')}
+          displayValue={moment(
+            get(values, 'birthDate', defaultDate) || defaultDate
+          ).format('MM/DD/YYYY')}
+          onChange={(value) => setFieldValue('birthDate', value)}
+        />
+      </PaddedView>
     </Slide>
   )
 );
@@ -118,7 +102,6 @@ AboutYou.propTypes = {
   /* The `Swiper` component used in `<Onboading>` looks for and hijacks the title prop of it's
    * children. Thus we have to use more unique name.
    */
-  setFieldValue: PropTypes.func.isRequired,
   slideTitle: PropTypes.string,
   description: PropTypes.string,
   defaultDate: PropTypes.instanceOf(Date),
@@ -126,7 +109,7 @@ AboutYou.propTypes = {
   values: PropTypes.shape({}),
   touched: PropTypes.shape({}),
   errors: PropTypes.shape({}),
-  onPressPrimary: PropTypes.func,
+  setFieldValue: PropTypes.func.isRequired,
   /* Recommended usage:
    * - `Image` (react-native)
    * - `GradientOverlayImage` (@apollosproject/ui-kit) for increased readability
