@@ -37,109 +37,57 @@ exports[`The Onboarding Slide component should render a custom icon 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
-          }
-        }
-      >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          icon="umbrella"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+      <View>
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              undefined,
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={32}
-          vbWidth={32}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon="umbrella"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={32}
+            vbWidth={32}
+            width={48}
           >
-            <RNSVGPath
-              d="M27 14h5c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2v0zM27 14c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2v0 14c0 1.112-0.895 2-2 2-1.112 0-2-0.896-2-2.001v-1.494c0-0.291 0.224-0.505 0.5-0.505 0.268 0 0.5 0.226 0.5 0.505v1.505c0 0.547 0.444 0.991 1 0.991 0.552 0 1-0.451 1-0.991v-14.009c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-5.415 6.671-9.825 15-9.995v-1.506c0-0.283 0.224-0.499 0.5-0.499 0.268 0 0.5 0.224 0.5 0.499v1.506c8.329 0.17 15 4.58 15 9.995h-5z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -156,6 +104,16 @@ exports[`The Onboarding Slide component should render a custom icon 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -173,38 +131,83 @@ exports[`The Onboarding Slide component should render a custom icon 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
+            >
+              <RNSVGPath
+                d="M27 14h5c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2v0zM27 14c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2v0 14c0 1.112-0.895 2-2 2-1.112 0-2-0.896-2-2.001v-1.494c0-0.291 0.224-0.505 0.5-0.505 0.268 0 0.5 0.226 0.5 0.505v1.505c0 0.547 0.444 0.991 1 0.991 0.552 0 1-0.451 1-0.991v-14.009c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-1.105-1.119-2-2.5-2s-2.5 0.895-2.5 2c0-5.415 6.671-9.825 15-9.995v-1.506c0-0.283 0.224-0.499 0.5-0.499 0.268 0 0.5 0.224 0.5 0.499v1.506c8.329 0.17 15 4.58 15 9.995h-5z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
           }
-        }
-      >
+        >
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          />
+        </View>
         <Text
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
             }
           }
         />
       </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
-          }
-        }
-      />
     </View>
   </View>
 </RCTSafeAreaView>
@@ -247,47 +250,50 @@ exports[`The Onboarding Slide component should render a description 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
-          }
-        }
-      />
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
-          }
-        }
-      >
-        <Text
+      <View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 16,
             }
           }
         />
-      </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
           }
-        }
-      >
-        There's that word again: "heavy." Why are things so heavy in the future? Is there a problem with the Earth's gravitational pull?
-      </Text>
+        >
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          />
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
+            }
+          }
+        >
+          There's that word again: "heavy." Why are things so heavy in the future? Is there a problem with the Earth's gravitational pull?
+        </Text>
+      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -330,60 +336,63 @@ exports[`The Onboarding Slide component should render a loading state 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
-          }
-        }
-      >
+      <View>
         <View
           style={
             Object {
-              "backgroundColor": "#A5A5A5",
-              "borderRadius": 16,
-              "height": 48,
-              "width": 48,
+              "paddingBottom": 16,
             }
           }
-        />
-      </View>
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "borderRadius": 16,
+                "height": 48,
+                "width": 48,
+              }
+            }
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
           }
-        }
-      >
+        >
+          <View
+            style={
+              Object {
+                "alignSelf": "stretch",
+                "backgroundColor": "#A5A5A5",
+                "borderRadius": 16,
+                "height": 36,
+                "marginVertical": 2.6999999999999993,
+                "width": "100%",
+              }
+            }
+          />
+        </View>
         <View
           style={
             Object {
               "alignSelf": "stretch",
               "backgroundColor": "#A5A5A5",
               "borderRadius": 16,
-              "height": 36,
-              "marginVertical": 2.6999999999999993,
-              "width": "100%",
+              "height": 14,
+              "marginVertical": 3.08,
+              "width": "60%",
             }
           }
         />
       </View>
-      <View
-        style={
-          Object {
-            "alignSelf": "stretch",
-            "backgroundColor": "#A5A5A5",
-            "borderRadius": 16,
-            "height": 14,
-            "marginVertical": 3.08,
-            "width": "60%",
-          }
-        }
-      />
     </View>
   </View>
 </RCTSafeAreaView>
@@ -426,47 +435,50 @@ exports[`The Onboarding Slide component should render a title 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
-          }
-        }
-      />
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
-          }
-        }
-      >
-        <Text
+      <View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          Whoa, this is heavy
-        </Text>
-      </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Whoa, this is heavy
+          </Text>
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
+            }
           }
-        }
-      />
+        />
+      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -511,45 +523,48 @@ exports[`The Onboarding Slide component should render accept additionall props 1
           "flex": 1,
           "justifyContent": "center",
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
+      <View>
+        <View
+          style={
+            Object {
+              "paddingBottom": 16,
+            }
           }
-        }
-      />
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
           }
-        }
-      >
+        >
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          />
+        </View>
         <Text
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
             }
           }
         />
       </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
-          }
-        }
-      />
       <Text>
         Great Scott!
       </Text>
@@ -595,109 +610,57 @@ exports[`The Onboarding Slide component should render an icon 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
-          }
-        }
-      >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          icon={true}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+      <View>
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              undefined,
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -714,6 +677,16 @@ exports[`The Onboarding Slide component should render an icon 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -731,38 +704,83 @@ exports[`The Onboarding Slide component should render an icon 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-      </View>
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
           }
-        }
-      >
+        >
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          />
+        </View>
         <Text
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
             }
           }
         />
       </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
-          }
-        }
-      />
     </View>
   </View>
 </RCTSafeAreaView>
@@ -805,45 +823,48 @@ exports[`The Onboarding Slide component should render children alone 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
+      <View>
+        <View
+          style={
+            Object {
+              "paddingBottom": 16,
+            }
           }
-        }
-      />
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
           }
-        }
-      >
+        >
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          />
+        </View>
         <Text
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
             }
           }
         />
       </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
-          }
-        }
-      />
       <Text>
         Great Scott!
       </Text>
@@ -889,49 +910,52 @@ exports[`The Onboarding Slide component should render with children 1`] = `
       style={
         Object {
           "paddingHorizontal": 16,
-          "paddingVertical": 16,
+          "paddingVertical": 0,
         }
       }
+      vertical={false}
     >
-      <View
-        style={
-          Object {
-            "paddingBottom": 16,
-          }
-        }
-      />
-      <View
-        style={
-          Object {
-            "paddingBottom": 8,
-          }
-        }
-      >
-        <Text
+      <View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          Whoa, this is heavy
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Whoa, this is heavy
+          </Text>
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#505050",
+              "fontFamily": "InterUI-Medium",
+              "fontSize": 14,
+              "lineHeight": 20.16,
+            }
+          }
+        >
+          There's that word again: "heavy." Why are things so heavy in the future? Is there a problem with the Earth's gravitational pull?
         </Text>
       </View>
-      <Text
-        style={
-          Object {
-            "color": "#505050",
-            "fontFamily": "InterUI-Medium",
-            "fontSize": 14,
-            "lineHeight": 20.16,
-          }
-        }
-      >
-        There's that word again: "heavy." Why are things so heavy in the future? Is there a problem with the Earth's gravitational pull?
-      </Text>
       <Text>
         Great Scott!
       </Text>

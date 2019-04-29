@@ -12,7 +12,7 @@ import {
 import PropTypes from 'prop-types';
 
 const IconWrapper = styled(({ theme }) => ({
-  paddingBottom: theme.sizing.baseUnit,
+  paddingBottom: theme.sizing.baseUnit, // wrapper is used to padd placeholder as well.
 }))(View);
 
 const BrandIcon = withTheme(({ theme, icon }) => ({
@@ -22,7 +22,7 @@ const BrandIcon = withTheme(({ theme, icon }) => ({
 }))(Icon);
 
 const TitleWrapper = styled(({ theme }) => ({
-  paddingBottom: theme.sizing.baseUnit * 0.5,
+  paddingBottom: theme.sizing.baseUnit * 0.5, // wrapper is used to padd placeholder as well.
 }))(View);
 
 const Title = styled(({ theme }) => ({
@@ -42,14 +42,17 @@ const SlideContent = withIsLoading(
     }
 
     return (
-      <PaddedView {...props}>
-        <IconWrapper>
-          {icon ? <BrandIcon icon={icon} isLoading={isLoading} /> : null}
-        </IconWrapper>
-        <TitleWrapper>
-          <Title>{title}</Title>
-        </TitleWrapper>
-        <StyledH5>{description}</StyledH5>
+      <PaddedView vertical={false} {...props}>
+        <View /* groups text elements together when justifying content within SlideContent */
+        >
+          <IconWrapper>
+            {icon ? <BrandIcon icon={icon} isLoading={isLoading} /> : null}
+          </IconWrapper>
+          <TitleWrapper>
+            <Title>{title}</Title>
+          </TitleWrapper>
+          <StyledH5>{description}</StyledH5>
+        </View>
         {children}
       </PaddedView>
     );

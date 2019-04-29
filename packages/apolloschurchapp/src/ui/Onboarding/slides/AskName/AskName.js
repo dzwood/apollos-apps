@@ -24,12 +24,7 @@ const AskName = memo(
 
     return (
       <Slide onPressPrimary={onPressPrimary} {...props}>
-        <SlideContent
-          title={slideTitle}
-          description={description}
-          vertical={false}
-          icon
-        >
+        <SlideContent title={slideTitle} description={description} icon>
           <PaddedView horizontal={false}>
             <TextInput
               label={'First Name'}

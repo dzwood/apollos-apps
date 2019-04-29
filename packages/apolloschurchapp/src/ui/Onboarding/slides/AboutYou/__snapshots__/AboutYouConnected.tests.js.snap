@@ -44,49 +44,52 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
         style={
           Object {
             "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "paddingVertical": 0,
           }
         }
+        vertical={false}
       >
-        <View
-          style={
-            Object {
-              "paddingBottom": 16,
-            }
-          }
-        />
-        <View
-          style={
-            Object {
-              "paddingBottom": 8,
-            }
-          }
-        >
-          <Text
+        <View>
+          <View
             style={
               Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
+                "paddingBottom": 16,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "paddingBottom": 8,
               }
             }
           >
-            This one's easy.
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                }
+              }
+            >
+              This one's easy.
+            </Text>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "#505050",
+                "fontFamily": "InterUI-Medium",
+                "fontSize": 14,
+                "lineHeight": 20.16,
+              }
+            }
+          >
+            Help us understand who you are so we can connect you with the best ministries and events.
           </Text>
         </View>
-        <Text
-          style={
-            Object {
-              "color": "#505050",
-              "fontFamily": "InterUI-Medium",
-              "fontSize": 14,
-              "lineHeight": 20.16,
-            }
-          }
-        >
-          Help us understand who you are so we can connect you with the best ministries and events.
-        </Text>
         <Text
           style={
             Object {

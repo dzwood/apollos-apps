@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Onboarding FeaturesConnected component renders with a first name when logged in 1`] = `
+exports[`The Onboarding FeaturesConnected component renders with a firstName when logged in 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -44,49 +44,52 @@ exports[`The Onboarding FeaturesConnected component renders with a first name wh
         style={
           Object {
             "paddingHorizontal": 16,
-            "paddingVertical": 16,
+            "paddingVertical": 0,
           }
         }
+        vertical={false}
       >
-        <View
-          style={
-            Object {
-              "paddingBottom": 16,
-            }
-          }
-        />
-        <View
-          style={
-            Object {
-              "paddingBottom": 8,
-            }
-          }
-        >
-          <Text
+        <View>
+          <View
             style={
               Object {
-                "color": "#00676D",
-                "fontFamily": "InterUI-Black",
-                "fontSize": 36,
-                "lineHeight": 41.4,
+                "paddingBottom": 16,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "paddingBottom": 8,
               }
             }
           >
-            Hey friend!
+            <Text
+              style={
+                Object {
+                  "color": "#00676D",
+                  "fontFamily": "InterUI-Black",
+                  "fontSize": 36,
+                  "lineHeight": 41.4,
+                }
+              }
+            >
+              Hey friend!
+            </Text>
+          </View>
+          <Text
+            style={
+              Object {
+                "color": "#505050",
+                "fontFamily": "InterUI-Medium",
+                "fontSize": 14,
+                "lineHeight": 20.16,
+              }
+            }
+          >
+            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
           </Text>
         </View>
-        <Text
-          style={
-            Object {
-              "color": "#505050",
-              "fontFamily": "InterUI-Medium",
-              "fontSize": 14,
-              "lineHeight": 20.16,
-            }
-          }
-        >
-          We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-        </Text>
       </View>
     </View>
   </View>
