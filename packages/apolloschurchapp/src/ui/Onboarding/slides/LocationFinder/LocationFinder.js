@@ -2,38 +2,19 @@ import React, { memo } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import {
-  PaddedView,
-  styled,
-  H2,
-  H5,
-  Button,
-  Touchable,
-} from '@apollosproject/ui-kit';
+import { PaddedView, styled, Button, Touchable } from '@apollosproject/ui-kit';
 
 import CampusCard from 'apolloschurchapp/src/user-settings/Locations/CampusCard';
-import Slide from '../../Slide';
+
+import Slide, { SlideContent } from '../../Slide';
 
 const getCampusAddress = (campus) =>
   `${campus.street1}\n${campus.city}, ${campus.state} ${campus.postalCode}`;
 
 const ContentWrapper = styled({
-  height: '100%',
-})(View);
-
-const Content = styled({
   flex: 1,
   justifyContent: 'space-between',
 })(View);
-
-const Title = styled(({ theme }) => ({
-  color: theme.colors.primary,
-}))(H2);
-
-const StyledH5 = styled(({ theme }) => ({
-  color: theme.colors.text.secondary,
-  paddingBottom: theme.sizing.baseUnit * 1.5,
-}))(H5);
 
 const StyledCampusCard = styled(({ theme }) => ({
   marginHorizontal: theme.sizing.baseUnit,
@@ -45,7 +26,7 @@ const StyledCampusCard = styled(({ theme }) => ({
 const LocationFinder = memo(
   ({
     onPressPrimary,
-    children,
+    BackgroundComponent,
     slideTitle,
     description,
     buttonText,
@@ -68,34 +49,29 @@ const LocationFinder = memo(
       }
       {...props}
     >
+      {BackgroundComponent}
       <ContentWrapper>
-        {children}
-        <Content>
+        <SlideContent title={slideTitle} description={description} />
+        {campus ? (
+          <Touchable onPress={onPressButton}>
+            <StyledCampusCard
+              key={campus.id}
+              distance={campus.distanceFromLocation}
+              title={campus.name}
+              description={getCampusAddress(campus)}
+              images={[campus.image]}
+            />
+          </Touchable>
+        ) : (
           <PaddedView>
-            <Title>{slideTitle}</Title>
-            <StyledH5>{description}</StyledH5>
+            <Button
+              title={buttonText}
+              onPress={onPressButton}
+              disabled={buttonDisabled}
+              pill={false}
+            />
           </PaddedView>
-          {campus ? (
-            <Touchable onPress={onPressButton}>
-              <StyledCampusCard
-                key={campus.id}
-                distance={campus.distanceFromLocation}
-                title={campus.name}
-                description={getCampusAddress(campus)}
-                images={[campus.image]}
-              />
-            </Touchable>
-          ) : (
-            <PaddedView>
-              <Button
-                title={buttonText}
-                onPress={onPressButton}
-                disabled={buttonDisabled}
-                pill={false}
-              />
-            </PaddedView>
-          )}
-        </Content>
+        )}
       </ContentWrapper>
     </Slide>
   )
