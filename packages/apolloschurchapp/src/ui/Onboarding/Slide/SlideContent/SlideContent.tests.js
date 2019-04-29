@@ -68,6 +68,21 @@ describe('The Onboarding Slide component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render a loading state', () => {
+    const tree = renderer.create(
+      <Providers>
+        <SlideContent
+          title={'Whoa, this is heavy'}
+          description={
+            'There\'s that word again: "heavy." Why are things so heavy in the future? Is there a problem with the Earth\'s gravitational pull?'
+          }
+          icon
+          isLoading
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
   it('should render accept additionall props', () => {
     const centeredContent = { flex: 1, justifyContent: 'center' };
     const tree = renderer.create(

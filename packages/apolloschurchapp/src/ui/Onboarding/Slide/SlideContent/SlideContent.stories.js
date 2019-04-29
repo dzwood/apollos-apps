@@ -24,6 +24,16 @@ storiesOf('Onboarding/Slide/SlideContent', module)
       }
     />
   ))
+  .add('isLoading', () => (
+    <SlideContent
+      title={'Whoa, this is heavy'}
+      description={
+        'There\'s that word again: "heavy." Why are things so heavy in the future? Is there a problem with the Earth\'s gravitational pull?'
+      }
+      icon
+      isLoading
+    />
+  ))
   .add('childen', () => (
     <SlideContent>
       <Text>Great Scott!</Text>
