@@ -1,45 +1,18 @@
 import React, { memo } from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { styled, H2, H5, PaddedView } from '@apollosproject/ui-kit';
+import Slide, { SlideContent } from '../../Slide';
 
-import Slide from '../../Slide';
-
-const Title = styled(({ theme }) => ({
-  color: theme.colors.primary,
-  marginBottom: theme.sizing.baseUnit * 0.5,
-}))(H2);
-
-const StyledH5 = styled(({ theme }) => ({
-  color: theme.colors.text.secondary,
-}))(H5);
-
-const ContentWrapper = styled({
-  height: '100%',
-})(View);
-
-const Content = styled({
-  flex: 1,
-  justifyContent: 'space-between',
-})(PaddedView);
-
-// eslint-disable-next-line react/display-name
 const Features = memo(
-  ({ firstName, description, children, imgSrc, ...props }) => (
+  ({ firstName, description, BackgroundComponent, ...props }) => (
     <Slide {...props}>
-      <ContentWrapper>
-        {children}
-        <Content>
-          <View>
-            <Title>{`Hey ${firstName}!`}</Title>
-            <StyledH5>{description}</StyledH5>
-          </View>
-        </Content>
-      </ContentWrapper>
+      {BackgroundComponent}
+      <SlideContent title={`Hey ${firstName}!`} description={description} />
     </Slide>
   )
 );
+
+Features.displayName = 'Features';
 
 Features.propTypes = {
   /* The `Swiper` component used in `<onBoarding>` looks for and hijacks the title prop of it's
@@ -47,8 +20,15 @@ Features.propTypes = {
    */
   firstName: PropTypes.string,
   description: PropTypes.string,
-  imgSrc: PropTypes.string,
-  children: PropTypes.node,
+  /* Recommended usage:
+   * - `Image` (react-native)
+   * - `GradientOverlayImage` (@apollosproject/ui-kit) for increased readability
+   * - `Video` (react-native-video) because moving pictures!
+   */
+  BackgroundComponent: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 Features.defaultProps = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { GradientOverlayImage } from '@apollosproject/ui-kit';
 
 import Providers from 'apolloschurchapp/src/Providers';
 
@@ -14,15 +15,6 @@ describe('The Onboarding SlideWrapper component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  it('should render a custom image', () => {
-    const tree = renderer.create(
-      <Providers>
-        <Features imgSrc={{ uri: 'https://picsum.photos/1200/1200?random' }} />
-      </Providers>
-    );
-    expect(tree).toMatchSnapshot();
-  });
-
   it('should render a custom first name', () => {
     const tree = renderer.create(
       <Providers>
@@ -43,6 +35,20 @@ describe('The Onboarding SlideWrapper component', () => {
     const tree = renderer.create(
       <Providers>
         <Features description={'Custom description text'} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render a BackgroundComponent', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Features
+          BackgroundComponent={
+            <GradientOverlayImage
+              source={'https://picsum.photos/375/812/?random'}
+            />
+          }
+        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();
