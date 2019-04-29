@@ -97,11 +97,12 @@ class Onboarding extends Component {
             <AskNotificationsConnected
               onPressPrimary={() => this.props.navigation.navigate('Home')}
               primaryNavText={'Finish'}
-            >
-              <GradientOverlayImage
-                source={'https://picsum.photos/640/640/?random'}
-              />
-            </AskNotificationsConnected>
+              BackgroundComponent={
+                <GradientOverlayImage
+                  source={'https://picsum.photos/640/640/?random'}
+                />
+              }
+            />
           </ThemedSwiper>
         </SafeAreaView>
       </BackgroundView>

@@ -43,21 +43,29 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 16,
+            "paddingVertical": 0,
           }
         }
+        vertical={false}
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-              "justifyContent": "space-between",
-              "paddingHorizontal": 16,
-              "paddingVertical": 16,
+        <View>
+          <View
+            style={
+              Object {
+                "paddingBottom": 16,
+              }
             }
-          }
-        >
-          <View>
+          />
+          <View
+            style={
+              Object {
+                "paddingBottom": 8,
+              }
+            }
+          >
             <Text
               style={
                 Object {
@@ -70,20 +78,29 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
             >
               Can we keep you informed?
             </Text>
-            <Text
-              style={
-                Object {
-                  "color": "#505050",
-                  "fontFamily": "InterUI-Medium",
-                  "fontSize": 14,
-                  "lineHeight": 20.16,
-                  "paddingBottom": 24,
-                }
-              }
-            >
-              We'll let you know when important things are happening and keep you in the loop
-            </Text>
           </View>
+          <Text
+            style={
+              Object {
+                "color": "#505050",
+                "fontFamily": "InterUI-Medium",
+                "fontSize": 14,
+                "lineHeight": 20.16,
+              }
+            }
+          >
+            We'll let you know when important things are happening and keep you in the loop
+          </Text>
+        </View>
+        <View
+          horizontal={false}
+          style={
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            }
+          }
+        >
           <View
             accessible={true}
             isTVSelectable={true}
@@ -378,21 +395,29 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 16,
+            "paddingVertical": 0,
           }
         }
+        vertical={false}
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-              "justifyContent": "space-between",
-              "paddingHorizontal": 16,
-              "paddingVertical": 16,
+        <View>
+          <View
+            style={
+              Object {
+                "paddingBottom": 16,
+              }
             }
-          }
-        >
-          <View>
+          />
+          <View
+            style={
+              Object {
+                "paddingBottom": 8,
+              }
+            }
+          >
             <Text
               style={
                 Object {
@@ -405,20 +430,29 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
             >
               Can we keep you informed?
             </Text>
-            <Text
-              style={
-                Object {
-                  "color": "#505050",
-                  "fontFamily": "InterUI-Medium",
-                  "fontSize": 14,
-                  "lineHeight": 20.16,
-                  "paddingBottom": 24,
-                }
-              }
-            >
-              We'll let you know when important things are happening and keep you in the loop
-            </Text>
           </View>
+          <Text
+            style={
+              Object {
+                "color": "#505050",
+                "fontFamily": "InterUI-Medium",
+                "fontSize": 14,
+                "lineHeight": 20.16,
+              }
+            }
+          >
+            We'll let you know when important things are happening and keep you in the loop
+          </Text>
+        </View>
+        <View
+          horizontal={false}
+          style={
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            }
+          }
+        >
           <View
             accessible={true}
             isTVSelectable={true}
@@ -546,21 +580,29 @@ exports[`The Onboarding AskNotificationsConnected component should render with n
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
+            "justifyContent": "space-between",
+            "paddingHorizontal": 16,
+            "paddingVertical": 0,
           }
         }
+        vertical={false}
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-              "justifyContent": "space-between",
-              "paddingHorizontal": 16,
-              "paddingVertical": 16,
+        <View>
+          <View
+            style={
+              Object {
+                "paddingBottom": 16,
+              }
             }
-          }
-        >
-          <View>
+          />
+          <View
+            style={
+              Object {
+                "paddingBottom": 8,
+              }
+            }
+          >
             <Text
               style={
                 Object {
@@ -573,20 +615,29 @@ exports[`The Onboarding AskNotificationsConnected component should render with n
             >
               Can we keep you informed?
             </Text>
-            <Text
-              style={
-                Object {
-                  "color": "#505050",
-                  "fontFamily": "InterUI-Medium",
-                  "fontSize": 14,
-                  "lineHeight": 20.16,
-                  "paddingBottom": 24,
-                }
-              }
-            >
-              We'll let you know when important things are happening and keep you in the loop
-            </Text>
           </View>
+          <Text
+            style={
+              Object {
+                "color": "#505050",
+                "fontFamily": "InterUI-Medium",
+                "fontSize": 14,
+                "lineHeight": 20.16,
+              }
+            }
+          >
+            We'll let you know when important things are happening and keep you in the loop
+          </Text>
+        </View>
+        <View
+          horizontal={false}
+          style={
+            Object {
+              "paddingHorizontal": 0,
+              "paddingVertical": 16,
+            }
+          }
+        >
           <View
             accessible={true}
             isTVSelectable={true}

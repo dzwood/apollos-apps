@@ -1,33 +1,19 @@
 import React, { memo } from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { PaddedView, styled, H2, H5, Button } from '@apollosproject/ui-kit';
+import { styled, PaddedView, Button } from '@apollosproject/ui-kit';
 
-import Slide from '../../Slide';
+import Slide, { SlideContent } from '../../Slide';
 
-const ContentWrapper = styled({
-  height: '100%',
-})(View);
-
-const Content = styled({
+const StyledSlideContent = styled({
   flex: 1,
   justifyContent: 'space-between',
-})(PaddedView);
-
-const Title = styled(({ theme }) => ({
-  color: theme.colors.primary,
-}))(H2);
-
-const StyledH5 = styled(({ theme }) => ({
-  color: theme.colors.text.secondary,
-  paddingBottom: theme.sizing.baseUnit * 1.5,
-}))(H5);
+})(SlideContent);
 
 // memo = sfc PureComponent 💥
 // eslint-disable-next-line react/display-name
 const AskNotifications = memo(
   ({
-    children,
+    BackgroundComponent,
     slideTitle,
     description,
     buttonText,
@@ -36,35 +22,31 @@ const AskNotifications = memo(
     ...props
   }) => (
     <Slide {...props}>
-      <ContentWrapper>
-        {children}
-        <Content>
-          <View>
-            <Title>{slideTitle}</Title>
-            <StyledH5>{description}</StyledH5>
-          </View>
-          {buttonDisabled || onPressButton ? (
+      {BackgroundComponent}
+      <StyledSlideContent title={slideTitle} description={description}>
+        {buttonDisabled || onPressButton ? (
+          <PaddedView horizontal={false}>
             <Button
               title={buttonText}
               onPress={onPressButton}
               disabled={buttonDisabled}
               pill={false}
             />
-          ) : null}
-        </Content>
-      </ContentWrapper>
+          </PaddedView>
+        ) : null}
+      </StyledSlideContent>
     </Slide>
   )
 );
 
 AskNotifications.propTypes = {
-  /* The `Swiper` component used in `<onBoarding>` looks for and hijacks the title prop of it's
-   * children. Thus we have to use a more unique name.
-   */
-  children: PropTypes.oneOfType([
+  BackgroundComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  /* The `Swiper` component used in `<onBoarding>` looks for and hijacks the title prop of it's
+   * children. Thus we have to use a more unique name.
+   */
   slideTitle: PropTypes.string,
   description: PropTypes.string,
   buttonText: PropTypes.string,
