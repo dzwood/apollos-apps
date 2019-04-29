@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { GradientOverlayImage } from '@apollosproject/ui-kit';
 
-import Features from '.';
+import Features from './Features';
 
 storiesOf('Onboarding/slides/Features', module)
-  .add('default', () => <Features />)
+  .add('default', () => <Features isLoading />)
   .add('firstName', () => <Features firstName={'firstName'} />)
   .add('slideTitle', () => <Features slideTitle={'Custom title text'} />)
   .add('description', () => (

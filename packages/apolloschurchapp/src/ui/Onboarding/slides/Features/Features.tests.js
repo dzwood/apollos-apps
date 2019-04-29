@@ -4,7 +4,7 @@ import { GradientOverlayImage } from '@apollosproject/ui-kit';
 
 import Providers from 'apolloschurchapp/src/Providers';
 
-import Features from '.';
+import Features from './Features';
 
 describe('The Onboarding SlideWrapper component', () => {
   it('should render', () => {
