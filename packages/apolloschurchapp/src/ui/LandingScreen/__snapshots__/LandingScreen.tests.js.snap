@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Onboarding Splash component should pass additional props to Slide 1`] = `
+exports[`The Onboarding LandingScreen component should pass additional props to Slide 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -432,7 +432,7 @@ exports[`The Onboarding Splash component should pass additional props to Slide 1
 </RCTSafeAreaView>
 `;
 
-exports[`The Onboarding Splash component should render 1`] = `
+exports[`The Onboarding LandingScreen component should render 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -670,7 +670,7 @@ exports[`The Onboarding Splash component should render 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`The Onboarding Splash component should render a custom description 1`] = `
+exports[`The Onboarding LandingScreen component should render a custom description 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -908,7 +908,7 @@ exports[`The Onboarding Splash component should render a custom description 1`] 
 </RCTSafeAreaView>
 `;
 
-exports[`The Onboarding Splash component should render a custom title 1`] = `
+exports[`The Onboarding LandingScreen component should render a custom title 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -1146,7 +1146,7 @@ exports[`The Onboarding Splash component should render a custom title 1`] = `
 </RCTSafeAreaView>
 `;
 
-exports[`The Onboarding Splash component should render with a custom text color 1`] = `
+exports[`The Onboarding LandingScreen component should render with a custom text color 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}
@@ -1388,7 +1388,7 @@ exports[`The Onboarding Splash component should render with a custom text color 
 </RCTSafeAreaView>
 `;
 
-exports[`The Onboarding Splash component should render with an ImageComponent 1`] = `
+exports[`The Onboarding LandingScreen component should render with an ImageComponent 1`] = `
 <RCTSafeAreaView
   emulateUnlessSupported={true}
   onLayout={[Function]}

@@ -16,7 +16,7 @@ import PersonalDetails from './user-settings/PersonalDetails';
 import ChangePassword from './user-settings/ChangePassword';
 import Location from './user-settings/Locations';
 import { LocationFinderMapView } from './ui/Onboarding/slides/LocationFinder';
-import Splash from './Splash';
+import LandingScreen from './LandingScreen';
 import UserWebBrowser from './user-web-browser';
 import Onboarding from './ui/Onboarding';
 // Sentry.config(
@@ -41,7 +41,7 @@ const AppNavigator = createStackNavigator(
     Passes,
     UserWebBrowser,
     Onboarding,
-    Splash,
+    LandingScreen,
   },
   {
     initialRouteName: 'ProtectedRoute',

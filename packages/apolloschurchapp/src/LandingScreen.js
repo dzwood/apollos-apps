@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { styled, GradientOverlayImage } from '@apollosproject/ui-kit';
 
-import UiSplash from './ui/Splash';
+import ApollosLandingScreen from './ui/LandingScreen';
 
 const FullScreenImage = styled({
   resizeMode: 'cover',
   position: 'absolute',
 })(GradientOverlayImage);
 
-const Splash = ({ navigation }) => (
-  <UiSplash
+const LandingScreen = ({ navigation }) => (
+  <ApollosLandingScreen
     onPressPrimary={() => navigation.push('Auth')}
     textColor={'white'}
     BackgroundComponent={
@@ -20,14 +20,14 @@ const Splash = ({ navigation }) => (
   />
 );
 
-Splash.navigationOptions = {
+LandingScreen.navigationOptions = {
   header: null,
 };
 
-Splash.propTypes = {
+LandingScreen.propTypes = {
   navigation: PropTypes.shape({
     push: PropTypes.func,
   }),
 };
 
-export default Splash;
+export default LandingScreen;

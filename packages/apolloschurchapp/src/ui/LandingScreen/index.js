@@ -36,7 +36,7 @@ const StyledH4 = styled(({ color }) => ({
   ...(color ? { color } : {}),
 }))(H4);
 
-const Splash = ({
+const LandingScreen = ({
   slideTitle,
   description,
   textColor,
@@ -55,7 +55,7 @@ const Splash = ({
   </BackgroundView>
 );
 
-Splash.propTypes = {
+LandingScreen.propTypes = {
   /* The `Swiper` component used in `<onBoarding>` looks for and hijacks the title prop of it's
    * children. Thus we have to use more unique name.
    */
@@ -73,14 +73,14 @@ Splash.propTypes = {
   ]),
 };
 
-Splash.defaultProps = {
+LandingScreen.defaultProps = {
   slideTitle: "We're glad you're here.",
   description:
     "We're not just a building you go to, but a family to belong to.",
 };
 
-Splash.navigationOptions = {
+LandingScreen.navigationOptions = {
   header: null,
 };
 
-export default Splash;
+export default LandingScreen;
