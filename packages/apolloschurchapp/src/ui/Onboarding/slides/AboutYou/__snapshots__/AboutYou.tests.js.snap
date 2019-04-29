@@ -48,19 +48,33 @@ exports[`The Onboarding AboutYou component should pass additional props to Slide
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -68,7 +82,6 @@ exports[`The Onboarding AboutYou component should pass additional props to Slide
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -749,19 +762,33 @@ exports[`The Onboarding AboutYou component should render 1`] = `
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -769,7 +796,6 @@ exports[`The Onboarding AboutYou component should render 1`] = `
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -1299,19 +1325,33 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -1319,7 +1359,6 @@ exports[`The Onboarding AboutYou component should render a BackgroundComponent 1
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -1806,19 +1845,33 @@ exports[`The Onboarding AboutYou component should render a custom date picker 1`
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -1826,7 +1879,6 @@ exports[`The Onboarding AboutYou component should render a custom date picker 1`
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -2313,19 +2365,33 @@ exports[`The Onboarding AboutYou component should render a custom date picker wh
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -2333,7 +2399,6 @@ exports[`The Onboarding AboutYou component should render a custom date picker wh
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -2820,19 +2885,33 @@ exports[`The Onboarding AboutYou component should render a custom description 1`
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -2840,7 +2919,6 @@ exports[`The Onboarding AboutYou component should render a custom description 1`
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -3327,19 +3405,33 @@ exports[`The Onboarding AboutYou component should render a custom gender list 1`
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -3347,7 +3439,6 @@ exports[`The Onboarding AboutYou component should render a custom gender list 1`
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -3834,19 +3925,33 @@ exports[`The Onboarding AboutYou component should render a custom title 1`] = `
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          Custom title text
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Custom title text
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -3854,7 +3959,6 @@ exports[`The Onboarding AboutYou component should render a custom title 1`] = `
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
@@ -4341,19 +4445,33 @@ exports[`The Onboarding AboutYou component should render the selected gender 1`]
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -4361,7 +4479,6 @@ exports[`The Onboarding AboutYou component should render the selected gender 1`]
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >

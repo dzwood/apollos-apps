@@ -5,26 +5,14 @@ import { get } from 'lodash';
 
 import {
   styled,
-  H2,
   H5,
   Radio,
   RadioButton,
   H6,
   DateInput,
-  PaddedView,
 } from '@apollosproject/ui-kit';
 
-import Slide from '../../Slide';
-
-const Title = styled(({ theme }) => ({
-  color: theme.colors.primary,
-  marginBottom: theme.sizing.baseUnit * 0.5,
-}))(H2);
-
-const Description = styled(({ theme }) => ({
-  color: theme.colors.text.secondary,
-  marginBottom: theme.sizing.baseUnit,
-}))(H5);
+import Slide, { SlideContent } from '../../Slide';
 
 const Label = styled({
   color: 'gray',
@@ -60,9 +48,7 @@ const AboutYou = memo(
   }) => (
     <Slide {...props}>
       {BackgroundComponent}
-      <PaddedView>
-        <Title>{slideTitle}</Title>
-        <Description>{description}</Description>
+      <SlideContent title={slideTitle} description={description}>
         <Label>Gender</Label>
         <StyledRadio
           label="Gender"
@@ -93,7 +79,7 @@ const AboutYou = memo(
           ).format('MM/DD/YYYY')}
           onChange={(value) => setFieldValue('birthDate', value)}
         />
-      </PaddedView>
+      </SlideContent>
     </Slide>
   )
 );

@@ -48,19 +48,33 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
           }
         }
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "marginBottom": 8,
+              "paddingBottom": 16,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "paddingBottom": 8,
             }
           }
         >
-          This one's easy.
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            This one's easy.
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -68,7 +82,6 @@ exports[`AboutYouConnected component renders Gender and BirthDate when logged in
               "fontFamily": "InterUI-Medium",
               "fontSize": 14,
               "lineHeight": 20.16,
-              "marginBottom": 16,
             }
           }
         >
