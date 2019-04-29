@@ -49,100 +49,51 @@ exports[`The Onboarding AskName component should accept a firstName 1`] = `
         }
         vertical={false}
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "marginTop": 32,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -159,6 +110,16 @@ exports[`The Onboarding AskName component should accept a firstName 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -176,21 +137,74 @@ exports[`The Onboarding AskName component should accept a firstName 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 8,
             }
           }
         >
-          Welcome!
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Welcome!
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -570,100 +584,51 @@ exports[`The Onboarding AskName component should accept a lastName 1`] = `
         }
         vertical={false}
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "marginTop": 32,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -680,6 +645,16 @@ exports[`The Onboarding AskName component should accept a lastName 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -697,21 +672,74 @@ exports[`The Onboarding AskName component should accept a lastName 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 8,
             }
           }
         >
-          Welcome!
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Welcome!
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -1091,100 +1119,51 @@ exports[`The Onboarding AskName component should pass additional props to Slide 
         }
         vertical={false}
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "marginTop": 32,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -1201,6 +1180,16 @@ exports[`The Onboarding AskName component should pass additional props to Slide 
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -1218,21 +1207,74 @@ exports[`The Onboarding AskName component should pass additional props to Slide 
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 8,
             }
           }
         >
-          Welcome!
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Welcome!
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -1806,100 +1848,51 @@ exports[`The Onboarding AskName component should render 1`] = `
         }
         vertical={false}
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "marginTop": 32,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -1916,6 +1909,16 @@ exports[`The Onboarding AskName component should render 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -1933,21 +1936,74 @@ exports[`The Onboarding AskName component should render 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 8,
             }
           }
         >
-          Welcome!
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Welcome!
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -2326,100 +2382,51 @@ exports[`The Onboarding AskName component should render a custom description 1`]
         }
         vertical={false}
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "marginTop": 32,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -2436,6 +2443,16 @@ exports[`The Onboarding AskName component should render a custom description 1`]
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -2453,21 +2470,74 @@ exports[`The Onboarding AskName component should render a custom description 1`]
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 8,
             }
           }
         >
-          Welcome!
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Welcome!
+          </Text>
+        </View>
         <Text
           style={
             Object {
@@ -2846,100 +2916,51 @@ exports[`The Onboarding AskName component should render a custom title 1`] = `
         }
         vertical={false}
       >
-        <RNSVGSvgView
-          align="xMidYMid"
-          bbHeight={48}
-          bbWidth={48}
-          height={48}
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
           style={
-            Array [
-              Object {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              Object {
-                "marginBottom": 8,
-                "marginTop": 32,
-              },
-              null,
-              Object {
-                "flex": 0,
-                "height": 48,
-                "width": 48,
-              },
-            ]
+            Object {
+              "paddingBottom": 16,
+            }
           }
-          vbHeight={24}
-          vbWidth={24}
-          width={48}
         >
-          <RNSVGGroup
-            fill={
+          <RNSVGSvgView
+            align="xMidYMid"
+            bbHeight={48}
+            bbWidth={48}
+            height={48}
+            icon={true}
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               Array [
-                0,
-                4278190080,
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                undefined,
+                null,
+                Object {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
               ]
             }
-            fillOpacity={1}
-            fillRule={1}
-            font={Object {}}
-            matrix={
-              Array [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-              ]
-            }
-            opacity={1}
-            originX={0}
-            originY={0}
-            propList={
-              Array [
-                "fill",
-                "fillOpacity",
-                "fillRule",
-                "stroke",
-                "strokeWidth",
-                "strokeOpacity",
-                "strokeDasharray",
-                "strokeDashoffset",
-                "strokeLinecap",
-                "strokeLinejoin",
-                "strokeMiterlimit",
-              ]
-            }
-            rotation={0}
-            scaleX={1}
-            scaleY={1}
-            skewX={0}
-            skewY={0}
-            stroke={null}
-            strokeDasharray={null}
-            strokeDashoffset={null}
-            strokeLinecap={0}
-            strokeLinejoin={0}
-            strokeMiterlimit={4}
-            strokeOpacity={1}
-            strokeWidth={1}
-            x={0}
-            y={0}
+            vbHeight={24}
+            vbWidth={24}
+            width={48}
           >
-            <RNSVGPath
-              d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+            <RNSVGGroup
               fill={
                 Array [
                   0,
-                  4278216557,
+                  4278190080,
                 ]
               }
               fillOpacity={1}
               fillRule={1}
+              font={Object {}}
               matrix={
                 Array [
                   1,
@@ -2956,6 +2977,16 @@ exports[`The Onboarding AskName component should render a custom title 1`] = `
               propList={
                 Array [
                   "fill",
+                  "fillOpacity",
+                  "fillRule",
+                  "stroke",
+                  "strokeWidth",
+                  "strokeOpacity",
+                  "strokeDasharray",
+                  "strokeDashoffset",
+                  "strokeLinecap",
+                  "strokeLinejoin",
+                  "strokeMiterlimit",
                 ]
               }
               rotation={0}
@@ -2973,21 +3004,74 @@ exports[`The Onboarding AskName component should render a custom title 1`] = `
               strokeWidth={1}
               x={0}
               y={0}
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
-        <Text
+            >
+              <RNSVGPath
+                d="M8.84799129,0 L13.7577354,0 L22.6057267,24 L0,24 L8.84799129,0 Z M6.52559608,19.4398694 L16.0921502,19.4398694 L11.4494502,5.83629831 L11.1682961,5.83629831 L6.52559608,19.4398694 Z"
+                fill={
+                  Array [
+                    0,
+                    4278216557,
+                  ]
+                }
+                fillOpacity={1}
+                fillRule={1}
+                matrix={
+                  Array [
+                    1,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                  ]
+                }
+                opacity={1}
+                originX={0}
+                originY={0}
+                propList={
+                  Array [
+                    "fill",
+                  ]
+                }
+                rotation={0}
+                scaleX={1}
+                scaleY={1}
+                skewX={0}
+                skewY={0}
+                stroke={null}
+                strokeDasharray={null}
+                strokeDashoffset={null}
+                strokeLinecap={0}
+                strokeLinejoin={0}
+                strokeMiterlimit={4}
+                strokeOpacity={1}
+                strokeWidth={1}
+                x={0}
+                y={0}
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <View
           style={
             Object {
-              "color": "#00676D",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingBottom": 8,
             }
           }
         >
-          Custom title text
-        </Text>
+          <Text
+            style={
+              Object {
+                "color": "#00676D",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          >
+            Custom title text
+          </Text>
+        </View>
         <Text
           style={
             Object {
