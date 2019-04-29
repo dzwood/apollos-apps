@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-navigation';
 import {
   AskNotificationsConnected,
   AskNameConnected,
-  Features,
+  FeaturesConnected,
   AboutYouConnected,
   LocationFinderConnected,
 } from './slides';
@@ -73,16 +73,22 @@ class Onboarding extends Component {
             swiperRef={this.setSwiperRef}
           >
             <AskNameConnected onPressPrimary={this.handleOnPressPrimary} />
-            <Features onPressPrimary={this.handleOnPressPrimary}>
-              <GradientOverlayImage
-                source={'https://picsum.photos/640/640/?random'}
-              />
-            </Features>
-            <AboutYouConnected onPressPrimary={this.handleOnPressPrimary}>
-              <GradientOverlayImage
-                source={'https://picsum.photos/640/640/?random'}
-              />
-            </AboutYouConnected>
+            <FeaturesConnected
+              onPressPrimary={this.handleOnPressPrimary}
+              BackgroundComponent={
+                <GradientOverlayImage
+                  source={'https://picsum.photos/640/640/?random'}
+                />
+              }
+            />
+            <AboutYouConnected
+              onPressPrimary={this.handleOnPressPrimary}
+              BackgroundComponent={
+                <GradientOverlayImage
+                  source={'https://picsum.photos/640/640/?random'}
+                />
+              }
+            />
             <LocationFinderConnected onPressPrimary={this.handleOnPressPrimary}>
               <GradientOverlayImage
                 source={'https://picsum.photos/640/640/?random'}
