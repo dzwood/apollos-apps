@@ -14,25 +14,9 @@ const AskNameConnected = memo(({ onPressPrimary, ...props }) => (
   <Query query={getUserProfile}>
     {({ data: { currentUser = { profile: {} } } = {} }) => {
       const { firstName, lastName } = currentUser.profile;
+
       return (
-        <Mutation
-          mutation={updateUserName}
-          update={async (cache, { data: { updateProfileFields } }) => {
-            await cache.writeQuery({
-              query: getUserProfile,
-              data: {
-                currentUser: {
-                  ...currentUser,
-                  profile: {
-                    ...currentUser.profile,
-                    firstName: updateProfileFields.firstName,
-                    lastName: updateProfileFields.lastName,
-                  },
-                },
-              },
-            });
-          }}
-        >
+        <Mutation mutation={updateUserName}>
           {(updateName) => (
             <Formik
               initialValues={{ firstName, lastName }}
