@@ -20,7 +20,7 @@ describe('user avatar header connect', () => {
             profile: {
               firstName: 'Isaac',
               lastName: 'Hardy',
-              location: 'Anderson, SC',
+              location: { name: 'Anderson, SC' },
               email: 'isaac.hardy@newspring.cc',
               nickName: 'Ike',
               photo: {
