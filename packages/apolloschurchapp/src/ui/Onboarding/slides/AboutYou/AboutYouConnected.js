@@ -16,24 +16,7 @@ const AboutYouConnected = memo(({ onPressPrimary, ...props }) => (
       const { gender, birthDate } = currentUser.profile;
 
       return (
-        <Mutation
-          mutation={updateUserDetails}
-          update={async (cache, { data: { updateProfileFields } }) => {
-            await cache.writeQuery({
-              query: getUserProfile,
-              data: {
-                currentUser: {
-                  ...currentUser,
-                  profile: {
-                    ...currentUser.profile,
-                    gender: updateProfileFields.gender,
-                    birthDate: updateProfileFields.birthDate,
-                  },
-                },
-              },
-            });
-          }}
-        >
+        <Mutation mutation={updateUserDetails}>
           {(updateDetails) => (
             <Formik
               initialValues={{ gender, birthDate }}
