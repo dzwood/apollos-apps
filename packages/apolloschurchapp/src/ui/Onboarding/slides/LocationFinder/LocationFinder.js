@@ -82,7 +82,7 @@ LocationFinder.propTypes = {
    * children. Thus we have to use a more unique name.
    */
   onPressPrimary: PropTypes.func,
-  children: PropTypes.oneOfType([
+  BackgroundComponent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
