@@ -27,6 +27,8 @@ const StyledDate = styled(({ theme }) => ({
 const StyledRadio = styled(({ theme }) => ({
   marginBottom: theme.sizing.baseUnit,
   flexDirection: 'row',
+  alignItems: 'center',
+  flexWrap: 'wrap',
 }))(Radio);
 
 const RadioLabel = styled(({ theme }) => ({
@@ -74,9 +76,12 @@ const AboutYou = memo(
             .utc(get(values, 'birthDate', defaultDate) || defaultDate)
             .toDate()}
           error={get(touched, 'birthDate') && get(errors, 'birthDate')}
-          displayValue={moment(
-            get(values, 'birthDate', defaultDate) || defaultDate
-          ).format('MM/DD/YYYY')}
+          displayValue={
+            // only show a birthday if we have one.
+            get(values, 'birthDate', '') // DatePicker shows displayValue > placeholder > label in that order
+              ? moment(values.birthDate).format('MM/DD/YYYY')
+              : '' // Pass an empty string if we don't have a birthday to show the placeholder.
+          }
           onChange={(value) => setFieldValue('birthDate', value)}
         />
       </SlideContent>
@@ -91,7 +96,7 @@ AboutYou.propTypes = {
   slideTitle: PropTypes.string,
   description: PropTypes.string,
   defaultDate: PropTypes.instanceOf(Date),
-  genderList: PropTypes.arrayOf(PropTypes.number),
+  genderList: PropTypes.arrayOf(PropTypes.string),
   values: PropTypes.shape({}),
   touched: PropTypes.shape({}),
   errors: PropTypes.shape({}),

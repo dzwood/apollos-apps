@@ -21,13 +21,16 @@ const AskNameConnected = memo(({ onPressPrimary, ...props }) => (
             <Formik
               initialValues={{ firstName, lastName }}
               validationSchema={Yup.object().shape({
-                firstName: Yup.string().required('First Name is required!'),
-                lastName: Yup.string().required('Last Name is required!'),
+                firstName: Yup.string().required(
+                  'Your first name is required!'
+                ),
+                lastName: Yup.string().required('Your last name is required!'),
               })}
               enableReinitialize
               onSubmit={async (variables, { setSubmitting, setFieldError }) => {
                 try {
                   await updateName({ variables });
+                  onPressPrimary();
                 } catch (e) {
                   const { graphQLErrors } = e;
                   if (
@@ -50,25 +53,18 @@ const AskNameConnected = memo(({ onPressPrimary, ...props }) => (
                 setSubmitting(false);
               }}
             >
-              {({ submitForm, values, touched, errors, setFieldValue }) => {
-                const handleOnPressPrimary = () => {
-                  submitForm();
-                  onPressPrimary();
-                };
-
-                return (
-                  <AskName
-                    onPressPrimary={handleOnPressPrimary}
-                    firstName={firstName}
-                    lastName={lastName}
-                    values={values}
-                    touched={touched}
-                    errors={errors}
-                    setFieldValue={setFieldValue}
-                    {...props}
-                  />
-                );
-              }}
+              {({ submitForm, values, touched, errors, setFieldValue }) => (
+                <AskName
+                  onPressPrimary={() => submitForm()}
+                  firstName={firstName}
+                  lastName={lastName}
+                  values={values}
+                  touched={touched}
+                  errors={errors}
+                  setFieldValue={setFieldValue}
+                  {...props}
+                />
+              )}
             </Formik>
           )}
         </Mutation>
