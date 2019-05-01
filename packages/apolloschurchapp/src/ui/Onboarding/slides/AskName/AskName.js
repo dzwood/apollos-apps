@@ -18,12 +18,13 @@ const AskName = memo(
     touched,
     errors,
     setFieldValue,
+    isLoading,
     ...props
   }) => {
     let LastNameInput = null;
 
     return (
-      <Slide onPressPrimary={onPressPrimary} {...props}>
+      <Slide onPressPrimary={onPressPrimary} isLoading={isLoading} {...props}>
         <SlideContent title={slideTitle} description={description} icon>
           <PaddedView horizontal={false}>
             <TextInput
@@ -38,6 +39,7 @@ const AskName = memo(
               }
               onChangeText={(text) => setFieldValue('firstName', text)}
               onSubmitEditing={() => LastNameInput.focus()}
+              disabled={isLoading}
               enablesReturnKeyAutomatically
             />
             <TextInput
@@ -51,6 +53,7 @@ const AskName = memo(
               }
               onChangeText={(text) => setFieldValue('lastName', text)}
               onSubmitEditing={onPressPrimary}
+              disabled={isLoading}
               enablesReturnKeyAutomatically
               inputRef={(r) => {
                 LastNameInput = r;
@@ -76,6 +79,7 @@ AskName.propTypes = {
   errors: PropTypes.shape({}),
   values: PropTypes.shape({}),
   onPressPrimary: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 AskName.defaultProps = {
