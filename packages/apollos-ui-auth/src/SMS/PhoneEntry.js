@@ -9,7 +9,6 @@ import {
   PaddedView,
   BackgroundView,
   TextInput,
-  FlexedView,
   ButtonLink,
 } from '@apollosproject/ui-kit';
 import { Formik } from 'formik';
@@ -38,6 +37,10 @@ const FlexedSafeAreaView = styled({
 })(SafeAreaView);
 const forceInset = { top: 'always' };
 
+const LegalText = styled({
+  width: '70%',
+})(H6);
+
 class PhoneEntry extends Component {
   static propTypes = {
     brand: PropTypes.node,
@@ -55,9 +58,9 @@ class PhoneEntry extends Component {
     smsPromptText:
       "Lets get you signed in using your mobile number. We'll text you a code to make login super easy!",
     smsPolicyInfo: (
-      <H6>
+      <LegalText>
         {"We'll never share your information or contact you (unless you ask!)."}
-      </H6>
+      </LegalText>
     ),
     allowPassword: true,
     smsPasswordLoginPrompt: "I'd rather use my email and a password",
@@ -153,11 +156,11 @@ class PhoneEntry extends Component {
                       ) : null}
                     </ScrollView>
                     <NextButtonRow>
-                      <FlexedView>{smsPolicyInfo}</FlexedView>
+                      {smsPolicyInfo}
                       <NextButton
                         onPress={handleSubmit}
                         disabled={isSubmitting || !isValid}
-                        isLoading={isSubmitting}
+                        loading={isSubmitting}
                       />
                     </NextButtonRow>
                   </FlexedSafeAreaView>
