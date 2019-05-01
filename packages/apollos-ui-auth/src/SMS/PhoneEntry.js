@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import {
+  styled,
   H6,
   PaddedView,
   BackgroundView,
@@ -32,6 +33,11 @@ const requestPin = gql`
   }
 `;
 
+const FlexedSafeAreaView = styled({
+  flex: 1,
+})(SafeAreaView);
+const forceInset = { top: 'always' };
+
 class PhoneEntry extends Component {
   static propTypes = {
     brand: PropTypes.node,
@@ -58,7 +64,10 @@ class PhoneEntry extends Component {
   };
 
   validationSchema = Yup.object().shape({
-    phone: Yup.string().matches(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/),
+    phone: Yup.string().matches(
+      /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/,
+      'Your phone number appears to be invalid'
+    ),
   });
 
   get flatProps() {
@@ -115,7 +124,7 @@ class PhoneEntry extends Component {
                   touched,
                   errors,
                 }) => (
-                  <SafeAreaView style={StyleSheet.absoluteFill}>
+                  <FlexedSafeAreaView forceInset={forceInset}>
                     <ScrollView>
                       <PaddedView>
                         {brand}
@@ -151,7 +160,7 @@ class PhoneEntry extends Component {
                         isLoading={isSubmitting}
                       />
                     </NextButtonRow>
-                  </SafeAreaView>
+                  </FlexedSafeAreaView>
                 )}
               </Formik>
             )}
