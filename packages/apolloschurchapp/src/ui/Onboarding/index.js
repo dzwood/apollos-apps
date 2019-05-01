@@ -89,11 +89,14 @@ class Onboarding extends Component {
                 />
               }
             />
-            <LocationFinderConnected onPressPrimary={this.handleOnPressPrimary}>
-              <GradientOverlayImage
-                source={'https://picsum.photos/640/640/?random'}
-              />
-            </LocationFinderConnected>
+            <LocationFinderConnected
+              onPressPrimary={this.handleOnPressPrimary}
+              BackgroundComponent={
+                <GradientOverlayImage
+                  source={'https://picsum.photos/640/640/?random'}
+                />
+              }
+            />
             <AskNotificationsConnected
               onPressPrimary={() => this.props.navigation.navigate('Home')}
               primaryNavText={'Finish'}
