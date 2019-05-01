@@ -10,54 +10,73 @@ import AboutYou from './AboutYou';
 import updateUserDetails from './updateUserDetails';
 
 // eslint-disable-next-line react/display-name
-const AboutYouConnected = memo(({ onPressPrimary, ...props }) => (
-  <Query query={getUserProfile}>
-    {({ data: { currentUser = { profile: {} } } = {} }) => {
-      const { gender, birthDate } = currentUser.profile;
+const AboutYouConnected = memo(
+  ({ onPressPrimary, onPressSecondary, ...props }) => (
+    <Query query={getUserProfile}>
+      {({ data: { currentUser = { profile: {} } } = {} }) => {
+        const { gender, birthDate } = currentUser.profile;
 
-      return (
-        <Mutation mutation={updateUserDetails}>
-          {(updateDetails) => (
-            <Formik
-              initialValues={{ gender, birthDate }}
-              validationSchema={Yup.object().shape({
-                gender: Yup.string().required('Gender is required!'),
-                birthDate: Yup.string().required('Birth Date is required!'),
-              })}
-              enableReinitialize
-              onSubmit={async (variables, { setSubmitting, setFieldError }) => {
-                try {
-                  await updateDetails({ variables });
-                } catch (e) {
-                  const { graphQLErrors } = e;
-                  if (
-                    graphQLErrors.length &&
-                    graphQLErrors.find(({ message }) =>
-                      message.includes('Invalid')
-                    )
-                  ) {
-                    setFieldError(
-                      'gender',
-                      'There was a problem sending your request'
-                    );
-                  } else {
-                    setFieldError(
-                      'gender',
-                      'Unknown error. Please try again later.'
-                    );
+        return (
+          <Mutation mutation={updateUserDetails}>
+            {(updateDetails) => (
+              <Formik
+                initialValues={{ gender, birthDate }}
+                isInitialValid={() =>
+                  !!(['Male', 'Female'].includes(gender) || birthDate)
+                } // isInitialValid defaults to `false` this correctly checks for user data
+                validationSchema={Yup.object().shape({
+                  gender: Yup.string().oneOf(
+                    ['Male', 'Female'],
+                    'Your gender is required!'
+                  ),
+                  birthDate: Yup.string(
+                    'Your birthday is required!'
+                  ).nullable(),
+                })}
+                enableReinitialize
+                onSubmit={async (
+                  variables,
+                  { setSubmitting, setFieldError }
+                ) => {
+                  try {
+                    await updateDetails({ variables });
+                    onPressPrimary(); // advance to the next slide after submission
+                  } catch (e) {
+                    const { graphQLErrors } = e;
+                    if (
+                      graphQLErrors.length &&
+                      graphQLErrors.find(({ message }) =>
+                        message.includes('Invalid')
+                      )
+                    ) {
+                      setFieldError(
+                        'gender',
+                        'There was a problem sending your request'
+                      );
+                    } else {
+                      setFieldError(
+                        'gender',
+                        'Unknown error. Please try again later.'
+                      );
+                    }
                   }
-                }
-                setSubmitting(false);
-              }}
-            >
-              {({ submitForm, values, touched, errors, setFieldValue }) => {
-                const handleOnPressPrimary = () => {
-                  submitForm();
-                  onPressPrimary();
-                };
-                return (
+                  setSubmitting(false);
+                }}
+              >
+                {({
+                  isValid,
+                  submitForm,
+                  values,
+                  touched,
+                  errors,
+                  setFieldValue,
+                }) => (
                   <AboutYou
-                    onPressPrimary={handleOnPressPrimary}
+                    onPressPrimary={isValid ? submitForm : null} // if form `isValid` show the primary nav button (next)
+                    onPressSecondary={
+                      // if form `!isValid` show the secondary nav button (skip)
+                      isValid ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
+                    }
                     gender={gender}
                     birthDate={birthDate}
                     values={values}
@@ -66,18 +85,19 @@ const AboutYouConnected = memo(({ onPressPrimary, ...props }) => (
                     setFieldValue={setFieldValue}
                     {...props}
                   />
-                );
-              }}
-            </Formik>
-          )}
-        </Mutation>
-      );
-    }}
-  </Query>
-));
+                )}
+              </Formik>
+            )}
+          </Mutation>
+        );
+      }}
+    </Query>
+  )
+);
 
 AboutYouConnected.propTypes = {
   onPressPrimary: PropTypes.func,
+  onPressSecondary: PropTypes.func,
 };
 
 export default AboutYouConnected;
