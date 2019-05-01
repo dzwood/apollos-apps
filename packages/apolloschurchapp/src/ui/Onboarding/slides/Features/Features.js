@@ -4,16 +4,15 @@ import PropTypes from 'prop-types';
 import Slide, { SlideContent } from '../../Slide';
 
 const Features = memo(
-  ({ firstName, description, BackgroundComponent, ...props }) =>
-    console.log(firstName) || (
-      <Slide {...props}>
-        {BackgroundComponent}
-        <SlideContent
-          title={`Hey ${firstName || 'friend'}!`}
-          description={description}
-        />
-      </Slide>
-    )
+  ({ firstName, description, BackgroundComponent, ...props }) => (
+    <Slide {...props}>
+      {BackgroundComponent}
+      <SlideContent
+        title={`Hey ${firstName || 'friend'}!`}
+        description={description}
+      />
+    </Slide>
+  )
 );
 
 Features.displayName = 'Features';
