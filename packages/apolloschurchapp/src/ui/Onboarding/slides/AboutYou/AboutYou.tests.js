@@ -73,7 +73,7 @@ describe('The Onboarding AboutYou component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  it('should render a custom date picker', () => {
+  it('should render with a selected birthdate', () => {
     const tree = renderer.create(
       <Providers>
         <AboutYou
@@ -84,13 +84,20 @@ describe('The Onboarding AboutYou component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  it('should render a custom date picker when the birth date is null', () => {
+  it('should render with errors', () => {
     const tree = renderer.create(
       <Providers>
         <AboutYou
-          values={{ birthDate: null }}
-          setFieldValue={jest.fn()}
+          touched={{
+            gender: true,
+            birthDate: true,
+          }}
+          errors={{
+            gender: 'Gender errors',
+            birthDate: 'BirthDate errors',
+          }}
           defaultDate={'2019-02-14'}
+          setFieldValue={jest.fn()}
         />
       </Providers>
     );

@@ -25,13 +25,8 @@ const AboutYouConnected = memo(
                   !!(['Male', 'Female'].includes(gender) || birthDate)
                 } // isInitialValid defaults to `false` this correctly checks for user data
                 validationSchema={Yup.object().shape({
-                  gender: Yup.string().oneOf(
-                    ['Male', 'Female'],
-                    'Your gender is required!'
-                  ),
-                  birthDate: Yup.string(
-                    'Your birthday is required!'
-                  ).nullable(),
+                  gender: Yup.string().oneOf(['Male', 'Female']),
+                  birthDate: Yup.string().nullable(),
                 })}
                 enableReinitialize
                 onSubmit={async (

@@ -98,9 +98,18 @@ AboutYou.propTypes = {
   description: PropTypes.string,
   defaultDate: PropTypes.instanceOf(Date),
   genderList: PropTypes.arrayOf(PropTypes.string),
-  values: PropTypes.shape({}),
-  touched: PropTypes.shape({}),
-  errors: PropTypes.shape({}),
+  values: PropTypes.shape({
+    gender: PropTypes.bool,
+    birthDate: PropTypes.bool,
+  }),
+  touched: PropTypes.shape({
+    gender: PropTypes.string,
+    birthDate: PropTypes.string,
+  }),
+  errors: PropTypes.shape({
+    gender: PropTypes.string,
+    birthDate: PropTypes.string,
+  }),
   setFieldValue: PropTypes.func.isRequired,
   /* Recommended usage:
    * - `Image` (react-native)
