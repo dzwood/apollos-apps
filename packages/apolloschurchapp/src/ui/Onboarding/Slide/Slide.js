@@ -45,13 +45,14 @@ const Slide = memo(
     primaryNavText,
     primaryNavIcon,
     secondaryNavText,
+    isLoading,
   }) => (
     <>
       <FlexedView>{children}</FlexedView>
       {onPressPrimary || onPressSecondary ? (
         <NavWrapper vertical={false}>
           {onPressPrimary ? (
-            <Button onPress={onPressPrimary}>
+            <Button onPress={onPressPrimary} loading={isLoading}>
               <>
                 <H5>{primaryNavText}</H5>
                 {primaryNavIcon ? (
@@ -81,6 +82,7 @@ Slide.propTypes = {
   primaryNavText: PropTypes.string, // colored button text
   primaryNavIcon: PropTypes.string, // optional custom icon name or empty string for no icon at all
   secondaryNavText: PropTypes.string, // text link
+  isLoading: PropTypes.bool,
 };
 
 Slide.defaultProps = {
