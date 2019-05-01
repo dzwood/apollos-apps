@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { ScrollView } from 'react-native';
 
 import {
   styled,
@@ -16,7 +17,7 @@ const NavWrapper = styled(({ theme }) => ({
   flexDirection: 'row-reverse', // reversed so the primary action is always on the right
   alignItems: 'center', // centers optional back button with dots/next button
   justifyContent: 'space-between',
-  marginBottom: theme.sizing.baseUnit * 0.5, // centers nav/button with pager dots
+  marginVertical: theme.sizing.baseUnit * 0.5, // centers nav/button with pager dots
 }))(PaddedView);
 
 const PrimaryNavIcon = withTheme(({ theme }) => ({
@@ -48,7 +49,14 @@ const Slide = memo(
     isLoading,
   }) => (
     <>
-      <FlexedView>{children}</FlexedView>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{}}
+        alwaysBounceVertical={false}
+        overScrollMode={'auto'}
+      >
+        {children}
+      </ScrollView>
       {onPressPrimary || onPressSecondary ? (
         <NavWrapper vertical={false}>
           {onPressPrimary ? (
