@@ -34,6 +34,7 @@ class ProtectedRoute extends PureComponent {
     loggedInRouteName: PropTypes.string,
     loggedOutRouteName: PropTypes.string,
     LoadingIndicator: PropTypes.node,
+    onRouteChange: PropTypes.func,
   };
 
   static defaultProps = {
@@ -53,12 +54,14 @@ class ProtectedRoute extends PureComponent {
     const {
       isLoading,
       isLoggedIn,
+      onRouteChange,
       navigation,
       loggedInRouteName,
       loggedOutRouteName,
     } = this.props;
 
     const shouldNavigate = !isLoading;
+    if (shouldNavigate && onRouteChange) onRouteChange({ isLoggedIn });
     if (shouldNavigate && isLoggedIn) {
       navigation.replace(loggedInRouteName);
     } else if (shouldNavigate) {
