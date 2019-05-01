@@ -14,10 +14,11 @@ import {
 
 import Slide, { SlideContent } from '../../Slide';
 
-const Label = styled({
+const Label = styled(({ theme, padded }) => ({
   color: 'gray',
   opacity: 0.7,
-})(H6);
+  ...(padded ? { marginTop: theme.sizing.baseUnit } : {}),
+}))(H6);
 
 const StyledDate = styled(({ theme }) => ({
   marginTop: 0,
@@ -51,7 +52,7 @@ const AboutYou = memo(
     <Slide {...props}>
       {BackgroundComponent}
       <SlideContent title={slideTitle} description={description}>
-        <Label>Gender</Label>
+        <Label padded>Gender</Label>
         <StyledRadio
           label="Gender"
           type="radio"
