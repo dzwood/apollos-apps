@@ -7,9 +7,10 @@ import {
   H2,
   H5,
   withIsLoading,
-  PaddedView,
 } from '@apollosproject/ui-kit';
 import PropTypes from 'prop-types';
+
+import { SafeAreaView } from 'react-navigation';
 
 const IconWrapper = styled(({ theme }) => ({
   paddingBottom: theme.sizing.baseUnit, // wrapper is used to padd placeholder as well.
@@ -33,6 +34,11 @@ const StyledH5 = styled(({ theme }) => ({
   color: theme.colors.text.secondary,
 }))(H5);
 
+const Wrapper = styled(({ theme }) => ({
+  paddingHorizontal: theme.sizing.baseUnit,
+  marginBottom: theme.sizing.baseUnit * 3,
+}))(SafeAreaView);
+
 const SlideContent = withIsLoading(
   ({ icon, title, description, children, isLoading, ...props }) => {
     if (!icon && !title && !description && !children) {
@@ -42,19 +48,20 @@ const SlideContent = withIsLoading(
     }
 
     return (
-      <PaddedView vertical={false} {...props}>
-        <View /* groups text elements together when justifying content within SlideContent */
-        >
-          <IconWrapper>
-            {icon ? <BrandIcon icon={icon} isLoading={isLoading} /> : null}
-          </IconWrapper>
+      <Wrapper forceInset={{ bottom: 'always' }} {...props}>
+        <View>
+          {icon ? (
+            <IconWrapper>
+              <BrandIcon icon={icon} isLoading={isLoading} />
+            </IconWrapper>
+          ) : null}
           <TitleWrapper>
             <Title>{title}</Title>
           </TitleWrapper>
           <StyledH5>{description}</StyledH5>
         </View>
         {children}
-      </PaddedView>
+      </Wrapper>
     );
   }
 );

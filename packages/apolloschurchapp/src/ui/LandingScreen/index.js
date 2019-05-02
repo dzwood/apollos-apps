@@ -50,16 +50,14 @@ const LandingScreen = ({
   ...props
 }) => (
   <BackgroundView>
-    <FlexedSafeAreaView forceInset={forceInset}>
-      <Slide {...props}>
-        {BackgroundComponent}
-        <Content>
-          <BrandIcon color={textColor} />
-          <Title color={textColor}>{slideTitle}</Title>
-          <StyledH4 color={textColor}>{description}</StyledH4>
-        </Content>
-      </Slide>
-    </FlexedSafeAreaView>
+    <Slide {...props} scrollEnabled={false}>
+      {BackgroundComponent}
+      <Content>
+        <BrandIcon color={textColor} />
+        <Title color={textColor}>{slideTitle}</Title>
+        <StyledH4 color={textColor}>{description}</StyledH4>
+      </Content>
+    </Slide>
   </BackgroundView>
 );
 

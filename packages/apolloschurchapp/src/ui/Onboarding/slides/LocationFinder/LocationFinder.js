@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { PaddedView, styled, Button, Touchable } from '@apollosproject/ui-kit';
@@ -11,15 +10,14 @@ import Slide, { SlideContent } from '../../Slide';
 const getCampusAddress = (campus) =>
   `${campus.street1}\n${campus.city}, ${campus.state} ${campus.postalCode}`;
 
-const ContentWrapper = styled({
-  flex: 1,
-  justifyContent: 'space-between',
-})(View);
-
 const StyledCampusCard = styled(({ theme }) => ({
-  marginHorizontal: theme.sizing.baseUnit,
   marginBottom: theme.sizing.baseUnit,
 }))(CampusCard);
+
+const StyledSlideContent = styled({
+  flex: 1,
+  justifyContent: 'space-between',
+})(SlideContent);
 
 // memo = sfc PureComponent 💥
 // eslint-disable-next-line react/display-name
@@ -50,8 +48,7 @@ const LocationFinder = memo(
       {...props}
     >
       {BackgroundComponent}
-      <ContentWrapper>
-        <SlideContent title={slideTitle} description={description} />
+      <StyledSlideContent title={slideTitle} description={description}>
         {campus ? (
           <Touchable onPress={onPressButton}>
             <StyledCampusCard
@@ -63,7 +60,7 @@ const LocationFinder = memo(
             />
           </Touchable>
         ) : (
-          <PaddedView>
+          <PaddedView horizontal={false}>
             <Button
               title={buttonText}
               onPress={onPressButton}
@@ -72,7 +69,7 @@ const LocationFinder = memo(
             />
           </PaddedView>
         )}
-      </ContentWrapper>
+      </StyledSlideContent>
     </Slide>
   )
 );

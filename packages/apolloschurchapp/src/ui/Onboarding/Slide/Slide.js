@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
+
+import { SafeAreaView } from 'react-navigation';
 
 import {
   styled,
   withTheme,
-  FlexedView,
   PaddedView,
   H5,
   ButtonLink,
@@ -13,7 +14,20 @@ import {
   Icon,
 } from '@apollosproject/ui-kit';
 
+const styles = StyleSheet.create({
+  contentContainer: { minHeight: '100%' },
+});
+
+const forceInset = {
+  top: 'never',
+  bottom: 'always',
+};
+
 const NavWrapper = styled(({ theme }) => ({
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  right: 0,
   flexDirection: 'row-reverse', // reversed so the primary action is always on the right
   alignItems: 'center', // centers optional back button with dots/next button
   justifyContent: 'space-between',
@@ -35,6 +49,8 @@ const SkipButton = styled(({ theme }) => ({
   marginLeft: theme.sizing.baseUnit * -1, // adjusts for paddingHorizontal
 }))(ButtonLink);
 
+const FlexedScrollView = styled({ flex: 1 })(ScrollView);
+
 /* Slide uses memo = sfc PureComponent 💥 Additionally, this component when rendered in a `Slider`
  * is automatically rendered in a `View` */
 // eslint-disable-next-line react/display-name
@@ -47,33 +63,35 @@ const Slide = memo(
     primaryNavIcon,
     secondaryNavText,
     isLoading,
+    ...scrollViewProps
   }) => (
     <>
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{}}
-        alwaysBounceVertical={false}
+      <FlexedScrollView
+        contentContainerStyle={styles.contentContainer}
         overScrollMode={'auto'}
+        {...scrollViewProps}
       >
         {children}
-      </ScrollView>
+      </FlexedScrollView>
       {onPressPrimary || onPressSecondary ? (
         <NavWrapper vertical={false}>
-          {onPressPrimary ? (
-            <Button onPress={onPressPrimary} loading={isLoading}>
-              <>
-                <H5>{primaryNavText}</H5>
-                {primaryNavIcon ? (
-                  <PrimaryNavIcon name={primaryNavIcon} />
-                ) : null}
-              </>
-            </Button>
-          ) : null}
-          {onPressSecondary ? (
-            <SkipButton onPress={onPressSecondary}>
-              {secondaryNavText}
-            </SkipButton>
-          ) : null}
+          <SafeAreaView forceInset={forceInset}>
+            {onPressPrimary ? (
+              <Button onPress={onPressPrimary} loading={isLoading}>
+                <>
+                  <H5>{primaryNavText}</H5>
+                  {primaryNavIcon ? (
+                    <PrimaryNavIcon name={primaryNavIcon} />
+                  ) : null}
+                </>
+              </Button>
+            ) : null}
+            {onPressSecondary ? (
+              <SkipButton onPress={onPressSecondary}>
+                {secondaryNavText}
+              </SkipButton>
+            ) : null}
+          </SafeAreaView>
         </NavWrapper>
       ) : null}
     </>

@@ -51,41 +51,7 @@ const AboutYou = memo(
   }) => (
     <Slide {...props}>
       {BackgroundComponent}
-      <SlideContent title={slideTitle} description={description}>
-        <Label padded>Gender</Label>
-        <StyledRadio
-          label="Gender"
-          type="radio"
-          value={get(values, 'gender')}
-          error={get(touched, 'gender') && get(errors, 'gender')}
-          onChange={(value) => setFieldValue('gender', value)}
-        >
-          {genderList.map((gender) => [
-            <RadioButton
-              key={gender}
-              value={gender}
-              label={() => <RadioLabel>{gender}</RadioLabel>}
-              underline={false}
-            />,
-          ])}
-        </StyledRadio>
-        <Label>Birthday</Label>
-        <StyledDate
-          type={'DateInput'}
-          placeholder={'Select a date...'}
-          value={moment
-            .utc(get(values, 'birthDate', defaultDate) || defaultDate)
-            .toDate()}
-          error={get(touched, 'birthDate') && get(errors, 'birthDate')}
-          displayValue={
-            // only show a birthday if we have one.
-            get(values, 'birthDate', '') // DatePicker shows displayValue > placeholder > label in that order
-              ? moment(values.birthDate).format('MM/DD/YYYY')
-              : '' // Pass an empty string if we don't have a birthday to show the placeholder.
-          }
-          onChange={(value) => setFieldValue('birthDate', value)}
-        />
-      </SlideContent>
+      <SlideContent title={slideTitle} description={description} />
     </Slide>
   )
 );

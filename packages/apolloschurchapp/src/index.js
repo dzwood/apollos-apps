@@ -47,7 +47,7 @@ const AppNavigator = createStackNavigator(
     LandingScreen,
   },
   {
-    initialRouteName: 'ProtectedRoute',
+    initialRouteName: 'Onboarding',
     mode: 'modal',
     headerMode: 'screen',
   }

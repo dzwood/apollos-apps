@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
-import { StyleSheet } from 'react-native';
 import {
   withTheme,
   BackgroundView,
   GradientOverlayImage,
 } from '@apollosproject/ui-kit';
-import { SafeAreaView } from 'react-navigation';
 
 import {
   AskNotificationsConnected,
@@ -21,12 +19,10 @@ import {
 const ThemedSwiper = withTheme(({ theme }) => ({
   dotColor: theme.colors.background.inactive, // theme.colors.lightSecondary looks the best.
   activeDotColor: theme.colors.action.primary,
+  paginationStyle: {
+    paddingBottom: theme.sizing.baseUnit * 2 + 2,
+  },
 }))(({ swiperRef, ...props }) => <Swiper ref={swiperRef} {...props} />);
-
-const forceInset = {
-  top: 'always',
-  bottom: 'always',
-};
 
 class Onboarding extends Component {
   static navigationOptions = () => ({
@@ -63,51 +59,49 @@ class Onboarding extends Component {
 
     return (
       <BackgroundView>
-        <SafeAreaView style={StyleSheet.absoluteFill} forceInset={forceInset}>
-          <ThemedSwiper
-            loop={false}
-            /* Disables swipe gestures. We currently we dont display a back button so this is our
-             * only back navigation option. */
-            // scrollEnabled={false}
-            showsButtons={false}
-            swiperRef={this.setSwiperRef}
-          >
-            <AskNameConnected onPressPrimary={this.handleOnPressPrimary} />
-            <FeaturesConnected
-              onPressPrimary={this.handleOnPressPrimary}
-              BackgroundComponent={
-                <GradientOverlayImage
-                  source={'https://picsum.photos/640/640/?random'}
-                />
-              }
-            />
-            <AboutYouConnected
-              onPressPrimary={this.handleOnPressPrimary}
-              BackgroundComponent={
-                <GradientOverlayImage
-                  source={'https://picsum.photos/640/640/?random'}
-                />
-              }
-            />
-            <LocationFinderConnected
-              onPressPrimary={this.handleOnPressPrimary}
-              BackgroundComponent={
-                <GradientOverlayImage
-                  source={'https://picsum.photos/640/640/?random'}
-                />
-              }
-            />
-            <AskNotificationsConnected
-              onPressPrimary={() => this.props.navigation.navigate('Home')}
-              primaryNavText={'Finish'}
-              BackgroundComponent={
-                <GradientOverlayImage
-                  source={'https://picsum.photos/640/640/?random'}
-                />
-              }
-            />
-          </ThemedSwiper>
-        </SafeAreaView>
+        <ThemedSwiper
+          loop={false}
+          /* Disables swipe gestures. We currently we dont display a back button so this is our
+           * only back navigation option. */
+          // scrollEnabled={false}
+          showsButtons={false}
+          swiperRef={this.setSwiperRef}
+        >
+          <AskNameConnected onPressPrimary={this.handleOnPressPrimary} />
+          <FeaturesConnected
+            onPressPrimary={this.handleOnPressPrimary}
+            BackgroundComponent={
+              <GradientOverlayImage
+                source={'https://picsum.photos/640/640/?random'}
+              />
+            }
+          />
+          <AboutYouConnected
+            onPressPrimary={this.handleOnPressPrimary}
+            BackgroundComponent={
+              <GradientOverlayImage
+                source={'https://picsum.photos/640/640/?random'}
+              />
+            }
+          />
+          <LocationFinderConnected
+            onPressPrimary={this.handleOnPressPrimary}
+            BackgroundComponent={
+              <GradientOverlayImage
+                source={'https://picsum.photos/640/640/?random'}
+              />
+            }
+          />
+          <AskNotificationsConnected
+            onPressPrimary={() => this.props.navigation.navigate('Home')}
+            primaryNavText={'Finish'}
+            BackgroundComponent={
+              <GradientOverlayImage
+                source={'https://picsum.photos/640/640/?random'}
+              />
+            }
+          />
+        </ThemedSwiper>
       </BackgroundView>
     );
   }
