@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
+
 // import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import {
-  withTheme,
   BackgroundView,
   GradientOverlayImage,
+  styled,
 } from '@apollosproject/ui-kit';
+
+import { SafeAreaView } from 'react-navigation';
 
 import {
   AskNotificationsConnected,
@@ -15,14 +19,26 @@ import {
   LocationFinderConnected,
 } from './slides';
 
-// Provides themed colors to Swiper dots
-const ThemedSwiper = withTheme(({ theme }) => ({
-  dotColor: theme.colors.background.inactive, // theme.colors.lightSecondary looks the best.
-  activeDotColor: theme.colors.action.primary,
-  paginationStyle: {
-    paddingBottom: theme.sizing.baseUnit * 2 + 2,
-  },
-}))(({ swiperRef, ...props }) => <Swiper ref={swiperRef} {...props} />);
+const dotStyles = ({ theme }) => ({
+  width: theme.sizing.baseUnit / 2,
+  height: theme.sizing.baseUnit / 2,
+  borderRadius: theme.sizing.baseUnit / 4,
+  margin: theme.sizing.baseUnit / 4,
+});
+
+const forceInset = {
+  bottom: 'always',
+};
+
+const PaginationDot = styled(({ theme }) => ({
+  backgroundColor: theme.colors.background.inactive,
+  ...dotStyles({ theme }),
+}))(View);
+
+const PaginationDotActive = styled(({ theme }) => ({
+  backgroundColor: theme.colors.action.primary,
+  ...dotStyles({ theme }),
+}))(View);
 
 class Onboarding extends Component {
   static navigationOptions = () => ({
@@ -34,7 +50,7 @@ class Onboarding extends Component {
   swiper = null;
 
   // Creates ref to Swiper to be passed as a prop to children.
-  setSwiperRef = (r) => {
+  setSwiperRef = r => {
     this.swiper = r;
 
     return this.swiper;
@@ -46,14 +62,25 @@ class Onboarding extends Component {
   render() {
     return (
       <BackgroundView>
-        <ThemedSwiper
+        <Swiper
           loadMinimal
           loop={false}
           /* Disables swipe gestures. We currently we dont display a back button so this is our
            * only back navigation option. */
           // scrollEnabled={false}
           showsButtons={false}
-          swiperRef={this.setSwiperRef}
+          ref={this.setSwiperRef}
+          renderPagination={this.renderPagination}
+          activeDot={
+            <SafeAreaView forceInset={forceInset}>
+              <PaginationDotActive />
+            </SafeAreaView>
+          }
+          dot={
+            <SafeAreaView forceInset={forceInset}>
+              <PaginationDot forceInset={forceInset} />
+            </SafeAreaView>
+          }
         >
           <AskNameConnected onPressPrimary={this.handleOnPressPrimary} />
           <FeaturesConnected
@@ -89,7 +116,7 @@ class Onboarding extends Component {
               />
             }
           />
-        </ThemedSwiper>
+        </Swiper>
       </BackgroundView>
     );
   }
