@@ -60,6 +60,7 @@ class Onboarding extends Component {
     return (
       <BackgroundView>
         <ThemedSwiper
+          loadMinimal
           loop={false}
           /* Disables swipe gestures. We currently we dont display a back button so this is our
            * only back navigation option. */

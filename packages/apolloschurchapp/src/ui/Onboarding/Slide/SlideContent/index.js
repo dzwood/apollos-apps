@@ -35,6 +35,7 @@ const StyledH5 = styled(({ theme }) => ({
 }))(H5);
 
 const Wrapper = styled(({ theme }) => ({
+  paddingTop: theme.sizing.baseUnit,
   paddingHorizontal: theme.sizing.baseUnit,
   marginBottom: theme.sizing.baseUnit * 3,
 }))(SafeAreaView);
