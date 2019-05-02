@@ -33,38 +33,41 @@ exports[`The Onboarding LocationFinderConnected component should render with a u
       }
     }
   >
-    <View
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "minHeight": "100%",
+        }
+      }
+      navigation={
+        Object {
+          "navigate": [MockFunction],
+        }
+      }
+      overScrollMode="auto"
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "space-between",
-          }
-        }
-      >
+      <View>
         <View
+          onLayout={[Function]}
+          pointerEvents="box-none"
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 0,
+              "flex": 1,
+              "justifyContent": "space-between",
+              "marginBottom": 48,
+              "paddingBottom": 0,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 20,
             }
           }
-          vertical={false}
         >
           <View>
-            <View
-              style={
-                Object {
-                  "paddingBottom": 16,
-                }
-              }
-            />
             <View
               style={
                 Object {
@@ -98,68 +101,69 @@ exports[`The Onboarding LocationFinderConnected component should render with a u
               We'll use your location to connect you with your nearby campus and community
             </Text>
           </View>
-        </View>
-        <View
-          style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 16,
-            }
-          }
-        >
           <View
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            horizontal={false}
             style={
               Object {
-                "opacity": 1,
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
               }
             }
           >
             <View
-              bordered={false}
-              disabled={false}
-              pill={false}
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#00676D",
-                  "borderColor": "#00676D",
-                  "borderRadius": 16,
-                  "borderWidth": 2,
-                  "elevation": 2,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "justifyContent": "center",
                   "opacity": 1,
-                  "overflow": "hidden",
-                  "paddingHorizontal": 16,
                 }
               }
             >
-              <Text
+              <View
+                bordered={false}
+                disabled={false}
+                pill={false}
                 style={
                   Object {
-                    "color": "#FFFFFF",
-                    "fontFamily": "InterUI-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 23.04,
+                    "alignItems": "center",
+                    "backgroundColor": "#00676D",
+                    "borderColor": "#00676D",
+                    "borderRadius": 16,
+                    "borderWidth": 2,
+                    "elevation": 2,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "paddingHorizontal": 16,
                   }
                 }
               >
-                Yes, find my local campus
-              </Text>
+                <Text
+                  style={
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontFamily": "InterUI-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 23.04,
+                    }
+                  }
+                >
+                  Yes, find my local campus
+                </Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+    </RCTScrollView>
   </View>
 </RCTSafeAreaView>
 `;
@@ -197,38 +201,41 @@ exports[`The Onboarding LocationFinderConnected component should render with a u
       }
     }
   >
-    <View
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "minHeight": "100%",
+        }
+      }
+      navigation={
+        Object {
+          "navigate": [MockFunction],
+        }
+      }
+      overScrollMode="auto"
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "space-between",
-          }
-        }
-      >
+      <View>
         <View
+          onLayout={[Function]}
+          pointerEvents="box-none"
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 0,
+              "flex": 1,
+              "justifyContent": "space-between",
+              "marginBottom": 48,
+              "paddingBottom": 0,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 20,
             }
           }
-          vertical={false}
         >
           <View>
-            <View
-              style={
-                Object {
-                  "paddingBottom": 16,
-                }
-              }
-            />
             <View
               style={
                 Object {
@@ -262,68 +269,69 @@ exports[`The Onboarding LocationFinderConnected component should render with a u
               We'll use your location to connect you with your nearby campus and community
             </Text>
           </View>
-        </View>
-        <View
-          style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 16,
-            }
-          }
-        >
           <View
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            horizontal={false}
             style={
               Object {
-                "opacity": 1,
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
               }
             }
           >
             <View
-              bordered={false}
-              disabled={false}
-              pill={false}
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#00676D",
-                  "borderColor": "#00676D",
-                  "borderRadius": 16,
-                  "borderWidth": 2,
-                  "elevation": 2,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "justifyContent": "center",
                   "opacity": 1,
-                  "overflow": "hidden",
-                  "paddingHorizontal": 16,
                 }
               }
             >
-              <Text
+              <View
+                bordered={false}
+                disabled={false}
+                pill={false}
                 style={
                   Object {
-                    "color": "#FFFFFF",
-                    "fontFamily": "InterUI-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 23.04,
+                    "alignItems": "center",
+                    "backgroundColor": "#00676D",
+                    "borderColor": "#00676D",
+                    "borderRadius": 16,
+                    "borderWidth": 2,
+                    "elevation": 2,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "paddingHorizontal": 16,
                   }
                 }
               >
-                Yes, find my local campus
-              </Text>
+                <Text
+                  style={
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontFamily": "InterUI-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 23.04,
+                    }
+                  }
+                >
+                  Yes, find my local campus
+                </Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+    </RCTScrollView>
   </View>
 </RCTSafeAreaView>
 `;
@@ -361,38 +369,41 @@ exports[`The Onboarding LocationFinderConnected component should render with no 
       }
     }
   >
-    <View
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "minHeight": "100%",
+        }
+      }
+      navigation={
+        Object {
+          "navigate": [MockFunction],
+        }
+      }
+      overScrollMode="auto"
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "space-between",
-          }
-        }
-      >
+      <View>
         <View
+          onLayout={[Function]}
+          pointerEvents="box-none"
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 0,
+              "flex": 1,
+              "justifyContent": "space-between",
+              "marginBottom": 48,
+              "paddingBottom": 0,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 20,
             }
           }
-          vertical={false}
         >
           <View>
-            <View
-              style={
-                Object {
-                  "paddingBottom": 16,
-                }
-              }
-            />
             <View
               style={
                 Object {
@@ -426,68 +437,69 @@ exports[`The Onboarding LocationFinderConnected component should render with no 
               We'll use your location to connect you with your nearby campus and community
             </Text>
           </View>
-        </View>
-        <View
-          style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 16,
-            }
-          }
-        >
           <View
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            horizontal={false}
             style={
               Object {
-                "opacity": 1,
+                "paddingHorizontal": 0,
+                "paddingVertical": 16,
               }
             }
           >
             <View
-              bordered={false}
-              disabled={false}
-              pill={false}
+              accessible={true}
+              isTVSelectable={true}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#00676D",
-                  "borderColor": "#00676D",
-                  "borderRadius": 16,
-                  "borderWidth": 2,
-                  "elevation": 2,
-                  "flexDirection": "row",
-                  "height": 48,
-                  "justifyContent": "center",
                   "opacity": 1,
-                  "overflow": "hidden",
-                  "paddingHorizontal": 16,
                 }
               }
             >
-              <Text
+              <View
+                bordered={false}
+                disabled={false}
+                pill={false}
                 style={
                   Object {
-                    "color": "#FFFFFF",
-                    "fontFamily": "InterUI-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 23.04,
+                    "alignItems": "center",
+                    "backgroundColor": "#00676D",
+                    "borderColor": "#00676D",
+                    "borderRadius": 16,
+                    "borderWidth": 2,
+                    "elevation": 2,
+                    "flexDirection": "row",
+                    "height": 48,
+                    "justifyContent": "center",
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "paddingHorizontal": 16,
                   }
                 }
               >
-                Yes, find my local campus
-              </Text>
+                <Text
+                  style={
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontFamily": "InterUI-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 23.04,
+                    }
+                  }
+                >
+                  Yes, find my local campus
+                </Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
-    </View>
+    </RCTScrollView>
   </View>
 </RCTSafeAreaView>
 `;

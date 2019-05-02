@@ -33,65 +33,70 @@ exports[`The Onboarding FeaturesConnected component renders with a firstName whe
       }
     }
   >
-    <View
+    <RCTScrollView
+      contentContainerStyle={
+        Object {
+          "minHeight": "100%",
+        }
+      }
+      overScrollMode="auto"
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 0,
+      <View>
+        <View
+          onLayout={[Function]}
+          pointerEvents="box-none"
+          style={
+            Object {
+              "marginBottom": 48,
+              "paddingBottom": 0,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 20,
+            }
           }
-        }
-        vertical={false}
-      >
-        <View>
-          <View
-            style={
-              Object {
-                "paddingBottom": 16,
-              }
-            }
-          />
-          <View
-            style={
-              Object {
-                "paddingBottom": 8,
-              }
-            }
-          >
-            <Text
+        >
+          <View>
+            <View
               style={
                 Object {
-                  "color": "#00676D",
-                  "fontFamily": "InterUI-Black",
-                  "fontSize": 36,
-                  "lineHeight": 41.4,
+                  "paddingBottom": 8,
                 }
               }
             >
-              Hey friend!
+              <Text
+                style={
+                  Object {
+                    "color": "#00676D",
+                    "fontFamily": "InterUI-Black",
+                    "fontSize": 36,
+                    "lineHeight": 41.4,
+                  }
+                }
+              >
+                Hey friend!
+              </Text>
+            </View>
+            <Text
+              style={
+                Object {
+                  "color": "#505050",
+                  "fontFamily": "InterUI-Medium",
+                  "fontSize": 14,
+                  "lineHeight": 20.16,
+                }
+              }
+            >
+              We'd like to help personalize your mobile experience so we can help you with every step on your journey.
             </Text>
           </View>
-          <Text
-            style={
-              Object {
-                "color": "#505050",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            We'd like to help personalize your mobile experience so we can help you with every step on your journey.
-          </Text>
         </View>
       </View>
-    </View>
+    </RCTScrollView>
   </View>
 </RCTSafeAreaView>
 `;

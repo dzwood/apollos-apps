@@ -60,26 +60,21 @@ exports[`The Onboarding LandingScreen component should pass additional props to 
         }
       }
     >
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTScrollView
+        contentContainerStyle={
+          Object {
+            "minHeight": "100%",
+          }
+        }
+        overScrollMode="auto"
+        scrollEnabled={false}
         style={
           Object {
             "flex": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        >
+        <View>
           <View
             style={
               Object {
@@ -246,18 +241,35 @@ exports[`The Onboarding LandingScreen component should pass additional props to 
             </Text>
           </View>
         </View>
+      </RCTScrollView>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "flexDirection": "row-reverse",
+            "justifyContent": "space-between",
+            "left": 0,
+            "marginVertical": 8,
+            "paddingHorizontal": 16,
+            "paddingVertical": 0,
+            "position": "absolute",
+            "right": 0,
+          }
+        }
+        vertical={false}
+      >
         <View
+          onLayout={[Function]}
+          pointerEvents="box-none"
           style={
             Object {
-              "alignItems": "center",
-              "flexDirection": "row-reverse",
-              "justifyContent": "space-between",
-              "marginBottom": 8,
-              "paddingHorizontal": 16,
-              "paddingVertical": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
             }
           }
-          vertical={false}
         >
           <View
             accessible={true}
@@ -506,26 +518,21 @@ exports[`The Onboarding LandingScreen component should render 1`] = `
         }
       }
     >
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTScrollView
+        contentContainerStyle={
+          Object {
+            "minHeight": "100%",
+          }
+        }
+        overScrollMode="auto"
+        scrollEnabled={false}
         style={
           Object {
             "flex": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        >
+        <View>
           <View
             style={
               Object {
@@ -692,7 +699,7 @@ exports[`The Onboarding LandingScreen component should render 1`] = `
             </Text>
           </View>
         </View>
-      </View>
+      </RCTScrollView>
     </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
@@ -758,26 +765,21 @@ exports[`The Onboarding LandingScreen component should render a custom descripti
         }
       }
     >
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTScrollView
+        contentContainerStyle={
+          Object {
+            "minHeight": "100%",
+          }
+        }
+        overScrollMode="auto"
+        scrollEnabled={false}
         style={
           Object {
             "flex": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        >
+        <View>
           <View
             style={
               Object {
@@ -944,7 +946,7 @@ exports[`The Onboarding LandingScreen component should render a custom descripti
             </Text>
           </View>
         </View>
-      </View>
+      </RCTScrollView>
     </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
@@ -1010,26 +1012,21 @@ exports[`The Onboarding LandingScreen component should render a custom title 1`]
         }
       }
     >
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTScrollView
+        contentContainerStyle={
+          Object {
+            "minHeight": "100%",
+          }
+        }
+        overScrollMode="auto"
+        scrollEnabled={false}
         style={
           Object {
             "flex": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        >
+        <View>
           <View
             style={
               Object {
@@ -1196,7 +1193,7 @@ exports[`The Onboarding LandingScreen component should render a custom title 1`]
             </Text>
           </View>
         </View>
-      </View>
+      </RCTScrollView>
     </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
@@ -1262,26 +1259,21 @@ exports[`The Onboarding LandingScreen component should render with a custom text
         }
       }
     >
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTScrollView
+        contentContainerStyle={
+          Object {
+            "minHeight": "100%",
+          }
+        }
+        overScrollMode="auto"
+        scrollEnabled={false}
         style={
           Object {
             "flex": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        >
+        <View>
           <View
             style={
               Object {
@@ -1452,7 +1444,7 @@ exports[`The Onboarding LandingScreen component should render with a custom text
             </Text>
           </View>
         </View>
-      </View>
+      </RCTScrollView>
     </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
@@ -1518,26 +1510,21 @@ exports[`The Onboarding LandingScreen component should render with an ImageCompo
         }
       }
     >
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTScrollView
+        contentContainerStyle={
+          Object {
+            "minHeight": "100%",
+          }
+        }
+        overScrollMode="auto"
+        scrollEnabled={false}
         style={
           Object {
             "flex": 1,
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 0,
           }
         }
       >
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        >
+        <View>
           <View
             style={
               Object {
@@ -1747,7 +1734,7 @@ exports[`The Onboarding LandingScreen component should render with an ImageCompo
             </Text>
           </View>
         </View>
-      </View>
+      </RCTScrollView>
     </BVLinearGradient>
   </View>
 </RCTSafeAreaView>
