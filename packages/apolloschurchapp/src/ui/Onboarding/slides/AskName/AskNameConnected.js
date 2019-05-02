@@ -62,6 +62,7 @@ const AskNameConnected = memo(
               >
                 {({
                   isValid,
+                  isSubmitting,
                   submitForm,
                   values,
                   touched,
@@ -80,7 +81,7 @@ const AskNameConnected = memo(
                     touched={touched}
                     errors={errors}
                     setFieldValue={setFieldValue}
-                    isLoading={loading}
+                    isLoading={loading || isSubmitting}
                     {...props}
                   />
                 )}

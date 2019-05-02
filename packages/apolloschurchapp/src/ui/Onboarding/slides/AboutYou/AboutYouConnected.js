@@ -13,7 +13,7 @@ import updateUserDetails from './updateUserDetails';
 const AboutYouConnected = memo(
   ({ onPressPrimary, onPressSecondary, ...props }) => (
     <Query query={getUserProfile}>
-      {({ data: { currentUser = { profile: {} } } = {} }) => {
+      {({ data: { currentUser = { profile: {} } } = {}, loading = false }) => {
         const { gender, birthDate } = currentUser.profile;
 
         return (
@@ -60,6 +60,7 @@ const AboutYouConnected = memo(
               >
                 {({
                   isValid,
+                  isSubmitting,
                   submitForm,
                   values,
                   touched,
@@ -78,6 +79,7 @@ const AboutYouConnected = memo(
                     touched={touched}
                     errors={errors}
                     setFieldValue={setFieldValue}
+                    isLoading={loading || isSubmitting}
                     {...props}
                   />
                 )}
