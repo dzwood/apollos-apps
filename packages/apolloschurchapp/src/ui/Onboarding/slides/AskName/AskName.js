@@ -2,6 +2,8 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 
+import { SafeAreaView } from 'react-navigation';
+
 import { PaddedView, TextInput } from '@apollosproject/ui-kit';
 
 import Slide, { SlideContent } from '../../Slide';
@@ -25,42 +27,45 @@ const AskName = memo(
 
     return (
       <Slide onPressPrimary={onPressPrimary} isLoading={isLoading} {...props}>
-        <SlideContent title={slideTitle} description={description} icon>
-          <PaddedView horizontal={false}>
-            <TextInput
-              label={'First Name'}
-              type={'text'}
-              textContentType={'givenName'} // ios autofill
-              returnKeyType={'next'}
-              value={get(values, 'firstName')}
-              error={
-                get(touched, 'firstName', false) &&
-                get(errors, 'firstName', null)
-              }
-              onChangeText={(text) => setFieldValue('firstName', text)}
-              onSubmitEditing={() => LastNameInput.focus()}
-              disabled={isLoading}
-              enablesReturnKeyAutomatically
-            />
-            <TextInput
-              label={'Last Name'}
-              type={'text'}
-              textContentType={'familyName'} // ios autofill
-              returnKeyType={'next'}
-              value={get(values, 'lastName')}
-              error={
-                get(touched, 'lastName', false) && get(errors, 'lastName', null)
-              }
-              onChangeText={(text) => setFieldValue('lastName', text)}
-              onSubmitEditing={onPressPrimary}
-              disabled={isLoading}
-              enablesReturnKeyAutomatically
-              inputRef={(r) => {
-                LastNameInput = r;
-              }}
-            />
-          </PaddedView>
-        </SlideContent>
+        <SafeAreaView forceInset={{ top: 'always', bottom: 'always' }}>
+          <SlideContent title={slideTitle} description={description} icon>
+            <PaddedView horizontal={false}>
+              <TextInput
+                label={'First Name'}
+                type={'text'}
+                textContentType={'givenName'} // ios autofill
+                returnKeyType={'next'}
+                value={get(values, 'firstName')}
+                error={
+                  get(touched, 'firstName', false) &&
+                  get(errors, 'firstName', null)
+                }
+                onChangeText={text => setFieldValue('firstName', text)}
+                onSubmitEditing={() => LastNameInput.focus()}
+                disabled={isLoading}
+                enablesReturnKeyAutomatically
+              />
+              <TextInput
+                label={'Last Name'}
+                type={'text'}
+                textContentType={'familyName'} // ios autofill
+                returnKeyType={'next'}
+                value={get(values, 'lastName')}
+                error={
+                  get(touched, 'lastName', false) &&
+                  get(errors, 'lastName', null)
+                }
+                onChangeText={text => setFieldValue('lastName', text)}
+                onSubmitEditing={onPressPrimary}
+                disabled={isLoading}
+                enablesReturnKeyAutomatically
+                inputRef={r => {
+                  LastNameInput = r;
+                }}
+              />
+            </PaddedView>
+          </SlideContent>
+        </SafeAreaView>
       </Slide>
     );
   }
