@@ -33,16 +33,6 @@ class Onboarding extends Component {
 
   swiper = null;
 
-  state = {
-    swiperVisible: false,
-  };
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ swiperVisible: true });
-    }, 0);
-  }
-
   // Creates ref to Swiper to be passed as a prop to children.
   setSwiperRef = (r) => {
     this.swiper = r;
@@ -54,9 +44,6 @@ class Onboarding extends Component {
   handleOnPressPrimary = () => this.swiper.scrollBy(1);
 
   render() {
-    // nasty hack. Relevant github issues: https://github.com/leecade/react-native-swiper/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+content+invisible
-    if (!this.state.swiperVisible) return null;
-
     return (
       <BackgroundView>
         <ThemedSwiper
