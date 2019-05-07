@@ -10,13 +10,25 @@ import { withTheme } from '../theme';
 import { ErrorCard } from '../Card';
 import TouchableScale from '../TouchableScale';
 
+const FlatListWithRef = ({ forwardedRef, ...props }) => (
+  <FlatList {...props} ref={forwardedRef} />
+);
+
+// Prop type from here: https://stackoverflow.com/a/51127130
+FlatListWithRef.propTypes = {
+  forwardedRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
+
 const StyledFlatList = compose(
   withTheme(({ theme: { helpers: { verticalRhythm } } } = {}) => ({
     contentContainerStyle: {
       paddingVertical: verticalRhythm(0.3125),
     }, // Android padding fix 😩
   }))
-)(FlatList);
+)(FlatListWithRef);
 
 class FeedView extends Component {
   static propTypes = {
@@ -142,7 +154,7 @@ const generateLoadingStateData = (
   return loadingStateData;
 };
 
-const enhance = compose(
+const EnhancedFeedView = compose(
   pure,
   branch(
     ({ isLoading, content }) => isLoading && !content.length,
@@ -157,6 +169,13 @@ const enhance = compose(
     defaultProps({ numColumns: 1 }),
     defaultProps({ numColumns: 2 })
   )
-);
+)(FeedView);
 
-export default enhance(FeedView);
+// eslint-disable-next-line
+const FeedViewWithRef = React.forwardRef(({ ...props }, ref) => (
+  <EnhancedFeedView {...props} forwardedRef={ref} />
+));
+
+FeedViewWithRef.displayName = 'FeedView';
+
+export default FeedViewWithRef;
