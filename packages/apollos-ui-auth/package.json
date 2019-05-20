@@ -46,7 +46,6 @@
     "formik": "1.5.1",
     "graphql-tag": "2.9.2",
     "lodash": "4.17.11",
-    "react-native-keyboard-aware-scroll-view": "0.7.0",
     "react-navigation": "2.11.2"
   },
   "devDependencies": {
