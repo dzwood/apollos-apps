@@ -1,3 +1,69 @@
+v0.8.6: May 14, 2019
+
+- Adds Storybook as an NPM package (#683) (6fc05ad1)
+- Adds binary files datasource (#699) (1f04d21f)
+- Adds Apollos.json to help improve upgrade tool. (#696) (6fa6c530)
+- Adds strategy for canary releases (#703) (348f279a)
+
+- Updates bible.api usage to match current practices (#708) (32312d19)
+
+- Fixes personal devices post by providing required rock field (#706) (c1784acb)
+- Fixes Travis deploy script, deploy script arg can only take a single command (#707) (ae305ce8)
+- Fixes appcenter by running story build task (#701) (2757b73f)
+- Fixes null scripture crash and devotional tests. (#684) (f699db78)
+
+
+v0.8.5: May 8, 2019
+
+- Adds onboarding package (#678) (08c423b4)
+- Fixes email field rendering as [Object object] for sms users (#623) (82041a21)
+
+
+v0.8.4: May 2, 2019
+
+- Adds featured content in home feed (#603) (bb05dc92)
+- Adds Script to Debug Travis (#663) (ad5cc98a)
+- Adds Text Input Underline Option (#630) (9425128a)
+- Updates Several RN Packages (#660) (702b6599)
+- Updates README.md with typo fix (#669) (16df16a7)
+- Cleans up and fixes lots of UI/UX related Onboarding issues (#640) (b07ca864)
+- Fixed test and snapshot scheduled to fail after a year (#666) (37abc08b)
+- Removes Avatar Margin (#667) (2a27ed41)
+- Removes Custom Tabs (#661) (7e6644f8)
+- Removes react-native-custom-tabs on ios (#671) (efc02f85)
+
+v0.8.3: April 25, 2019
+
+- Adds Script to Generate Component Docs (#601) (a7b5fb54)
+- Adds Static iOS Launch Images (#624) (b2ca824e)
+- Removes warning from onboarding (#653) (33d1bcc7)
+- Simplifies Switch and Fixes Warnings (#628) (56c81a2a)
+- v0.8.2 (#643) (4c1ce053)
+
+
+v0.8.2: April 17, 2019
+
+- Fixs Chip component prop warning that was noticed on onboarding (#639) (84e4a1ea)
+- Fixes UX for when users finish onboarding (#637) (70beb296)
+- disable default notifications prompt (#638) (ec306b6b)
+- Add Prayer Icon (#632) (9248fbd7)
+- Upgrades Formik (#633) (050f9e27)
+- Updated the passkit package to latest version (#627) (0f2a17b2)
+- Adds OnBoarding LocationFinder Screens (#598) (1dc4bcea)
+- Adds SMS Auth UI (#591) (18bda067)
+- Updates Android color variable names to be more generic (#618) (5345ca62)
+- Fixes date picker being unusable for users with null dates (#622) (ce4c5399)
+- Adds routing from Auth -> Onboarding -> Home (#621) (0afd5089)
+- [OnBoarding] Adds Connected AboutYou Component (#613) (88de0638)
+- Adds `AuthLoadingSwitch` to Navigate different directions, depending on if a user is logged in. (#615) (4655403d)
+- Fixes Live Content Timezones (#611) (10609dcd)
+- Adds ConnectedAskName Components to Onboarding (#612) (51324c79)
+- Makes Android Development Smoother (#586) (3c09b69b)
+- Creates new personalize component for home feed. (#596) (e7a4720f)
+- Adds Analytics UI Package (#604) (62d06122)
+- add new issue templates (#608) (35c28751)
+- v0.8.1 (#607) (678c7891)
+
 
 v0.8.1: March 25, 2019
 

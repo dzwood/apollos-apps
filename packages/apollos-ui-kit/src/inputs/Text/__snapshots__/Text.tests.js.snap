@@ -74,6 +74,7 @@ exports[`The Text Input component should render as a numeric field 1`] = `
               onFocus={[Function]}
               placeholder="Some placeholder"
               placeholderTextColor="rgba(48, 48, 48, 0.6)"
+              rejectResponderTermination={true}
               returnKeyType="done"
               style={
                 Object {
@@ -86,7 +87,6 @@ exports[`The Text Input component should render as a numeric field 1`] = `
               }
               type="numeric"
               underlineColorAndroid="transparent"
-              value=""
             />
           </View>
           <View
@@ -262,6 +262,7 @@ exports[`The Text Input component should render as a password field with an icon
               onFocus={[Function]}
               placeholder="Some placeholder"
               placeholderTextColor="rgba(48, 48, 48, 0.6)"
+              rejectResponderTermination={true}
               returnKeyType="done"
               secureTextEntry={true}
               style={
@@ -275,7 +276,6 @@ exports[`The Text Input component should render as a password field with an icon
               }
               type="password"
               underlineColorAndroid="transparent"
-              value=""
             />
           </View>
           <View
@@ -336,21 +336,7 @@ exports[`The Text Input component should render as a password field with an icon
                 opacity={1}
                 originX={0}
                 originY={0}
-                propList={
-                  Array [
-                    "fill",
-                    "fillOpacity",
-                    "fillRule",
-                    "stroke",
-                    "strokeWidth",
-                    "strokeOpacity",
-                    "strokeDasharray",
-                    "strokeDashoffset",
-                    "strokeLinecap",
-                    "strokeLinejoin",
-                    "strokeMiterlimit",
-                  ]
-                }
+                propList={Array []}
                 rotation={0}
                 scaleX={1}
                 scaleY={1}
@@ -364,6 +350,7 @@ exports[`The Text Input component should render as a password field with an icon
                 strokeMiterlimit={4}
                 strokeOpacity={1}
                 strokeWidth={1}
+                vectorEffect={0}
                 x={0}
                 y={0}
               >
@@ -408,6 +395,7 @@ exports[`The Text Input component should render as a password field with an icon
                   strokeMiterlimit={4}
                   strokeOpacity={1}
                   strokeWidth={1}
+                  vectorEffect={0}
                   x={0}
                   y={0}
                 />
@@ -578,6 +566,7 @@ exports[`The Text Input component should render as a phone number field 1`] = `
               onFocus={[Function]}
               placeholder="Some placeholder"
               placeholderTextColor="rgba(48, 48, 48, 0.6)"
+              rejectResponderTermination={true}
               returnKeyType="done"
               style={
                 Object {
@@ -590,7 +579,6 @@ exports[`The Text Input component should render as a phone number field 1`] = `
               }
               type="phone"
               underlineColorAndroid="transparent"
-              value=""
             />
           </View>
           <View
@@ -767,6 +755,7 @@ exports[`The Text Input component should render as an email field 1`] = `
               onFocus={[Function]}
               placeholder="Some placeholder"
               placeholderTextColor="rgba(48, 48, 48, 0.6)"
+              rejectResponderTermination={true}
               returnKeyType="done"
               style={
                 Object {
@@ -779,7 +768,6 @@ exports[`The Text Input component should render as an email field 1`] = `
               }
               type="email"
               underlineColorAndroid="transparent"
-              value=""
             />
           </View>
           <View
@@ -953,6 +941,7 @@ exports[`The Text Input component should render correctly 1`] = `
               onFocus={[Function]}
               placeholder="Some placeholder"
               placeholderTextColor="rgba(48, 48, 48, 0.6)"
+              rejectResponderTermination={true}
               returnKeyType="done"
               style={
                 Object {
@@ -964,7 +953,6 @@ exports[`The Text Input component should render correctly 1`] = `
                 }
               }
               underlineColorAndroid="transparent"
-              value=""
             />
           </View>
           <View
@@ -1058,6 +1046,147 @@ exports[`The Text Input component should render correctly 1`] = `
               }
             />
           </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
+
+exports[`The Text Input component should render with no underline 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  onLayout={[Function]}
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <View
+      disabled={false}
+      style={
+        Object {
+          "marginVertical": 16,
+        }
+      }
+    >
+      <View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "opacity": 0,
+              }
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              editable={true}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              placeholder="Some placeholder"
+              placeholderTextColor="rgba(48, 48, 48, 0.6)"
+              rejectResponderTermination={true}
+              returnKeyType="done"
+              style={
+                Object {
+                  "color": "#303030",
+                  "fontFamily": "InterUI-Bold",
+                  "fontSize": 14,
+                  "height": 38,
+                  "paddingVertical": 0,
+                }
+              }
+              underlineColorAndroid="transparent"
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "justifyContent": "center",
+              }
+            }
+          />
+        </View>
+        <View
+          onLayout={[Function]}
+          pointerEvents="none"
+          style={
+            Object {
+              "bottom": 0,
+              "justifyContent": "center",
+              "opacity": 1,
+              "position": "absolute",
+              "top": 0,
+              "transform": Array [
+                Object {
+                  "scale": 1,
+                },
+                Object {
+                  "translateX": 0,
+                },
+                Object {
+                  "translateY": 0,
+                },
+              ],
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "color": "#505050",
+                "fontFamily": "InterUI-Bold",
+                "fontSize": 12,
+                "lineHeight": 17.28,
+                "paddingVertical": 4,
+              }
+            }
+          >
+            Text input...
+          </Text>
         </View>
       </View>
     </View>

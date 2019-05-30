@@ -1,18 +1,15 @@
 import React from 'react';
-import { Platform } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { Platform, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { get } from 'lodash';
 
-import {
-  SideBySideView,
-  styled,
-  MediaPlayerSpacer,
-} from '@apollosproject/ui-kit';
+import { SideBySideView, styled } from '@apollosproject/ui-kit';
+import { MediaPlayerSpacer } from '@apollosproject/ui-media-player';
 import Share from '../../Share';
 
 import LikeButton from '../../LikeButton';
+
 
 import getShareContent from './getShareContent';
 
@@ -25,7 +22,7 @@ const PositioningView = styled(({ theme }) => ({
 const Container = styled(({ theme }) => ({
   backgroundColor: theme.colors.paper,
   ...Platform.select(theme.shadows.default),
-}))(SafeAreaView);
+}))(View);
 
 const ActionContainer = ({ itemId }) => (
   <Container>

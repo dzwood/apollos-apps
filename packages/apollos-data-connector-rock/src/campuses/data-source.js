@@ -16,6 +16,7 @@ export default class Campus extends RockApolloDataSource {
 
   getAll = () =>
     this.request()
+      .filter('IsActive eq true')
       .expand('Location')
       .expand('Location/Image')
       .get();
@@ -46,7 +47,11 @@ export default class Campus extends RockApolloDataSource {
       .expand('Campus/Location/Image')
       .first();
 
-    if (family) {
+    /* Ensure we have a valid campus instead of returning an empty object
+     * if `family.campus` is empty Rock sends:
+     *   `{ campus: { location: {} } }`
+     */
+    if (family && Object.keys(family.campus.location).length) {
       return family.campus;
     }
     return null;

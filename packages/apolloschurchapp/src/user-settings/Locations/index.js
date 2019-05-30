@@ -37,6 +37,7 @@ class Location extends PureComponent {
       latitudeDelta: PropTypes.number,
       longitudeDelta: PropTypes.number,
     }),
+    onFinished: PropTypes.func,
   };
 
   static defaultProps = {
@@ -77,7 +78,13 @@ class Location extends PureComponent {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, onFinished } = this.props;
+    // we should use the `onFinished` from the navigation param, if it exists.
+    const handleFinished = this.props.navigation.getParam(
+      'onFinished',
+      onFinished
+    );
+
     return (
       <Query
         query={getAllCampuses}
@@ -102,8 +109,7 @@ class Location extends PureComponent {
                     profile: {
                       ...currentUser.profile,
                       campus: {
-                        ...currentUser.profile.campus,
-                        name: updateUserCampus.campus.name,
+                        ...updateUserCampus.campus,
                       },
                     },
                   },
@@ -126,6 +132,7 @@ class Location extends PureComponent {
                     },
                   });
                   await navigation.goBack();
+                  if (handleFinished) handleFinished();
                 }}
               />
             )}
