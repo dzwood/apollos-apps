@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import getUserCampus from './getUserCampus';
-import LocationFinder from '.';
+import LocationFinder from './LocationFinder';
 
 class LocationFinderConnected extends PureComponent {
   state = { selectedCampus: false };

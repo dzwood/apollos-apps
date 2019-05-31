@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 
 import getUserFirstName from './getUserFirstName';
-import Features from '.';
+import Features from './Features';
 
 const AskNameConnected = (props) => (
   <Query query={getUserFirstName}>

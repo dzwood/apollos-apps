@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // This query is also found in core/permissionUtils. We should refactor into a notifications module.
 import getNotificationsEnabled from './getNotificationsEnabled';
 
-import AskNotifications from '.';
+import AskNotifications from './AskNotifications';
 
 // eslint-disable-next-line react/display-name
 const AskNotificationsConnected = memo(
