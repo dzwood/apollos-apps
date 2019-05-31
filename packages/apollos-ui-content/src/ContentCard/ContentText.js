@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, {
+import {
+  styled,
   CardContent,
   H3,
   H4,

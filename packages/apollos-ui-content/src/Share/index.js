@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose, pure } from 'recompose';
-import share from 'apolloschurchapp/src/utils/content/share';
+// TODO
+// import share from 'apolloschurchapp/src/utils/content/share';
 import { Touchable, Icon, withTheme } from '@apollosproject/ui-kit';
 import { AnalyticsConsumer } from '@apollosproject/ui-analytics';
 
@@ -14,7 +15,7 @@ const Share = enhance(({ content, theme }) => (
   <AnalyticsConsumer>
     {({ track }) => {
       const onPress = () => {
-        share(content);
+        // share(content);
         track({
           eventName: 'ShareContent',
           properties: { id: content.id, title: content.title },
