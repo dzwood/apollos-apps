@@ -87,9 +87,23 @@ const resolver = {
   },
   ContentSeriesContentItem: {
     ...defaultContentItemResolvers,
+    scriptures: ({ attributeValues }, args, { dataSources }) => {
+      const reference = get(attributeValues, 'scriptures.value');
+      if (reference && reference != null) {
+        return dataSources.Scripture.getScriptures(reference);
+      }
+      return null;
+    },
   },
   MediaContentItem: {
     ...defaultContentItemResolvers,
+    scriptures: ({ attributeValues }, args, { dataSources }) => {
+      const reference = get(attributeValues, 'scriptures.value');
+      if (reference && reference != null) {
+        return dataSources.Scripture.getScriptures(reference);
+      }
+      return null;
+    },
   },
   ContentItem: {
     ...defaultContentItemResolvers,

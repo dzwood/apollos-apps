@@ -1,6 +1,28 @@
 import gql from 'graphql-tag';
 import { extendForEachContentItemType } from './utils';
 
+export const ContentItemInterfaceFields = `
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    images: [ImageMedia]
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+    htmlContent: String
+    summary: String
+    childContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    siblingContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    parentChannel: ContentChannel
+
+    theme: Theme
+`;
+
 export const testSchema = gql`
   scalar Upload
 `;
@@ -218,114 +240,28 @@ export const analyticsSchema = gql`
 
 export const contentItemSchema = gql`
   interface ContentItem {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-
-    theme: Theme
+${ContentItemInterfaceFields}
   }
 
   type UniversalContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
-    theme: Theme
+${ContentItemInterfaceFields}
   }
 
   type DevotionalContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
+${ContentItemInterfaceFields}
 
-    theme: Theme
     scriptures: [Scripture]
   }
 
   type MediaContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
+${ContentItemInterfaceFields}
 
-    theme: Theme
     scriptures: [Scripture]
   }
 
   type ContentSeriesContentItem implements ContentItem & Node {
-    id: ID!
-    title: String
-    coverImage: ImageMedia
-    images: [ImageMedia]
-    videos: [VideoMedia]
-    audios: [AudioMedia]
-    htmlContent: String
-    summary: String
-    childContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    siblingContentItemsConnection(
-      first: Int
-      after: String
-    ): ContentItemsConnection
-    parentChannel: ContentChannel
+${ContentItemInterfaceFields}
 
-    theme: Theme
     scriptures: [Scripture]
   }
 

@@ -209,6 +209,20 @@ Adding a new ContentItemType is a common operation, and we have some configurati
 
 If determining the `ContentItem` type is more complex than something like` ContentChannelTypeId`, you'll need to override the `__resolveType` function on the `ContentItem` resolver.
 
+To include all the existing fields on the `ContentItem` interface, you can use the following variable. This method is preferred to copy and pasting them.
+
+```
+import { ContentItemInterfaceFields } from '@apollosproject/data-schema';
+
+const newItemSchema = gql`
+type MyNewItem implements ContentItem {
+${ContentItemInterfaceFields}
+
+  someNewField: String
+}
+`
+```
+
 ### F.A.Q
 
 #### Q: How do I figure out what methods are on X data source?
