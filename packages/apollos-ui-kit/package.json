@@ -1,10 +1,11 @@
 {
   "name": "@apollosproject/ui-kit",
-  "version": "0.8.5",
+  "version": "0.8.7",
   "homepage": "https://github.com/ApollosProject/apollos-prototype#readme",
   "main": "src/index.js",
   "files": [
-    "src/**"
+    "src/**",
+    "storybook/**"
   ],
   "scripts": {
     "test": "jest",
@@ -39,6 +40,7 @@
     ]
   },
   "peerDependencies": {
+    "@apollosproject/storybook": "*",
     "react": "*",
     "react-native": "*",
     "react-native-linear-gradient": "*",
@@ -47,6 +49,8 @@
   "dependencies": {
     "color": "^3.1.0",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "numeral": "^2.0.6",
     "react-native-modal-datetime-picker": "6.0.0",
     "react-native-tab-view": "1.0.2",
     "react-native-webview": "5.8.2",
@@ -54,18 +58,15 @@
     "rn-placeholder": "1.2.0"
   },
   "devDependencies": {
-    "@apollosproject/babel-preset-apollos": "^0.8.5",
-    "codecov": "3.1.0",
-    "jest": "23.6.0",
+    "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
-    "react": "16.6.3",
+    "react": "16.8.3",
     "react-docgen": "^4.1.0",
-    "react-dom": "16.6.3",
-    "react-native": "0.58.5",
-    "react-native-linear-gradient": "2.5.3",
-    "react-native-svg": "9.2.4",
-    "react-navigation": "2.11.2",
+    "react-native": "0.59.8",
+    "react-native-linear-gradient": "2.5.4",
+    "react-native-svg": "9.4.0",
+    "react-navigation": "2.18.3",
     "react-test-renderer": "16.6.1"
   },
   "license": "SEE LICENSE IN LICENSE.md",

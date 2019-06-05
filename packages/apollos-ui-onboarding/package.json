@@ -1,10 +1,11 @@
 {
   "name": "@apollosproject/ui-onboarding",
-  "version": "0.8.5",
+  "version": "0.8.7",
   "homepage": "https://github.com/ApollosProject/apollos-prototype#readme",
   "main": "src/index.js",
   "files": [
-    "src/**"
+    "src/**",
+    "storybook/**"
   ],
   "scripts": {
     "test": "jest",
@@ -28,12 +29,17 @@
     "modulePaths": [
       "<rootDir>/src/"
     ],
+    "modulePathIgnorePatterns": [
+      "node_modules/@storybook/"
+    ],
     "setupFiles": [
       "./jest.setup.js"
     ]
   },
   "peerDependencies": {
-    "@apollos-project/ui-kit": "*",
+    "@apollosproject/storybook": "*",
+    "@apollosproject/ui-analytics": "*",
+    "@apollosproject/ui-kit": "*",
     "apollo-client": "*",
     "react": "*",
     "react-apollo": "*",
@@ -47,22 +53,17 @@
     "moment": "2.22.2",
     "react-is": "^16.8.6",
     "react-native-swiper": "^1.5.14",
-    "react-navigation": "2.11.2",
     "yup": "0.26.6"
   },
   "devDependencies": {
-    "@apollosproject/ui-kit": "^0.8.5",
     "@storybook/react-native": "^4.0.7",
     "apollo-client": "2.5.1",
-    "codecov": "3.1.0",
-    "jest": "23.6.0",
+    "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
-    "react": "16.6.3",
+    "react": "16.8.3",
     "react-apollo": "2.5.5",
-    "react-dom": "16.6.3",
-    "react-native": "0.58.5",
-    "react-navigation": "2.11.2",
+    "react-native": "0.59.8",
     "react-test-renderer": "16.6.1",
     "waait": "1.0.2"
   },

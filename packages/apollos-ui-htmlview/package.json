@@ -1,10 +1,11 @@
 {
   "name": "@apollosproject/ui-htmlview",
-  "version": "0.8.5",
+  "version": "0.8.7",
   "homepage": "https://github.com/ApollosProject/apollos-prototype#readme",
   "main": "src/index.js",
   "files": [
-    "src/**"
+    "src/**",
+    "storybook/**"
   ],
   "scripts": {
     "test": "jest",
@@ -35,17 +36,17 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@apollosproject/ui-kit": "^0.8.5",
+    "@apollosproject/ui-kit": "^0.8.7",
+    "@apollosproject/ui-storybook": "^0.8.7",
+    "entities": "^1.1.2",
     "htmlparser2": "3.9.2"
   },
   "devDependencies": {
-    "codecov": "3.1.0",
-    "jest": "23.6.0",
+    "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
-    "react": "16.6.3",
-    "react-dom": "16.6.3",
-    "react-native": "0.58.5",
+    "react": "16.8.3",
+    "react-native": "0.59.8",
     "react-test-renderer": "16.6.3"
   },
   "publishConfig": {
