@@ -1,20 +1,15 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import {
   styled,
   H6,
   PaddedView,
-  BackgroundView,
   TextInput,
   ButtonLink,
 } from '@apollosproject/ui-kit';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import gql from 'graphql-tag';
-import { Mutation } from 'react-apollo';
 
 import {
   NextButtonRow,
@@ -23,14 +18,6 @@ import {
   PromptText,
   BrandIcon,
 } from '../styles';
-
-const requestPin = gql`
-  mutation requestPin($phone: String!) {
-    requestSmsLoginPin(phoneNumber: $phone) {
-      success
-    }
-  }
-`;
 
 const FlexedSafeAreaView = styled({
   flex: 1,
@@ -43,17 +30,26 @@ const LegalText = styled({
 
 class PhoneEntry extends Component {
   static propTypes = {
-    brand: PropTypes.node,
+    values: PropTypes.shape({
+      phone: PropTypes.string,
+    }),
+    touched: PropTypes.shape({
+      phone: PropTypes.string,
+    }),
+    errors: PropTypes.shape({
+      phone: PropTypes.string,
+    }),
+    setFieldValue: PropTypes.func.isRequired,
+    onPressNext: PropTypes.func,
+    screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
     authTitleText: PropTypes.string,
     smsPromptText: PropTypes.string,
     smsPolicyInfo: PropTypes.node,
     allowPassword: PropTypes.bool,
     smsPasswordLoginPrompt: PropTypes.node,
-    screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
   };
 
   static defaultProps = {
-    brand: <BrandIcon />,
     authTitleText: 'Have we met before?',
     smsPromptText:
       "Let's get you signed in using your mobile number. We'll text you a code to make login super easy!",
@@ -65,13 +61,6 @@ class PhoneEntry extends Component {
     allowPassword: true,
     smsPasswordLoginPrompt: "I'd rather use my email and a password",
   };
-
-  validationSchema = Yup.object().shape({
-    phone: Yup.string().matches(
-      /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/,
-      'Your phone number appears to be invalid'
-    ),
-  });
 
   get flatProps() {
     return { ...this.props, ...(this.props.screenProps || {}) };
@@ -100,76 +89,50 @@ class PhoneEntry extends Component {
 
   render() {
     const {
-      brand,
       authTitleText,
-      smsPromptText,
       smsPolicyInfo,
       allowPassword,
       smsPasswordLoginPrompt,
     } = this.flatProps;
 
     return (
-      <KeyboardAvoidingView style={StyleSheet.absoluteFill} behavior="padding">
-        <BackgroundView>
-          <Mutation mutation={requestPin}>
-            {(mutate) => (
-              <Formik
-                initialValues={{ phone: '' }}
-                validationSchema={this.validationSchema}
-                onSubmit={this.handleOnSubmit(mutate)}
-              >
-                {({
-                  setFieldValue,
-                  handleSubmit,
-                  values,
-                  isSubmitting,
-                  isValid,
-                  touched,
-                  errors,
-                }) => (
-                  <FlexedSafeAreaView forceInset={forceInset}>
-                    <ScrollView>
-                      <PaddedView>
-                        {brand}
-                        <TitleText>{authTitleText}</TitleText>
-                        <PromptText padded>{smsPromptText}</PromptText>
+      <FlexedSafeAreaView forceInset={forceInset}>
+        <ScrollView>
+          <PaddedView>
+            <BrandIcon />
+            <TitleText>{authTitleText}</TitleText>
+            <PromptText padded>{this.props.smsPromptText}</PromptText>
 
-                        <TextInput
-                          autoFocus
-                          autoComplete="tel"
-                          label="Mobile Number"
-                          type="phone"
-                          returnKeyType="next"
-                          onSubmitEditing={this.handleAdvance}
-                          enzblesReturnKeyAutomatically
-                          error={touched.phone && errors.phone}
-                          onChangeText={(text) => setFieldValue('phone', text)}
-                          value={values.phone}
-                        />
-                      </PaddedView>
-                      {allowPassword ? (
-                        <PaddedView>
-                          <ButtonLink onPress={this.handlePasswordLoginPress}>
-                            {smsPasswordLoginPrompt}
-                          </ButtonLink>
-                        </PaddedView>
-                      ) : null}
-                    </ScrollView>
-                    <NextButtonRow>
-                      {smsPolicyInfo}
-                      <NextButton
-                        onPress={handleSubmit}
-                        disabled={isSubmitting || !isValid}
-                        loading={isSubmitting}
-                      />
-                    </NextButtonRow>
-                  </FlexedSafeAreaView>
-                )}
-              </Formik>
-            )}
-          </Mutation>
-        </BackgroundView>
-      </KeyboardAvoidingView>
+            <TextInput
+              autoFocus
+              autoComplete="tel"
+              label="Mobile Number"
+              type="phone"
+              returnKeyType="next"
+              onSubmitEditing={this.handleAdvance} // TODO: is this dead code?
+              enzblesReturnKeyAutomatically
+              error={this.props.touched.phone && this.props.errors.phone}
+              onChangeText={(text) => this.props.setFieldValue('phone', text)}
+              value={this.props.values.phone}
+            />
+          </PaddedView>
+          {allowPassword ? (
+            <PaddedView>
+              <ButtonLink onPress={this.handlePasswordLoginPress}>
+                {smsPasswordLoginPrompt}
+              </ButtonLink>
+            </PaddedView>
+          ) : null}
+        </ScrollView>
+        <NextButtonRow>
+          {smsPolicyInfo}
+          <NextButton
+            onPress={this.props.onPressNext}
+            // disabled={isSubmitting || !isValid}
+            // loading={isSubmitting}
+          />
+        </NextButtonRow>
+      </FlexedSafeAreaView>
     );
   }
 }
