@@ -83,8 +83,8 @@ class PhoneEntryConnected extends Component {
                   setFieldValue,
                   handleSubmit,
                   values,
-                  // isSubmitting,
-                  // isValid,
+                  isSubmitting,
+                  isValid,
                   touched,
                   errors,
                 }) => (
@@ -94,6 +94,8 @@ class PhoneEntryConnected extends Component {
                     touched={touched}
                     errors={errors}
                     onPressNext={handleSubmit}
+                    disabled={isSubmitting || !isValid}
+                    isLoading={isSubmitting}
                   />
                 )}
               </Formik>

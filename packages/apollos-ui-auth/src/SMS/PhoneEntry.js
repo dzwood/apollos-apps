@@ -11,13 +11,7 @@ import {
   ButtonLink,
 } from '@apollosproject/ui-kit';
 
-import {
-  NextButtonRow,
-  NextButton,
-  TitleText,
-  PromptText,
-  BrandIcon,
-} from '../styles';
+import { NextButton, TitleText, PromptText, BrandIcon } from '../styles';
 
 const FlexedSafeAreaView = styled({
   flex: 1,
@@ -42,6 +36,8 @@ class PhoneEntry extends Component {
     }),
     setFieldValue: PropTypes.func.isRequired,
     onPressNext: PropTypes.func,
+    disabled: PropTypes.bool,
+    isLoading: PropTypes.bool,
     screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
     authTitleText: PropTypes.string,
     smsPromptText: PropTypes.string,
@@ -130,8 +126,8 @@ class PhoneEntry extends Component {
         <PaddedView>
           <NextButton
             onPress={this.props.onPressNext}
-            // disabled={isSubmitting || !isValid}
-            // loading={isSubmitting}
+            disabled={this.props.disabled}
+            loading={this.props.isLoading}
           />
         </PaddedView>
       </FlexedSafeAreaView>
