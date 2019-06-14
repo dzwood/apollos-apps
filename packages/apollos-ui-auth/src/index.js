@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
   SMSPhoneEntry as AuthSMSPhoneEntry,
+  SMSPhoneEntryConnected as AuthSMSPhoneEntryConnected,
   SMSVerification as AuthSMSVerification,
 } from './SMS';
 import AuthPassword from './Password';
@@ -17,16 +18,21 @@ export getLoginState from './getLoginState';
 export logout from './logout';
 export authLink from './authLink';
 
-export { AuthSMSPhoneEntry, AuthSMSVerification, AuthPassword };
+export {
+  AuthSMSPhoneEntry,
+  AuthSMSPhoneEntryConnected,
+  AuthSMSVerification,
+  AuthPassword,
+};
 
 const AuthNavigator = createStackNavigator(
   {
-    AuthSMSPhoneEntry,
+    AuthSMSPhoneEntryConnected,
     AuthSMSVerification,
     AuthPassword,
   },
   {
-    initialRouteName: 'AuthSMSPhoneEntry',
+    initialRouteName: 'AuthSMSPhoneEntryConnected',
     headerMode: 'none',
   }
 );
