@@ -24,15 +24,6 @@ export const PromptText = styled(({ theme }) => ({
   color: theme.colors.text.secondary,
 }))(H5);
 
-const NextButtonIcon = withTheme(({ theme }) => ({
-  size: theme.helpers.rem(1.25),
-  style: {
-    marginLeft: theme.sizing.baseUnit * 0.5,
-    marginRight: theme.sizing.baseUnit * -0.5,
-  },
-  name: 'arrow-next',
-}))(Icon);
-
 export const NextButtonRow = styled({
   flexDirection: 'row',
   // justifyContent: 'space-between',
@@ -40,7 +31,7 @@ export const NextButtonRow = styled({
 })(PaddedView);
 
 export const NextButton = (props) => (
-  <Button type="secondary" pill={false} {...props}>
+  <Button type={'primary'} pill={false} {...props}>
     <H5>Next</H5>
   </Button>
 );
