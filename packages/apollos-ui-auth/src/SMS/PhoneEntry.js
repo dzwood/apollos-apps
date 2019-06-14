@@ -24,9 +24,10 @@ const FlexedSafeAreaView = styled({
 })(SafeAreaView);
 const forceInset = { top: 'always' };
 
-const LegalText = styled({
-  width: '70%',
-})(H6);
+const LegalText = styled(({ theme }) => ({
+  // width: '70%',
+  color: theme.colors.text.tertiary,
+}))(H6);
 
 class PhoneEntry extends Component {
   static propTypes = {
@@ -115,6 +116,7 @@ class PhoneEntry extends Component {
               onChangeText={(text) => this.props.setFieldValue('phone', text)}
               value={this.props.values.phone}
             />
+            {smsPolicyInfo}
           </PaddedView>
           {allowPassword ? (
             <PaddedView>
@@ -124,14 +126,14 @@ class PhoneEntry extends Component {
             </PaddedView>
           ) : null}
         </ScrollView>
-        <NextButtonRow>
-          {smsPolicyInfo}
+
+        <PaddedView>
           <NextButton
             onPress={this.props.onPressNext}
             // disabled={isSubmitting || !isValid}
             // loading={isSubmitting}
           />
-        </NextButtonRow>
+        </PaddedView>
       </FlexedSafeAreaView>
     );
   }

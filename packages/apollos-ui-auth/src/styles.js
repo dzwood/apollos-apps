@@ -35,15 +35,12 @@ const NextButtonIcon = withTheme(({ theme }) => ({
 
 export const NextButtonRow = styled({
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  // justifyContent: 'space-between',
   alignItems: 'center',
 })(PaddedView);
 
 export const NextButton = (props) => (
-  <Button type="secondary" {...props}>
-    <>
-      <H5>Next</H5>
-      <NextButtonIcon />
-    </>
+  <Button type="secondary" pill={false} {...props}>
+    <H5>Next</H5>
   </Button>
 );
