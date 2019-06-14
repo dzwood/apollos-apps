@@ -110,7 +110,7 @@ class PhoneEntry extends Component {
               label="Mobile Number"
               type="phone"
               returnKeyType="next"
-              onSubmitEditing={this.handleAdvance} // TODO: is this dead code?
+              onSubmitEditing={this.props.onPressNext}
               enzblesReturnKeyAutomatically
               error={this.props.touched.phone && this.props.errors.phone}
               onChangeText={(text) => this.props.setFieldValue('phone', text)}
