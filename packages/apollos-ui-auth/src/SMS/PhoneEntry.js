@@ -23,7 +23,6 @@ const LegalText = styled(({ theme }) => ({
 }))(H6);
 
 const PhoneEntry = ({
-  allowPassword,
   alternateLoginText,
   authTitleText,
   disabled,
@@ -58,7 +57,7 @@ const PhoneEntry = ({
         />
         {smsPolicyInfo}
       </PaddedView>
-      {allowPassword ? (
+      {onPressAlternateLogin ? (
         <PaddedView>
           <ButtonLink onPress={onPressAlternateLogin}>
             {alternateLoginText}
@@ -101,7 +100,6 @@ PhoneEntry.propTypes = {
 
 PhoneEntry.defaultProps = {
   authTitleText: 'Have we met before?',
-  allowPassword: true,
   alternateLoginText: "I'd rather use my email and a password",
   smsPolicyInfo: (
     <LegalText>
