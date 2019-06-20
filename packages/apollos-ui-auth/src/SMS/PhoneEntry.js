@@ -57,23 +57,6 @@ class PhoneEntry extends Component {
     smsPasswordLoginPrompt: "I'd rather use my email and a password",
   };
 
-  handleOnSubmit = (mutate) => async (
-    { phone },
-    { setSubmitting, setFieldError }
-  ) => {
-    setSubmitting(true);
-    try {
-      await mutate({ variables: { phone } });
-      this.props.navigation.navigate('AuthSMSVerification', { phone });
-    } catch (e) {
-      setFieldError(
-        'phone',
-        'There was an error. Please double check your number and try again.'
-      );
-    }
-    setSubmitting(false);
-  };
-
   handlePasswordLoginPress = () => {
     this.props.navigation.navigate('AuthPassword');
   };
