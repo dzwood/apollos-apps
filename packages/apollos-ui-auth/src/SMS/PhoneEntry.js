@@ -50,7 +50,7 @@ const PhoneEntry = ({
           type="phone"
           returnKeyType="next"
           onSubmitEditing={onPressNext}
-          enzblesReturnKeyAutomatically
+          enablesReturnKeyAutomatically
           error={touched.phone && errors.phone}
           onChangeText={(text) => setFieldValue('phone', text)}
           value={values.phone}
@@ -109,5 +109,7 @@ PhoneEntry.defaultProps = {
   smsPromptText:
     "Let's get you signed in using your mobile number. We'll text you a code to make login super easy!",
 };
+
+PhoneEntry.displayName = 'PhoneEntry';
 
 export default PhoneEntry;
