@@ -54,7 +54,7 @@ class PhoneEntryConnected extends Component {
     setSubmitting(false);
   };
 
-  handlePasswordLoginPress = () => {
+  handleOnPressAlternativeLogin = () => {
     this.props.navigation.navigate('AuthPassword');
   };
 
@@ -87,6 +87,7 @@ class PhoneEntryConnected extends Component {
                     touched={touched}
                     errors={errors}
                     onPressNext={handleSubmit}
+                    onPressAlternativeLogin={this.handleOnPressAlternativeLogin}
                     disabled={isSubmitting || !isValid}
                     isLoading={isSubmitting}
                     {...this.flatProps}
