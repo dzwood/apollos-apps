@@ -45,10 +45,10 @@ const PhoneEntry = ({
 
         <TextInput
           autoFocus
-          autoComplete="tel"
-          label="Mobile Number"
-          type="phone"
-          returnKeyType="next"
+          autoComplete={'tel'}
+          label={'Mobile Number'}
+          type={'phone'}
+          returnKeyType={'next'}
           onSubmitEditing={onPressNext}
           enablesReturnKeyAutomatically
           error={touched.phone && errors.phone}
