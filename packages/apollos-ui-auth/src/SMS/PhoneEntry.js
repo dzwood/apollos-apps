@@ -38,7 +38,6 @@ class PhoneEntry extends Component {
     onPressNext: PropTypes.func,
     disabled: PropTypes.bool,
     isLoading: PropTypes.bool,
-    screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
     authTitleText: PropTypes.string,
     smsPromptText: PropTypes.string,
     smsPolicyInfo: PropTypes.node,
@@ -58,10 +57,6 @@ class PhoneEntry extends Component {
     allowPassword: true,
     smsPasswordLoginPrompt: "I'd rather use my email and a password",
   };
-
-  get flatProps() {
-    return { ...this.props, ...(this.props.screenProps || {}) };
-  }
 
   handleOnSubmit = (mutate) => async (
     { phone },
@@ -85,19 +80,12 @@ class PhoneEntry extends Component {
   };
 
   render() {
-    const {
-      authTitleText,
-      smsPolicyInfo,
-      allowPassword,
-      smsPasswordLoginPrompt,
-    } = this.flatProps;
-
     return (
       <FlexedSafeAreaView forceInset={forceInset}>
         <ScrollView>
           <PaddedView>
             <BrandIcon />
-            <TitleText>{authTitleText}</TitleText>
+            <TitleText>{this.props.authTitleText}</TitleText>
             <PromptText padded>{this.props.smsPromptText}</PromptText>
 
             <TextInput
@@ -112,12 +100,12 @@ class PhoneEntry extends Component {
               onChangeText={(text) => this.props.setFieldValue('phone', text)}
               value={this.props.values.phone}
             />
-            {smsPolicyInfo}
+            {this.props.smsPolicyInfo}
           </PaddedView>
-          {allowPassword ? (
+          {this.props.allowPassword ? (
             <PaddedView>
               <ButtonLink onPress={this.handlePasswordLoginPress}>
-                {smsPasswordLoginPrompt}
+                {this.props.smsPasswordLoginPrompt}
               </ButtonLink>
             </PaddedView>
           ) : null}

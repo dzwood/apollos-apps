@@ -24,6 +24,10 @@ class PhoneEntryConnected extends Component {
     screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
   };
 
+  static defaultProps = {
+    screenProps: {},
+  };
+
   validationSchema = Yup.object().shape({
     phone: Yup.string().matches(
       /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/,
@@ -31,9 +35,7 @@ class PhoneEntryConnected extends Component {
     ),
   });
 
-  get flatProps() {
-    return { ...this.props, ...(this.props.screenProps || {}) };
-  }
+  flatProps = { ...this.props, ...this.props.screenProps };
 
   handleOnSubmit = (mutate) => async (
     { phone },
