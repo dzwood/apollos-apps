@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import { AnalyticsConsumer } from '@apollosproject/ui-analytics';
-import getUserCampus from './getUserCampus';
+import GET_USER_CAMPUS from './getUserCampus';
 import LocationFinder from './LocationFinder';
 
 class LocationFinderConnected extends PureComponent {
@@ -10,7 +10,7 @@ class LocationFinderConnected extends PureComponent {
 
   render() {
     return (
-      <Query query={getUserCampus} fetchPolicy="cache-and-network">
+      <Query query={GET_USER_CAMPUS} fetchPolicy="cache-and-network">
         {({
           data: {
             currentUser: {
@@ -22,7 +22,7 @@ class LocationFinderConnected extends PureComponent {
         }) => (
           <AnalyticsConsumer>
             {({ track }) => (
-              <LocationFinder
+              <this.props.Component
                 onPressButton={async () => {
                   this.setState({ selectedCampus: true });
                   this.props.onNavigate();
@@ -53,8 +53,18 @@ class LocationFinderConnected extends PureComponent {
 }
 
 LocationFinderConnected.propTypes = {
+  // Custom component to be rendered. Defaults to LocationFinder
+  Component: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   onPressPrimary: PropTypes.func,
   onNavigate: PropTypes.func.isRequired,
+};
+
+LocationFinderConnected.defaultProps = {
+  Component: LocationFinder,
 };
 
 LocationFinderConnected.displayName = 'LocationFinderConnected';

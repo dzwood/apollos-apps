@@ -4,20 +4,20 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-import getUserFirstAndLastName from './getUserFirstAndLastName';
+import GET_USER_FIRST_AND_LAST_NAME from './getUserFirstAndLastName';
 import AskName from './AskName';
 
-import updateUserName from './updateUserName';
+import UPDATE_USER_NAME from './updateUserName';
 
 // eslint-disable-next-line react/display-name
 const AskNameConnected = memo(
-  ({ onPressPrimary, onPressSecondary, ...props }) => (
-    <Query query={getUserFirstAndLastName}>
+  ({ Component, onPressPrimary, onPressSecondary, ...props }) => (
+    <Query query={GET_USER_FIRST_AND_LAST_NAME}>
       {({ loading, data: { currentUser = { profile: {} } } = {} }) => {
         const { firstName, lastName } = currentUser.profile;
 
         return (
-          <Mutation mutation={updateUserName}>
+          <Mutation mutation={UPDATE_USER_NAME}>
             {(updateName) => (
               <Formik
                 initialValues={{ firstName, lastName }}
@@ -69,7 +69,7 @@ const AskNameConnected = memo(
                   errors,
                   setFieldValue,
                 }) => (
-                  <AskName
+                  <Component
                     onPressPrimary={loading || isValid ? submitForm : null} // if form `isValid` show the primary nav button (next)
                     onPressSecondary={
                       // if form `!isValid` show the secondary nav button (skip)
@@ -97,8 +97,20 @@ const AskNameConnected = memo(
 );
 
 AskNameConnected.propTypes = {
+  // Custom component to be rendered. Defaults to AskName
+  Component: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   onPressPrimary: PropTypes.func,
   onPressSecondary: PropTypes.func,
 };
+
+AskNameConnected.defaultProps = {
+  Component: AskName,
+};
+
+AskNameConnected.displayName = 'AskNameConnected';
 
 export default AskNameConnected;

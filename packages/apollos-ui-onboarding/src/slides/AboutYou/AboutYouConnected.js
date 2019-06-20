@@ -4,19 +4,19 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-import getUserGenderAndBirthDate from './getUserGenderAndBirthDate';
+import GET_USER_GENDER_AND_BIRTH_DATE from './getUserGenderAndBirthDate';
 import AboutYou from './AboutYou';
 
-import updateUserDetails from './updateUserDetails';
+import UPDATE_USER_DETAILS from './updateUserDetails';
 
 const AboutYouConnected = memo(
-  ({ onPressPrimary, onPressSecondary, ...props }) => (
-    <Query query={getUserGenderAndBirthDate}>
+  ({ Component, onPressPrimary, onPressSecondary, ...props }) => (
+    <Query query={GET_USER_GENDER_AND_BIRTH_DATE}>
       {({ data: { currentUser = { profile: {} } } = {}, loading = false }) => {
         const { gender, birthDate } = currentUser.profile;
 
         return (
-          <Mutation mutation={updateUserDetails}>
+          <Mutation mutation={UPDATE_USER_DETAILS}>
             {(updateDetails) => (
               <Formik
                 initialValues={{ gender, birthDate }}
@@ -66,7 +66,7 @@ const AboutYouConnected = memo(
                   errors,
                   setFieldValue,
                 }) => (
-                  <AboutYou
+                  <Component
                     onPressPrimary={isValid ? submitForm : null} // if form `isValid` show the primary nav button (next)
                     onPressSecondary={
                       // if form `!isValid` show the secondary nav button (skip)
@@ -94,8 +94,18 @@ const AboutYouConnected = memo(
 );
 
 AboutYouConnected.propTypes = {
+  // Custom component to be rendered. Defaults to AboutYou
+  Component: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.object,
+  ]),
   onPressPrimary: PropTypes.func,
   onPressSecondary: PropTypes.func,
+};
+
+AboutYouConnected.defaultProps = {
+  Component: AboutYou,
 };
 
 AboutYouConnected.displayName = 'AboutYouConnected';

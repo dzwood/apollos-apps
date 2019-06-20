@@ -1,34 +1,78 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import wait from 'waait';
+import { Text } from 'react-native';
 
-import { Providers } from '../../testUtils';
+import { renderWithApolloData, Providers } from '../../testUtils';
 
-import getUserFirstName from './getUserFirstName';
+import GET_USER_FIRST_NAME from './getUserFirstName';
 import FeaturesConnected from './FeaturesConnected';
 
 describe('The Onboarding FeaturesConnected component', () => {
-  it('renders with a firstName when logged in', async () => {
+  it('should render', () => {
+    const tree = renderer.create(
+      <Providers>
+        <FeaturesConnected />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render with a firstName when logged in', async () => {
     const mock = {
       request: {
-        query: getUserFirstName,
+        query: GET_USER_FIRST_NAME,
       },
       result: {
         data: {
           currentUser: {
+            __typename: 'AuthenticatedUser',
+            id: 'AuthenticatedUser:123',
             profile: {
+              __typename: 'Person',
+              id: 'Person:123',
               firstName: 'Marty',
             },
           },
         },
       },
     };
-    const tree = renderer.create(
+
+    const tree = await renderWithApolloData(
       <Providers mocks={[mock]}>
         <FeaturesConnected />
       </Providers>
     );
-    await wait(0); // wait for response from graphql
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render a custom Component', async () => {
+    const mock = {
+      request: {
+        query: GET_USER_FIRST_NAME,
+      },
+      result: {
+        data: {
+          currentUser: {
+            __typename: 'AuthenticatedUser',
+            id: 'AuthenticatedUser:123',
+            profile: {
+              __typename: 'Person',
+              id: 'Person:123',
+              firstName: 'Marty',
+            },
+          },
+        },
+      },
+    };
+
+    // eslint-disable-next-line react/prop-types
+    const CustomComponent = ({ firstName }) => (
+      <Text>{`${firstName} also thinks Skyline chili is the best.`}</Text>
+    );
+
+    const tree = await renderWithApolloData(
+      <Providers mocks={[mock]}>
+        <FeaturesConnected Component={CustomComponent} />
+      </Providers>
+    );
     expect(tree).toMatchSnapshot();
   });
 });
