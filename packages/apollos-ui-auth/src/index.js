@@ -43,18 +43,16 @@ AuthNavigator.navigationOptions = {
 
 AuthNavigator.propTypes = {
   screenProps: PropTypes.shape({
-    brand: PropTypes.node,
+    allowCancel: PropTypes.bool, // TODO: pretty sure this is dead code
+    alternateLoginText: PropTypes.node,
     authTitleText: PropTypes.string,
-    smsPromptText: PropTypes.string,
-    smsPolicyInfo: PropTypes.node,
-    allowPassword: PropTypes.bool,
-    smsPasswordLoginPrompt: PropTypes.node,
-    passwordPromptText: PropTypes.string,
+    cancelText: PropTypes.string, // TODO: pretty sure this is dead code
     confirmationTitleText: PropTypes.string,
     confirmationPromptText: PropTypes.string,
     onFinishAuth: PropTypes.func,
-    allowCancel: PropTypes.bool,
-    cancelText: PropTypes.string,
+    passwordPromptText: PropTypes.string,
+    smsPolicyInfo: PropTypes.node,
+    smsPromptText: PropTypes.string,
   }),
 };
 
