@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-prop-types */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
@@ -22,84 +22,94 @@ const LegalText = styled(({ theme }) => ({
   color: theme.colors.text.tertiary,
 }))(H6);
 
-class PhoneEntry extends Component {
-  static propTypes = {
-    values: PropTypes.shape({
-      phone: PropTypes.string,
-    }),
-    touched: PropTypes.shape({
-      phone: PropTypes.string,
-    }),
-    errors: PropTypes.shape({
-      phone: PropTypes.string,
-    }),
-    setFieldValue: PropTypes.func.isRequired,
-    onPressNext: PropTypes.func,
-    disabled: PropTypes.bool,
-    isLoading: PropTypes.bool,
-    authTitleText: PropTypes.string,
-    smsPromptText: PropTypes.string,
-    smsPolicyInfo: PropTypes.node,
-    allowPassword: PropTypes.bool,
-    alternativeLoginText: PropTypes.node,
-    onPressAlternativeLogin: PropTypes.func,
-  };
+const PhoneEntry = ({
+  allowPassword,
+  alternativeLoginText,
+  authTitleText,
+  disabled,
+  errors,
+  isLoading,
+  onPressAlternativeLogin,
+  onPressNext,
+  setFieldValue,
+  smsPolicyInfo,
+  smsPromptText,
+  touched,
+  values,
+}) => (
+  <FlexedSafeAreaView forceInset={forceInset}>
+    <ScrollView>
+      <PaddedView>
+        <BrandIcon />
+        <TitleText>{authTitleText}</TitleText>
+        <PromptText padded>{smsPromptText}</PromptText>
 
-  static defaultProps = {
-    authTitleText: 'Have we met before?',
-    smsPromptText:
-      "Let's get you signed in using your mobile number. We'll text you a code to make login super easy!",
-    smsPolicyInfo: (
-      <LegalText>
-        {"We'll never share your information or contact you (unless you ask!)."}
-      </LegalText>
-    ),
-    allowPassword: true,
-    alternativeLoginText: "I'd rather use my email and a password",
-  };
-
-  render() {
-    return (
-      <FlexedSafeAreaView forceInset={forceInset}>
-        <ScrollView>
-          <PaddedView>
-            <BrandIcon />
-            <TitleText>{this.props.authTitleText}</TitleText>
-            <PromptText padded>{this.props.smsPromptText}</PromptText>
-
-            <TextInput
-              autoFocus
-              autoComplete="tel"
-              label="Mobile Number"
-              type="phone"
-              returnKeyType="next"
-              onSubmitEditing={this.props.onPressNext}
-              enzblesReturnKeyAutomatically
-              error={this.props.touched.phone && this.props.errors.phone}
-              onChangeText={(text) => this.props.setFieldValue('phone', text)}
-              value={this.props.values.phone}
-            />
-            {this.props.smsPolicyInfo}
-          </PaddedView>
-          {this.props.allowPassword ? (
-            <PaddedView>
-              <ButtonLink onPress={this.props.onPressAlternativeLogin}>
-                {this.props.alternativeLoginText}
-              </ButtonLink>
-            </PaddedView>
-          ) : null}
-        </ScrollView>
-
+        <TextInput
+          autoFocus
+          autoComplete="tel"
+          label="Mobile Number"
+          type="phone"
+          returnKeyType="next"
+          onSubmitEditing={onPressNext}
+          enzblesReturnKeyAutomatically
+          error={touched.phone && errors.phone}
+          onChangeText={(text) => setFieldValue('phone', text)}
+          value={values.phone}
+        />
+        {smsPolicyInfo}
+      </PaddedView>
+      {allowPassword ? (
         <PaddedView>
-          <NextButton
-            onPress={this.props.onPressNext}
-            disabled={this.props.disabled}
-            loading={this.props.isLoading}
-          />
+          <ButtonLink onPress={onPressAlternativeLogin}>
+            {alternativeLoginText}
+          </ButtonLink>
         </PaddedView>
-      </FlexedSafeAreaView>
-    );
-  }
-}
+      ) : null}
+    </ScrollView>
+
+    <PaddedView>
+      <NextButton
+        onPress={onPressNext}
+        disabled={disabled}
+        loading={isLoading}
+      />
+    </PaddedView>
+  </FlexedSafeAreaView>
+);
+
+PhoneEntry.propTypes = {
+  allowPassword: PropTypes.bool,
+  alternativeLoginText: PropTypes.node,
+  authTitleText: PropTypes.string,
+  disabled: PropTypes.bool,
+  errors: PropTypes.shape({
+    phone: PropTypes.string,
+  }),
+  isLoading: PropTypes.bool,
+  onPressAlternativeLogin: PropTypes.func,
+  onPressNext: PropTypes.func,
+  setFieldValue: PropTypes.func.isRequired,
+  smsPolicyInfo: PropTypes.node,
+  smsPromptText: PropTypes.string,
+  touched: PropTypes.shape({
+    phone: PropTypes.string,
+  }),
+  values: PropTypes.shape({
+    phone: PropTypes.string,
+  }),
+};
+
+PhoneEntry.defaultProps = {
+  authTitleText: 'Have we met before?',
+  allowPassword: true,
+  alternativeLoginText: "I'd rather use my email and a password",
+  smsPolicyInfo: (
+    <LegalText>
+      {"We'll never share your information or contact you (unless you ask!)."}
+    </LegalText>
+  ),
+  smsPromptText:
+    "Let's get you signed in using your mobile number. We'll text you a code to make login super easy!",
+};
 
 export default PhoneEntry;
