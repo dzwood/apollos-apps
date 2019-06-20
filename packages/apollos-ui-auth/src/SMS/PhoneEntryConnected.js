@@ -31,9 +31,9 @@ class PhoneEntryConnected extends Component {
     ),
   });
 
-  // get flatProps() {
-  //   return { ...this.props, ...(this.props.screenProps || {}) };
-  // }
+  get flatProps() {
+    return { ...this.props, ...(this.props.screenProps || {}) };
+  }
 
   handleOnSubmit = (mutate) => async (
     { phone },
@@ -57,15 +57,6 @@ class PhoneEntryConnected extends Component {
   };
 
   render() {
-    // const {
-    //   brand,
-    //   authTitleText,
-    //   smsPromptText,
-    //   smsPolicyInfo,
-    //   allowPassword,
-    //   smsPasswordLoginPrompt,
-    // } = this.flatProps;
-
     return (
       <KeyboardAvoidingView
         style={StyleSheet.absoluteFill}
@@ -96,6 +87,7 @@ class PhoneEntryConnected extends Component {
                     onPressNext={handleSubmit}
                     disabled={isSubmitting || !isValid}
                     isLoading={isSubmitting}
+                    {...this.flatProps}
                   />
                 )}
               </Formik>
