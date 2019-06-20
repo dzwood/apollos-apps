@@ -24,12 +24,12 @@ const LegalText = styled(({ theme }) => ({
 
 const PhoneEntry = ({
   allowPassword,
-  alternativeLoginText,
+  alternateLoginText,
   authTitleText,
   disabled,
   errors,
   isLoading,
-  onPressAlternativeLogin,
+  onPressAlternateLogin,
   onPressNext,
   setFieldValue,
   smsPolicyInfo,
@@ -60,8 +60,8 @@ const PhoneEntry = ({
       </PaddedView>
       {allowPassword ? (
         <PaddedView>
-          <ButtonLink onPress={onPressAlternativeLogin}>
-            {alternativeLoginText}
+          <ButtonLink onPress={onPressAlternateLogin}>
+            {alternateLoginText}
           </ButtonLink>
         </PaddedView>
       ) : null}
@@ -79,14 +79,14 @@ const PhoneEntry = ({
 
 PhoneEntry.propTypes = {
   allowPassword: PropTypes.bool,
-  alternativeLoginText: PropTypes.node,
+  alternateLoginText: PropTypes.node,
   authTitleText: PropTypes.string,
   disabled: PropTypes.bool,
   errors: PropTypes.shape({
     phone: PropTypes.string,
   }),
   isLoading: PropTypes.bool,
-  onPressAlternativeLogin: PropTypes.func,
+  onPressAlternateLogin: PropTypes.func,
   onPressNext: PropTypes.func,
   setFieldValue: PropTypes.func.isRequired,
   smsPolicyInfo: PropTypes.node,
@@ -102,7 +102,7 @@ PhoneEntry.propTypes = {
 PhoneEntry.defaultProps = {
   authTitleText: 'Have we met before?',
   allowPassword: true,
-  alternativeLoginText: "I'd rather use my email and a password",
+  alternateLoginText: "I'd rather use my email and a password",
   smsPolicyInfo: (
     <LegalText>
       {"We'll never share your information or contact you (unless you ask!)."}
