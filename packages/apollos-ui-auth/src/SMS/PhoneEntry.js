@@ -41,7 +41,7 @@ class PhoneEntry extends Component {
     smsPromptText: PropTypes.string,
     smsPolicyInfo: PropTypes.node,
     allowPassword: PropTypes.bool,
-    smsPasswordLoginPrompt: PropTypes.node,
+    alternativeLoginText: PropTypes.node,
     onPressAlternativeLogin: PropTypes.func,
   };
 
@@ -55,7 +55,7 @@ class PhoneEntry extends Component {
       </LegalText>
     ),
     allowPassword: true,
-    smsPasswordLoginPrompt: "I'd rather use my email and a password",
+    alternativeLoginText: "I'd rather use my email and a password",
   };
 
   render() {
@@ -83,8 +83,8 @@ class PhoneEntry extends Component {
           </PaddedView>
           {this.props.allowPassword ? (
             <PaddedView>
-                {this.props.smsPasswordLoginPrompt}
               <ButtonLink onPress={this.props.onPressAlternativeLogin}>
+                {this.props.alternativeLoginText}
               </ButtonLink>
             </PaddedView>
           ) : null}
