@@ -19,7 +19,6 @@ const FlexedSafeAreaView = styled({
 const forceInset = { top: 'always' };
 
 const LegalText = styled(({ theme }) => ({
-  // width: '70%',
   color: theme.colors.text.tertiary,
 }))(H6);
 
