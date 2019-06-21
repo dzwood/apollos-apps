@@ -7,7 +7,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ApolloConsumer, Mutation } from 'react-apollo';
 
-import handleLogin from '../handleLogin';
+import HANDLE_LOGIN from '../handleLogin';
 import { AuthConsumer } from '../Provider';
 
 import Verification from './Verification';
@@ -59,7 +59,7 @@ class VerificationConnected extends Component {
                     mutation={VERIFY_PIN}
                     update={(cache, { data: { authenticateWithSms } }) => {
                       client.mutate({
-                        mutation: handleLogin,
+                        mutation: HANDLE_LOGIN,
                         variables: {
                           authToken: authenticateWithSms.token,
                         },
