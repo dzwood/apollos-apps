@@ -11,11 +11,9 @@ import { PaddedView, BackgroundView, TextInput } from '@apollosproject/ui-kit';
 import { SafeAreaView } from 'react-navigation';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import gql from 'graphql-tag';
 import { ApolloConsumer, Mutation } from 'react-apollo';
 
 import handleLogin from '../handleLogin';
-
 import {
   NextButtonRow,
   NextButton,
@@ -23,16 +21,10 @@ import {
   PromptText,
   BrandIcon,
 } from '../styles';
-
 import { AuthConsumer } from '../Provider';
 
-const VERIFY_PIN = gql`
-  mutation verifyPin($phone: String!, $code: String!) {
-    authenticateWithSms(phoneNumber: $phone, pin: $code) {
-      token
-    }
-  }
-`;
+import VERIFY_PIN from './verifyPin';
+
 class Verification extends Component {
   static propTypes = {
     brand: PropTypes.node,
