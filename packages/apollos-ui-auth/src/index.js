@@ -5,6 +5,7 @@ import {
   SMSPhoneEntry as AuthSMSPhoneEntry,
   SMSPhoneEntryConnected as AuthSMSPhoneEntryConnected,
   SMSVerification as AuthSMSVerification,
+  SMSVerificationConnected as AuthSMSVerificationConnected,
 } from './SMS';
 import AuthPassword from './Password';
 
@@ -21,7 +22,7 @@ export authLink from './authLink';
 export {
   AuthSMSPhoneEntry,
   AuthSMSPhoneEntryConnected,
-  AuthSMSVerification,
+  AuthSMSVerificationConnected,
   AuthPassword,
 };
 
