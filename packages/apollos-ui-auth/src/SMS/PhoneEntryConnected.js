@@ -4,20 +4,12 @@ import PropTypes from 'prop-types';
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 
 import { BackgroundView } from '@apollosproject/ui-kit';
 
 import PhoneEntry from './PhoneEntry';
-
-const requestPin = gql`
-  mutation requestPin($phone: String!) {
-    requestSmsLoginPin(phoneNumber: $phone) {
-      success
-    }
-  }
-`;
+import REQUEST_PIN from './requestPin';
 
 class PhoneEntryConnected extends Component {
   static propTypes = {
@@ -65,7 +57,7 @@ class PhoneEntryConnected extends Component {
         behavior={'padding'}
       >
         <BackgroundView>
-          <Mutation mutation={requestPin}>
+          <Mutation mutation={REQUEST_PIN}>
             {(mutate) => (
               <Formik
                 initialValues={{ phone: '' }}
