@@ -16,12 +16,10 @@ import {
 const Verification = ({
   confirmationTitleText,
   confirmationPromptText,
-  brand,
+  disabled,
   errors,
-  handleLogin,
-  handleSubmit,
-  isSubmitting,
-  isValid,
+  isLoading,
+  onPressNext,
   setFieldValue,
   touched,
   values,
@@ -29,7 +27,7 @@ const Verification = ({
   <SafeAreaView style={StyleSheet.absoluteFill}>
     <ScrollView>
       <PaddedView>
-        {brand}
+        <BrandIcon />
         <TitleText>{confirmationTitleText}</TitleText>
         <PromptText padded>{confirmationPromptText}</PromptText>
         <TextInput
@@ -48,24 +46,34 @@ const Verification = ({
     <NextButtonRow>
       <View />
       <NextButton
-        onPress={handleSubmit}
-        disabled={isSubmitting || !isValid}
-        loading={isSubmitting}
+        onPress={onPressNext}
+        disabled={disabled}
+        loading={isLoading}
       />
     </NextButtonRow>
   </SafeAreaView>
 );
 
 Verification.propTypes = {
-  brand: PropTypes.node,
   confirmationTitleText: PropTypes.string,
   confirmationPromptText: PropTypes.string,
+  disabled: PropTypes.bool,
+  errors: PropTypes.shape({
+    code: PropTypes.string,
+  }),
+  isLoading: PropTypes.bool,
   onFinishAuth: PropTypes.func,
-  screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
+  onPressNext: PropTypes.func,
+  setFieldValue: PropTypes.func.isRequired,
+  touched: PropTypes.shape({
+    code: PropTypes.string,
+  }),
+  values: PropTypes.shape({
+    code: PropTypes.string,
+  }),
 };
 
 Verification.defaultProps = {
-  brand: <BrandIcon />,
   confirmationTitleText: 'Thanks!\nStand by…',
   confirmationPromptText:
     'We just sent you a code. Enter it below when it comes.',

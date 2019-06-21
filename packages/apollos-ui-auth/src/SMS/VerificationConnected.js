@@ -15,10 +15,6 @@ import VERIFY_PIN from './verifyPin';
 
 class VerificationConnected extends Component {
   static propTypes = {
-    brand: PropTypes.node,
-    confirmationTitleText: PropTypes.string,
-    confirmationPromptText: PropTypes.string,
-    onFinishAuth: PropTypes.func,
     screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
   };
 
@@ -87,9 +83,9 @@ class VerificationConnected extends Component {
                         }) => (
                           <Verification
                             errors={errors}
-                            handleSubmit={handleSubmit}
-                            isSubmitting={isSubmitting}
-                            isValid={isValid}
+                            disabled={isSubmitting || !isValid}
+                            isLoading={isSubmitting}
+                            onPressNext={handleSubmit}
                             setFieldValue={setFieldValue}
                             touched={touched}
                             values={values}
