@@ -1,31 +1,19 @@
 /* eslint-disable react/no-unused-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  View,
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
-import { PaddedView, BackgroundView, TextInput } from '@apollosproject/ui-kit';
-import { SafeAreaView } from 'react-navigation';
+import { KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { BackgroundView } from '@apollosproject/ui-kit';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ApolloConsumer, Mutation } from 'react-apollo';
 
 import handleLogin from '../handleLogin';
-import {
-  NextButtonRow,
-  NextButton,
-  TitleText,
-  PromptText,
-  BrandIcon,
-} from '../styles';
 import { AuthConsumer } from '../Provider';
 
+import Verification from './Verification';
 import VERIFY_PIN from './verifyPin';
 
-class Verification extends Component {
+class VerificationConnected extends Component {
   static propTypes = {
     brand: PropTypes.node,
     confirmationTitleText: PropTypes.string,
@@ -35,19 +23,14 @@ class Verification extends Component {
   };
 
   static defaultProps = {
-    brand: <BrandIcon />,
-    confirmationTitleText: 'Thanks!\nStand by…',
-    confirmationPromptText:
-      'We just sent you a code. Enter it below when it comes.',
+    screenProps: {},
   };
 
   validationSchema = Yup.object().shape({
     phone: Yup.string().matches(/^[6-9]\d{9}$/),
   });
 
-  get flatProps() {
-    return { ...this.props, ...(this.props.screenProps || {}) };
-  }
+  flatProps = { ...this.props, ...this.props.screenProps };
 
   handleOnSubmit = ({ verifyPin, closeAuth }) => async (
     { code },
@@ -69,12 +52,6 @@ class Verification extends Component {
   };
 
   render() {
-    const {
-      brand,
-      confirmationTitleText,
-      confirmationPromptText,
-    } = this.flatProps;
-
     return (
       <KeyboardAvoidingView style={StyleSheet.absoluteFill} behavior="padding">
         <BackgroundView>
@@ -108,38 +85,16 @@ class Verification extends Component {
                           touched,
                           errors,
                         }) => (
-                          <SafeAreaView style={StyleSheet.absoluteFill}>
-                            <ScrollView>
-                              <PaddedView>
-                                {brand}
-                                <TitleText>{confirmationTitleText}</TitleText>
-                                <PromptText padded>
-                                  {confirmationPromptText}
-                                </PromptText>
-                                <TextInput
-                                  autoFocus
-                                  label="Verification Code"
-                                  type="numeric"
-                                  autoComplete="password"
-                                  returnKeyType="next"
-                                  enzblesReturnKeyAutomatically
-                                  error={touched.code && errors.code}
-                                  onChangeText={(text) =>
-                                    setFieldValue('code', text)
-                                  }
-                                  value={values.code}
-                                />
-                              </PaddedView>
-                            </ScrollView>
-                            <NextButtonRow>
-                              <View />
-                              <NextButton
-                                onPress={handleSubmit}
-                                disabled={isSubmitting || !isValid}
-                                loading={isSubmitting}
-                              />
-                            </NextButtonRow>
-                          </SafeAreaView>
+                          <Verification
+                            errors={errors}
+                            handleSubmit={handleSubmit}
+                            isSubmitting={isSubmitting}
+                            isValid={isValid}
+                            setFieldValue={setFieldValue}
+                            touched={touched}
+                            values={values}
+                            {...this.flatProps}
+                          />
                         )}
                       </Formik>
                     )}
@@ -154,4 +109,4 @@ class Verification extends Component {
   }
 }
 
-export default Verification;
+export default VerificationConnected;
