@@ -29,7 +29,7 @@ export {
 const AuthNavigator = createStackNavigator(
   {
     AuthSMSPhoneEntryConnected,
-    AuthSMSVerification,
+    AuthSMSVerificationConnected,
     AuthPassword,
   },
   {

@@ -41,7 +41,7 @@ class PhoneEntryConnected extends Component {
     setSubmitting(true);
     try {
       await mutate({ variables: { phone } });
-      this.props.navigation.navigate('AuthSMSVerification', { phone });
+      this.props.navigation.navigate('AuthSMSVerificationConnected', { phone });
     } catch (e) {
       setFieldError(
         'phone',
