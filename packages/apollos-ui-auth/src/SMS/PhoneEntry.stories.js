@@ -3,6 +3,8 @@ import { storiesOf } from '@apollosproject/ui-storybook';
 
 import PhoneEntry from './PhoneEntry';
 
-storiesOf('ui-auth/SMS/PhoneEntry', module).add('default', () => (
-  <PhoneEntry setFieldValue={() => {}} />
-));
+storiesOf('ui-auth/SMS/PhoneEntry', module)
+  .add('default', () => <PhoneEntry setFieldValue={() => {}} />)
+  .add('authTitleText', () => (
+    <PhoneEntry setFieldValue={() => {}} authTitleText={'Custom Title'} />
+  ));

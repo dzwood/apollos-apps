@@ -14,4 +14,12 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render with a custom authTitleText', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry setFieldValue={jest.fn()} authTitleText={'Custom Title'} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });
