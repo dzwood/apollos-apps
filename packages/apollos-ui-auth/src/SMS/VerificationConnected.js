@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
-import { BackgroundView } from '@apollosproject/ui-kit';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { ApolloConsumer, Mutation } from 'react-apollo';
@@ -15,10 +14,17 @@ import VERIFY_PIN from './verifyPin';
 
 class VerificationConnected extends Component {
   static propTypes = {
+    // Custom component to be rendered. Defaults to Verification
+    Component: PropTypes.oneOfType([
+      PropTypes.node,
+      PropTypes.func,
+      PropTypes.object, // type check for React fragments
+    ]),
     screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
   };
 
   static defaultProps = {
+    Component: Verification,
     screenProps: {},
   };
 
@@ -50,56 +56,54 @@ class VerificationConnected extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={StyleSheet.absoluteFill} behavior="padding">
-        <BackgroundView>
-          <AuthConsumer>
-            {({ closeAuth }) => (
-              <ApolloConsumer>
-                {(client) => (
-                  <Mutation
-                    mutation={VERIFY_PIN}
-                    update={(cache, { data: { authenticateWithSms } }) => {
-                      client.mutate({
-                        mutation: HANDLE_LOGIN,
-                        variables: {
-                          authToken: authenticateWithSms.token,
-                        },
-                      });
-                    }}
-                  >
-                    {(verifyPin) => (
-                      <Formik
-                        initialValues={{ code: '' }}
-                        validationSchema={this.validationSchema}
-                        onSubmit={this.handleOnSubmit({ verifyPin, closeAuth })}
-                      >
-                        {({
-                          setFieldValue,
-                          handleSubmit,
-                          values,
-                          isSubmitting,
-                          isValid,
-                          touched,
-                          errors,
-                        }) => (
-                          <Verification
-                            errors={errors}
-                            disabled={isSubmitting || !isValid}
-                            isLoading={isSubmitting}
-                            onPressNext={handleSubmit}
-                            setFieldValue={setFieldValue}
-                            touched={touched}
-                            values={values}
-                            {...this.flatProps}
-                          />
-                        )}
-                      </Formik>
-                    )}
-                  </Mutation>
-                )}
-              </ApolloConsumer>
-            )}
-          </AuthConsumer>
-        </BackgroundView>
+        <AuthConsumer>
+          {({ closeAuth }) => (
+            <ApolloConsumer>
+              {(client) => (
+                <Mutation
+                  mutation={VERIFY_PIN}
+                  update={(cache, { data: { authenticateWithSms } }) => {
+                    client.mutate({
+                      mutation: HANDLE_LOGIN,
+                      variables: {
+                        authToken: authenticateWithSms.token,
+                      },
+                    });
+                  }}
+                >
+                  {(verifyPin) => (
+                    <Formik
+                      initialValues={{ code: '' }}
+                      validationSchema={this.validationSchema}
+                      onSubmit={this.handleOnSubmit({ verifyPin, closeAuth })}
+                    >
+                      {({
+                        setFieldValue,
+                        handleSubmit,
+                        values,
+                        isSubmitting,
+                        isValid,
+                        touched,
+                        errors,
+                      }) => (
+                        <Component
+                          errors={errors}
+                          disabled={isSubmitting || !isValid}
+                          isLoading={isSubmitting}
+                          onPressNext={handleSubmit}
+                          setFieldValue={setFieldValue}
+                          touched={touched}
+                          values={values}
+                          {...this.flatProps}
+                        />
+                      )}
+                    </Formik>
+                  )}
+                </Mutation>
+              )}
+            </ApolloConsumer>
+          )}
+        </AuthConsumer>
       </KeyboardAvoidingView>
     );
   }
