@@ -91,7 +91,7 @@ PhoneEntry.propTypes = {
   smsPolicyInfo: PropTypes.node,
   smsPromptText: PropTypes.string,
   touched: PropTypes.shape({
-    phone: PropTypes.string,
+    phone: PropTypes.bool,
   }),
   values: PropTypes.shape({
     phone: PropTypes.string,
