@@ -6,8 +6,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Mutation } from 'react-apollo';
 
-import { BackgroundView } from '@apollosproject/ui-kit';
-
 import PhoneEntry from './PhoneEntry';
 import REQUEST_PIN from './requestPin';
 
@@ -63,8 +61,6 @@ class PhoneEntryConnected extends Component {
         style={StyleSheet.absoluteFill}
         behavior={'padding'}
       >
-        <BackgroundView>
-        </BackgroundView>
         <Mutation mutation={REQUEST_PIN}>
           {(mutate) => (
             <Formik
