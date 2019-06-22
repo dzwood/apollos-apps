@@ -86,7 +86,7 @@ class VerificationConnected extends Component {
                         touched,
                         errors,
                       }) => (
-                        <Component
+                        <this.props.Component
                           errors={errors}
                           disabled={isSubmitting || !isValid}
                           isLoading={isSubmitting}
