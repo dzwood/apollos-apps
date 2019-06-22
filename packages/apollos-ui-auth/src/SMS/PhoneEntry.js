@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
+import { get } from 'lodash';
 import {
   styled,
   H6,
@@ -51,9 +52,9 @@ const PhoneEntry = ({
           returnKeyType={'next'}
           onSubmitEditing={onPressNext}
           enablesReturnKeyAutomatically
-          error={touched.phone && errors.phone}
+          error={get(touched, 'phone') && get(errors, 'phone')}
           onChangeText={(text) => setFieldValue('phone', text)}
-          value={values.phone}
+          value={get(values, 'phone')}
         />
         {smsPolicyInfo}
       </PaddedView>
