@@ -22,6 +22,7 @@ export authLink from './authLink';
 export {
   AuthSMSPhoneEntry,
   AuthSMSPhoneEntryConnected,
+  AuthSMSVerification,
   AuthSMSVerificationConnected,
   AuthPassword,
 };
