@@ -4,7 +4,6 @@ import {
   withTheme,
   Icon,
   styled,
-  PaddedView,
   H2,
   H5,
 } from '@apollosproject/ui-kit';
@@ -23,12 +22,6 @@ export const TitleText = styled(({ theme }) => ({
 export const PromptText = styled(({ theme }) => ({
   color: theme.colors.text.secondary,
 }))(H5);
-
-export const NextButtonRow = styled({
-  flexDirection: 'row',
-  // justifyContent: 'space-between',
-  alignItems: 'center',
-})(PaddedView);
 
 export const NextButton = (props) => (
   <Button type={'primary'} pill={false} {...props}>
