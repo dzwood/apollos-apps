@@ -13,10 +13,17 @@ import REQUEST_PIN from './requestPin';
 
 class PhoneEntryConnected extends Component {
   static propTypes = {
+    // Custom component to be rendered. Defaults to PhoneEntry
+    Component: PropTypes.oneOfType([
+      PropTypes.node,
+      PropTypes.func,
+      PropTypes.object, // type check for React fragments
+    ]),
     screenProps: PropTypes.shape({}), // we'll funnel screenProps into props
   };
 
   static defaultProps = {
+    Component: PhoneEntry,
     screenProps: {},
   };
 
@@ -57,38 +64,38 @@ class PhoneEntryConnected extends Component {
         behavior={'padding'}
       >
         <BackgroundView>
-          <Mutation mutation={REQUEST_PIN}>
-            {(mutate) => (
-              <Formik
-                initialValues={{ phone: '' }}
-                validationSchema={this.validationSchema}
-                onSubmit={this.handleOnSubmit(mutate)}
-              >
-                {({
-                  setFieldValue,
-                  handleSubmit,
-                  values,
-                  isSubmitting,
-                  isValid,
-                  touched,
-                  errors,
-                }) => (
-                  <PhoneEntry
-                    values={values}
-                    setFieldValue={setFieldValue}
-                    touched={touched}
-                    errors={errors}
-                    onPressNext={handleSubmit}
-                    onPressAlternateLogin={this.handleOnPressAlternateLogin}
-                    disabled={isSubmitting || !isValid}
-                    isLoading={isSubmitting}
-                    {...this.flatProps}
-                  />
-                )}
-              </Formik>
-            )}
-          </Mutation>
         </BackgroundView>
+        <Mutation mutation={REQUEST_PIN}>
+          {(mutate) => (
+            <Formik
+              initialValues={{ phone: '' }}
+              validationSchema={this.validationSchema}
+              onSubmit={this.handleOnSubmit(mutate)}
+            >
+              {({
+                setFieldValue,
+                handleSubmit,
+                values,
+                isSubmitting,
+                isValid,
+                touched,
+                errors,
+              }) => (
+                <this.props.Component
+                  values={values}
+                  setFieldValue={setFieldValue}
+                  touched={touched}
+                  errors={errors}
+                  onPressNext={handleSubmit}
+                  onPressAlternateLogin={this.handleOnPressAlternateLogin}
+                  disabled={isSubmitting || !isValid}
+                  isLoading={isSubmitting}
+                  {...this.flatProps}
+                />
+              )}
+            </Formik>
+          )}
+        </Mutation>
       </KeyboardAvoidingView>
     );
   }
