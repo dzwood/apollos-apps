@@ -78,7 +78,6 @@ const PhoneEntry = ({
 );
 
 PhoneEntry.propTypes = {
-  allowPassword: PropTypes.bool,
   alternateLoginText: PropTypes.node,
   authTitleText: PropTypes.string,
   disabled: PropTypes.bool,
@@ -87,7 +86,7 @@ PhoneEntry.propTypes = {
   }),
   isLoading: PropTypes.bool,
   onPressAlternateLogin: PropTypes.func,
-  onPressNext: PropTypes.func,
+  onPressNext: PropTypes.func, // used to navigate and/or submit the form
   setFieldValue: PropTypes.func.isRequired,
   smsPolicyInfo: PropTypes.node,
   smsPromptText: PropTypes.string,
