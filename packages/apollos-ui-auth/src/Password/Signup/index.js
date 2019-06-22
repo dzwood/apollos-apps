@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import { AnalyticsConsumer } from '@apollosproject/ui-analytics';
 
-import handleLogin from '../../handleLogin';
+import HANDLE_LOGIN from '../../handleLogin';
 import REGISTER_PERSON from './registerPerson';
 import SignupForm from './Form';
 
@@ -20,7 +20,7 @@ const Signup = ({ onSignup }) => (
             update={(cache, { data: { registerPerson } }) => {
               track({ eventName: 'UserSignup' });
               client.mutate({
-                mutation: handleLogin,
+                mutation: HANDLE_LOGIN,
                 variables: {
                   authToken: registerPerson.token,
                 },

@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-import handleLogin from '../../handleLogin';
+import HANDLE_LOGIN from '../../handleLogin';
 import AUTHENTICATE from './authenticate';
 import LoginForm from './Form';
 
@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => (
         mutation={AUTHENTICATE}
         update={(cache, { data: { authenticate } }) => {
           client.mutate({
-            mutation: handleLogin,
+            mutation: HANDLE_LOGIN,
             variables: {
               authToken: authenticate.token,
             },
