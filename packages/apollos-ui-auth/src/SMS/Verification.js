@@ -1,17 +1,11 @@
 /* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { PaddedView, TextInput } from '@apollosproject/ui-kit';
 import { SafeAreaView } from 'react-navigation';
 
-import {
-  NextButtonRow,
-  NextButton,
-  TitleText,
-  PromptText,
-  BrandIcon,
-} from '../styles';
+import { NextButton, TitleText, PromptText, BrandIcon } from '../styles';
 
 const Verification = ({
   confirmationTitleText,
@@ -43,14 +37,13 @@ const Verification = ({
         />
       </PaddedView>
     </ScrollView>
-    <NextButtonRow>
-      <View />
+    <PaddedView>
       <NextButton
         onPress={onPressNext}
         disabled={disabled}
         loading={isLoading}
       />
-    </NextButtonRow>
+    </PaddedView>
   </SafeAreaView>
 );
 
