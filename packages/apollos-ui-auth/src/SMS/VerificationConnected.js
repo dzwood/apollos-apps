@@ -87,7 +87,7 @@ class VerificationConnected extends Component {
                         errors,
                       }) => (
                         <this.props.Component
-                          errors={errors}
+                          errors={touched.code && errors}
                           disabled={isSubmitting || !isValid}
                           isLoading={isSubmitting}
                           onPressNext={handleSubmit}

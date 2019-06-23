@@ -15,7 +15,6 @@ const Verification = ({
   isLoading,
   onPressNext,
   setFieldValue,
-  touched,
   values,
 }) => (
   <SafeAreaView style={StyleSheet.absoluteFill}>
@@ -31,7 +30,7 @@ const Verification = ({
           autoComplete="password"
           returnKeyType="next"
           enzblesReturnKeyAutomatically
-          error={touched.code && errors.code}
+          error={errors.code}
           onChangeText={(text) => setFieldValue('code', text)}
           value={values.code}
         />
@@ -57,9 +56,6 @@ Verification.propTypes = {
   isLoading: PropTypes.bool,
   onPressNext: PropTypes.func,
   setFieldValue: PropTypes.func.isRequired,
-  touched: PropTypes.shape({
-    code: PropTypes.bool,
-  }),
   values: PropTypes.shape({
     code: PropTypes.string,
   }),
