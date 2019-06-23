@@ -52,4 +52,12 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render in a loading state', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry setFieldValue={jest.fn()} isLoading />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });
