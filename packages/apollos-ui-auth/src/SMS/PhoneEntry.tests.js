@@ -47,7 +47,10 @@ describe('The Auth PhoneEntry component', () => {
   it('should render in an error state', () => {
     const tree = renderer.create(
       <Providers>
-        <PhoneEntry setFieldValue={() => {}} errors={'Boom Error Boom'} />
+        <PhoneEntry
+          setFieldValue={jest.fn()}
+          errors={{ phone: 'Boom Error Boom' }}
+        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();
@@ -55,7 +58,11 @@ describe('The Auth PhoneEntry component', () => {
   it('should render in a loading state', () => {
     const tree = renderer.create(
       <Providers>
-        <PhoneEntry setFieldValue={jest.fn()} isLoading />
+        <PhoneEntry
+          setFieldValue={jest.fn()}
+          onPressNext={jest.fn()}
+          isLoading
+        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();
@@ -63,7 +70,10 @@ describe('The Auth PhoneEntry component', () => {
   it('should render with an alternate login option with default text', () => {
     const tree = renderer.create(
       <Providers>
-        <PhoneEntry setFieldValue={() => {}} onPressAlternateLogin={() => {}} />
+        <PhoneEntry
+          setFieldValue={jest.fn()}
+          onPressAlternateLogin={jest.fn()}
+        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();

@@ -27,7 +27,7 @@ const PhoneEntry = ({
   alternateLoginText,
   authTitleText,
   disabled,
-  error,
+  errors,
   isLoading,
   onPressAlternateLogin,
   onPressNext,
@@ -51,7 +51,7 @@ const PhoneEntry = ({
           returnKeyType={'next'}
           onSubmitEditing={onPressNext}
           enablesReturnKeyAutomatically
-          error={error}
+          error={get(errors, 'phone')}
           onChangeText={(text) => setFieldValue('phone', text)}
           value={get(values, 'phone')}
         />
@@ -66,13 +66,15 @@ const PhoneEntry = ({
       ) : null}
     </ScrollView>
 
-    <PaddedView>
-      <NextButton
-        onPress={onPressNext}
-        disabled={disabled}
-        loading={isLoading}
-      />
-    </PaddedView>
+    {onPressNext ? (
+      <PaddedView>
+        <NextButton
+          onPress={onPressNext}
+          disabled={disabled}
+          loading={isLoading}
+        />
+      </PaddedView>
+    ) : null}
   </FlexedSafeAreaView>
 );
 
@@ -80,7 +82,9 @@ PhoneEntry.propTypes = {
   alternateLoginText: PropTypes.node,
   authTitleText: PropTypes.string,
   disabled: PropTypes.bool,
-  error: PropTypes.string,
+  errors: PropTypes.shape({
+    phone: PropTypes.string,
+  }),
   isLoading: PropTypes.bool,
   onPressAlternateLogin: PropTypes.func,
   onPressNext: PropTypes.func, // used to navigate and/or submit the form

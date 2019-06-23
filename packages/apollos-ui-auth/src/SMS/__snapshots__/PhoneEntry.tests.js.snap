@@ -367,49 +367,6 @@ exports[`The Auth PhoneEntry component should render 1`] = `
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
-      >
-        <View
-          bordered={false}
-          disabled={false}
-          pill={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
-              "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            Next
-          </Text>
-        </View>
-      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -782,49 +739,6 @@ exports[`The Auth PhoneEntry component should render as disabled 1`] = `
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
-      >
-        <View
-          bordered={false}
-          disabled={true}
-          pill={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
-              "opacity": 0.5,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            Next
-          </Text>
-        </View>
-      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -1072,6 +986,7 @@ exports[`The Auth PhoneEntry component should render in a loading state 1`] = `
                       onBlur={[Function]}
                       onChangeText={[Function]}
                       onFocus={[Function]}
+                      onSubmitEditing={[MockFunction]}
                       placeholderTextColor="rgba(48, 48, 48, 0.6)"
                       rejectResponderTermination={true}
                       returnKeyType="next"
@@ -1206,32 +1121,48 @@ exports[`The Auth PhoneEntry component should render in a loading state 1`] = `
         }
       >
         <View
-          bordered={false}
-          disabled={false}
-          pill={false}
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
               "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
             }
           }
         >
-          <ActivityIndicator
-            animating={true}
-            color="#FFFFFF"
-            hidesWhenStopped={true}
-            size="small"
-          />
+          <View
+            bordered={false}
+            disabled={false}
+            pill={false}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#00676D",
+                "borderColor": "#00676D",
+                "borderRadius": 16,
+                "borderWidth": 2,
+                "elevation": 2,
+                "flexDirection": "row",
+                "height": 48,
+                "justifyContent": "center",
+                "opacity": 1,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
+              }
+            }
+          >
+            <ActivityIndicator
+              animating={true}
+              color="#FFFFFF"
+              hidesWhenStopped={true}
+              size="small"
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -1571,17 +1502,17 @@ exports[`The Auth PhoneEntry component should render in an error state 1`] = `
                         "right": 0,
                         "transform": Array [
                           Object {
-                            "scaleX": 0.0001,
+                            "scaleX": 1,
                           },
                         ],
                       }
                     }
                   >
                     <View
-                      hasError={false}
+                      hasError={true}
                       style={
                         Object {
-                          "backgroundColor": "#00676D",
+                          "backgroundColor": "#c64f55",
                           "bottom": 0,
                           "height": 0.5,
                         }
@@ -1590,6 +1521,19 @@ exports[`The Auth PhoneEntry component should render in an error state 1`] = `
                   </View>
                 </View>
               </View>
+              <Text
+                style={
+                  Object {
+                    "color": "#c64f55",
+                    "fontFamily": "InterUI-Bold",
+                    "fontSize": 12,
+                    "lineHeight": 17.28,
+                    "paddingTop": 8,
+                  }
+                }
+              >
+                Boom Error Boom
+              </Text>
             </View>
             <Text
               style={
@@ -1606,49 +1550,6 @@ exports[`The Auth PhoneEntry component should render in an error state 1`] = `
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
-      >
-        <View
-          bordered={false}
-          disabled={false}
-          pill={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
-              "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            Next
-          </Text>
-        </View>
-      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -2040,49 +1941,6 @@ exports[`The Auth PhoneEntry component should render with a custom alternateLogi
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
-      >
-        <View
-          bordered={false}
-          disabled={false}
-          pill={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
-              "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            Next
-          </Text>
-        </View>
-      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -2455,49 +2313,6 @@ exports[`The Auth PhoneEntry component should render with a custom authTitleText
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
-      >
-        <View
-          bordered={false}
-          disabled={false}
-          pill={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
-              "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            Next
-          </Text>
-        </View>
-      </View>
     </View>
   </View>
 </RCTSafeAreaView>
@@ -2877,7 +2692,7 @@ exports[`The Auth PhoneEntry component should render with an alternate login opt
             }
           >
             <Text
-              onPress={[Function]}
+              onPress={[MockFunction]}
               style={
                 Object {
                   "color": "#17B582",
@@ -2889,49 +2704,6 @@ exports[`The Auth PhoneEntry component should render with an alternate login opt
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
-      >
-        <View
-          bordered={false}
-          disabled={false}
-          pill={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#00676D",
-              "borderColor": "#00676D",
-              "borderRadius": 16,
-              "borderWidth": 2,
-              "elevation": 2,
-              "flexDirection": "row",
-              "height": 48,
-              "justifyContent": "center",
-              "opacity": 1,
-              "overflow": "hidden",
-              "paddingHorizontal": 16,
-            }
-          }
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FFFFFF",
-                "fontFamily": "InterUI-Medium",
-                "fontSize": 14,
-                "lineHeight": 20.16,
-              }
-            }
-          >
-            Next
-          </Text>
-        </View>
-      </View>
     </View>
   </View>
 </RCTSafeAreaView>

@@ -79,7 +79,7 @@ class PhoneEntryConnected extends Component {
               }) => (
                 <this.props.Component
                   disabled={isSubmitting || !isValid}
-                  error={touched.phone && errors.phone}
+                  errors={touched.phone && errors}
                   isLoading={isSubmitting}
                   onPressNext={handleSubmit}
                   onPressAlternateLogin={this.handleOnPressAlternateLogin}

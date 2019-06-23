@@ -18,10 +18,15 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
     <PhoneEntry setFieldValue={() => {}} authTitleText={'Custom Title'} />
   ))
   .add('disabled', () => <PhoneEntry setFieldValue={() => {}} disabled />)
-  .add('error', () => (
-    <PhoneEntry setFieldValue={() => {}} error={'Boom Error Boom'} />
+  .add('errors', () => (
+    <PhoneEntry
+      setFieldValue={() => {}}
+      errors={{ phone: 'Boom Error Boom' }}
+    />
   ))
-  .add('isLoading', () => <PhoneEntry setFieldValue={() => {}} isLoading />)
+  .add('isLoading', () => (
+    <PhoneEntry setFieldValue={() => {}} onPressNext={() => {}} isLoading />
+  ))
   .add('onPressAlternateLogin', () => (
     <PhoneEntry setFieldValue={() => {}} onPressAlternateLogin={() => {}} />
   ));
