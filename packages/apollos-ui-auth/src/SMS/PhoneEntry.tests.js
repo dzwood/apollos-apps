@@ -30,4 +30,16 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render in an error state', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry
+          setFieldValue={() => {}}
+          errors={{ phone: 'Boom Error Boom' }}
+          touched={{ phone: true }}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });
