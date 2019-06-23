@@ -45,7 +45,12 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
   .add('smsPromptText', () => (
     <PhoneEntry
       setFieldValue={() => {}}
-      onPressAlternateLogin={() => {}}
       smsPromptText={'Boom custom prompty text boom'}
+    />
+  ))
+  .add('values', () => (
+    <PhoneEntry
+      setFieldValue={() => {}}
+      values={{ phone: 'Boom value boom' }}
     />
   ));

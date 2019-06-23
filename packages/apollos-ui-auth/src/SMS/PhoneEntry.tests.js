@@ -104,8 +104,19 @@ describe('The Auth PhoneEntry component', () => {
     const tree = renderer.create(
       <Providers>
         <PhoneEntry
-          setFieldValue={() => {}}
+          setFieldValue={jest.fn()}
           smsPromptText={'Boom custom prompty text boom'}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render with a value', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry
+          setFieldValue={jest.fn()}
+          values={{ phone: 'Boom value boom' }}
         />
       </Providers>
     );
