@@ -78,4 +78,12 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render in a next button', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry setFieldValue={jest.fn()} onPressNext={jest.fn()} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });

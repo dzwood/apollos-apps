@@ -29,4 +29,7 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
   ))
   .add('onPressAlternateLogin', () => (
     <PhoneEntry setFieldValue={() => {}} onPressAlternateLogin={() => {}} />
+  ))
+  .add('onPressNext', () => (
+    <PhoneEntry setFieldValue={() => {}} onPressNext={() => {}} />
   ));
