@@ -55,7 +55,6 @@ Verification.propTypes = {
     code: PropTypes.string,
   }),
   isLoading: PropTypes.bool,
-  onFinishAuth: PropTypes.func,
   onPressNext: PropTypes.func,
   setFieldValue: PropTypes.func.isRequired,
   touched: PropTypes.shape({
