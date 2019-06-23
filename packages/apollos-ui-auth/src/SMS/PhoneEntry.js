@@ -27,14 +27,13 @@ const PhoneEntry = ({
   alternateLoginText,
   authTitleText,
   disabled,
-  errors,
+  error,
   isLoading,
   onPressAlternateLogin,
   onPressNext,
   setFieldValue,
   smsPolicyInfo,
   smsPromptText,
-  touched,
   values,
 }) => (
   <FlexedSafeAreaView forceInset={forceInset}>
@@ -52,7 +51,7 @@ const PhoneEntry = ({
           returnKeyType={'next'}
           onSubmitEditing={onPressNext}
           enablesReturnKeyAutomatically
-          error={get(touched, 'phone') && get(errors, 'phone')}
+          error={error}
           onChangeText={(text) => setFieldValue('phone', text)}
           value={get(values, 'phone')}
         />
@@ -81,18 +80,13 @@ PhoneEntry.propTypes = {
   alternateLoginText: PropTypes.node,
   authTitleText: PropTypes.string,
   disabled: PropTypes.bool,
-  errors: PropTypes.shape({
-    phone: PropTypes.string,
-  }),
+  error: PropTypes.string,
   isLoading: PropTypes.bool,
   onPressAlternateLogin: PropTypes.func,
   onPressNext: PropTypes.func, // used to navigate and/or submit the form
   setFieldValue: PropTypes.func.isRequired,
   smsPolicyInfo: PropTypes.node,
   smsPromptText: PropTypes.string,
-  touched: PropTypes.shape({
-    phone: PropTypes.bool,
-  }),
   values: PropTypes.shape({
     phone: PropTypes.string,
   }),
