@@ -7,4 +7,5 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
   .add('default', () => <PhoneEntry setFieldValue={() => {}} />)
   .add('authTitleText', () => (
     <PhoneEntry setFieldValue={() => {}} authTitleText={'Custom Title'} />
-  ));
+  ))
+  .add('disabled', () => <PhoneEntry setFieldValue={() => {}} disabled />);

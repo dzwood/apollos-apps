@@ -22,4 +22,12 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render as disabled', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry setFieldValue={jest.fn()} disabled />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });
