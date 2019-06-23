@@ -100,4 +100,15 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render with a custom smsPromptText', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry
+          setFieldValue={() => {}}
+          smsPromptText={'Boom custom prompty text boom'}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });

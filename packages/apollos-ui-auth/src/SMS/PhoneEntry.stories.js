@@ -41,4 +41,11 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
         <H6 style={{ color: 'salmon' }}>Boom custom legalese boom</H6> // eslint-disable-line react-native/no-inline-styles, react-native/no-color-literals
       }
     />
+  ))
+  .add('smsPromptText', () => (
+    <PhoneEntry
+      setFieldValue={() => {}}
+      onPressAlternateLogin={() => {}}
+      smsPromptText={'Boom custom prompty text boom'}
+    />
   ));
