@@ -1162,17 +1162,17 @@ exports[`The Auth PhoneEntry component should render in an error state 1`] = `
                         "right": 0,
                         "transform": Array [
                           Object {
-                            "scaleX": 1,
+                            "scaleX": 0.0001,
                           },
                         ],
                       }
                     }
                   >
                     <View
-                      hasError={true}
+                      hasError={false}
                       style={
                         Object {
-                          "backgroundColor": "#c64f55",
+                          "backgroundColor": "#00676D",
                           "bottom": 0,
                           "height": 0.5,
                         }
@@ -1181,19 +1181,6 @@ exports[`The Auth PhoneEntry component should render in an error state 1`] = `
                   </View>
                 </View>
               </View>
-              <Text
-                style={
-                  Object {
-                    "color": "#c64f55",
-                    "fontFamily": "InterUI-Bold",
-                    "fontSize": 12,
-                    "lineHeight": 17.28,
-                    "paddingTop": 8,
-                  }
-                }
-              >
-                Boom Error Boom
-              </Text>
             </View>
             <Text
               style={

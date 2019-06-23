@@ -9,10 +9,6 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
     <PhoneEntry setFieldValue={() => {}} authTitleText={'Custom Title'} />
   ))
   .add('disabled', () => <PhoneEntry setFieldValue={() => {}} disabled />)
-  .add('errors', () => (
-    <PhoneEntry
-      setFieldValue={() => {}}
-      errors={{ phone: 'Boom Error Boom' }}
-      touched={{ phone: true }}
-    />
+  .add('error', () => (
+    <PhoneEntry setFieldValue={() => {}} error={'Boom Error Boom'} />
   ));
