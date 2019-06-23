@@ -60,4 +60,12 @@ describe('The Auth PhoneEntry component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
+  it('should render with an alternate login option with default text', () => {
+    const tree = renderer.create(
+      <Providers>
+        <PhoneEntry setFieldValue={() => {}} onPressAlternateLogin={() => {}} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });

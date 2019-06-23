@@ -21,4 +21,7 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
   .add('error', () => (
     <PhoneEntry setFieldValue={() => {}} error={'Boom Error Boom'} />
   ))
-  .add('isLoading', () => <PhoneEntry setFieldValue={() => {}} isLoading />);
+  .add('isLoading', () => <PhoneEntry setFieldValue={() => {}} isLoading />)
+  .add('onPressAlternateLogin', () => (
+    <PhoneEntry setFieldValue={() => {}} onPressAlternateLogin={() => {}} />
+  ));
