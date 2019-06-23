@@ -2,8 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, StyleSheet } from 'react-native';
-import { PaddedView, TextInput } from '@apollosproject/ui-kit';
 import { SafeAreaView } from 'react-navigation';
+import { get } from 'lodash';
+import { PaddedView, TextInput } from '@apollosproject/ui-kit';
 
 import { NextButton, TitleText, PromptText, BrandIcon } from '../styles';
 
@@ -23,26 +24,31 @@ const Verification = ({
         <BrandIcon />
         <TitleText>{confirmationTitleText}</TitleText>
         <PromptText padded>{confirmationPromptText}</PromptText>
+
         <TextInput
           autoFocus
-          label="Verification Code"
-          type="numeric"
-          autoComplete="password"
-          returnKeyType="next"
-          enzblesReturnKeyAutomatically
-          error={errors.code}
+          label={'Verification Code'}
+          type={'numeric'}
+          autoComplete={'password'}
+          enablesReturnKeyAutomatically
+          returnKeyType={'next'}
+          onSubmitEditing={onPressNext}
+          error={get(errors, 'code')}
           onChangeText={(text) => setFieldValue('code', text)}
-          value={values.code}
+          value={get(values, 'code')}
         />
       </PaddedView>
     </ScrollView>
-    <PaddedView>
-      <NextButton
-        onPress={onPressNext}
-        disabled={disabled}
-        loading={isLoading}
-      />
-    </PaddedView>
+
+    {onPressNext ? (
+      <PaddedView>
+        <NextButton
+          onPress={onPressNext}
+          disabled={disabled}
+          loading={isLoading}
+        />
+      </PaddedView>
+    ) : null}
   </SafeAreaView>
 );
 

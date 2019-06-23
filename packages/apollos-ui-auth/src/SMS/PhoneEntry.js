@@ -48,15 +48,16 @@ const PhoneEntry = ({
           autoComplete={'tel'}
           label={'Mobile Number'}
           type={'phone'}
+          enablesReturnKeyAutomatically
           returnKeyType={'next'}
           onSubmitEditing={onPressNext}
-          enablesReturnKeyAutomatically
           error={get(errors, 'phone')}
           onChangeText={(text) => setFieldValue('phone', text)}
           value={get(values, 'phone')}
         />
         {smsPolicyInfo}
       </PaddedView>
+
       {onPressAlternateLogin ? (
         <PaddedView>
           <ButtonLink onPress={onPressAlternateLogin}>
