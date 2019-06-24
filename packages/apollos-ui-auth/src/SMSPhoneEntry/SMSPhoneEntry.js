@@ -23,7 +23,7 @@ const LegalText = styled(({ theme }) => ({
   color: theme.colors.text.tertiary,
 }))(H6);
 
-const PhoneEntry = ({
+const SMSPhoneEntry = ({
   alternateLoginText,
   authTitleText,
   disabled,
@@ -79,7 +79,7 @@ const PhoneEntry = ({
   </FlexedSafeAreaView>
 );
 
-PhoneEntry.propTypes = {
+SMSPhoneEntry.propTypes = {
   alternateLoginText: PropTypes.node,
   authTitleText: PropTypes.string,
   disabled: PropTypes.bool,
@@ -97,7 +97,7 @@ PhoneEntry.propTypes = {
   }),
 };
 
-PhoneEntry.defaultProps = {
+SMSPhoneEntry.defaultProps = {
   authTitleText: 'Have we met before?',
   alternateLoginText: "I'd rather use my email and a password",
   smsPolicyInfo: (
@@ -109,6 +109,6 @@ PhoneEntry.defaultProps = {
     "Let's get you signed in using your mobile number. We'll text you a code to make login super easy!",
 };
 
-PhoneEntry.displayName = 'PhoneEntry';
+SMSPhoneEntry.displayName = 'SMSPhoneEntry';
 
-export default PhoneEntry;
+export default SMSPhoneEntry;
