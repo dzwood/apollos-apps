@@ -36,18 +36,18 @@ describe('The Auth Verification component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  // it('should render as disabled', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification
-  //         setFieldValue={jest.fn()}
-  //         onPressNext={jest.fn()}
-  //         disabled
-  //       />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
+  it('should render as disabled', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Verification
+          setFieldValue={jest.fn()}
+          onPressNext={jest.fn()}
+          disabled
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
   // it('should render in an error state', () => {
   //   const tree = renderer.create(
   //     <Providers>

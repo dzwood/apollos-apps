@@ -16,10 +16,10 @@ storiesOf('ui-auth/SMS/Verification', module)
       setFieldValue={() => {}}
       confirmationPromptText={'Boom custom prompty text boom'}
     />
+  ))
+  .add('disabled', () => (
+    <Verification setFieldValue={() => {}} onPressNext={() => {}} disabled />
   ));
-// .add('disabled', () => (
-//   <Verification setFieldValue={() => {}} onPressNext={() => {}} disabled />
-// ))
 // .add('errors', () => (
 //   <Verification
 //     setFieldValue={() => {}}
