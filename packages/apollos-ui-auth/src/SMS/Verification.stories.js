@@ -3,15 +3,14 @@ import { storiesOf } from '@apollosproject/ui-storybook';
 
 import Verification from './Verification';
 
-storiesOf('ui-auth/SMS/Verification', module).add('default', () => (
-  <Verification setFieldValue={() => {}} />
-));
-// .add('confirmationTitleText', () => (
-//   <Verification
-//     setFieldValue={() => {}}
-//     confirmationTitleText={'A Custom Title'}
-//   />
-// ))
+storiesOf('ui-auth/SMS/Verification', module)
+  .add('default', () => <Verification setFieldValue={() => {}} />)
+  .add('confirmationTitleText', () => (
+    <Verification
+      setFieldValue={() => {}}
+      confirmationTitleText={'A Custom Title'}
+    />
+  ));
 // .add('confirmationPromptText', () => (
 //   <Verification
 //     setFieldValue={() => {}}
