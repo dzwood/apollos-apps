@@ -9,10 +9,10 @@ import { ApolloConsumer, Mutation } from 'react-apollo';
 import HANDLE_LOGIN from '../handleLogin';
 import { AuthConsumer } from '../Provider';
 
-import Verification from './Verification';
+import SMSVerification from './SMSVerification';
 import VERIFY_PIN from './verifyPin';
 
-class VerificationConnected extends Component {
+class SMSVerificationConnected extends Component {
   static propTypes = {
     // Custom component to be rendered. Defaults to Verification
     Component: PropTypes.oneOfType([
@@ -24,7 +24,7 @@ class VerificationConnected extends Component {
   };
 
   static defaultProps = {
-    Component: Verification,
+    Component: SMSVerification,
     screenProps: {},
   };
 
@@ -109,4 +109,4 @@ class VerificationConnected extends Component {
   }
 }
 
-export default VerificationConnected;
+export default SMSVerificationConnected;
