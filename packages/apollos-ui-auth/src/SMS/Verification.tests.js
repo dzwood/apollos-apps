@@ -25,17 +25,17 @@ describe('The Auth Verification component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  // it('should render with a custom confirmationPromptText', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification
-  //         setFieldValue={jest.fn()}
-  //         confirmationPromptText={'Boom custom prompty text boom'}
-  //       />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
+  it('should render with a custom confirmationPromptText', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Verification
+          setFieldValue={jest.fn()}
+          confirmationPromptText={'Boom custom prompty text boom'}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
   // it('should render as disabled', () => {
   //   const tree = renderer.create(
   //     <Providers>

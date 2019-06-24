@@ -10,13 +10,13 @@ storiesOf('ui-auth/SMS/Verification', module)
       setFieldValue={() => {}}
       confirmationTitleText={'A Custom Title'}
     />
+  ))
+  .add('confirmationPromptText', () => (
+    <Verification
+      setFieldValue={() => {}}
+      confirmationPromptText={'Boom custom prompty text boom'}
+    />
   ));
-// .add('confirmationPromptText', () => (
-//   <Verification
-//     setFieldValue={() => {}}
-//     confirmationPromptText={'Boom custom prompty text boom'}
-//   />
-// ))
 // .add('disabled', () => (
 //   <Verification setFieldValue={() => {}} onPressNext={() => {}} disabled />
 // ))
