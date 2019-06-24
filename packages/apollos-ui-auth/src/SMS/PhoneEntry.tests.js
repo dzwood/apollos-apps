@@ -40,7 +40,11 @@ describe('The Auth PhoneEntry component', () => {
   it('should render as disabled', () => {
     const tree = renderer.create(
       <Providers>
-        <PhoneEntry setFieldValue={jest.fn()} disabled />
+        <PhoneEntry
+          setFieldValue={jest.fn()}
+          onPressNext={jest.fn()}
+          disabled
+        />
       </Providers>
     );
     expect(tree).toMatchSnapshot();
