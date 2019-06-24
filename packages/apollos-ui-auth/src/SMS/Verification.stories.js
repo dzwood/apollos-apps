@@ -19,13 +19,13 @@ storiesOf('ui-auth/SMS/Verification', module)
   ))
   .add('disabled', () => (
     <Verification setFieldValue={() => {}} onPressNext={() => {}} disabled />
+  ))
+  .add('errors', () => (
+    <Verification
+      setFieldValue={() => {}}
+      errors={{ code: 'Boom errors.code Boom' }}
+    />
   ));
-// .add('errors', () => (
-//   <Verification
-//     setFieldValue={() => {}}
-//     errors={{ code: 'Boom Error Boom' }}
-//   />
-// ))
 // .add('isLoading', () => (
 //   <Verification setFieldValue={() => {}} onPressNext={() => {}} isLoading />
 // ))

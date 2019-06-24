@@ -48,17 +48,17 @@ describe('The Auth Verification component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  // it('should render in an error state', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification
-  //         setFieldValue={jest.fn()}
-  //         errors={{ phone: 'Boom Error Boom' }}
-  //       />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
+  it('should render in an error state', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Verification
+          setFieldValue={jest.fn()}
+          errors={{ code: 'Boom errors.code Boom' }}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
   // it('should render in a loading state', () => {
   //   const tree = renderer.create(
   //     <Providers>
