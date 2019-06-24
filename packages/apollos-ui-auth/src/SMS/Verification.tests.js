@@ -59,18 +59,18 @@ describe('The Auth Verification component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  // it('should render in a loading state', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification
-  //         setFieldValue={jest.fn()}
-  //         onPressNext={jest.fn()}
-  //         isLoading
-  //       />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
+  it('should render in a loading state', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Verification
+          setFieldValue={jest.fn()}
+          onPressNext={jest.fn()}
+          isLoading
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
   // it('should render in a next button', () => {
   //   const tree = renderer.create(
   //     <Providers>
