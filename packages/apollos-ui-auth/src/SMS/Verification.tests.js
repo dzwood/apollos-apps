@@ -79,28 +79,15 @@ describe('The Auth Verification component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  // it('should render a custom smsPolicyInfo component', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification
-  //         setFieldValue={jest.fn()}
-  //         smsPolicyInfo={
-  //           <H6 style={{ color: 'salmon' }}>Boom custom legalese boom</H6> // eslint-disable-line react-native/no-inline-styles, react-native/no-color-literals
-  //         }
-  //       />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
-  // it('should render with a value', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification
-  //         setFieldValue={jest.fn()}
-  //         values={{ code: 'Boom value.code boom' }}
-  //       />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
+  it('should render with a value', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Verification
+          setFieldValue={jest.fn()}
+          values={{ code: 'Boom values.code boom' }}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
 });

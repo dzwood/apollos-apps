@@ -31,10 +31,10 @@ storiesOf('ui-auth/SMS/Verification', module)
   ))
   .add('onPressNext', () => (
     <Verification setFieldValue={() => {}} onPressNext={() => {}} />
+  ))
+  .add('values', () => (
+    <Verification
+      setFieldValue={() => {}}
+      values={{ code: 'Boom values.code boom' }}
+    />
   ));
-// .add('values', () => (
-//   <Verification
-//     setFieldValue={() => {}}
-//     values={{ code: 'Boom value.code boom' }}
-//   />
-// ));
