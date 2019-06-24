@@ -28,10 +28,10 @@ storiesOf('ui-auth/SMS/Verification', module)
   ))
   .add('isLoading', () => (
     <Verification setFieldValue={() => {}} onPressNext={() => {}} isLoading />
+  ))
+  .add('onPressNext', () => (
+    <Verification setFieldValue={() => {}} onPressNext={() => {}} />
   ));
-// .add('onPressNext', () => (
-//   <Verification setFieldValue={() => {}} onPressNext={() => {}} />
-// ))
 // .add('values', () => (
 //   <Verification
 //     setFieldValue={() => {}}

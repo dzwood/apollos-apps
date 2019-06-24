@@ -71,14 +71,14 @@ describe('The Auth Verification component', () => {
     );
     expect(tree).toMatchSnapshot();
   });
-  // it('should render in a next button', () => {
-  //   const tree = renderer.create(
-  //     <Providers>
-  //       <Verification setFieldValue={jest.fn()} onPressNext={jest.fn()} />
-  //     </Providers>
-  //   );
-  //   expect(tree).toMatchSnapshot();
-  // });
+  it('should render in a next button', () => {
+    const tree = renderer.create(
+      <Providers>
+        <Verification setFieldValue={jest.fn()} onPressNext={jest.fn()} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
   // it('should render a custom smsPolicyInfo component', () => {
   //   const tree = renderer.create(
   //     <Providers>
