@@ -24,7 +24,7 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
   .add('errors', () => (
     <PhoneEntry
       setFieldValue={() => {}}
-      errors={{ phone: 'Boom Error Boom' }}
+      errors={{ phone: 'Boom errors.phone Boom' }}
     />
   ))
   .add('isLoading', () => (
@@ -53,6 +53,6 @@ storiesOf('ui-auth/SMS/PhoneEntry', module)
   .add('values', () => (
     <PhoneEntry
       setFieldValue={() => {}}
-      values={{ phone: 'Boom value boom' }}
+      values={{ phone: 'Boom values.phone boom' }}
     />
   ));

@@ -54,7 +54,7 @@ describe('The Auth PhoneEntry component', () => {
       <Providers>
         <PhoneEntry
           setFieldValue={jest.fn()}
-          errors={{ phone: 'Boom Error Boom' }}
+          errors={{ phone: 'Boom errors.phone Boom' }}
         />
       </Providers>
     );
@@ -120,7 +120,7 @@ describe('The Auth PhoneEntry component', () => {
       <Providers>
         <PhoneEntry
           setFieldValue={jest.fn()}
-          values={{ phone: 'Boom value boom' }}
+          values={{ phone: 'Boom values.phone boom' }}
         />
       </Providers>
     );
