@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import HANDLE_LOGIN from '../../handleLogin';
 import AUTHENTICATE from './authenticate';
-import LoginForm from './Form';
+import PasswordLogin from './PasswordLogin';
 
 const Login = ({ onLogin }) => (
   <ApolloConsumer>
@@ -57,7 +57,7 @@ const Login = ({ onLogin }) => (
               setSubmitting(false);
             }}
           >
-            {(formikBag) => <LoginForm {...formikBag} />}
+            {(formikBag) => <PasswordLogin {...formikBag} />}
           </Formik>
         )}
       </Mutation>

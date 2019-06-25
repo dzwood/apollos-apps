@@ -18,7 +18,7 @@ const Footer = styled({
   justifyContent: 'flex-end',
 })(SafeAreaView);
 
-class Form extends PureComponent {
+class PasswordLogin extends PureComponent {
   static propTypes = {
     setFieldValue: PropTypes.func,
     touched: PropTypes.shape({}),
@@ -91,4 +91,4 @@ class Form extends PureComponent {
   }
 }
 
-export default Form;
+export default PasswordLogin;

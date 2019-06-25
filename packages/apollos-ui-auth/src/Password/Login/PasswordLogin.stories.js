@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@apollosproject/ui-storybook';
 
-import LoginForm from './Form';
+import PasswordLogin from './PasswordLogin';
 
 storiesOf('ui-auth', module).add('LoginForm', () => (
-  <LoginForm
+  <PasswordLogin
     values={{ email: '', password: '' }}
     touched={{ email: false, password: false }}
     errors={{ email: null, password: null }}
