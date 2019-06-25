@@ -8,12 +8,7 @@ import Label from './Label';
 import Indicator from './Indicator';
 
 const withStyles = compose(
-  styled(
-    ({ theme }) => ({
-      backgroundColor: theme.colors.background.paper,
-    }),
-    'TabBar'
-  ),
+  styled({ backgroundColor: 'transparent' }, 'TabBar'),
   withTheme(({ theme, indicatorColor }) => ({
     indicatorColor: indicatorColor || theme.colors.tertiary,
   }))

@@ -50,7 +50,7 @@ exports[`TabView Component renders 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "#FFFFFF",
+            "backgroundColor": "transparent",
             "elevation": 4,
             "shadowColor": "black",
             "shadowOffset": Object {

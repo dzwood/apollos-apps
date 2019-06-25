@@ -90,7 +90,7 @@ exports[`the Devotional component renders a devotional 1`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "transparent",
                 "elevation": 4,
                 "shadowColor": "black",
                 "shadowOffset": Object {
@@ -991,7 +991,7 @@ exports[`the Devotional component renders a loading state 1`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "transparent",
                 "elevation": 4,
                 "shadowColor": "black",
                 "shadowOffset": Object {
@@ -2766,7 +2766,7 @@ exports[`the Devotional component renders even with empty scripture array 1`] = 
           <View
             style={
               Object {
-                "backgroundColor": "#FFFFFF",
+                "backgroundColor": "transparent",
                 "elevation": 4,
                 "shadowColor": "black",
                 "shadowOffset": Object {
