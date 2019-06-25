@@ -774,9 +774,9 @@ Stand by…
               style={
                 Object {
                   "color": "#FFFFFF",
-                  "fontFamily": "InterUI-Medium",
-                  "fontSize": 14,
-                  "lineHeight": 20.16,
+                  "fontFamily": "InterUI-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 23.04,
                 }
               }
             >
@@ -1618,9 +1618,9 @@ Stand by…
               style={
                 Object {
                   "color": "#FFFFFF",
-                  "fontFamily": "InterUI-Medium",
-                  "fontSize": 14,
-                  "lineHeight": 20.16,
+                  "fontFamily": "InterUI-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 23.04,
                 }
               }
             >

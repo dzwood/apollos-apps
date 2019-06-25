@@ -1,22 +1,11 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
 import PropTypes from 'prop-types';
 
 // import { track, events } from 'apolloschurchapp/src/analytics';
-import {
-  FlexedView,
-  PaddedView,
-  TextInput,
-  Button,
-  ButtonLink,
-  styled,
-} from '@apollosproject/ui-kit';
+import { PaddedView, TextInput, ButtonLink } from '@apollosproject/ui-kit';
 
-const Footer = styled({
-  flex: 1,
-  justifyContent: 'flex-end',
-})(SafeAreaView);
+import { FlexedSafeAreaView, NextButton } from '../styles';
 
 class PasswordLogin extends PureComponent {
   static propTypes = {
@@ -41,7 +30,7 @@ class PasswordLogin extends PureComponent {
       isSubmitting,
     } = this.props;
     return (
-      <FlexedView>
+      <FlexedSafeAreaView>
         <PaddedView>
           <View>
             <TextInput
@@ -76,18 +65,16 @@ class PasswordLogin extends PureComponent {
             ) : null}
           </View>
         </PaddedView>
-        <Footer>
-          <PaddedView>
-            <Button
-              onPress={handleSubmit}
-              title={'Sign in'}
-              disabled={!isValid}
-              pill={false}
-              loading={isSubmitting}
-            />
-          </PaddedView>
-        </Footer>
-      </FlexedView>
+        <PaddedView>
+          <NextButton
+            onPress={handleSubmit}
+            title={'Sign in'}
+            disabled={!isValid}
+            pill={false}
+            loading={isSubmitting}
+          />
+        </PaddedView>
+      </FlexedSafeAreaView>
     );
   }
 }

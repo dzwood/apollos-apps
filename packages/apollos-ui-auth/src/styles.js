@@ -1,4 +1,6 @@
 import React from 'react';
+import { SafeAreaView } from 'react-navigation';
+import { compose, withProps } from 'recompose';
 import {
   Button,
   withTheme,
@@ -7,6 +9,11 @@ import {
   H2,
   H5,
 } from '@apollosproject/ui-kit';
+
+export const FlexedSafeAreaView = compose(
+  styled({ flex: 1 }, 'ui-auth.FlexedSafeAreaView'),
+  withProps({ forceInset: { top: 'always' } })
+)(SafeAreaView);
 
 export const BrandIcon = withTheme(({ theme }) => ({
   name: 'brand-icon',
@@ -23,8 +30,6 @@ export const PromptText = styled(({ theme }) => ({
   color: theme.colors.text.secondary,
 }))(H5);
 
-export const NextButton = (props) => (
-  <Button type={'primary'} pill={false} {...props}>
-    <H5>Next</H5>
-  </Button>
-);
+export const NextButton = styled({}, 'ui-auth.NextButton')((props) => (
+  <Button type={'primary'} pill={false} {...props} />
+));

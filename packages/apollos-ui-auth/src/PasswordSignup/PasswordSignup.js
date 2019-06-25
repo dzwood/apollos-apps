@@ -1,20 +1,10 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import { SafeAreaView } from 'react-navigation';
 
-import {
-  FlexedView,
-  PaddedView,
-  TextInput,
-  Button,
-  styled,
-} from '@apollosproject/ui-kit';
+import { PaddedView, TextInput } from '@apollosproject/ui-kit';
 
-const Footer = styled({
-  flex: 1,
-  justifyContent: 'flex-end',
-})(SafeAreaView);
+import { FlexedSafeAreaView, NextButton } from '../styles';
 
 class PasswordSignup extends PureComponent {
   static propTypes = {
@@ -38,7 +28,7 @@ class PasswordSignup extends PureComponent {
       isSubmitting,
     } = this.props;
     return (
-      <FlexedView>
+      <FlexedSafeAreaView>
         <PaddedView>
           <View>
             <TextInput
@@ -68,18 +58,16 @@ class PasswordSignup extends PureComponent {
             />
           </View>
         </PaddedView>
-        <Footer>
-          <PaddedView>
-            <Button
-              onPress={handleSubmit}
-              title={'Register'}
-              pill={false}
-              disabled={!isValid}
-              loading={isSubmitting}
-            />
-          </PaddedView>
-        </Footer>
-      </FlexedView>
+        <PaddedView>
+          <NextButton
+            onPress={handleSubmit}
+            title={'Register'}
+            pill={false}
+            disabled={!isValid}
+            loading={isSubmitting}
+          />
+        </PaddedView>
+      </FlexedSafeAreaView>
     );
   }
 }
