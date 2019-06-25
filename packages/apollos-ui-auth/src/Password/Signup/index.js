@@ -8,7 +8,7 @@ import { AnalyticsConsumer } from '@apollosproject/ui-analytics';
 
 import HANDLE_LOGIN from '../../handleLogin';
 import REGISTER_PERSON from './registerPerson';
-import SignupForm from './Form';
+import PasswordSignup from './PasswordSignup';
 
 const Signup = ({ onSignup }) => (
   <ApolloConsumer>
@@ -64,7 +64,7 @@ const Signup = ({ onSignup }) => (
                   setSubmitting(false);
                 }}
               >
-                {(formikBag) => <SignupForm {...formikBag} />}
+                {(formikBag) => <PasswordSignup {...formikBag} />}
               </Formik>
             )}
           </Mutation>

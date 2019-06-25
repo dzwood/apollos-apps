@@ -8,7 +8,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { resolvers } from '../../Provider';
-import LoginForm from './Form';
+import PasswordSignup from './PasswordSignup';
 
 const cache = new InMemoryCache();
 
@@ -18,12 +18,12 @@ const client = new ApolloClient({
   resolvers,
 });
 
-describe('The SignupForm component', () => {
+describe('The PasswordSignup component', () => {
   it('should render', () => {
     const tree = renderer.create(
       <ApolloProvider client={client}>
         <Providers>
-          <LoginForm
+          <PasswordSignup
             values={{ email: '', password: '' }}
             touched={{ email: false, password: false }}
             errors={{ email: null, password: null }}
