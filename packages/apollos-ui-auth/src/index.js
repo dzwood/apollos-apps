@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
 import PropTypes from 'prop-types';
 
-import AuthPassword from './Password';
+import AuthPassword from './AuthPassword';
 import SMSVerification, { SMSVerificationConnected } from './SMSVerification';
 import SMSPhoneEntry, { SMSPhoneEntryConnected } from './SMSPhoneEntry';
 
