@@ -4,7 +4,7 @@ import { H6 } from '@apollosproject/ui-kit';
 
 import SMSPhoneEntry from './SMSPhoneEntry';
 
-storiesOf('ui-auth/SMSSMSPhoneEntry', module)
+storiesOf('ui-auth/SMSPhoneEntry', module)
   .add('default', () => <SMSPhoneEntry setFieldValue={() => {}} />)
   .add('alternateLoginText', () => (
     <SMSPhoneEntry
