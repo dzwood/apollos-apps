@@ -34,7 +34,9 @@
     "generate-docs": "lerna run generate-docs"
   },
   "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
+    "babel-core": "7.0.0-bridge.0",
+    "**/react": "16.8.6",
+    "**/react-dom": "16.8.6"
   },
   "devDependencies": {
     "@babel/cli": "7.1.5",
@@ -61,7 +63,7 @@
     "eslint-plugin-react-native": "^3.2.1",
     "lerna": "^3.14.0",
     "prettier": "^1.14.2",
-    "react-apollo": "2.5.5",
+    "react-apollo": "3.0.0-beta.3",
     "react-native-storybook-loader": "^1.8.0",
     "react-navigation": "2.18.3"
   }
