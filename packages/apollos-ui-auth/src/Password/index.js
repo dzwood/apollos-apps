@@ -12,7 +12,7 @@ import { SafeAreaView } from 'react-navigation';
 
 import { PromptText } from '../styles';
 import { AuthConsumer } from '../Provider';
-import LoginForm from './Login';
+import { PasswordLoginConnected } from '../PasswordLogin';
 
 import SignUpForm from './Signup';
 
@@ -60,7 +60,7 @@ class AuthPassword extends PureComponent {
                 <TabView
                   routes={this.tabRoutes}
                   renderScene={SceneMap({
-                    login: () => <LoginForm onLogin={closeAuth} />,
+                    login: () => <PasswordLoginConnected onLogin={closeAuth} />,
                     signup: () => <SignUpForm onSignup={closeAuth} />,
                   })}
                 />

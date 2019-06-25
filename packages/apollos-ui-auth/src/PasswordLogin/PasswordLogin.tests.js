@@ -6,7 +6,7 @@ import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
-import { resolvers } from '../../Provider';
+import { resolvers } from '../Provider';
 import PasswordLogin from './PasswordLogin';
 
 const cache = new InMemoryCache();

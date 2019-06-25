@@ -4,11 +4,12 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-import HANDLE_LOGIN from '../../handleLogin';
+import HANDLE_LOGIN from '../handleLogin';
+
 import AUTHENTICATE from './authenticate';
 import PasswordLogin from './PasswordLogin';
 
-const Login = ({ onLogin }) => (
+const PasswordLoginConnected = ({ onLogin }) => (
   <ApolloConsumer>
     {(client) => (
       <Mutation
@@ -65,8 +66,8 @@ const Login = ({ onLogin }) => (
   </ApolloConsumer>
 );
 
-Login.propTypes = {
+PasswordLoginConnected.propTypes = {
   onLogin: PropTypes.func,
 };
 
-export default Login;
+export default PasswordLoginConnected;
