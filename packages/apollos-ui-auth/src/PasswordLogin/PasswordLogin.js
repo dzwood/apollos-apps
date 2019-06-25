@@ -77,7 +77,7 @@ class PasswordLogin extends PureComponent {
           </View>
         </PaddedView>
         <Footer>
-          <PaddedView vertical={false}>
+          <PaddedView>
             <Button
               onPress={handleSubmit}
               title={'Sign in'}
