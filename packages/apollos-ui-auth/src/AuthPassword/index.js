@@ -3,7 +3,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 import {
-  BackgroundView,
   TabView,
   PaddedView,
   TabSceneMap as SceneMap,
@@ -50,23 +49,21 @@ class AuthPassword extends PureComponent {
             style={StyleSheet.absoluteFill}
             behavior="padding"
           >
-            <BackgroundView>
-              <SafeAreaView style={StyleSheet.absoluteFill}>
-                <PaddedView>
-                  <PromptText>{this.flatProps.passwordPromptText}</PromptText>
-                </PaddedView>
+            <SafeAreaView style={StyleSheet.absoluteFill}>
+              <PaddedView>
+                <PromptText>{this.flatProps.passwordPromptText}</PromptText>
+              </PaddedView>
 
-                <TabView
-                  routes={this.tabRoutes}
-                  renderScene={SceneMap({
-                    login: () => <PasswordLoginConnected onLogin={closeAuth} />,
-                    signup: () => (
-                      <PasswordSignupConnected onSignup={closeAuth} />
-                    ),
-                  })}
-                />
-              </SafeAreaView>
-            </BackgroundView>
+              <TabView
+                routes={this.tabRoutes}
+                renderScene={SceneMap({
+                  login: () => <PasswordLoginConnected onLogin={closeAuth} />,
+                  signup: () => (
+                    <PasswordSignupConnected onSignup={closeAuth} />
+                  ),
+                })}
+              />
+            </SafeAreaView>
           </KeyboardAvoidingView>
         )}
       </AuthConsumer>
