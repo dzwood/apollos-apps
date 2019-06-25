@@ -20,6 +20,8 @@ import AvatarForm from 'apolloschurchapp/src/ui/UserAvatarView/AvatarForm';
 
 import { GET_LOGIN_STATE, LOGOUT } from '@apollosproject/ui-auth';
 
+import NotificationsConnected from './Notifications';
+
 const AvatarView = styled({
   alignItems: 'center',
   justifyContent: 'center',
@@ -55,6 +57,9 @@ class UserSettings extends PureComponent {
               <WebBrowserConsumer>
                 {(openUrl) => (
                   <BackgroundView>
+                    <PaddedView>
+                      <NotificationsConnected />
+                    </PaddedView>
                     <TableView>
                       <Touchable
                         onPress={async () => {
