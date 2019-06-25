@@ -11,7 +11,7 @@ import HANDLE_LOGIN from '../handleLogin';
 import REGISTER_PERSON from './registerPerson';
 import PasswordSignup from './PasswordSignup';
 
-const Signup = ({ onSignup }) => (
+const PasswordSignupConnected = ({ Component, onSignup }) => (
   <ApolloConsumer>
     {(client) => (
       <AnalyticsConsumer>
@@ -65,7 +65,7 @@ const Signup = ({ onSignup }) => (
                   setSubmitting(false);
                 }}
               >
-                {(formikBag) => <PasswordSignup {...formikBag} />}
+                {(formikBag) => <Component {...formikBag} />}
               </Formik>
             )}
           </Mutation>
@@ -75,8 +75,18 @@ const Signup = ({ onSignup }) => (
   </ApolloConsumer>
 );
 
-Signup.propTypes = {
+PasswordSignupConnected.propTypes = {
+  // Custom component to be rendered. Defaults to PhoneEntry
+  Component: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.object, // type check for React fragments
+  ]),
   onSignup: PropTypes.func,
 };
 
-export default Signup;
+PasswordSignupConnected.defaultProps = {
+  Component: PasswordSignup,
+};
+
+export default PasswordSignupConnected;
