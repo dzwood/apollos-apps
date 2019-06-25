@@ -80,8 +80,9 @@ class PasswordLogin extends PureComponent {
           <PaddedView vertical={false}>
             <Button
               onPress={handleSubmit}
-              title="Sign in"
+              title={'Sign in'}
               disabled={!isValid}
+              pill={false}
               loading={isSubmitting}
             />
           </PaddedView>

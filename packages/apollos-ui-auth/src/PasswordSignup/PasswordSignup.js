@@ -72,7 +72,8 @@ class PasswordSignup extends PureComponent {
           <PaddedView vertical={false}>
             <Button
               onPress={handleSubmit}
-              title="Register"
+              title={'Register'}
+              pill={false}
               disabled={!isValid}
               loading={isSubmitting}
             />
