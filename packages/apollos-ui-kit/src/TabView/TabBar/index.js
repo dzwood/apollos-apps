@@ -8,7 +8,7 @@ import Label from './Label';
 import Indicator from './Indicator';
 
 const withStyles = compose(
-  styled({ backgroundColor: 'transparent' }, 'TabBar'),
+  styled({ backgroundColor: 'transparent' }, 'ui-kit.TabView.TabBar'),
   withTheme(({ theme, indicatorColor }) => ({
     indicatorColor: indicatorColor || theme.colors.tertiary,
   }))
