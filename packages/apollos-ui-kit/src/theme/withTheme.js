@@ -1,20 +1,18 @@
-import PropTypes from 'prop-types';
-import { compose, mapProps, getContext, hoistStatics } from 'recompose';
+import React from 'react';
 
-import { THEME_PROPS } from './createTheme';
+import { Consumer } from './ThemeContext';
 
 const DEFAULT_MAPPER_FN = ({ theme } = {}) => ({ theme });
 
-export default function(mapperFn = DEFAULT_MAPPER_FN) {
-  return hoistStatics(
-    compose(
-      getContext({
-        theme: PropTypes.shape(THEME_PROPS),
-      }),
-      mapProps(({ theme, ...otherProps }) => ({
-        ...otherProps,
-        ...mapperFn({ theme, ...otherProps }),
-      }))
-    )
-  );
-}
+const withTheme = (mapperFn = DEFAULT_MAPPER_FN) => (ComponentToWrap) => (
+  props
+) => (
+  <Consumer>
+    {({ theme }) => {
+      const mappedTheme = mapperFn({ theme, ...props });
+      return <ComponentToWrap {...props} {...mappedTheme} />;
+    }}
+  </Consumer>
+);
+
+export default withTheme;

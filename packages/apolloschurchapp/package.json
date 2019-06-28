@@ -12,7 +12,6 @@
     "nodemon": "1.18.7",
     "prettier": "1.14.2",
     "prop-types": "15.6.1",
-    "react-dom": "16.6.3",
     "react-native-storybook-loader": "1.8.0",
     "react-native-version": "2.6.2",
     "react-test-renderer": "16.8.3",
@@ -24,6 +23,10 @@
   "files": [
     "src"
   ],
+  "resolutions": {
+    "react": "16.8.6",
+    "**/react": "16.8.6"
+  },
   "scripts": {
     "android": "SIM=\"$($HOME/Library/Android/sdk/emulator/emulator -list-avds | sed -n 1p)\" && $HOME/Library/Android/sdk/emulator/emulator -avd \"${SIM}\" & react-native run-android --appId com.apolloschurch.app --main-activity LaunchActivity",
     "codecov": "cat ./coverage/lcov.info | codecov",
@@ -86,7 +89,7 @@
     "memoize-one": "4.0.0",
     "moment": "2.22.2",
     "node-fetch": "2.2.0",
-    "react": "16.8.3",
+    "react": "16.8.6",
     "react-apollo": "2.5.5",
     "react-native": "0.59.8",
     "react-native-airplay-btn": "^1.0.6",

@@ -1,38 +1,41 @@
-import { getContext, compose, mapProps, withContext } from 'recompose';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { merge } from 'lodash';
 
-import createTheme, { THEME_PROPS } from './createTheme';
+import createTheme from './createTheme';
+import { Consumer, Provider } from './ThemeContext';
 
-const withThemeMixin = (themeInput) =>
-  compose(
-    mapProps((props) => ({ ownProps: props })),
-    getContext({
-      theme: PropTypes.shape(THEME_PROPS),
-      themeInput: PropTypes.shape(THEME_PROPS),
-    }),
-    withContext(
-      {
-        theme: PropTypes.shape(THEME_PROPS),
-        themeInput: PropTypes.shape(THEME_PROPS),
-      },
-      ({ theme, themeInput: originalThemeInput, ownProps }) => {
-        let themeInputAsObject = themeInput;
-        if (typeof themeInput === 'function') {
-          themeInputAsObject = themeInput({ ...ownProps, theme });
-        }
-        themeInputAsObject = merge({}, originalThemeInput, themeInputAsObject);
+const getNewTheme = ({ theme, themeInput, inheritedThemeInput, props }) => {
+  let themeInputAsObject = themeInput;
+  if (typeof themeInput === 'function') {
+    themeInputAsObject = themeInput({ ...props, theme });
+  }
+  themeInputAsObject = merge({}, inheritedThemeInput, themeInputAsObject);
 
-        const themeWithMixin = createTheme(themeInputAsObject);
+  const themeWithMixin = createTheme(themeInputAsObject);
 
-        return {
-          theme: themeWithMixin,
-          themeInput: themeInputAsObject,
-        };
-      }
-    ),
-    mapProps(({ ownProps }) => ownProps)
-  );
+  return {
+    theme: themeWithMixin,
+    themeInput: themeInputAsObject,
+  };
+};
+
+const withThemeMixin = (themeInput) => (ComponentToWrap) => (props) => (
+  <Consumer>
+    {({ theme, themeInput: inheritedThemeInput }) => {
+      const newTheme = getNewTheme({
+        theme,
+        themeInput,
+        inheritedThemeInput,
+        props,
+      });
+      return (
+        <Provider value={{ ...theme, ...newTheme }}>
+          <ComponentToWrap {...props} />
+        </Provider>
+      );
+    }}
+  </Consumer>
+);
 
 const ThemeMixin = withThemeMixin(({ mixin = {} } = {}) => mixin)(
   ({ children }) => children

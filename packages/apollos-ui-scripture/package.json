@@ -40,14 +40,9 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "@apollosproject/ui-storybook": "^1.0.0-beta.0",
-    "@storybook/react-native": "^4.0.7",
     "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "metro-react-native-babel-preset": "^0.53.1",
-    "prop-types": "15.6.1",
-    "react": "^16.8.3",
-    "react-native": "0.59.8",
     "react-test-renderer": "16.6.1"
   },
   "publishConfig": {

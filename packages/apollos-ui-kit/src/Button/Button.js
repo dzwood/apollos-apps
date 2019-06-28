@@ -148,6 +148,7 @@ Button.propTypes = {
     'tertiary',
     'ghost',
     'alert',
+    'text',
   ]), // keys in theme.colors.action
   ...Touchable.propTypes,
 };

@@ -2,6 +2,10 @@
   "name": "@apollosproject/ui-storybook",
   "version": "1.0.0-beta.0",
   "main": "./src/index.js",
+  "resolutions": {
+    "react": "16.8.6",
+    "**/react": "16.8.6"
+  },
   "peerDependencies": {
     "@apollosproject/ui-analytics": "*",
     "@apollosproject/ui-auth": "*",
@@ -23,9 +27,7 @@
     "@storybook/react-native": "5.2.0-alpha.3"
   },
   "devDependencies": {
-    "metro-react-native-babel-preset": "^0.53.1",
-    "react": "16.8.3",
-    "react-native": "0.59.8"
+    "metro-react-native-babel-preset": "^0.53.1"
   },
   "publishConfig": {
     "access": "public"
