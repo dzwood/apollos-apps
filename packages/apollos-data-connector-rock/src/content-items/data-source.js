@@ -1,4 +1,4 @@
-import { get, flatten } from 'lodash';
+import { get, flatten, chunk } from 'lodash';
 import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
 import ApollosConfig from '@apollosproject/config';
 import moment from 'moment-timezone';
@@ -179,6 +179,24 @@ export default class ContentItem extends RockApolloDataSource {
 
   expanded = true;
 
+  splitFilter = ({ filter }) => {
+    const requests = [];
+
+    const associationsFiltered = chunk(filter, 15);
+    // eslint-disable-next-line
+    for (let i = 0; i < associationsFiltered.length; i++) {
+      const request = this.request();
+
+      request
+        .filterOneOf(associationsFiltered[i])
+        .andFilter(this.LIVE_CONTENT());
+
+      requests.push(request.orderBy('Order'));
+    }
+
+    return requests;
+  };
+
   getCursorByParentContentItemId = async (id) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ContentChannelItemId eq ${id}`)
@@ -186,14 +204,11 @@ export default class ContentItem extends RockApolloDataSource {
 
     if (!associations || !associations.length) return null;
 
-    const request = this.request();
-
     const associationsFilter = associations.map(
       ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
     );
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
 
-    return request.orderBy('Order');
+    return this.splitFilter({ filter: associationsFilter });
   };
 
   getCursorByChildContentItemId = async (id) => {
@@ -202,14 +217,12 @@ export default class ContentItem extends RockApolloDataSource {
       .get();
 
     if (!associations || !associations.length) return null;
-    const request = this.request();
+
     const associationsFilter = associations.map(
       ({ contentChannelItemId }) => `Id eq ${contentChannelItemId}`
     );
 
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.splitFilter({ filter: associationsFilter });
   };
 
   getCursorBySiblingContentItemId = async (id) => {
@@ -236,13 +249,11 @@ export default class ContentItem extends RockApolloDataSource {
     const siblingAssociations = await siblingAssociationsRequest.get();
     if (!siblingAssociations || !siblingAssociations.length) return null;
 
-    const request = this.request();
     const siblingFilter = siblingAssociations.map(
       ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
     );
-    request.filterOneOf(siblingFilter).andFilter(this.LIVE_CONTENT());
 
-    return request.orderBy('Order');
+    return this.splitFilter({ filter: siblingFilter });
   };
 
   // Generates feed based on persons dataview membership

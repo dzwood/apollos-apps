@@ -2,7 +2,7 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import ApollosConfig from '@apollosproject/config';
 
-import { mapKeys, mapValues, camelCase } from 'lodash';
+import { mapKeys, mapValues, camelCase, flatten } from 'lodash';
 import { fetch } from 'apollo-server-env';
 import { createCursor, parseCursor } from './cursor';
 
@@ -71,18 +71,42 @@ export default class RockApolloDataSource extends RESTDataSource {
       }
     }
 
+    if (!cursor) return [];
+    try {
+      if (Array.isArray(cursor)) {
+        const edges = await cursor.map((set) =>
+          set
+            .top(first)
+            .skip(skip)
+            .transform((result) =>
+              result.map((node, i) => ({
+                node,
+                cursor: createCursor({ position: i + skip }),
+              }))
+            )
+            .get()
+        );
+
+        const results = await Promise.all(edges);
+
+        return {
+          edges: flatten(results),
+        };
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+
     const edges = cursor
-      ? cursor
-          .top(first)
-          .skip(skip)
-          .transform((result) =>
-            result.map((node, i) => ({
-              node,
-              cursor: createCursor({ position: i + skip }),
-            }))
-          )
-          .get()
-      : [];
+      .top(first)
+      .skip(skip)
+      .transform((result) =>
+        result.map((node, i) => ({
+          node,
+          cursor: createCursor({ position: i + skip }),
+        }))
+      )
+      .get();
 
     return {
       edges,
