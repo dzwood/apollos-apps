@@ -179,20 +179,16 @@ export default class ContentItem extends RockApolloDataSource {
 
   expanded = true;
 
-  splitFilter = ({ filter }) => {
-    const requests = [];
-
-    const associationsFiltered = chunk(filter, 15);
+  splitRequest = ({ filter }) => {
+    const filters = chunk(filter, 15);
     // eslint-disable-next-line
-    for (let i = 0; i < associationsFiltered.length; i++) {
+    const requests = filters.map((filt) => {
       const request = this.request();
 
-      request
-        .filterOneOf(associationsFiltered[i])
-        .andFilter(this.LIVE_CONTENT());
+      request.filterOneOf(filt).andFilter(this.LIVE_CONTENT());
 
-      requests.push(request.orderBy('Order'));
-    }
+      return request.orderBy('Order');
+    });
 
     return requests;
   };
@@ -208,7 +204,7 @@ export default class ContentItem extends RockApolloDataSource {
       ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
     );
 
-    return this.splitFilter({ filter: associationsFilter });
+    return this.splitRequest({ filter: associationsFilter });
   };
 
   getCursorByChildContentItemId = async (id) => {
@@ -222,7 +218,7 @@ export default class ContentItem extends RockApolloDataSource {
       ({ contentChannelItemId }) => `Id eq ${contentChannelItemId}`
     );
 
-    return this.splitFilter({ filter: associationsFilter });
+    return this.splitRequest({ filter: associationsFilter });
   };
 
   getCursorBySiblingContentItemId = async (id) => {
@@ -253,7 +249,7 @@ export default class ContentItem extends RockApolloDataSource {
       ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
     );
 
-    return this.splitFilter({ filter: siblingFilter });
+    return this.splitRequest({ filter: siblingFilter });
   };
 
   // Generates feed based on persons dataview membership
