@@ -93,23 +93,23 @@ export default class RockApolloDataSource extends RESTDataSource {
           edges: flatten(results),
         };
       }
+
+      const edges = cursor
+        .top(first)
+        .skip(skip)
+        .transform((result) =>
+          result.map((node, i) => ({
+            node,
+            cursor: createCursor({ position: i + skip }),
+          }))
+        )
+        .get();
+
+      return {
+        edges,
+      };
     } catch (err) {
       throw new Error(err);
     }
-
-    const edges = cursor
-      .top(first)
-      .skip(skip)
-      .transform((result) =>
-        result.map((node, i) => ({
-          node,
-          cursor: createCursor({ position: i + skip }),
-        }))
-      )
-      .get();
-
-    return {
-      edges,
-    };
   }
 }
