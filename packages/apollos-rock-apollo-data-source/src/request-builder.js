@@ -1,5 +1,6 @@
 import withQuery from 'with-query';
 import { chunk, flatten } from 'lodash';
+import moment from 'moment';
 
 // Simple request builder for querying the Rock API.
 // Would probably work against most OData APIs, but built to just
@@ -21,6 +22,16 @@ export default class RockRequestBuilder {
 
   options = {};
 
+  // some query options aren't possible to be implemented when chunking
+  // we seperate these out from the query pieces because we will handle them in JS
+  get unchunkableQueryParts() {
+    if (this.numberOfChunks > 1) {
+      const { $top, $orderby, $skip, ...safeQueryOpts } = this.query;
+      return safeQueryOpts;
+    }
+    return this.query;
+  }
+
   createPath = (filters = null) => {
     let path = [this.resource];
     if (this.resourceId) path.push(this.resourceId);
@@ -38,7 +49,7 @@ export default class RockRequestBuilder {
         ? requiredAndChunkedFilters[0]
         : requiredAndChunkedFilters.map((f) => `(${f})`).join(' and ');
 
-    const query = { ...this.query };
+    const query = { ...this.unchunkableQueryParts };
 
     if (filter) query.$filter = filter;
 
@@ -54,14 +65,20 @@ export default class RockRequestBuilder {
     return [this.createPath()];
   }
 
+  // Queries that can probablly be chunked across multiple requests.
   get chunkableFilters() {
     return this.filters.filter(({ operator }) => operator === 'or');
   }
 
+  // Queries that should be limited to a single request.
   get requiredFilters() {
     return this.filters.filter(({ operator }) => operator === 'and');
   }
 
+  // Joins multiple filter objects
+  // [{ query: "Id eq 123", operator: "and/or" }, { query: "Id eq 456", operator: "and/or" }]
+  // Into a string that looks like this (Id eq 123) or (Id eq 456)
+  // Supports nested queries.
   joinFilters = (filters) => {
     if (filters.length === 0) return '';
 
@@ -69,7 +86,6 @@ export default class RockRequestBuilder {
       // The first pass throgh, we don't prepend the accumulator or the operator.
       const prefix = accum ? `${accum} ${operator} ` : '';
       if (Array.isArray(query)) {
-        console.log('resolving deeply...', query);
         return `${prefix}(${this.joinFilters(query)})`;
       }
       return `${prefix}(${query})`;
@@ -97,6 +113,7 @@ export default class RockRequestBuilder {
     return flatten(array.map(this.seperateNodes)).length * 5;
   }
 
+  // gets the number of chunks required to avoid Rock's OData node limit.
   get numberOfChunks() {
     const requiredNodes = this.nodeLengthForFilters(this.requiredFilters);
     const chunkableNodes = this.nodeLengthForFilters(this.chunkableFilters);
@@ -104,10 +121,12 @@ export default class RockRequestBuilder {
     return Math.ceil(chunkableNodes / allowedNodes);
   }
 
+  // Get's the size each chunk should be, given the number of nodes.
   get chunkSize() {
     return this.lengthOfFilter(this.chunkableFilters) / this.numberOfChunks;
   }
 
+  // Splits a possibly nested array of filter objects into a "chunked" array of query objects.
   chunkFilters = (filters) =>
     chunk(
       filters.reduce((accum, filter) => {
@@ -119,6 +138,7 @@ export default class RockRequestBuilder {
       this.chunkSize
     );
 
+  // Splits the "or" filters for this request into an array of string filters.
   chunkedFilters = () =>
     this.chunkFilters(this.chunkableFilters).map(this.joinFilters);
 
@@ -126,8 +146,21 @@ export default class RockRequestBuilder {
     const results = await Promise.all(
       this.paths().map((path) => this._get({ path, ...args }))
     );
-    return flatten(results);
+    return this.handleChunkedData(results);
   }
+
+  handleChunkedData = (data) => {
+    if (this.numberOfChunks <= 1) {
+      // No chunking occured!
+      return data[0];
+    }
+    const flatData = flatten(data);
+    const sortedData = this.sortChunkedData(flatData);
+    const skippedData = this.skipChunkedData(sortedData);
+    const limitedData = this.limitChunkedData(skippedData);
+
+    return limitedData;
+  };
 
   /**
    * Sends a GET request to the server, resolves with results
@@ -136,14 +169,56 @@ export default class RockRequestBuilder {
   _get = ({ path, options = {}, body = {} } = {}) =>
     this.connector
       .get(path, body, { ...options, ...this.options })
-      .then((results) => {
-        if (this.transforms.length)
-          return this.transforms.reduce(
-            (current, transformer) => transformer(current),
-            results
-          );
-        return results;
-      });
+      .then(this.transformResult);
+
+  transformResult = (data) => {
+    if (this.transforms.length)
+      return this.transforms.reduce(
+        (current, transformer) => transformer(current),
+        data
+      );
+    return data;
+  };
+
+  sortChunkedData = (data) => {
+    if (!this.query.$orderby) return data;
+    const [key, direction] = this.query.$orderby.split(' ');
+    const transformedKey = this.transformResult(key);
+    const sorted = data.sort((a, b) => {
+      const aVal = a[transformedKey];
+      const bVal = b[transformedKey];
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        // A - B to filter Asc with Numbers.
+        return aVal - bVal;
+      }
+      if (moment(aVal).isValid() && moment(bVal).isValid()) {
+        // B - A to filter Asc with Dates.
+        return moment(bVal).toDate() - moment(aVal).toDate();
+      }
+      throw new Error(`
+I don\'t know how to sort these values!.
+You are trying to sort a set of data that has been chucked because the filter was too long for Rock to handle.
+When we sort a chunked request, we can only sort on Numbers and Dates.
+If you are certain that Rock will handle your 'orderBy' correctly, you will need to reduce the number
+of filters you are using so that Rock can handle the request in a single query.
+`);
+    });
+
+    if (direction === 'desc') {
+      return sorted.reverse();
+    }
+    return sorted;
+  };
+
+  skipChunkedData = (data) => {
+    if (!this.query.$skip) return data;
+    return data.slice(this.query.$skip);
+  };
+
+  limitChunkedData = (data) => {
+    if (!this.query.$top) return data;
+    return data.slice(0, this.query.$top);
+  };
 
   /**
    * Ends the request chain, ensuring that the caller of *get* will recieve an empty array.

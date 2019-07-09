@@ -1,4 +1,4 @@
-import { times } from 'lodash';
+import { times, shuffle } from 'lodash';
 import RequestBuilder from '../request-builder';
 
 describe('RequestBuilder', () => {
@@ -145,5 +145,126 @@ describe('RequestBuilder', () => {
 
     expect(result).toMatchSnapshot();
     expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests and preserves "and" filters', async () => {
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request
+      .filterOneOf(largeRequest)
+      .andFilter('SomeDate before Value')
+      .get();
+
+    expect(result).toMatchSnapshot();
+    expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests and handles "orderBy"', async () => {
+    const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
+    get = jest.fn((...args) => Promise.resolve(dataToSort));
+    connector = { get };
+    request = new RequestBuilder({
+      connector,
+      resource: 'SomeResource',
+    });
+
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request
+      .filterOneOf(largeRequest)
+      .orderBy('Order')
+      .get();
+
+    expect(result).toMatchSnapshot();
+    expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests and handles "skip"', async () => {
+    const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
+    get = jest.fn((...args) => Promise.resolve(dataToSort));
+    connector = { get };
+    request = new RequestBuilder({
+      connector,
+      resource: 'SomeResource',
+    });
+
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request
+      .filterOneOf(largeRequest)
+      .skip(10)
+      .orderBy('Order')
+      .get();
+
+    expect(result).toMatchSnapshot();
+    // 50, because we are returning 30 results twice minus 10
+    expect(result.length).toBe(50);
+    expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests and handles "top"', async () => {
+    const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
+    get = jest.fn((...args) => Promise.resolve(dataToSort));
+    connector = { get };
+    request = new RequestBuilder({
+      connector,
+      resource: 'SomeResource',
+    });
+
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request
+      .filterOneOf(largeRequest)
+      .top(10)
+      .orderBy('Order')
+      .get();
+
+    expect(result).toMatchSnapshot();
+    expect(result.length).toBe(10);
+    expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests and handles "top" and "skip"', async () => {
+    const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
+    get = jest.fn(() => Promise.resolve(dataToSort));
+    connector = { get };
+    request = new RequestBuilder({
+      connector,
+      resource: 'SomeResource',
+    });
+
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request
+      .filterOneOf(largeRequest)
+      .top(10)
+      .skip(10)
+      .orderBy('Order')
+      .get();
+
+    expect(result).toMatchSnapshot();
+    expect(result.length).toBe(10);
+    expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests and handles "first"', async () => {
+    const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
+    get = jest.fn(() => Promise.resolve(dataToSort));
+    connector = { get };
+    request = new RequestBuilder({
+      connector,
+      resource: 'SomeResource',
+    });
+
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request
+      .filterOneOf(largeRequest)
+      .orderBy('Order')
+      .first();
+
+    expect(result).toEqual({ Order: 0 });
+    expect(get.mock.calls).toMatchSnapshot();
+    expect(get.mock.calls.length).toBe(2);
   });
 });

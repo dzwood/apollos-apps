@@ -68,6 +68,517 @@ Array [
 ]
 `;
 
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "first" 1`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "orderBy" 1`] = `
+Array [
+  Object {
+    "Order": 0,
+  },
+  Object {
+    "Order": 0,
+  },
+  Object {
+    "Order": 1,
+  },
+  Object {
+    "Order": 1,
+  },
+  Object {
+    "Order": 2,
+  },
+  Object {
+    "Order": 2,
+  },
+  Object {
+    "Order": 3,
+  },
+  Object {
+    "Order": 3,
+  },
+  Object {
+    "Order": 4,
+  },
+  Object {
+    "Order": 4,
+  },
+  Object {
+    "Order": 5,
+  },
+  Object {
+    "Order": 5,
+  },
+  Object {
+    "Order": 6,
+  },
+  Object {
+    "Order": 6,
+  },
+  Object {
+    "Order": 7,
+  },
+  Object {
+    "Order": 7,
+  },
+  Object {
+    "Order": 8,
+  },
+  Object {
+    "Order": 8,
+  },
+  Object {
+    "Order": 9,
+  },
+  Object {
+    "Order": 9,
+  },
+  Object {
+    "Order": 10,
+  },
+  Object {
+    "Order": 10,
+  },
+  Object {
+    "Order": 11,
+  },
+  Object {
+    "Order": 11,
+  },
+  Object {
+    "Order": 12,
+  },
+  Object {
+    "Order": 12,
+  },
+  Object {
+    "Order": 13,
+  },
+  Object {
+    "Order": 13,
+  },
+  Object {
+    "Order": 14,
+  },
+  Object {
+    "Order": 14,
+  },
+  Object {
+    "Order": 15,
+  },
+  Object {
+    "Order": 15,
+  },
+  Object {
+    "Order": 16,
+  },
+  Object {
+    "Order": 16,
+  },
+  Object {
+    "Order": 17,
+  },
+  Object {
+    "Order": 17,
+  },
+  Object {
+    "Order": 18,
+  },
+  Object {
+    "Order": 18,
+  },
+  Object {
+    "Order": 19,
+  },
+  Object {
+    "Order": 19,
+  },
+  Object {
+    "Order": 20,
+  },
+  Object {
+    "Order": 20,
+  },
+  Object {
+    "Order": 21,
+  },
+  Object {
+    "Order": 21,
+  },
+  Object {
+    "Order": 22,
+  },
+  Object {
+    "Order": 22,
+  },
+  Object {
+    "Order": 23,
+  },
+  Object {
+    "Order": 23,
+  },
+  Object {
+    "Order": 24,
+  },
+  Object {
+    "Order": 24,
+  },
+  Object {
+    "Order": 25,
+  },
+  Object {
+    "Order": 25,
+  },
+  Object {
+    "Order": 26,
+  },
+  Object {
+    "Order": 26,
+  },
+  Object {
+    "Order": 27,
+  },
+  Object {
+    "Order": 27,
+  },
+  Object {
+    "Order": 28,
+  },
+  Object {
+    "Order": 28,
+  },
+  Object {
+    "Order": 29,
+  },
+  Object {
+    "Order": 29,
+  },
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "orderBy" 2`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "skip" 1`] = `
+Array [
+  Object {
+    "Order": 5,
+  },
+  Object {
+    "Order": 5,
+  },
+  Object {
+    "Order": 6,
+  },
+  Object {
+    "Order": 6,
+  },
+  Object {
+    "Order": 7,
+  },
+  Object {
+    "Order": 7,
+  },
+  Object {
+    "Order": 8,
+  },
+  Object {
+    "Order": 8,
+  },
+  Object {
+    "Order": 9,
+  },
+  Object {
+    "Order": 9,
+  },
+  Object {
+    "Order": 10,
+  },
+  Object {
+    "Order": 10,
+  },
+  Object {
+    "Order": 11,
+  },
+  Object {
+    "Order": 11,
+  },
+  Object {
+    "Order": 12,
+  },
+  Object {
+    "Order": 12,
+  },
+  Object {
+    "Order": 13,
+  },
+  Object {
+    "Order": 13,
+  },
+  Object {
+    "Order": 14,
+  },
+  Object {
+    "Order": 14,
+  },
+  Object {
+    "Order": 15,
+  },
+  Object {
+    "Order": 15,
+  },
+  Object {
+    "Order": 16,
+  },
+  Object {
+    "Order": 16,
+  },
+  Object {
+    "Order": 17,
+  },
+  Object {
+    "Order": 17,
+  },
+  Object {
+    "Order": 18,
+  },
+  Object {
+    "Order": 18,
+  },
+  Object {
+    "Order": 19,
+  },
+  Object {
+    "Order": 19,
+  },
+  Object {
+    "Order": 20,
+  },
+  Object {
+    "Order": 20,
+  },
+  Object {
+    "Order": 21,
+  },
+  Object {
+    "Order": 21,
+  },
+  Object {
+    "Order": 22,
+  },
+  Object {
+    "Order": 22,
+  },
+  Object {
+    "Order": 23,
+  },
+  Object {
+    "Order": 23,
+  },
+  Object {
+    "Order": 24,
+  },
+  Object {
+    "Order": 24,
+  },
+  Object {
+    "Order": 25,
+  },
+  Object {
+    "Order": 25,
+  },
+  Object {
+    "Order": 26,
+  },
+  Object {
+    "Order": 26,
+  },
+  Object {
+    "Order": 27,
+  },
+  Object {
+    "Order": 27,
+  },
+  Object {
+    "Order": 28,
+  },
+  Object {
+    "Order": 28,
+  },
+  Object {
+    "Order": 29,
+  },
+  Object {
+    "Order": 29,
+  },
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "skip" 2`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "top" 1`] = `
+Array [
+  Object {
+    "Order": 0,
+  },
+  Object {
+    "Order": 0,
+  },
+  Object {
+    "Order": 1,
+  },
+  Object {
+    "Order": 1,
+  },
+  Object {
+    "Order": 2,
+  },
+  Object {
+    "Order": 2,
+  },
+  Object {
+    "Order": 3,
+  },
+  Object {
+    "Order": 3,
+  },
+  Object {
+    "Order": 4,
+  },
+  Object {
+    "Order": 4,
+  },
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "top" 2`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "top" and "skip" 1`] = `
+Array [
+  Object {
+    "Order": 5,
+  },
+  Object {
+    "Order": 5,
+  },
+  Object {
+    "Order": 6,
+  },
+  Object {
+    "Order": 6,
+  },
+  Object {
+    "Order": 7,
+  },
+  Object {
+    "Order": 7,
+  },
+  Object {
+    "Order": 8,
+  },
+  Object {
+    "Order": 8,
+  },
+  Object {
+    "Order": 9,
+  },
+  Object {
+    "Order": 9,
+  },
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and handles "top" and "skip" 2`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and preserves "and" filters 1`] = `
+Array [
+  "SomeResource?%24filter=%28%28SomeDate%20before%20Value%29%29%20and%20%28%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29%29",
+  Object {},
+  Object {},
+  "SomeResource?%24filter=%28%28SomeDate%20before%20Value%29%29%20and%20%28%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29%29",
+  Object {},
+  Object {},
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests and preserves "and" filters 2`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28%28SomeDate%20before%20Value%29%29%20and%20%28%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28%28SomeDate%20before%20Value%29%29%20and%20%28%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
 exports[`RequestBuilder combines multiple filters with an and operator 1`] = `
 Array [
   "SomeResource?%24filter=%28%28AnotherThing%20eq%20SomethingDifferent%29%29%20and%20%28%28Something%20eq%20SomethingElse%29%29",
@@ -157,9 +668,7 @@ Object {
 `;
 
 exports[`RequestBuilder transforms result shapes 2`] = `
-Array [
-  Object {
-    "b": "neigh",
-  },
-]
+Object {
+  "b": "neigh",
+}
 `;
