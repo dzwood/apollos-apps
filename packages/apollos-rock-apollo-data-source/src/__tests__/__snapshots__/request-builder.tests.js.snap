@@ -44,7 +44,7 @@ Array [
 
 exports[`RequestBuilder combines multiple filters with an and operator 1`] = `
 Array [
-  "SomeResource?%24filter=%28Something%20eq%20SomethingElse%29%20and%20%28AnotherThing%20eq%20SomethingDifferent%29",
+  "SomeResource?%24filter=%28AnotherThing%20eq%20SomethingDifferent%29%20and%20%28Something%20eq%20SomethingElse%29",
   Object {},
   Object {},
 ]
@@ -131,7 +131,9 @@ Object {
 `;
 
 exports[`RequestBuilder transforms result shapes 2`] = `
-Object {
-  "b": "neigh",
-}
+Array [
+  Object {
+    "b": "neigh",
+  },
+]
 `;

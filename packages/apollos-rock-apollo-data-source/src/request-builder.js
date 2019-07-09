@@ -1,4 +1,5 @@
 import withQuery from 'with-query';
+import { chunk, flatten } from 'lodash';
 
 // Simple request builder for querying the Rock API.
 // Would probably work against most OData APIs, but built to just
@@ -12,27 +13,98 @@ export default class RockRequestBuilder {
     }
   }
 
+  filters = [];
+
   query = {};
 
   transforms = [];
 
   options = {};
 
-  get path() {
+  createPath = (filters = null) => {
     let path = [this.resource];
     if (this.resourceId) path.push(this.resourceId);
+
+    const requiredAndChunkedFilters = [
+      this.joinFilters(this.requiredFilters),
+      filters,
+    ].filter((f) => f !== null && f !== '');
+
+    // This is a "vanity ternary" :P
+    // If we only have one filter, I like to avoid adding the parens around the outside.
+    // That way, instead of having `(Id eq 123)` we get `Id eq 123`
+    const filter =
+      requiredAndChunkedFilters.length === 1
+        ? requiredAndChunkedFilters[0]
+        : requiredAndChunkedFilters.map((f) => `(${f})`).join(' and ');
+
+    const query = { ...this.query };
+
+    if (filter) query.$filter = filter;
+
     path = path.join('/');
-    path = withQuery(path, this.query);
+    path = withQuery(path, query);
     return path;
+  };
+
+  get paths() {
+    if (this.chunkableFilters.length) {
+      return this.chunkedFilters().map(this.createPath);
+    }
+    return [this.createPath()];
+  }
+
+  get chunkableFilters() {
+    return this.filters.filter(({ operator }) => operator === 'or');
+  }
+
+  get requiredFilters() {
+    return this.filters.filter(({ operator }) => operator === 'and');
+  }
+
+  joinFilters(filters) {
+    if (filters.length === 0) return '';
+    if (filters.length === 1) return filters[0].query;
+    return filters
+      .slice(1)
+      .reduce(
+        (accum, { query, operator }) => `${accum} ${operator} (${query})`,
+        `(${filters[0].query})`
+      );
+  }
+
+  nodeLengthForFilters(array) {
+    // Very rough formula to calculate the number of OData nodes
+    // https://github.com/OData/RESTier/issues/579#issuecomment-326976015
+    return flatten(array.map(({ query }) => query.split(/or|and/))).length * 5;
+  }
+
+  get numberOfChunks() {
+    const requiredNodes = this.nodeLengthForFilters(this.requiredFilters);
+    const chunkableNodes = this.nodeLengthForFilters(this.chunkableFilters);
+    const allowedNodes = 100 - requiredNodes;
+    return Math.ceil(allowedNodes / chunkableNodes);
+  }
+
+  chunkedFilters() {
+    const chunkSize = this.numberOfChunks / this.chunkableFilters.length;
+    return chunk(this.chunkableFilters, chunkSize).map(this.joinFilters);
+  }
+
+  async get(args) {
+    const results = await Promise.all(
+      this.paths.map((path) => this._get({ path, ...args }))
+    );
+    return flatten(results);
   }
 
   /**
    * Sends a GET request to the server, resolves with results
    * @returns promise
    */
-  get = ({ options = {}, body = {} } = {}) =>
+  _get = ({ path, options = {}, body = {} } = {}) =>
     this.connector
-      .get(this.path, body, { ...options, ...this.options })
+      .get(path, body, { ...options, ...this.options })
       .then((results) => {
         if (this.transforms.length)
           return this.transforms.reduce(
@@ -74,12 +146,7 @@ export default class RockRequestBuilder {
    * Filter resources by an odata string
    */
   filter = (filter, { operator } = { operator: 'or' }) => {
-    const key = '$filter';
-    if (this.query[key]) {
-      this.query[key] = `(${this.query[key]}) ${operator} (${filter})`;
-    } else {
-      this.query[key] = filter;
-    }
+    this.filters.push({ operator, query: filter });
     return this;
   };
 
