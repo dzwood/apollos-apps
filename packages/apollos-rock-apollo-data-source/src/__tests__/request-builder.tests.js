@@ -162,7 +162,7 @@ describe('RequestBuilder', () => {
 
   it('chunks requests that would break the Rock node limit into multiple requests and handles "orderBy"', async () => {
     const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
-    get = jest.fn((...args) => Promise.resolve(dataToSort));
+    get = jest.fn(() => Promise.resolve(dataToSort));
     connector = { get };
     request = new RequestBuilder({
       connector,
@@ -182,7 +182,7 @@ describe('RequestBuilder', () => {
 
   it('chunks requests that would break the Rock node limit into multiple requests and handles "skip"', async () => {
     const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
-    get = jest.fn((...args) => Promise.resolve(dataToSort));
+    get = jest.fn(() => Promise.resolve(dataToSort));
     connector = { get };
     request = new RequestBuilder({
       connector,
@@ -205,7 +205,7 @@ describe('RequestBuilder', () => {
 
   it('chunks requests that would break the Rock node limit into multiple requests and handles "top"', async () => {
     const dataToSort = shuffle(times(30, (i) => ({ Order: i })));
-    get = jest.fn((...args) => Promise.resolve(dataToSort));
+    get = jest.fn(() => Promise.resolve(dataToSort));
     connector = { get };
     request = new RequestBuilder({
       connector,

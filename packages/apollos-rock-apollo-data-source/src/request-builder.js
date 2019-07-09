@@ -196,7 +196,7 @@ export default class RockRequestBuilder {
         return moment(bVal).toDate() - moment(aVal).toDate();
       }
       throw new Error(`
-I don\'t know how to sort these values!.
+I don't know how to sort these values!.
 You are trying to sort a set of data that has been chucked because the filter was too long for Rock to handle.
 When we sort a chunked request, we can only sort on Numbers and Dates.
 If you are certain that Rock will handle your 'orderBy' correctly, you will need to reduce the number
