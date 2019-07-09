@@ -1,3 +1,4 @@
+import { times } from 'lodash';
 import RequestBuilder from '../request-builder';
 
 describe('RequestBuilder', () => {
@@ -136,5 +137,13 @@ describe('RequestBuilder', () => {
         })
         .get()
     ).resolves.toMatchSnapshot();
+  });
+
+  it('chunks requests that would break the Rock node limit into multiple requests', async () => {
+    const largeRequest = times(30, (i) => `Id eq ${i}`);
+    const result = await request.filterOneOf(largeRequest).get();
+
+    expect(result).toMatchSnapshot();
+    expect(get.mock.calls).toMatchSnapshot();
   });
 });

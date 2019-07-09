@@ -47,7 +47,7 @@ export default class RockRequestBuilder {
     return path;
   };
 
-  get paths() {
+  paths() {
     if (this.chunkableFilters.length) {
       return this.chunkedFilters().map(this.createPath);
     }
@@ -62,38 +62,69 @@ export default class RockRequestBuilder {
     return this.filters.filter(({ operator }) => operator === 'and');
   }
 
-  joinFilters(filters) {
+  joinFilters = (filters) => {
     if (filters.length === 0) return '';
-    if (filters.length === 1) return filters[0].query;
-    return filters
-      .slice(1)
-      .reduce(
-        (accum, { query, operator }) => `${accum} ${operator} (${query})`,
-        `(${filters[0].query})`
-      );
-  }
+
+    return filters.reduce((accum, { query, operator }) => {
+      // The first pass throgh, we don't prepend the accumulator or the operator.
+      const prefix = accum ? `${accum} ${operator} ` : '';
+      if (Array.isArray(query)) {
+        console.log('resolving deeply...', query);
+        return `${prefix}(${this.joinFilters(query)})`;
+      }
+      return `${prefix}(${query})`;
+    }, null);
+  };
+
+  seperateNodes = ({ query }) => {
+    if (Array.isArray(query)) {
+      return flatten(query.map(this.seperateNodes));
+    }
+    return query.split(/or|and/);
+  };
+
+  lengthOfFilter = (filter) =>
+    filter.reduce((accum, { query }) => {
+      if (Array.isArray(query)) {
+        return this.lengthOfFilter(query);
+      }
+      return accum + 1;
+    }, 0);
 
   nodeLengthForFilters(array) {
     // Very rough formula to calculate the number of OData nodes
     // https://github.com/OData/RESTier/issues/579#issuecomment-326976015
-    return flatten(array.map(({ query }) => query.split(/or|and/))).length * 5;
+    return flatten(array.map(this.seperateNodes)).length * 5;
   }
 
   get numberOfChunks() {
     const requiredNodes = this.nodeLengthForFilters(this.requiredFilters);
     const chunkableNodes = this.nodeLengthForFilters(this.chunkableFilters);
     const allowedNodes = 100 - requiredNodes;
-    return Math.ceil(allowedNodes / chunkableNodes);
+    return Math.ceil(chunkableNodes / allowedNodes);
   }
 
-  chunkedFilters() {
-    const chunkSize = this.numberOfChunks / this.chunkableFilters.length;
-    return chunk(this.chunkableFilters, chunkSize).map(this.joinFilters);
+  get chunkSize() {
+    return this.lengthOfFilter(this.chunkableFilters) / this.numberOfChunks;
   }
+
+  chunkFilters = (filters) =>
+    chunk(
+      filters.reduce((accum, filter) => {
+        if (Array.isArray(filter.query)) {
+          return flatten([...accum, ...this.chunkFilters(filter.query)]);
+        }
+        return [...accum, filter];
+      }, []),
+      this.chunkSize
+    );
+
+  chunkedFilters = () =>
+    this.chunkFilters(this.chunkableFilters).map(this.joinFilters);
 
   async get(args) {
     const results = await Promise.all(
-      this.paths.map((path) => this._get({ path, ...args }))
+      this.paths().map((path) => this._get({ path, ...args }))
     );
     return flatten(results);
   }
@@ -155,7 +186,7 @@ export default class RockRequestBuilder {
   orFilter = (filter) => this.filter(filter, { operator: 'or' });
 
   filterOneOf = (filters) => {
-    const filter = filters.map((f) => `(${f})`).join(' or ');
+    const filter = filters.map((f) => ({ query: f, operator: 'or' }));
     return this.filter(filter);
   };
 

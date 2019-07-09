@@ -42,9 +42,35 @@ Array [
 ]
 `;
 
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests 1`] = `
+Array [
+  "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+  Object {},
+  Object {},
+  "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+  Object {},
+  Object {},
+]
+`;
+
+exports[`RequestBuilder chunks requests that would break the Rock node limit into multiple requests 2`] = `
+Array [
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%200%29%20or%20%28Id%20eq%201%29%20or%20%28Id%20eq%202%29%20or%20%28Id%20eq%203%29%20or%20%28Id%20eq%204%29%20or%20%28Id%20eq%205%29%20or%20%28Id%20eq%206%29%20or%20%28Id%20eq%207%29%20or%20%28Id%20eq%208%29%20or%20%28Id%20eq%209%29%20or%20%28Id%20eq%2010%29%20or%20%28Id%20eq%2011%29%20or%20%28Id%20eq%2012%29%20or%20%28Id%20eq%2013%29%20or%20%28Id%20eq%2014%29",
+    Object {},
+    Object {},
+  ],
+  Array [
+    "SomeResource?%24filter=%28Id%20eq%2015%29%20or%20%28Id%20eq%2016%29%20or%20%28Id%20eq%2017%29%20or%20%28Id%20eq%2018%29%20or%20%28Id%20eq%2019%29%20or%20%28Id%20eq%2020%29%20or%20%28Id%20eq%2021%29%20or%20%28Id%20eq%2022%29%20or%20%28Id%20eq%2023%29%20or%20%28Id%20eq%2024%29%20or%20%28Id%20eq%2025%29%20or%20%28Id%20eq%2026%29%20or%20%28Id%20eq%2027%29%20or%20%28Id%20eq%2028%29%20or%20%28Id%20eq%2029%29",
+    Object {},
+    Object {},
+  ],
+]
+`;
+
 exports[`RequestBuilder combines multiple filters with an and operator 1`] = `
 Array [
-  "SomeResource?%24filter=%28AnotherThing%20eq%20SomethingDifferent%29%20and%20%28Something%20eq%20SomethingElse%29",
+  "SomeResource?%24filter=%28%28AnotherThing%20eq%20SomethingDifferent%29%29%20and%20%28%28Something%20eq%20SomethingElse%29%29",
   Object {},
   Object {},
 ]
@@ -68,7 +94,7 @@ Array [
 
 exports[`RequestBuilder filters 1`] = `
 Array [
-  "SomeResource?%24filter=Something%20eq%20SomethingElse",
+  "SomeResource?%24filter=%28Something%20eq%20SomethingElse%29",
   Object {},
   Object {},
 ]
