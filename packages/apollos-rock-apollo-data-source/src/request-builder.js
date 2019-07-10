@@ -1,5 +1,5 @@
 import withQuery from 'with-query';
-import { chunk, flatten } from 'lodash';
+import { chunk, flatten, camelCase } from 'lodash';
 import moment from 'moment';
 
 // Simple request builder for querying the Rock API.
@@ -21,6 +21,9 @@ export default class RockRequestBuilder {
   transforms = [];
 
   options = {};
+
+  // Actual node limit is 100, but our node counter isn't 100 accurate so this gives us some wiggle room.
+  NODE_LIMIT = 90;
 
   // some query options aren't possible to be implemented when chunking
   // we seperate these out from the query pieces because we will handle them in JS
@@ -117,7 +120,8 @@ export default class RockRequestBuilder {
   get numberOfChunks() {
     const requiredNodes = this.nodeLengthForFilters(this.requiredFilters);
     const chunkableNodes = this.nodeLengthForFilters(this.chunkableFilters);
-    const allowedNodes = 100 - requiredNodes;
+
+    const allowedNodes = this.NODE_LIMIT - requiredNodes;
     return Math.ceil(chunkableNodes / allowedNodes);
   }
 
@@ -143,10 +147,11 @@ export default class RockRequestBuilder {
     this.chunkFilters(this.chunkableFilters).map(this.joinFilters);
 
   async get(args) {
-    const results = await Promise.all(
+    const data = await Promise.all(
       this.paths().map((path) => this._get({ path, ...args }))
     );
-    return this.handleChunkedData(results);
+    const result = this.handleChunkedData(data);
+    return this.transformResult(result);
   }
 
   handleChunkedData = (data) => {
@@ -167,9 +172,7 @@ export default class RockRequestBuilder {
    * @returns promise
    */
   _get = ({ path, options = {}, body = {} } = {}) =>
-    this.connector
-      .get(path, body, { ...options, ...this.options })
-      .then(this.transformResult);
+    this.connector.get(path, body, { ...options, ...this.options });
 
   transformResult = (data) => {
     if (this.transforms.length)
@@ -183,7 +186,9 @@ export default class RockRequestBuilder {
   sortChunkedData = (data) => {
     if (!this.query.$orderby) return data;
     const [key, direction] = this.query.$orderby.split(' ');
-    const transformedKey = this.transformResult(key);
+    // we make an assumption here that the user is going to use `Order` and that our data is coming back as `order`
+    // TODO: Would there be a good way to call `connector.normalize` on the key?
+    const transformedKey = camelCase(key);
     const sorted = data.sort((a, b) => {
       const aVal = a[transformedKey];
       const bVal = b[transformedKey];
