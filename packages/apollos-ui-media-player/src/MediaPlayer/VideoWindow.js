@@ -34,7 +34,12 @@ class VideoWindow extends PureComponent {
     onProgress: PropTypes.func,
     onLoad: PropTypes.func,
     onLoadStart: PropTypes.func,
+    VideoComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     // onBuffer: PropTypes.func,
+  };
+
+  static defaultProps = {
+    VideoComponent: Video,
   };
 
   loadingOverlay = new Animated.Value(1);
@@ -99,10 +104,12 @@ class VideoWindow extends PureComponent {
       this.video.seek(currentTime);
     }
 
+    const { VideoComponent } = this.props;
+
     this.lastCurrentTime = currentTime;
 
     return [
-      <Video
+      <VideoComponent
         ref={this.setVideoRef}
         source={mediaPlayer.currentTrack.mediaSource}
         paused={!mediaPlayer.isPlaying}
@@ -117,7 +124,7 @@ class VideoWindow extends PureComponent {
         resizeMode={'contain'}
         onLoadStart={this.handleOnLoadStart}
         onLoad={this.handleOnLoad}
-        // onBuffer={this.handleOnBuffer}
+        onBuffer={this.handleOnBuffer}
         onProgress={this.handleOnProgress}
         style={StyleSheet.absoluteFill}
         volume={mediaPlayer.muted ? 0 : 1}

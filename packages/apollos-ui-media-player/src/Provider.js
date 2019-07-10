@@ -99,7 +99,8 @@ export const resolvers = {
         // if same track
         mediaPlayer &&
         mediaPlayer.currentTrack &&
-        mediaPlayer.currentTrack.mediaSource.uri === mediaTrack.mediaSource.uri
+        JSON.stringify(mediaPlayer.currentTrack) ===
+          JSON.stringify(mediaTrack.mediaSource)
       ) {
         // use the same Id
         newMediaPlayerState.currentTrack.id = mediaPlayer.currentTrack.id;

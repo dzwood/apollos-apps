@@ -22,6 +22,7 @@ const localDeps = [
   path.resolve('..', 'apollos-ui-media-player'),
   path.resolve('..', 'apollos-ui-scripture'),
   path.resolve('..', 'apollos-ui-notifications'),
+  path.resolve('..', 'apollos-ui-media-player-youtube'),
 ];
 
 const sharedNativeModules = [
@@ -32,6 +33,7 @@ const sharedNativeModules = [
   'react-native-video',
   'react-native-video-controls',
   'react-native-airplay-btn',
+  'react-native-youtube',
 ];
 
 module.exports = {
