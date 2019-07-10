@@ -12,6 +12,8 @@ const { ROCK, ROCK_MAPPINGS, ROCK_CONSTANTS } = ApollosConfig;
 export default class ContentItem extends RockApolloDataSource {
   resource = 'ContentChannelItems';
 
+  expanded = true;
+
   attributeIsImage = ({ key, attributeValues, attributes }) =>
     attributes[key].fieldTypeId === ROCK_CONSTANTS.IMAGE ||
     (key.toLowerCase().includes('image') &&
@@ -166,35 +168,27 @@ export default class ContentItem extends RockApolloDataSource {
     return null;
   }
 
-  LIVE_CONTENT = () => {
+  LIVE_CONTENT = ({ prefix = null } = { prefix: null }) => {
     // get a date in the local timezone of the rock instance.
     // will create a timezone formatted string and then strip off the offset
     // should output something like 2019-03-27T12:27:20 which means 12:27pm in New York
+    const pf = prefix ? `${prefix}/` : '';
     const date = moment()
       .tz(ROCK.TIMEZONE)
       .format()
       .split(/[-+]\d+:\d+/)[0];
-    return `((StartDateTime lt datetime'${date}') or (StartDateTime eq null)) and ((ExpireDateTime gt datetime'${date}') or (ExpireDateTime eq null)) `;
+    return `((${pf}StartDateTime lt datetime'${date}') or (${pf}StartDateTime eq null)) and ((${pf}ExpireDateTime gt datetime'${date}') or (${pf}ExpireDateTime eq null)) `;
   };
 
-  expanded = true;
-
-  getCursorByParentContentItemId = async (id) => {
-    const associations = await this.request('ContentChannelItemAssociations')
+  getCursorByParentContentItemId = async (id) =>
+    this.request('ContentChannelItemAssociations')
       .filter(`ContentChannelItemId eq ${id}`)
-      .get();
-
-    if (!associations || !associations.length) return null;
-
-    const request = this.request();
-
-    const associationsFilter = associations.map(
-      ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
-    );
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
-  };
+      .andFilter(this.LIVE_CONTENT({ prefix: 'ChildContentChannelItem' }))
+      .expand('ChildContentChannelItem')
+      .orderBy('Order')
+      .transform((result) =>
+        result.map(({ childContentChannelItem }) => childContentChannelItem)
+      );
 
   getCursorByChildContentItemId = async (id) => {
     const associations = await this.request('ContentChannelItemAssociations')
@@ -231,18 +225,15 @@ export default class ContentItem extends RockApolloDataSource {
       ({ contentChannelItemId }) =>
         `(ContentChannelItemId eq ${contentChannelItemId}) and (ChildContentChannelItemId ne ${id})`
     );
-    siblingAssociationsRequest.filterOneOf(parentFilter);
 
-    const siblingAssociations = await siblingAssociationsRequest.get();
-    if (!siblingAssociations || !siblingAssociations.length) return null;
-
-    const request = this.request();
-    const siblingFilter = siblingAssociations.map(
-      ({ childContentChannelItemId }) => `Id eq ${childContentChannelItemId}`
-    );
-    request.filterOneOf(siblingFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return siblingAssociationsRequest
+      .filterOneOf(parentFilter)
+      .andFilter(this.LIVE_CONTENT({ prefix: 'ChildContentChannelItem' }))
+      .expand('ChildContentChannelItem')
+      .orderBy('Order')
+      .transform((result) =>
+        result.map(({ childContentChannelItem }) => childContentChannelItem)
+      );
   };
 
   // Generates feed based on persons dataview membership
