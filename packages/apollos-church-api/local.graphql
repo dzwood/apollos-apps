@@ -190,6 +190,12 @@ interface Feature {
   order: Int
 }
 
+type FillInTheBlank implements Feature & Node {
+  id: ID!
+  order: Int
+  body: String
+}
+
 enum GENDER {
   Male
   Female

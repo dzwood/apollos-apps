@@ -14,7 +14,6 @@ import {
   Interactions,
   RockConstants,
   Person,
-  ContentItem,
   ContentChannel,
   Sharable,
   Auth,
@@ -23,13 +22,13 @@ import {
   AuthSms,
   Campus,
   BinaryFiles,
-  Features,
 } from '@apollosproject/data-connector-rock';
 import * as Theme from './theme';
 
 // This module is used to attach Rock User updating to the OneSignal module.
 // This module includes a Resolver that overides a resolver defined in `OneSignal`
 import * as OneSignalWithRock from './oneSignalWithRock';
+import FillInTheBlankFeature, { ContentItem, Features } from './features';
 
 const data = {
   Followings,
@@ -55,6 +54,7 @@ const data = {
   Campus,
   BinaryFiles,
   Features,
+  FillInTheBlankFeature,
 };
 
 const {
