@@ -33,7 +33,7 @@ const sharedNativeModules = [
   'react-native-video',
   'react-native-video-controls',
   'react-native-airplay-btn',
-  'react-native-youtube',
+  'react-native-youtube-sdk',
 ];
 
 module.exports = {

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import YouTube from 'react-native-youtube';
+import YouTube from 'react-native-youtube-sdk';
 import Video from 'react-native-video';
 
-class YoutubeVideoWindow extends Component { // eslint-disable-line
+class YoutubeVideoWindow extends Component {
+  // eslint-disable-line
   static propTypes = {
     source: PropTypes.shape({
       uri: PropTypes.string,
@@ -24,8 +25,18 @@ class YoutubeVideoWindow extends Component { // eslint-disable-line
 
   lastDuration = 1;
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.paused !== this.props.paused) {
+      if (newProps.paused) {
+        this.video.pause();
+      } else {
+        this.video.play();
+      }
+    }
+  }
+
   componentWillUnmount() {
-    if (this.playListener) clearInterval(this.playListener);
+    this.unmounted = true;
   }
 
   setVideoRef = (element) => {
@@ -38,10 +49,11 @@ class YoutubeVideoWindow extends Component { // eslint-disable-line
   };
 
   handleOnChangeState = ({ state }) => {
+    console.log('handleOnChangeState', state);
     if (this.props.onBuffer)
-      this.props.onBuffer({ isBuffering: state === 'buffering' });
+      this.props.onBuffer({ isBuffering: state === 'BUFFERING' });
 
-    if (state === 'ended') {
+    if (state === 'ENDED') {
       this.video.seekTo(0);
       this.props.onProgress({
         currentTime: 0,
@@ -51,7 +63,11 @@ class YoutubeVideoWindow extends Component { // eslint-disable-line
       this.props.onEnd();
     }
 
-    this.handlePlayListener(state === 'playing');
+    const isNowPlaying = state === 'PLAYING';
+    if (isNowPlaying !== this.isPlaying) {
+      this.isPlaying = isNowPlaying;
+      this.handlePlayListener();
+    }
   };
 
   handleOnError = (...args) => {
@@ -73,18 +89,15 @@ class YoutubeVideoWindow extends Component { // eslint-disable-line
     });
   };
 
-  handlePlayListener = (isPlaying) => {
-    // TODO: This is untested
-    if (Platform.OS !== 'android') return;
-    if (isPlaying) {
-      this.playListener = setInterval(async () => {
-        const currentTime = await this.video.currentTime();
-        const duration = await this.video.duration();
-        this.handleOnProgress({ currentTime, duration });
-      }, 500);
-    } else if (this.playListener) {
-      clearInterval(this.playListener);
-    }
+  handlePlayListener = () => {
+    if (!this.isPlaying) return;
+    requestAnimationFrame(async () => {
+      if (this.unmounted || !this.isPlaying) return;
+      const currentTime = await this.video.getCurrentTime();
+      const duration = await this.video.getVideoDuration();
+      this.handleOnProgress({ currentTime, duration });
+      this.handlePlayListener();
+    });
   };
 
   seek = (time) => {
@@ -103,19 +116,25 @@ class YoutubeVideoWindow extends Component { // eslint-disable-line
       <YouTube
         videoId={videoId}
         fullscreen={false}
-        play={!paused}
+        autoPlay={!paused}
         // loop={repeat}
-        controls={0}
-        showFullscreenButton={false}
-        showinfo={false}
-        modestbranding
-        resumePlayAndroid
+        // controls={0}
+        // showFullscreenButton={false}
+        // showinfo={false}
+        // modestbranding
+        // resumePlayAndroid
         style={StyleSheet.absoluteFill}
-        onReady={this.handleOnReady}
-        onChangeState={this.handleOnChangeState}
-        onProgress={this.handleOnProgress}
-        onError={this.handleOnError}
+        // onReady={this.handleOnReady}
+        // onChangeState={this.handleOnChangeState}
+        // onProgress={this.handleOnProgress}
+        // onError={this.handleOnError}
         ref={this.setVideoRef}
+        showFullScreenButton={false}
+        showSeekBar={false}
+        showPlayPauseButton={false}
+        onReady={this.handleOnReady}
+        onError={this.handleOnError}
+        onChangeState={this.handleOnChangeState}
       />
     );
   }

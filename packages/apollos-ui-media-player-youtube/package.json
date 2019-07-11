@@ -39,6 +39,7 @@
   "peerDependencies": {
     "@apollosproject/ui-kit": "*",
     "@apollosproject/ui-media-player": "*",
+    "react-native-youtube-sdk": "*",
     "apollo-client": "*",
     "react": "*",
     "react-apollo": "*",
