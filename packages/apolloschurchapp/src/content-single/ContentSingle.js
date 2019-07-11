@@ -95,11 +95,7 @@ class ContentSingle extends PureComponent {
 
   render() {
     return (
-      <Query
-        query={GET_CONTENT_ITEM}
-        fetchPolicy="network-only"
-        variables={this.queryVariables}
-      >
+      <Query query={GET_CONTENT_ITEM} variables={this.queryVariables}>
         {this.renderWithData}
       </Query>
     );

@@ -4,11 +4,13 @@ import { Query } from 'react-apollo';
 import { ErrorCard } from '@apollosproject/ui-kit';
 import { get } from 'lodash';
 import TextFeature from './TextFeature';
+import FillInTheBlankFeature from './FillInTheBlankFeature';
 
 import GET_CONTENT_ITEM_FEATURES from './getContentItemFeatures';
 
 const FEATURE_MAP = {
   TextFeature,
+  FillInTheBlankFeature,
 };
 
 const Features = ({ contentId }) => {
@@ -21,6 +23,7 @@ const Features = ({ contentId }) => {
         if (loading) return null;
 
         const features = get(node, 'features', []);
+        console.log(features, GET_CONTENT_ITEM_FEATURES);
         return features.map(({ __typename, ...feature }) => {
           const Feature = FEATURE_MAP[__typename];
           return (

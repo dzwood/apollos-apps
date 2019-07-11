@@ -190,10 +190,11 @@ interface Feature {
   order: Int
 }
 
-type FillInTheBlank implements Feature & Node {
+type FillInTheBlankFeature implements Feature & Node {
   id: ID!
   order: Int
   body: String
+  header: String
 }
 
 enum GENDER {
