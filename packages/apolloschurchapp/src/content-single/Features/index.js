@@ -23,6 +23,9 @@ const Features = ({ contentId }) => {
         const features = get(node, 'features', []);
         return features.map(({ __typename, ...feature }) => {
           const Feature = FEATURE_MAP[__typename];
+
+          if (!Feature) return null;
+
           return (
             <Feature key={feature.id} {...feature} contentId={contentId} />
           );
