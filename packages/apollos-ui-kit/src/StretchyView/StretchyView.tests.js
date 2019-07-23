@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 
 import { ScrollView, View } from 'react-native';
 import {
+  ConnectedImage,
   GradientOverlayImage,
   PaddedView,
   H1,
