@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Animated } from 'react-native';
+import { Animated } from 'react-native';
 import PropTypes from 'prop-types';
 
 class Stretchy extends Component {
