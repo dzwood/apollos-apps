@@ -14,6 +14,7 @@ import { get } from 'lodash';
 
 import { styled } from '@apollosproject/ui-kit';
 
+import { MediaPlayerConsumer } from '../Provider';
 import MiniControls, { MINI_PLAYER_HEIGHT } from './MiniControls';
 import FullscreenControls from './FullscreenControls';
 import VideoWindow from './VideoWindow';
@@ -23,15 +24,14 @@ import { EXIT_FULLSCREEN, GO_FULLSCREEN } from './mutations';
 import { Provider, ControlsConsumer } from './PlayheadState';
 import MediaPlayerSafeLayout from './MediaPlayerSafeLayout';
 
-const VideoSizer = styled(({ isFullscreen, isVideo, theme }) =>
+const VideoSizer = styled(({ isFullscreen, theme }) =>
   isFullscreen
     ? StyleSheet.absoluteFill
     : {
         height: MINI_PLAYER_HEIGHT,
-        borderTopLeftRadius: theme.sizing.baseUnit / 2,
-        borderBottomLeftRadius: theme.sizing.baseUnit / 2,
+        borderRadius: theme.sizing.baseUnit,
         overflow: 'hidden',
-        aspectRatio: isVideo ? 16 / 9 : 1,
+        aspectRatio: 16 / 9,
       }
 )(View);
 
@@ -84,7 +84,8 @@ class FullscreenPlayer extends PureComponent {
     );
 
     const translateY = Animated.add(translateYSlope, translateYWhenCollapsed);
-    return translateY;
+
+    return Animated.subtract(translateY, this.props.spacerOffset);
   })();
 
   miniControlsTranslateY = (() => {
@@ -245,6 +246,12 @@ class FullscreenPlayer extends PureComponent {
   }
 }
 
-const FullscreenPlayerWithData = withApollo(FullscreenPlayer);
+const FullscreenPlayerWithData = withApollo((props) => (
+  <MediaPlayerConsumer>
+    {({ spacerOffset }) => (
+      <FullscreenPlayer {...props} spacerOffset={spacerOffset} />
+    )}
+  </MediaPlayerConsumer>
+));
 
 export { FullscreenPlayerWithData as default };

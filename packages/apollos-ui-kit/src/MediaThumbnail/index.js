@@ -29,8 +29,10 @@ const MediaThumbnail = ({
 }) => (
   <StyledCard forceRatio={forceRatio} {...cardProps}>
     <ThemeMixin mixin={{ type: contentThemeType }}>
-      <ConnectedImage source={image} style={StyleSheet.absoluteFill} />
-      <Overlay />
+      {image ? (
+        <ConnectedImage source={image} style={StyleSheet.absoluteFill} />
+      ) : null}
+      {image ? <Overlay /> : null}
       {children}
     </ThemeMixin>
   </StyledCard>

@@ -30,6 +30,10 @@ export Input, {
   RadioButton,
 } from './inputs';
 export { LayoutProvider, LayoutConsumer } from './LayoutContext';
+export MediaThumbnail, {
+  MediaThumbnailItem,
+  MediaThumbnailIcon,
+} from './MediaThumbnail';
 export MediaQuery, {
   enhancer as withMediaQuery,
   withWindow,

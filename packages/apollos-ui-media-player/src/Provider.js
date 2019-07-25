@@ -1,5 +1,6 @@
 import { merge, get } from 'lodash';
-import React from 'react';
+import React, { Component } from 'react';
+import { Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import { ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -48,8 +49,7 @@ type MediaPlayerTrack {
 `;
 
 const defaultContext = {
-  navigateToAuth: () => {},
-  closeAuth: () => {},
+  spacerOffset: new Animated.Value(0),
 };
 
 const MediaPlayerContext = React.createContext(defaultContext);
@@ -184,8 +184,14 @@ export const resolvers = {
 };
 
 let loaded = false;
-const Provider = ({ children, ...authContext }) => (
-  <MediaPlayerContext.Provider value={{ ...defaultContext, ...authContext }}>
+const Provider = ({ children, ...otherContext }) => (
+  <MediaPlayerContext.Provider
+    value={{
+      ...defaultContext,
+      ...otherContext,
+      spacerOffset: new Animated.Value(0),
+    }}
+  >
     <ApolloConsumer>
       {(client) => {
         if (!loaded) {
@@ -205,8 +211,6 @@ const Provider = ({ children, ...authContext }) => (
 
 Provider.propTypes = {
   children: PropTypes.node,
-  navigateToAuth: PropTypes.func,
-  closeAuth: PropTypes.func,
 };
 
 Provider.defaultProps = {};
