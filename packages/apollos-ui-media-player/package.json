@@ -12,6 +12,9 @@
     "generate-stories": "rnstl --searchDir ./src --pattern **/*.stories.js",
     "lint": "eslint ./src --ext .js"
   },
+  "resolutions": {
+    "react": "16.8.6"
+  },
   "keywords": [
     "react-native-component",
     "react-component",
@@ -38,6 +41,7 @@
   },
   "peerDependencies": {
     "@apollos-project/ui-kit": "*",
+    "@apollosproject/ui-storybook": "*",
     "apollo-client": "*",
     "react": "*",
     "react-apollo": "*",
@@ -47,28 +51,19 @@
     "react-native-music-control": "*",
     "react-native-video": "*",
     "react-native-video-controls": "*",
-    "react-navigation": "*"
+    "react-navigation": "*",
+    "react-native-svg": "*"
   },
   "dependencies": {
     "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
-    "@storybook/react-native": "^4.0.7",
     "apollo-client": "2.5.1",
     "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
-    "react": "16.8.3",
     "react-apollo": "2.5.5",
-    "react-native": "0.59.10",
-    "react-native-airplay-btn": "^1.0.6",
-    "react-native-linear-gradient": "2.5.3",
-    "react-native-music-control": "0.7.3",
-    "react-native-svg": "9.4.0",
-    "react-native-video": "4.4.1",
-    "react-native-video-controls": "2.2.3",
-    "react-navigation": "2.18.3",
-    "react-test-renderer": "16.6.1"
+    "react-test-renderer": "16.8.6"
   },
   "publishConfig": {
     "access": "public"

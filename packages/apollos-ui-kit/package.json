@@ -40,11 +40,12 @@
     ]
   },
   "peerDependencies": {
-    "@apollosproject/storybook": "*",
+    "@apollosproject/ui-storybook": "*",
     "react": "*",
     "react-native": "*",
     "react-native-linear-gradient": "*",
-    "react-native-svg": "*"
+    "react-native-svg": "*",
+    "react-navigation": "*"
   },
   "dependencies": {
     "color": "^3.1.0",
@@ -60,13 +61,8 @@
     "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
-    "react": "16.8.3",
     "react-docgen": "^4.1.0",
-    "react-native": "0.59.10",
-    "react-native-linear-gradient": "2.5.4",
-    "react-native-svg": "9.4.0",
-    "react-navigation": "2.18.3",
-    "react-test-renderer": "16.6.1"
+    "react-test-renderer": "16.8.6"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "gitHead": "eb803583da83beeab7756baddcae3adca7650c39"

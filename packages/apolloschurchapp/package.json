@@ -15,7 +15,7 @@
     "react-dom": "16.6.3",
     "react-native-storybook-loader": "1.8.0",
     "react-native-version": "2.6.2",
-    "react-test-renderer": "16.8.3",
+    "react-test-renderer": "16.8.6",
     "waait": "1.0.2"
   },
   "engines": {
@@ -87,7 +87,7 @@
     "memoize-one": "4.0.0",
     "moment": "2.22.2",
     "node-fetch": "2.2.0",
-    "react": "16.8.3",
+    "react": "16.8.6",
     "react-apollo": "2.5.5",
     "react-native": "0.59.10",
     "react-native-airplay-btn": "^1.0.6",

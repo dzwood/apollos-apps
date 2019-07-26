@@ -32,12 +32,15 @@ const sharedNativeModules = [
   'react-native-video',
   'react-native-video-controls',
   'react-native-airplay-btn',
+  'react-native-passkit-wallet',
+  'react',
+  'react-native',
+  'react-native-svg',
 ];
 
 module.exports = {
   resolver: {
     extraNodeModules: {
-      'react-native': path.resolve('.', 'node_modules/react-native'),
       ...sharedNativeModules.reduce(
         (accum, curr) => ({
           ...accum,
@@ -45,12 +48,8 @@ module.exports = {
         }),
         {}
       ),
-      'react-native-svg': path.resolve('.', 'node_modules/react-native-svg'),
     },
     blacklistRE: blacklist([
-      ...localDeps.map(
-        (depPath) => new RegExp(`${depPath}/node_modules/react-native/.*`)
-      ),
       ...flatten(
         localDeps.map((depPath) =>
           sharedNativeModules.map(
@@ -62,9 +61,6 @@ module.exports = {
       ...sharedNativeModules.map(
         (moduleName) =>
           new RegExp(`${path.resolve(`../../node_modules/${moduleName}`)}/.*`)
-      ),
-      ...localDeps.map(
-        (depPath) => new RegExp(`${depPath}/node_modules/react-native-svg/.*`)
       ),
       ...localDeps.map(
         (depPath) =>

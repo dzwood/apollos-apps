@@ -37,7 +37,7 @@
     ]
   },
   "peerDependencies": {
-    "@apollosproject/storybook": "*",
+    "@apollosproject/ui-storybook": "*",
     "@apollosproject/ui-analytics": "*",
     "@apollosproject/ui-kit": "*",
     "@apollosproject/ui-notifications": "*",
@@ -57,15 +57,12 @@
     "yup": "0.26.6"
   },
   "devDependencies": {
-    "@storybook/react-native": "^4.0.7",
     "apollo-client": "2.5.1",
     "jest": "24.8.0",
     "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
-    "react": "16.8.3",
     "react-apollo": "2.5.5",
-    "react-native": "0.59.10",
-    "react-test-renderer": "16.6.1",
+    "react-test-renderer": "16.8.6",
     "waait": "1.0.2"
   },
   "publishConfig": {

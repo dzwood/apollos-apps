@@ -5,14 +5,16 @@
     "packages": [
       "packages/*"
     ],
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**",
-      "**/react-native-*",
-      "**/react-native-*/**",
-      "**/rn-*",
-      "**/rn-*/**"
-    ]
+  "nohoist": [
+    "**/react-native",
+    "**/react-native/**",
+    "**/react",
+    "**/react/**",
+    "**/react-native-*",
+    "**/react-native-*/**",
+    "**/rn-*",
+    "**/rn-*/**"
+  ]
   },
   "scripts": {
     "start": "lerna run start --parallel & yarn build:api-watch",
