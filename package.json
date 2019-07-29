@@ -5,16 +5,36 @@
     "packages": [
       "packages/*"
     ],
-  "nohoist": [
-    "**/react-native",
-    "**/react-native/**",
-    "**/react",
-    "**/react/**",
-    "**/react-native-*",
-    "**/react-native-*/**",
-    "**/rn-*",
-    "**/rn-*/**"
-  ]
+    "nohoist": [
+        "**/react-native",
+        "**/react-native/**",
+        "**/react",
+        "**/react/**",
+        "**/react-native-*",
+        "**/react-native-*/**",
+        "**/rn-*",
+        "**/rn-*/**"
+    ]
+  },
+  "jest": {
+    "preset": "<rootDir>/packages/apolloschurchapp/node_modules/react-native",
+    "collectCoverage": true,
+    "transformIgnorePatterns": [
+      "(.*)/node_modules/(?!((jest-)?react-native|rn-*|react-clone-referenced-element|react-navigation|@apollosproject))"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>packages/apolloschurchapp/node_modules/react-native/jest/preprocessor.js"
+    },
+    "testMatch": [
+      "<rootDir>/packages/apollos-ui-*/src/**/?(*.)(test|tests).{js,jsx,mjs}"
+    ],
+    "modulePaths": [
+      "<rootDir>/packages/apolloschurchapp/node_modules",
+      "<rootDir>"
+    ],
+    "setupFiles": [
+      "<rootDir>packages/apolloschurchapp/jest.setup.js"
+    ]
   },
   "scripts": {
     "start": "lerna run start --parallel & yarn build:api-watch",
