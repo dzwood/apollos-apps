@@ -41,7 +41,7 @@ describe('the BrowserWithUserCookie component', () => {
   });
 });
 describe('the OpenUserWebView', () => {
-  jest.mock('NavigationService');
+  jest.mock('../../NavigationService');
   NavigationService.navigate = jest.fn();
   it('navigtes', () => {
     OpenUserWebView({ url: 'fake.com' });

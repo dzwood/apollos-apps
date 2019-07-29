@@ -33,6 +33,7 @@ const sharedNativeModules = [
   'react-native-video-controls',
   'react-native-airplay-btn',
   'react-native-passkit-wallet',
+  'react-native-device-info',
   'react',
   'react-native',
   'react-native-svg',
