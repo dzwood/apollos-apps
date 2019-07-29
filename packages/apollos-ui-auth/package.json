@@ -18,19 +18,22 @@
     "react-native"
   ],
   "jest": {
-    "preset": "react-native",
+    "preset": "<rootDir>/apolloschurchapp/node_modules/react-native",
     "collectCoverage": true,
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|rn-*|react-clone-referenced-element|react-navigation|@apollosproject))"
     ],
+    "rootDir": "<rootDir>/../..",
     "testMatch": [
-      "<rootDir>/src/**/?(*.)(test|tests).{js,jsx,mjs}"
+      "<rootDir>/apollos-ui-auth/src/**/?(*.)(test|tests).{js,jsx,mjs}"
     ],
     "modulePaths": [
-      "<rootDir>/src/"
+      "<rootDir>/apolloschurchapp/node_modules",
+      "<rootDir>/apollos-ui-auth/node_modules"
     ],
+    "moduleDirectories": ["node_modules", "../apolloschurchapp/node_modules"],
     "setupFiles": [
-      "./jest.setup.js"
+      "<rootDir>/apollos-ui-auth/jest.setup.js"
     ]
   },
   "peerDependencies": {
@@ -55,7 +58,6 @@
   "devDependencies": {
     "apollo-client": "2.5.1",
     "jest": "24.8.0",
-    "jest-react-native": "18.0.0",
     "prop-types": "15.6.1",
     "react-apollo": "2.5.5",
     "react-test-renderer": "16.8.6",
