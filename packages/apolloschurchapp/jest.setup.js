@@ -61,25 +61,6 @@ jest.mock(
   () => 'Fetch'
 );
 
-jest.mock('@apollosproject/ui-analytics', () => ({
-  track: () => '',
-  AnalyticsConsumer: ({ children }) => children({ test: jest.fn() }),
-  AnalyticsProvider: ({ children }) => children,
-  withTrackOnPress: (Component) => (props) => <Component {...props} />,
-}));
-
-jest.mock('@apollosproject/ui-notifications', () => ({
-  NotificationsProvider: ({ children }) => children,
-}));
-
-jest.mock('@apollosproject/ui-media-player', () => ({
-  MediaPlayerSpacer: ({ children }) => children,
-  MediaPlayer: () => 'MediaPlayer',
-  MediaPlayerProvider: ({ children }) => children,
-  playVideoMutation: 'mutation { playVideo }',
-  withTabBarMediaSpacer: () => ({ children }) => children,
-}));
-
 jest.mock('react-native-video', () => 'Video');
 
 jest.mock('NativeEventEmitter');
@@ -87,3 +68,12 @@ jest.mock('NativeEventEmitter');
 jest.mock('react-native-maps');
 jest.mock('DatePickerIOS', () => 'DatePicker');
 jest.mock('./src/client/index');
+
+jest.mock('react-native-onesignal', () => ({
+  getPermissionSubscriptionState: (callback) =>
+    callback({ notificationsEnabled: true, subscriptionEnabled: true }),
+  promptForPushNotificationsWithUserResponse: (callback) => callback(true),
+  init: jest.fn(),
+  addEventListener: jest.fn(),
+  configure: jest.fn(),
+}));

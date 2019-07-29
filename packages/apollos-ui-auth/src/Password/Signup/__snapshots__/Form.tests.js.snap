@@ -362,17 +362,12 @@ exports[`The SignupForm component should render 1`] = `
           </View>
         </View>
       </View>
-      <View
-        onLayout={[Function]}
-        pointerEvents="box-none"
+      <RCTSafeAreaView
+        emulateUnlessSupported={true}
         style={
           Object {
             "flex": 1,
             "justifyContent": "flex-end",
-            "paddingBottom": 0,
-            "paddingLeft": 0,
-            "paddingRight": 0,
-            "paddingTop": 20,
           }
         }
       >
@@ -420,7 +415,7 @@ exports[`The SignupForm component should render 1`] = `
             </Text>
           </View>
         </View>
-      </View>
+      </RCTSafeAreaView>
     </View>
   </View>
 </RCTSafeAreaView>

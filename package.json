@@ -26,7 +26,7 @@
       "^.+\\.js$": "<rootDir>packages/apolloschurchapp/node_modules/react-native/jest/preprocessor.js"
     },
     "testMatch": [
-      "<rootDir>/packages/apollos-ui-*/src/**/?(*.)(test|tests).{js,jsx,mjs}"
+      "<rootDir>/packages/(apollos-ui-*|apolloschurchapp)/src/**/?(*.)(test|tests).{js,jsx,mjs}"
     ],
     "modulePaths": [
       "<rootDir>/packages/apolloschurchapp/node_modules",
@@ -41,6 +41,8 @@
     "build:api-watch": "node ./scripts/watch.js",
     "lint": "lerna run lint",
     "test": "lerna run test",
+    "test:client": "jest .",
+    "test:server": "yarn test --ignore apolloschurchapp --ignore apollos-ui-*",
     "ci-test": "lerna run test  --stream -- --maxWorkers=2",
     "ios": "lerna run ios --stream --scope apolloschurchapp",
     "android": "lerna run android --stream --scope apolloschurchapp",

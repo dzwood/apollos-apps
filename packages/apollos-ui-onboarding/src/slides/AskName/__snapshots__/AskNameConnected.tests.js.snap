@@ -1369,7 +1369,7 @@ exports[`The AskNameConnected component renders in a default state 1`] = `
           </View>
         </View>
         <Text
-          onPress={[MockFunction]}
+          onPress={[Function]}
           style={
             Object {
               "color": "#A5A5A5",
@@ -1378,7 +1378,6 @@ exports[`The AskNameConnected component renders in a default state 1`] = `
               "paddingVertical": 15,
             }
           }
-          trackEventName="Ask Name Skipped"
         >
           Skip
         </Text>
@@ -2008,7 +2007,7 @@ exports[`The AskNameConnected component renders loading state when fetching data
           </View>
         </View>
         <Text
-          onPress={[MockFunction]}
+          onPress={[Function]}
           style={
             Object {
               "color": "#A5A5A5",
@@ -2017,7 +2016,6 @@ exports[`The AskNameConnected component renders loading state when fetching data
               "paddingVertical": 15,
             }
           }
-          trackEventName="Ask Name Skipped"
         >
           Skip
         </Text>

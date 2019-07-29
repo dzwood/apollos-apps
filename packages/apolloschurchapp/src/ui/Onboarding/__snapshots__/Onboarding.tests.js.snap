@@ -721,7 +721,6 @@ exports[`the Onboarding component should render Onboarding 1`] = `
                       "paddingVertical": 15,
                     }
                   }
-                  trackEventName="Ask Name Skipped"
                 >
                   Skip
                 </Text>

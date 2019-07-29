@@ -8,7 +8,7 @@
     "storybook/**"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "(cd ../.. && yarn jest packages/apollos-ui-auth)",
     "generate-stories": "rnstl --searchDir ./src --pattern **/*.stories.js",
     "lint": "eslint ./src --ext .js"
   },
@@ -17,25 +17,6 @@
     "react-component",
     "react-native"
   ],
-  "jest": {
-    "preset": "<rootDir>/apolloschurchapp/node_modules/react-native",
-    "collectCoverage": true,
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|rn-*|react-clone-referenced-element|react-navigation|@apollosproject))"
-    ],
-    "rootDir": "<rootDir>/../..",
-    "testMatch": [
-      "<rootDir>/apollos-ui-auth/src/**/?(*.)(test|tests).{js,jsx,mjs}"
-    ],
-    "modulePaths": [
-      "<rootDir>/apolloschurchapp/node_modules",
-      "<rootDir>/apollos-ui-auth/node_modules"
-    ],
-    "moduleDirectories": ["node_modules", "../apolloschurchapp/node_modules"],
-    "setupFiles": [
-      "<rootDir>/apollos-ui-auth/jest.setup.js"
-    ]
-  },
   "peerDependencies": {
     "@apollosproject/ui-analytics": "*",
     "@apollosproject/ui-kit": "*",
@@ -57,10 +38,8 @@
   },
   "devDependencies": {
     "apollo-client": "2.5.1",
-    "jest": "24.8.0",
     "prop-types": "15.6.1",
     "react-apollo": "2.5.5",
-    "react-test-renderer": "16.8.6",
     "waait": "^1.0.4"
   },
   "publishConfig": {

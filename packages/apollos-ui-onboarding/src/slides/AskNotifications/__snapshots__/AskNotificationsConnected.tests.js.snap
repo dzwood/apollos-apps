@@ -589,7 +589,7 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
         }
       >
         <Text
-          onPress={[MockFunction]}
+          onPress={[Function]}
           style={
             Object {
               "color": "#A5A5A5",
@@ -598,7 +598,6 @@ exports[`The Onboarding AskNotificationsConnected component should render with a
               "paddingVertical": 15,
             }
           }
-          trackEventName="Ask Notifications Skipped"
         >
           Skip
         </Text>

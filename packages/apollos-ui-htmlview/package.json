@@ -8,7 +8,7 @@
     "storybook/**"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "(cd ../.. && yarn jest packages/apollos-ui-htmlview)",
     "generate-stories": "rnstl --searchDir ./src --pattern **/*.stories.js",
     "lint": "eslint ./src --ext .js"
   },
@@ -17,35 +17,17 @@
     "react-component",
     "react-native"
   ],
-  "jest": {
-    "preset": "react-native",
-    "collectCoverage": true,
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|rn-*|react-clone-referenced-element|react-navigation|@apollosproject))"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/?(*.)(test|tests).{js,jsx,mjs}"
-    ],
-    "modulePaths": [
-      "<rootDir>/src/"
-    ]
-  },
   "peerDependencies": {
     "@apollos-project/ui-kit": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "prop-types": "*"
   },
   "dependencies": {
     "@apollosproject/ui-kit": "^1.1.0-beta.0",
     "@apollosproject/ui-storybook": "^1.1.0-beta.0",
     "entities": "^1.1.2",
     "htmlparser2": "3.9.2"
-  },
-  "devDependencies": {
-    "jest": "24.8.0",
-    "jest-react-native": "18.0.0",
-    "prop-types": "15.6.1",
-    "react-test-renderer": "16.8.6"
   },
   "publishConfig": {
     "access": "public"

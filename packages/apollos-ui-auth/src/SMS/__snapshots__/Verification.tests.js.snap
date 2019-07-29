@@ -77,16 +77,16 @@ exports[`The Auth Verification component should render 1`] = `
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -400,7 +400,7 @@ Stand by…
               </View>
             </View>
           </RCTScrollView>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -484,16 +484,16 @@ exports[`The Auth Verification component should render as disabled 1`] = `
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -867,7 +867,7 @@ Stand by…
               </View>
             </View>
           </View>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -951,16 +951,16 @@ exports[`The Auth Verification component should render in a loading state 1`] = 
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -1328,7 +1328,7 @@ Stand by…
               </View>
             </View>
           </View>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -1412,16 +1412,16 @@ exports[`The Auth Verification component should render in a next button 1`] = `
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -1795,7 +1795,7 @@ Stand by…
               </View>
             </View>
           </View>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -1879,16 +1879,16 @@ exports[`The Auth Verification component should render in an error state 1`] = `
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -2215,7 +2215,7 @@ Stand by…
               </View>
             </View>
           </RCTScrollView>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -2299,16 +2299,16 @@ exports[`The Auth Verification component should render with a custom confirmatio
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -2622,7 +2622,7 @@ Stand by…
               </View>
             </View>
           </RCTScrollView>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -2706,16 +2706,16 @@ exports[`The Auth Verification component should render with a value 1`] = `
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -3030,7 +3030,7 @@ Stand by…
               </View>
             </View>
           </RCTScrollView>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>
@@ -3114,16 +3114,16 @@ exports[`The Auth Verification component should render with custom confirmationT
           }
         }
       >
-        <View
-          onLayout={[Function]}
-          pointerEvents="box-none"
+        <RCTSafeAreaView
+          emulateUnlessSupported={true}
+          forceInset={
+            Object {
+              "top": "always",
+            }
+          }
           style={
             Object {
               "flex": 1,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 20,
             }
           }
         >
@@ -3436,7 +3436,7 @@ exports[`The Auth Verification component should render with custom confirmationT
               </View>
             </View>
           </RCTScrollView>
-        </View>
+        </RCTSafeAreaView>
       </BVLinearGradient>
     </View>
   </View>

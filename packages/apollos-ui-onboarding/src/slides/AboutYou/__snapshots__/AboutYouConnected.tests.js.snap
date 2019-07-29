@@ -1297,7 +1297,7 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
         }
       >
         <Text
-          onPress={[MockFunction]}
+          onPress={[Function]}
           style={
             Object {
               "color": "#A5A5A5",
@@ -1306,7 +1306,6 @@ exports[`AboutYouConnected component renders in a default state 1`] = `
               "paddingVertical": 15,
             }
           }
-          trackEventName="About You Skipped"
         >
           Skip
         </Text>
