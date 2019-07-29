@@ -23,8 +23,7 @@
     "react": "*",
     "react-apollo": "*",
     "react-native": "*",
-    "react-native-onesignal": "*",
-    "react-native-onesignal": "8"
+    "react-native-onesignal": "*"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.5.1",

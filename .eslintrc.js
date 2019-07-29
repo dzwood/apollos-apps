@@ -63,6 +63,7 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'global-require': 0,
     'import/no-cycle': 0,
+    'import/no-unresolved': ['error', { ignore: ['^react(|-native.*)$'] }],
     'function-paren-newline': 0,
     'no-underscore-dangle': 0,
     "graphql/template-strings": ['warn', { env: 'apollo' }]
