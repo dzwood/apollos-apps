@@ -42,7 +42,7 @@
     "lint": "lerna run lint",
     "test": "yarn test:server && yarn test:client",
     "test:client": "jest .",
-    "test:server": "yarn test --ignore apolloschurchapp --ignore apollos-ui-*",
+    "test:server": "lerna run test --ignore apolloschurchapp --ignore apollos-ui-*",
     "ci-test": "yarn test:client --maxWorkers=2 && yarn test:server -- --maxWorkers=2 --stream",
     "ios": "lerna run ios --stream --scope apolloschurchapp",
     "android": "lerna run android --stream --scope apolloschurchapp",
