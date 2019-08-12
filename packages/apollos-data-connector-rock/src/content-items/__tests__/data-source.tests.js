@@ -9,7 +9,11 @@ ApollosConfig.loadJs({
     API_URL: 'https://apollosrock.newspring.cc/api',
     API_TOKEN: 'some-rock-token',
     IMAGE_URL: 'https://apollosrock.newspring.cc/GetImage.ashx',
+    SHARE_URL: 'https://apollosrock.newspring.cc',
     TIMEZONE: 'America/New_York',
+  },
+  ROCK_MAPPINGS: {
+    SERMON_CHANNEL_ID: 'TEST_ID',
   },
 });
 
@@ -34,6 +38,25 @@ describe('ContentItemsModel', () => {
   it('constructs', () => {
     expect(new ContentItemsDataSource()).toBeTruthy();
   });
+
+  it('creates a sharing URL with channel url and item slug', async () => {
+    const dataSource = new ContentItemsDataSource();
+    dataSource.context = {
+      dataSources: {
+        ContentChannel: {
+          getFromId: jest.fn(() => ({
+            itemUrl: '/news',
+          })),
+        },
+      },
+    };
+    dataSource.get = jest.fn(() => ({ slug: 'cool-article' }));
+    const result = 'https://apollorock.newspring.cc/news/cool-article';
+    expect(
+      dataSource.getShareUrl({ contentId: 'fakeId', channelId: 'fakeChannel' })
+    ).resolves.toEqual(result);
+  });
+
   it('filters by content channel id', () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
@@ -131,6 +154,32 @@ describe('ContentItemsModel', () => {
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
 
+  it('returns features when a contentItem has a Features field', async () => {
+    const dataSource = new ContentItemsDataSource();
+    const createTextFeature = jest.fn(() => ({
+      id: 'TextFeature:123',
+      body: 'text feature',
+    }));
+    const createScriptureFeature = jest.fn(() => ({
+      id: 'ScriptureFeature:123',
+      reference: 'john 3',
+    }));
+    dataSource.context = {
+      dataSources: { Features: { createTextFeature, createScriptureFeature } },
+    };
+    const result = dataSource.getFeatures({
+      attributeValues: {
+        features: {
+          id: 123,
+          value: 'scripture^john 3|text^text feature',
+        },
+      },
+    });
+    expect(result).toMatchSnapshot();
+    expect(createTextFeature.mock.calls).toMatchSnapshot();
+    expect(createScriptureFeature.mock.calls).toMatchSnapshot();
+  });
+
   it('returns a text feature when a contentItem has a TextFeature field', async () => {
     const dataSource = new ContentItemsDataSource();
     const createTextFeature = jest.fn(() => ({
@@ -140,6 +189,69 @@ describe('ContentItemsModel', () => {
     dataSource.context = { dataSources: { Features: { createTextFeature } } };
     const result = dataSource.getFeatures({
       attributeValues: { textFeature: { id: 123, value: 'something' } },
+    });
+    expect(result).toMatchSnapshot();
+    expect(createTextFeature.mock.calls).toMatchSnapshot();
+  });
+
+  it('returns text features when a contentItem has a TextFeatures field', async () => {
+    const dataSource = new ContentItemsDataSource();
+    const createTextFeature = jest.fn(() => ({
+      id: 'TextFeature:123',
+      body: 'something',
+    }));
+    dataSource.context = { dataSources: { Features: { createTextFeature } } };
+    const result = dataSource.getFeatures({
+      attributeValues: {
+        textFeatures: {
+          id: 123,
+          value: 'something^something else|another thing^that thing is cool',
+        },
+      },
+    });
+    expect(result).toMatchSnapshot();
+    expect(createTextFeature.mock.calls).toMatchSnapshot();
+  });
+
+  it('returns scripture features when a contentItem has a ScriptureFeatures field', async () => {
+    const dataSource = new ContentItemsDataSource();
+    const createScriptureFeature = jest.fn(() => ({
+      id: 'ScriptureFeature:123',
+      body: 'something',
+    }));
+    dataSource.context = {
+      dataSources: { Features: { createScriptureFeature } },
+    };
+    const result = dataSource.getFeatures({
+      attributeValues: {
+        scriptureFeatures: {
+          id: 123,
+          value: 'something^John 3:16|another thing^Mark 1:1',
+        },
+      },
+    });
+    expect(result).toMatchSnapshot();
+    expect(createScriptureFeature.mock.calls).toMatchSnapshot();
+  });
+
+  it('returns text features and when a contentItem has a TextFeatures and a TextFeature field', async () => {
+    const dataSource = new ContentItemsDataSource();
+    const createTextFeature = jest.fn(() => ({
+      id: 'TextFeature:123',
+      body: 'something',
+    }));
+    dataSource.context = { dataSources: { Features: { createTextFeature } } };
+    const result = dataSource.getFeatures({
+      attributeValues: {
+        textFeatures: {
+          id: 123,
+          value: 'something^something else|another thing^that thing is cool',
+        },
+        textFeature: {
+          id: 456,
+          value: 'wow this is neat!',
+        },
+      },
     });
     expect(result).toMatchSnapshot();
     expect(createTextFeature.mock.calls).toMatchSnapshot();
@@ -157,6 +269,57 @@ describe('ContentItemsModel', () => {
     });
     expect(result).toMatchSnapshot();
     expect(createTextFeature.mock.calls).toMatchSnapshot();
+  });
+
+  it('isContentActiveLiveStream returns false if the livestream is innactive', async () => {
+    const dataSource = new ContentItemsDataSource();
+    dataSource.context = {
+      dataSources: { LiveStream: { getLiveStream: () => ({ isLive: false }) } },
+    };
+    dataSource.getSermonFeed = jest.fn();
+
+    const result = await dataSource.isContentActiveLiveStream({ id: '1' });
+    expect(result).toBe(false);
+    expect(dataSource.getSermonFeed.mock.calls).toMatchSnapshot();
+  });
+
+  it('isContentActiveLiveStream returns false if the livestream is not the most recent sermon', async () => {
+    const dataSource = new ContentItemsDataSource();
+    dataSource.context = {
+      dataSources: { LiveStream: { getLiveStream: () => ({ isLive: true }) } },
+    };
+    dataSource.getSermonFeed = jest.fn(() => ({
+      first: () => Promise.resolve({ id: '2' }),
+    }));
+
+    const result = await dataSource.isContentActiveLiveStream({ id: '1' });
+    expect(result).toBe(false);
+    expect(dataSource.getSermonFeed.mock.calls).toMatchSnapshot();
+  });
+
+  it('isContentActiveLiveStream returns true if the livestream is the most recent sermon', async () => {
+    const dataSource = new ContentItemsDataSource();
+    dataSource.context = {
+      dataSources: { LiveStream: { getLiveStream: () => ({ isLive: true }) } },
+    };
+    dataSource.getSermonFeed = jest.fn(() => ({
+      first: () => Promise.resolve({ id: '1' }),
+    }));
+
+    const result = await dataSource.isContentActiveLiveStream({ id: '1' });
+    expect(result).toBe(true);
+    expect(dataSource.getSermonFeed.mock.calls).toMatchSnapshot();
+  });
+
+  it('getSermonFeed fetches items from a specific content channel', () => {
+    const dataSource = new ContentItemsDataSource();
+    dataSource.byContentChannelId = jest.fn(() => ({
+      andFilter: async () => Promise.resolve(),
+    }));
+
+    const result = dataSource.getSermonFeed({ id: '1' });
+    expect(dataSource.byContentChannelId.mock.calls).toMatchSnapshot();
+    expect(result).toMatchSnapshot();
   });
 
   it('returns null when there are no parent content items with images', async () => {

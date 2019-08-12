@@ -51,6 +51,7 @@ class HorizontalContentFeed extends Component {
 
   renderFeed = ({ data, loading, error }) => {
     if (error) return null;
+    if (loading) return null;
 
     const childContent = get(
       data,
@@ -65,13 +66,23 @@ class HorizontalContentFeed extends Component {
     ).map((edge) => edge.node);
 
     const content = siblingContent.length ? siblingContent : childContent;
+    const currentIndex = content.findIndex(
+      ({ id }) => id === this.props.contentId
+    );
+    const initialScrollIndex = currentIndex === -1 ? 0 : currentIndex;
 
-    return (content && content.length) || loading ? (
+    return content && content.length ? (
       <HorizontalTileFeed
         content={content}
-        isLoading={loading}
         loadingStateObject={loadingStateObject}
         renderItem={this.renderItem}
+        initialScrollIndex={initialScrollIndex}
+        getItemLayout={(itemData, index) => ({
+          // We need to pass this function so that initialScrollIndex will work.
+          length: CardTile.WIDTH,
+          offset: CardTile.WIDTH * index,
+          index,
+        })}
       />
     ) : null;
   };

@@ -45,7 +45,14 @@ export const defaultContentItemResolvers = {
 
   theme: () => null, // todo: integrate themes from Rock
 
-  sharing: (root) => ({ __type: 'SharableContentItem', ...root }),
+  sharing: (root, args, { dataSources: { ContentItem } }) => ({
+    url: ContentItem.getShareUrl({
+      contentId: root.id,
+      channelId: root.contentChannelId,
+    }),
+    title: 'Share via ...',
+    message: `${root.title} - ${ContentItem.createSummary(root)}`,
+  }),
 };
 
 const resolver = {
@@ -93,16 +100,19 @@ const resolver = {
   },
   WeekendContentItem: {
     ...defaultContentItemResolvers,
+    liveStream: async (
+      root,
+      args,
+      { dataSources: { ContentItem, LiveStream } }
+    ) => ({
+      ...(await LiveStream.getLiveStream()), // TODO: Wish there was a better way to inherit these defaults from the LiveStream module.
+      isLive: await ContentItem.isContentActiveLiveStream(root), // We need to override the global IsLive with an IsLive that is contextual to a ContentItem
+    }),
   },
   ContentItem: {
     ...defaultContentItemResolvers,
     __resolveType: (root, { dataSources: { ContentItem } }) =>
       ContentItem.resolveType(root),
-  },
-  SharableContentItem: {
-    url: () => 'https://apollosrock.newspring.cc/', // todo: return a dynamic url that links to the content item
-    title: ({ title }) => title,
-    message: () => '',
   },
   ContentItemsConnection: {
     pageInfo: withEdgePagination,

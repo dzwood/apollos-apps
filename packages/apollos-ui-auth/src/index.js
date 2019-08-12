@@ -20,6 +20,7 @@ export ProtectedRoute from './ProtectedRoute';
 export GET_LOGIN_STATE from './getLoginState';
 export LOGOUT from './logout';
 export authLink from './authLink';
+export buildErrorLink from './buildErrorLink';
 
 export {
   AuthSMSPhoneEntry,
@@ -38,12 +39,9 @@ const AuthNavigator = createStackNavigator(
   {
     initialRouteName: 'AuthSMSPhoneEntryConnected',
     headerMode: 'none',
+    navigationOptions: { header: null },
   }
 );
-
-AuthNavigator.navigationOptions = {
-  header: null,
-};
 
 AuthNavigator.propTypes = {
   screenProps: PropTypes.shape({

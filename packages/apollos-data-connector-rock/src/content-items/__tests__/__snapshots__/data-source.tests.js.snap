@@ -21,6 +21,16 @@ Array [
 ]
 `;
 
+exports[`ContentItemsModel getSermonFeed fetches items from a specific content channel 1`] = `
+Array [
+  Array [
+    "TEST_ID",
+  ],
+]
+`;
+
+exports[`ContentItemsModel getSermonFeed fetches items from a specific content channel 2`] = `Promise {}`;
+
 exports[`ContentItemsModel gets a cursor finding child content items of a provided parent 1`] = `
 Array [
   Array [
@@ -81,7 +91,7 @@ Array [
     Object {},
   ],
   Array [
-    "ContentChannelItemAssociations?loadAttributes=expanded&%24filter=%28%28ContentChannelItemId%20eq%20101%29%20and%20%28ChildContentChannelItemId%20ne%201%29%29",
+    "ContentChannelItemAssociations?loadAttributes=expanded&%24filter=%28%28ContentChannelItemId%20eq%20101%29%29",
     Object {},
     Object {},
   ],
@@ -141,6 +151,20 @@ Array [
 ]
 `;
 
+exports[`ContentItemsModel isContentActiveLiveStream returns false if the livestream is innactive 1`] = `Array []`;
+
+exports[`ContentItemsModel isContentActiveLiveStream returns false if the livestream is not the most recent sermon 1`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`ContentItemsModel isContentActiveLiveStream returns true if the livestream is the most recent sermon 1`] = `
+Array [
+  Array [],
+]
+`;
+
 exports[`ContentItemsModel returns a text feature when a contentItem has a TextFeature field 1`] = `
 Array [
   Object {
@@ -165,6 +189,41 @@ exports[`ContentItemsModel returns an empty array when there are no features 1`]
 
 exports[`ContentItemsModel returns an empty array when there are no features 2`] = `Array []`;
 
+exports[`ContentItemsModel returns features when a contentItem has a Features field 1`] = `
+Array [
+  Object {
+    "id": "ScriptureFeature:123",
+    "reference": "john 3",
+  },
+  Object {
+    "body": "text feature",
+    "id": "TextFeature:123",
+  },
+]
+`;
+
+exports[`ContentItemsModel returns features when a contentItem has a Features field 2`] = `
+Array [
+  Array [
+    Object {
+      "id": "123-1",
+      "text": "text feature",
+    },
+  ],
+]
+`;
+
+exports[`ContentItemsModel returns features when a contentItem has a Features field 3`] = `
+Array [
+  Array [
+    Object {
+      "id": "123-0",
+      "reference": "john 3",
+    },
+  ],
+]
+`;
+
 exports[`ContentItemsModel returns null when there are no child content items 1`] = `
 Array [
   Array [
@@ -181,6 +240,106 @@ Array [
     "ContentChannelItemAssociations?loadAttributes=expanded&%24filter=ChildContentChannelItemId%20eq%201",
     Object {},
     Object {},
+  ],
+]
+`;
+
+exports[`ContentItemsModel returns scripture features when a contentItem has a ScriptureFeatures field 1`] = `
+Array [
+  Object {
+    "body": "something",
+    "id": "ScriptureFeature:123",
+  },
+  Object {
+    "body": "something",
+    "id": "ScriptureFeature:123",
+  },
+]
+`;
+
+exports[`ContentItemsModel returns scripture features when a contentItem has a ScriptureFeatures field 2`] = `
+Array [
+  Array [
+    Object {
+      "id": "123-0",
+      "reference": "John 3:16",
+    },
+  ],
+  Array [
+    Object {
+      "id": "123-1",
+      "reference": "Mark 1:1",
+    },
+  ],
+]
+`;
+
+exports[`ContentItemsModel returns text features and when a contentItem has a TextFeatures and a TextFeature field 1`] = `
+Array [
+  Object {
+    "body": "something",
+    "id": "TextFeature:123",
+  },
+  Object {
+    "body": "something",
+    "id": "TextFeature:123",
+  },
+  Object {
+    "body": "something",
+    "id": "TextFeature:123",
+  },
+]
+`;
+
+exports[`ContentItemsModel returns text features and when a contentItem has a TextFeatures and a TextFeature field 2`] = `
+Array [
+  Array [
+    Object {
+      "id": 456,
+      "text": "wow this is neat!",
+    },
+  ],
+  Array [
+    Object {
+      "id": "123-0",
+      "text": "something else",
+    },
+  ],
+  Array [
+    Object {
+      "id": "123-1",
+      "text": "that thing is cool",
+    },
+  ],
+]
+`;
+
+exports[`ContentItemsModel returns text features when a contentItem has a TextFeatures field 1`] = `
+Array [
+  Object {
+    "body": "something",
+    "id": "TextFeature:123",
+  },
+  Object {
+    "body": "something",
+    "id": "TextFeature:123",
+  },
+]
+`;
+
+exports[`ContentItemsModel returns text features when a contentItem has a TextFeatures field 2`] = `
+Array [
+  Array [
+    Object {
+      "id": "123-0",
+      "text": "something else",
+    },
+  ],
+  Array [
+    Object {
+      "id": "123-1",
+      "text": "that thing is cool",
+    },
   ],
 ]
 `;

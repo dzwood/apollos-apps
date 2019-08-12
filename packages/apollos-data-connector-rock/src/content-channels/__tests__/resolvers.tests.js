@@ -9,6 +9,8 @@ import {
   mediaSchema,
   themeSchema,
   scriptureSchema,
+  liveSchema,
+  featuresSchema,
 } from '@apollosproject/data-schema';
 
 // we import the root-level schema and resolver so we test the entire integration:
@@ -63,7 +65,13 @@ describe('ContentChannel', () => {
   beforeEach(() => {
     fetch.resetMocks();
     fetch.mockRockDataSourceAPI();
-    schema = getSchema([themeSchema, mediaSchema, scriptureSchema]);
+    schema = getSchema([
+      featuresSchema,
+      themeSchema,
+      mediaSchema,
+      scriptureSchema,
+      liveSchema,
+    ]);
     context = getContext();
   });
 

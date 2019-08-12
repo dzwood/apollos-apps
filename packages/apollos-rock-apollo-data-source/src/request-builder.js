@@ -266,7 +266,17 @@ of filters you are using so that Rock can handle the request in a single query.
   orFilter = (filter) => this.filter(filter, { operator: 'or' });
 
   filterOneOf = (filters) => {
-    const filter = filters.map((f) => ({ query: f, operator: 'or' }));
+    if (filters.length === 0) {
+      console.warn(`
+You are filtering oneOf 0 filters.
+Normally this has the same effect as filtering with 0 filters.
+It's recommended that rather than passing an empty array with filterOneOf,
+check to make sure you have at least one element to filter by. If you don't,
+you can return request.empty()
+`);
+    }
+    
+    const filter = filters.map((f) => ({ query: f, operator: 'or' }));    
     return this.filter(filter);
   };
 
