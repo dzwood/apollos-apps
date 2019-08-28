@@ -236,7 +236,6 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
   }
 
@@ -279,8 +278,8 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
@@ -302,8 +301,8 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
@@ -325,8 +324,8 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
@@ -348,8 +347,30 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+  }
+
+  type EventContentItem implements ContentItem & Node {
+    id: ID!
+    title: String
+    coverImage: ImageMedia
+    images: [ImageMedia]
+    videos: [VideoMedia]
+    audios: [AudioMedia]
+    htmlContent: String
+    summary: String
+    childContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    siblingContentItemsConnection(
+      first: Int
+      after: String
+    ): ContentItemsConnection
+    parentChannel: ContentChannel
+    theme: Theme
+
+    event: Event
   }
 
   input ContentItemsConnectionInput {

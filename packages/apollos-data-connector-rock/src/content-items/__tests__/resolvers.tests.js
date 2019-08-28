@@ -17,7 +17,7 @@ import {
 
 import * as RockConstants from '../../rock-constants';
 // we import the root-level schema and resolver so we test the entire integration:
-import { ContentChannel, ContentItem, Sharable, Person } from '../..';
+import { ContentChannel, ContentItem, Sharable, Person, Events } from '../..';
 
 import { generateToken } from '../../auth/token';
 
@@ -64,6 +64,7 @@ const { getSchema, getContext } = createTestHelpers({
   ContentChannel,
   ContentItem,
   Sharable,
+  Events,
   UniversalContentItem: {
     dataSource: ContentItem.dataSource,
   }, // alias

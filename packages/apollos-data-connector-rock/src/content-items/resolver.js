@@ -109,6 +109,11 @@ const resolver = {
       isLive: await ContentItem.isContentActiveLiveStream(root), // We need to override the global IsLive with an IsLive that is contextual to a ContentItem
     }),
   },
+  EventContentItem: {
+    ...defaultContentItemResolvers,
+    event: ({ eventItemOccurenceId }, args, { dataSources: { Events } }) =>
+      Events.getById(eventItemOccurenceId),
+  },
   ContentItem: {
     ...defaultContentItemResolvers,
     __resolveType: (root, { dataSources: { ContentItem } }) =>

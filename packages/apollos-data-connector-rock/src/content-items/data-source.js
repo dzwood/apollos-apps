@@ -414,6 +414,7 @@ export default class ContentItem extends RockApolloDataSource {
     attributes,
     contentChannelTypeId,
     contentChannelId,
+    eventItemOccurenceId,
   }) {
     // if we have defined an ContentChannelTypeId based maping in the YML file, use it!
     if (
@@ -449,6 +450,10 @@ export default class ContentItem extends RockApolloDataSource {
 
     if (this.hasMedia({ attributeValues, attributes })) {
       return 'MediaContentItem';
+    }
+
+    if (eventItemOccurenceId) {
+      return 'EventContentItem';
     }
 
     return 'UniversalContentItem';
