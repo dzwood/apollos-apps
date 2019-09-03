@@ -22,7 +22,6 @@ const RowHeader = styled(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   zIndex: 2, // UX hack to improve tapability. Positions RowHeader above StyledHorizontalTileFeed
-  paddingTop: theme.sizing.baseUnit * 0.5,
   paddingLeft: theme.sizing.baseUnit,
 }))(View);
 
@@ -44,6 +43,7 @@ const StyledHorizontalTileFeed = styled(({ theme }) => ({
   /* UX hack to improve tapability. The magic number below happens to be the number of pixels that
    * aligns everything in the same place as if none of the UX hacks were there. */
   marginTop: theme.sizing.baseUnit * -1.25,
+  paddingBottom: theme.sizing.baseUnit,
   zIndex: 1,
 }))(HorizontalTileFeed);
 
