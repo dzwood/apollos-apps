@@ -9,6 +9,7 @@ import {
   styled,
   PaddedView,
   SearchInput,
+  H2,
 } from '@apollosproject/ui-kit';
 
 import TileContentFeed from './TileContentFeed';
@@ -60,6 +61,13 @@ const styles = StyleSheet.create({
   },
 });
 
+const Boom = () => (
+  <PaddedView style={{ width: '100%' }}>
+    <H2 style={{ paddingBottom: 16 }}>Discover</H2>
+    <SearchInput />
+  </PaddedView>
+);
+
 class Discover extends PureComponent {
   renderItem = ({ item }) => (
     <TileContentFeed
@@ -76,11 +84,6 @@ class Discover extends PureComponent {
   render() {
     return (
       <BackgroundView>
-        <ClipAndroidElevationFix>
-          <HeaderBorder vertical={false}>
-            <SearchInput />
-          </HeaderBorder>
-        </ClipAndroidElevationFix>
         <Query query={GET_CONTENT_CHANNELS} fetchPolicy="cache-and-network">
           {({
             error,
@@ -106,7 +109,11 @@ class Discover extends PureComponent {
 
 Discover.navigationOptions = {
   title: 'Discover',
-  headerStyle: styles.header,
+  // headerStyle: styles.header,
+  headerTitle: <Boom />,
+  headerStyle: {
+    height: 115,
+  },
 };
 
 export default Discover;
