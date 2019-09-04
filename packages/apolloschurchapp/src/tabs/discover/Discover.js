@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import { Query } from 'react-apollo';
 import { get } from 'lodash';
+import { HeaderTitle } from 'react-navigation';
 
 import {
   FeedView,
@@ -9,40 +10,10 @@ import {
   styled,
   PaddedView,
   SearchInput,
-  H2,
 } from '@apollosproject/ui-kit';
 
 import TileContentFeed from './TileContentFeed';
 import GET_CONTENT_CHANNELS from './getContentChannels';
-
-const HeaderBorder = styled(({ theme }) => ({
-  paddingBottom: 8,
-  /* It's unclear why this is necessary but without it the layout breaks on both platforms. Limited
-   * research suggest that without a background color the shadows don't know what to blend with so
-   * the view collapses. */
-  backgroundColor: theme.colors.background.paper,
-  // Renders the same shadows that React Navigation does.
-  ...Platform.select({
-    ios: {
-      shadowColor: 'rgba(0, 0, 0, 0.3)',
-      shadowOpacity: 0.85,
-      shadowRadius: 0,
-      shadowOffset: {
-        width: 0,
-        height: StyleSheet.hairlineWidth,
-      },
-    },
-    android: {
-      elevation: 4,
-    },
-  }),
-}))(PaddedView);
-
-// This element is used to clip the Android shadow in every directection except the bottom.
-const ClipAndroidElevationFix = styled({
-  paddingBottom: StyleSheet.hairlineWidth,
-  overflow: 'hidden',
-})(View);
 
 const childContentItemLoadingState = {
   title: '',
@@ -54,19 +25,31 @@ const feedItemLoadingState = {
   isLoading: true,
 };
 
+const HeaderWrapper = styled(({ theme }) => ({
+  flex: 1,
+  alignItems: Platform.OS === 'ios' ? 'center' : 'flex-start',
+  alignSelf: 'flex-start',
+  paddingTop: theme.sizing.baseUnit * 0.75,
+}))(View);
+
+const SearchWrapper = styled({
+  width: '100%',
+})(PaddedView);
+
+const Header = () => (
+  <HeaderWrapper>
+    <HeaderTitle>Discover</HeaderTitle>
+    <SearchWrapper>
+      <SearchInput />
+    </SearchWrapper>
+  </HeaderWrapper>
+);
+
 const styles = StyleSheet.create({
   header: {
-    borderBottomWidth: 0,
-    elevation: 0,
+    height: Platform.OS === 'ios' ? 98 : 103, // Optically this is what we need. 🧙‍About as magic a number could be.
   },
 });
-
-const Boom = () => (
-  <PaddedView style={{ width: '100%' }}>
-    <H2 style={{ paddingBottom: 16 }}>Discover</H2>
-    <SearchInput />
-  </PaddedView>
-);
 
 class Discover extends PureComponent {
   renderItem = ({ item }) => (
@@ -109,11 +92,8 @@ class Discover extends PureComponent {
 
 Discover.navigationOptions = {
   title: 'Discover',
-  // headerStyle: styles.header,
-  headerTitle: <Boom />,
-  headerStyle: {
-    height: 115,
-  },
+  headerTitle: <Header />,
+  headerStyle: styles.header,
 };
 
 export default Discover;
