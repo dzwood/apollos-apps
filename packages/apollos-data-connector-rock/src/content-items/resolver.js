@@ -2,7 +2,6 @@ import { get } from 'lodash';
 import {
   createGlobalId,
   withEdgePagination,
-  parseGlobalId,
 } from '@apollosproject/server-core';
 
 import ApollosConfig from '@apollosproject/config';
