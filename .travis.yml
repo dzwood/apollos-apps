@@ -5,7 +5,35 @@ cache:
   directories:
     - node_modules
     - $HOME/.cache/yarn
+    - packages/apollos-apollo-server-env-mock/node_modules
+    - packages/apollos-church-api/node_modules
+    - packages/apollos-config/node_modules
+    - packages/apollos-data-connector-algolia-search/node_modules
+    - packages/apollos-data-connector-analytics/node_modules
+    - packages/apollos-data-connector-bible/node_modules
+    - packages/apollos-data-connector-church-online/node_modules
+    - packages/apollos-data-connector-cloudinary/node_modules
+    - packages/apollos-data-connector-onesignal/node_modules
+    - packages/apollos-data-connector-passes/node_modules
+    - packages/apollos-data-connector-rock/node_modules
+    - packages/apollos-data-connector-twilio/node_modules
+    - packages/apollos-data-schema/node_modules
+    - packages/apollos-rock-apollo-data-source/node_modules
+    - packages/apollos-server-core/node_modules
+    - packages/apollos-ui-analytics/node_modules
+    - packages/apollos-ui-auth/node_modules
+    - packages/apollos-ui-htmlview/node_modules
+    - packages/apollos-ui-kit/node_modules
+    - packages/apollos-ui-media-player/node_modules
+    - packages/apollos-ui-media-player-youtube/node_modules
+    - packages/apollos-ui-notifications/node_modules
+    - packages/apollos-ui-onboarding/node_modules
+    - packages/apollos-ui-passes/node_modules
+    - packages/apollos-ui-scripture/node_modules
+    - packages/apollos-ui-storybook/node_modules
     - packages/apolloschurchapp/node_modules
+    - packages/babel-preset-apollos/node_modules    
+    
 before_install:
     # Fix intermittent "resource temporarily unavailable" and "write" errors failing the Travis builds.
     # See: https://github.com/travis-ci/travis-ci/issues/8920
