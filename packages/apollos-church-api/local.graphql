@@ -129,7 +129,7 @@ interface ContentItem {
   theme: Theme
   isLiked: Boolean
   likedCount: Int
-  sharing: SharableContentItem
+  sharing: ContentSharable
 }
 
 type ContentItemsConnection {
@@ -163,8 +163,14 @@ type ContentSeriesContentItem implements ContentItem & Node {
   scriptures: [Scripture]
   isLiked: Boolean
   likedCount: Int
-  sharing: SharableContentItem
+  sharing: ContentSharable
   features: [Feature]
+}
+
+type ContentSharable implements Sharable {
+  message: String
+  title: String
+  url: String
 }
 
 type DevotionalContentItem implements ContentItem & Node {
@@ -183,7 +189,7 @@ type DevotionalContentItem implements ContentItem & Node {
   scriptures: [Scripture]
   isLiked: Boolean
   likedCount: Int
-  sharing: SharableContentItem
+  sharing: ContentSharable
 }
 
 type Event implements Node {
@@ -254,7 +260,7 @@ type MediaContentItem implements ContentItem & Node {
   scriptures: [Scripture]
   isLiked: Boolean
   likedCount: Int
-  sharing: SharableContentItem
+  sharing: ContentSharable
 }
 
 enum MediaInputType {
@@ -373,7 +379,13 @@ type ScriptureFeature implements Feature & Node {
   id: ID!
   order: Int
   scriptures: [Scripture]
-  sharing: SharableFeature
+  sharing: ScriptureFeatureSharable
+}
+
+type ScriptureFeatureSharable implements Sharable {
+  message: String
+  title: String
+  url: String @deprecated(reason: "Not supported on a feature")
 }
 
 type SearchResult {
@@ -415,7 +427,13 @@ type TextFeature implements Feature & Node {
   id: ID!
   order: Int
   body: String
-  sharing: SharableFeature
+  sharing: TextFeatureSharable
+}
+
+type TextFeatureSharable implements Sharable {
+  message: String
+  title: String
+  url: String @deprecated(reason: "Not supported on a feature")
 }
 
 type Theme {
@@ -451,7 +469,7 @@ type UniversalContentItem implements ContentItem & Node {
   theme: Theme
   isLiked: Boolean
   likedCount: Int
-  sharing: SharableContentItem
+  sharing: ContentSharable
 }
 
 enum UPDATEABLE_PROFILE_FIELDS {
@@ -498,7 +516,7 @@ type WeekendContentItem implements ContentItem & Node {
   isLiked: Boolean
   likedCount: Int
   liveStream: LiveStream
-  sharing: SharableContentItem
+  sharing: ContentSharable
   features: [Feature]
 }
 

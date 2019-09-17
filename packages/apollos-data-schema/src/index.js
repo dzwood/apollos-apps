@@ -423,28 +423,48 @@ export const sharableSchema = gql`
     url: String @deprecated(reason: "Not supported on the interface")
   }
 
-  type SharableContentItem implements Sharable {
+  type SharableContentItem implements Sharable
+    @deprecated(reason: "Use ContentSharable.") {
+    message: String
+    title: String
+    url: String
+  }
+
+  type ContentSharable implements Sharable {
     message: String
     title: String
     url: String
   }
 
   ${extendForEachContentItemType(`
-    sharing: SharableContentItem
+    sharing: ContentSharable
 `)}
 
-  type SharableFeature implements Sharable {
+  type SharableFeature implements Sharable
+    @deprecated(reason: "Use FeatureSharable.") {
+    message: String
+    title: String
+    url: String @deprecated(reason: "Not supported on a feature")
+  }
+
+  type TextFeatureSharable implements Sharable {
+    message: String
+    title: String
+    url: String @deprecated(reason: "Not supported on a feature")
+  }
+
+  type ScriptureFeatureSharable implements Sharable {
     message: String
     title: String
     url: String @deprecated(reason: "Not supported on a feature")
   }
 
   extend type TextFeature {
-    sharing: SharableFeature
+    sharing: TextFeatureSharable
   }
 
   extend type ScriptureFeature {
-    sharing: SharableFeature
+    sharing: ScriptureFeatureSharable
   }
 `;
 

@@ -12,18 +12,21 @@ export default {
     __resolveType: ({ __typename }) => __typename,
   },
   TextFeature: {
-    sharing: ({ body }) => ({
-      title: 'Share text via...',
-      message: body,
-    }),
+    sharing: (root) => root,
+  },
+  TextFeatureSharable: {
+    message: ({ body }) => body,
+    title: () => 'Share text via...',
   },
   ScriptureFeature: {
     scriptures: ({ reference }, args, { dataSources: { Scripture } }) =>
       Scripture.getScriptures(reference),
-    sharing: ({ reference }, args, { dataSources: { Features } }) => ({
-      title: 'Share scripture via...',
-      message: Features.getScriptureShareMessage(reference),
-    }),
+    sharing: (root) => root,
+  },
+  ScriptureFeatureSharable: {
+    message: ({ reference }, args, { dataSources: { Features } }) =>
+      Features.getScriptureShareMessage(reference),
+    title: () => 'Share scripture via...',
   },
   Query: {
     userFeedFeatures: async (root, args, { dataSources: { Features } }) =>

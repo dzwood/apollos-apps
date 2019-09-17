@@ -2,6 +2,7 @@ import { get } from 'lodash';
 import {
   createGlobalId,
   withEdgePagination,
+  parseGlobalId,
 } from '@apollosproject/server-core';
 
 import ApollosConfig from '@apollosproject/config';
@@ -45,14 +46,8 @@ export const defaultContentItemResolvers = {
 
   theme: () => null, // todo: integrate themes from Rock
 
-  sharing: (root, args, { dataSources: { ContentItem } }) => ({
-    url: ContentItem.getShareUrl({
-      contentId: root.id,
-      channelId: root.contentChannelId,
-    }),
-    title: 'Share via ...',
-    message: `${root.title} - ${ContentItem.createSummary(root)}`,
-  }),
+  // pass this through for custom implementation
+  sharing: (root) => root,
 };
 
 const resolver = {
@@ -116,6 +111,16 @@ const resolver = {
   },
   ContentItemsConnection: {
     pageInfo: withEdgePagination,
+  },
+  ContentSharable: {
+    title: () => 'Share Via...',
+    message: (root, args, { dataSources: { ContentItem } }) =>
+      `${root.title} - ${ContentItem.createSummary(root)}`,
+    url: ({ id, contentChannelId }, args, { dataSources: { ContentItem } }) =>
+      ContentItem.getShareUrl({
+        contentId: id,
+        channelId: contentChannelId,
+      }),
   },
 };
 
