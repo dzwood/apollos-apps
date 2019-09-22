@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Animated, Image } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import PropTypes from 'prop-types';
 import { every } from 'lodash';
 
@@ -236,20 +237,23 @@ class ConnectedImage extends PureComponent {
       maintainAspectRatio,
       ...otherProps
     } = this.props;
+    // return (
+    // <SkeletonImage
+    // onReady={!this.isLoading}
+    // forceRatio={forceRatio}
+    // style={style}
+    // >
+    // <ImageComponent
+    // {...otherProps}
+    // source={source}
+    // onLoad={this.handleOnLoad}
+    // style={[this.aspectRatio, { opacity: this.imageOpacity }, style]}
+    // />
+    // </SkeletonImage>
+    // );
 
     return (
-      <SkeletonImage
-        onReady={!this.isLoading}
-        forceRatio={forceRatio}
-        style={style}
-      >
-        <ImageComponent
-          {...otherProps}
-          source={source}
-          onLoad={this.handleOnLoad}
-          style={[this.aspectRatio, { opacity: this.imageOpacity }, style]}
-        />
-      </SkeletonImage>
+      <FastImage source={this.props.source} style={style} {...otherProps} />
     );
   }
 }
