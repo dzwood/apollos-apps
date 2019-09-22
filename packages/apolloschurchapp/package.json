@@ -14,6 +14,7 @@
     "prettier": "1.14.2",
     "prop-types": "15.6.1",
     "react-dom": "16.6.3",
+    "react-native-fast-image": "^7.0.2",
     "react-native-storybook-loader": "1.8.0",
     "react-native-version": "2.6.2",
     "react-test-renderer": "16.8.6",
