@@ -7,6 +7,11 @@ export const EVENT_FRAGMENT = gql`
     location
     start
     end
+    image {
+      sources {
+        uri
+      }
+    }
   }
 `;
 

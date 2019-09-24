@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 
-import Event from './Event';
+import Event from './EventConnected';
 
 const EventNavigator = createStackNavigator(
   {
