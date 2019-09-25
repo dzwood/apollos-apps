@@ -39,6 +39,15 @@ export default class Event extends RockApolloDataSource {
   getName = async ({ eventItemId }) => {
     const event = await this.request('EventItems')
       .find(eventItemId)
+      .ttl(100)
+      .get();
+    return event.name;
+  };
+
+  getDescription = async ({ eventItemId }) => {
+    const event = await this.request('EventItems')
+      .find(eventItemId)
+      .ttl(100)
       .get();
     return event.name;
   };
@@ -46,6 +55,7 @@ export default class Event extends RockApolloDataSource {
   getImage = async ({ eventItemId }) => {
     const event = await this.request('EventItems')
       .find(eventItemId)
+      .ttl(100)
       .get();
     const imageUrl = await this.context.dataSources.BinaryFiles.findOrReturnImageUrl(
       { id: event.photoId }

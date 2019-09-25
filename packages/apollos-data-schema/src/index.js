@@ -659,6 +659,7 @@ export const eventSchema = gql`
     start: String
     end: String
     image: ImageMedia
+    description: String
   }
 
   extend type Campus {
