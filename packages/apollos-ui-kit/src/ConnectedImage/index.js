@@ -106,7 +106,7 @@ class ConnectedImage extends PureComponent {
   };
 
   static defaultProps = {
-    ImageComponent: Animated.Image,
+    ImageComponent: FastImage,
     maintainAspectRatio: false,
   };
 
@@ -116,6 +116,8 @@ class ConnectedImage extends PureComponent {
     this.state = {
       source: getCachedSources(this.props.source),
     };
+
+    this.source = this.props.source;
 
     this.imageOpacity = new Animated.Value(this.isLoading ? 0 : 1);
   }
@@ -135,8 +137,8 @@ class ConnectedImage extends PureComponent {
   get aspectRatio() {
     const style = {};
 
-    // We only need to do this if the image is loading and not cached.
     if (this.props.isLoading && !style.aspectRatio) {
+      // We only need to do this if the image is loading and not cached.
       style.aspectRatio = 1;
     } else if (this.props.maintainAspectRatio) {
       const firstSource = this.state.source[0];
@@ -168,12 +170,19 @@ class ConnectedImage extends PureComponent {
     );
   }
 
-  handleOnLoad = (...args) => {
-    Animated.timing(this.imageOpacity, {
-      toValue: 1,
-      duration: 250,
-    }).start();
-    if (this.props.onLoad) this.props.onLoad(...args);
+  handleOnLoad = (args) => {
+    if (this.props.source.width || this.props.source.height) {
+    }
+    if (!this.source.width) {
+      const loadedImageProperties = args.nativeEvent;
+      this.source.width = loadedImageProperties.width;
+    }
+    console.log('BOOM', args.nativeEvent);
+    // Animated.timing(this.imageOpacity, {
+    //   toValue: 1,
+    //   duration: 250,
+    // }).start();
+    // if (this.props.onLoad) this.props.onLoad(...args);
   };
 
   cancleCacheUpdater = (promise) => {
@@ -193,6 +202,13 @@ class ConnectedImage extends PureComponent {
       },
     };
   };
+
+  showImage() {
+    Animated.timing(this.imageOpacity, {
+      toValue: 1,
+      duration: 250,
+    }).start();
+  }
 
   updateCache(sources) {
     this.cacheUpdater = this.cancleCacheUpdater(updateCache(sources));
@@ -230,7 +246,7 @@ class ConnectedImage extends PureComponent {
     if (!Array.isArray(source)) source = [source];
 
     const {
-      ImageComponent = Animated.Image,
+      ImageComponent,
       style,
       forceRatio,
       isLoading,
@@ -253,7 +269,12 @@ class ConnectedImage extends PureComponent {
     // );
 
     return (
-      <FastImage source={this.props.source} style={style} {...otherProps} />
+      <ImageComponent
+        source={this.props.source}
+        onLoad={this.handleOnLoad}
+        style={style}
+        {...otherProps}
+      />
     );
   }
 }
