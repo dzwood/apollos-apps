@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import { Animated, Image } from 'react-native';
+import { Animated } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import PropTypes from 'prop-types';
-import { every } from 'lodash';
 
 import styled from '../styled';
 
@@ -19,56 +18,12 @@ export const ImageSourceType = PropTypes.oneOfType([
   PropTypes.string,
 ]);
 
-const sizeCache = {};
-
-const getCacheKey = (source) => {
-  if (source.size && source.fileLabel)
-    return `${source.size}-${source.fileLabel}`;
-  if (source.url) return source.url;
-  if (source.uri) return source.uri;
-  return undefined;
-};
-
-const getCachedSources = (_sources = []) => {
-  let sources = _sources;
-  if (!Array.isArray(sources)) sources = [sources];
-  sources = sources.map((source) => {
-    if (typeof source === 'string') return { url: source };
-    return source;
-  });
-
-  return sources.map((source) => ({
-    uri: (source.url || '').replace(/^http:\/\/|^\/\//i, 'https://'),
-    cache: 'force-cache',
-    ...source,
-    ...(sizeCache[getCacheKey(source)] || {}),
-  }));
-};
-
-const updateCache = (sources) =>
-  Promise.all(
-    getCachedSources(sources).map((source) => {
-      const key = getCacheKey(source);
-      if (sizeCache[key] || !key) return Promise.resolve(source);
-      return new Promise((resolve, reject) => {
-        Image.getSize(
-          source.uri,
-          (width, height) =>
-            resolve({
-              width,
-              height,
-            }),
-          reject
-        );
-      }).then((sizeForCache) => {
-        if (key) sizeCache[key] = sizeForCache;
-      });
-    })
-  );
-
-const withBackgroundColor = styled(({ theme }) => ({
-  backgroundColor: theme.colors.background.inactive,
-}));
+const withBackgroundColor = styled(
+  ({ theme }) => ({
+    backgroundColor: theme.colors.background.inactive,
+  }),
+  'ui-kit.ConnectedImage.withBackgroundColor'
+);
 
 const aspectRatioPropValidator = (props, propName, componentName) => {
   if (props[propName] === undefined) return;
@@ -113,25 +68,9 @@ class ConnectedImage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      source: getCachedSources(this.props.source),
-    };
-
-    this.source = this.props.source;
+    this.state = { source: { ...this.props.source } };
 
     this.imageOpacity = new Animated.Value(this.isLoading ? 0 : 1);
-  }
-
-  componentWillMount() {
-    this.updateCache(this.props.source);
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.updateCache(newProps.source);
-  }
-
-  componentWillUnmount() {
-    if (this.cacheUpdater) this.cacheUpdater.cancel();
   }
 
   get aspectRatio() {
@@ -139,13 +78,18 @@ class ConnectedImage extends PureComponent {
 
     if (this.props.isLoading && !style.aspectRatio) {
       // We only need to do this if the image is loading and not cached.
+      // TODO: Do we still need this with fastImage?
       style.aspectRatio = 1;
     } else if (this.props.maintainAspectRatio) {
-      const firstSource = this.state.source[0];
+      console.log('Boom', this.state.source);
 
       // determine the aspect ratio of an image based on its width and height
-      if (firstSource && firstSource.width && firstSource.height) {
-        style.aspectRatio = firstSource.width / firstSource.height;
+      if (
+        this.state.source &&
+        this.state.source.width &&
+        this.state.source.height
+      ) {
+        style.aspectRatio = this.state.source.width / this.state.source.height;
 
         // account for possible min/max aspectRatio bounds
         if (this.props.minAspectRatio || this.props.maxAspectRatio) {
@@ -163,88 +107,33 @@ class ConnectedImage extends PureComponent {
     return style;
   }
 
-  get isLoading() {
-    return (
-      this.props.isLoading ||
-      !every(this.state.source, (image) => image.width && image.height)
-    );
-  }
+  handleOnLoad = (event) => {
+    if (!this.state.source.width || !this.state.source.height) {
+      const loadedImageProperties = event.nativeEvent;
 
-  handleOnLoad = (args) => {
-    if (this.props.source.width || this.props.source.height) {
+      // the linter is insisting we use the setState update syntax here 🙄
+      this.setState((state) => {
+        const imageSource = { ...state.source };
+
+        if (!state.source.width) {
+          imageSource.width = loadedImageProperties.width;
+        }
+
+        if (!state.source.height) {
+          imageSource.height = loadedImageProperties.height;
+        }
+
+        return { source: imageSource };
+      });
     }
-    if (!this.source.width) {
-      const loadedImageProperties = args.nativeEvent;
-      this.source.width = loadedImageProperties.width;
-    }
-    console.log('BOOM', args.nativeEvent);
     // Animated.timing(this.imageOpacity, {
     //   toValue: 1,
     //   duration: 250,
     // }).start();
-    // if (this.props.onLoad) this.props.onLoad(...args);
+    if (this.props.onLoad) this.props.onLoad(event);
   };
-
-  cancleCacheUpdater = (promise) => {
-    let hasCanceled = false;
-
-    const wrappedPromise = new Promise((resolve, reject) => {
-      promise.then(
-        (val) => (hasCanceled ? reject({ isCanceled: true }) : resolve(val)), // eslint-disable-line prefer-promise-reject-errors
-        (error) => (hasCanceled ? reject({ isCanceled: true }) : reject(error)) // eslint-disable-line prefer-promise-reject-errors
-      );
-    });
-
-    return {
-      promise: wrappedPromise,
-      cancel() {
-        hasCanceled = true;
-      },
-    };
-  };
-
-  showImage() {
-    Animated.timing(this.imageOpacity, {
-      toValue: 1,
-      duration: 250,
-    }).start();
-  }
-
-  updateCache(sources) {
-    this.cacheUpdater = this.cancleCacheUpdater(updateCache(sources));
-    this.cacheUpdater.promise
-      .then(() => {
-        const newSource = getCachedSources(sources);
-        const oldSource = this.state.source || [];
-
-        if (
-          newSource.length !== oldSource.length ||
-          newSource.find(
-            (source, i) =>
-              !oldSource[i] ||
-              getCacheKey(source) !== getCacheKey(oldSource[i]) ||
-              source.width !== oldSource[i].width ||
-              source.height !== oldSource[i].height
-          )
-        ) {
-          this.setState({ source: getCachedSources(sources) });
-        }
-      })
-      .catch(() => {
-        // todo: Right now, if there's an error on connected image that means one of two things:
-        // 1) the image component was unmounted before load...we should do nothing
-        // 2) the image failed to load. Our "empty" state for images is a graybox.
-        //    We could make this better by showing an alert icon or something on error,
-        //    But a gray box is better then nothing. so, we do nothing currently :)
-        //    However, we still need this empty catch function as uncaught promise errors
-        //    will throw an error up the food chain.
-      });
-  }
 
   render() {
-    let { source } = this.state;
-    if (!Array.isArray(source)) source = [source];
-
     const {
       ImageComponent,
       style,
@@ -268,13 +157,21 @@ class ConnectedImage extends PureComponent {
     // </SkeletonImage>
     // );
 
+    console.count('Render');
+
     return (
-      <ImageComponent
-        source={this.props.source}
-        onLoad={this.handleOnLoad}
+      <SkeletonImage
+        onReady={!this.isLoading}
+        forceRatio={forceRatio}
         style={style}
-        {...otherProps}
-      />
+      >
+        <ImageComponent
+          source={this.props.source}
+          onLoad={this.handleOnLoad}
+          style={[this.aspectRatio, style]}
+          // {...otherProps}
+        />
+      </SkeletonImage>
     );
   }
 }
@@ -283,10 +180,4 @@ const enhanced = withBackgroundColor(ConnectedImage);
 
 enhanced.propTypes = ConnectedImage.propTypes;
 
-export {
-  sizeCache,
-  getCacheKey,
-  getCachedSources,
-  updateCache,
-  enhanced as default,
-};
+export { enhanced as default };
