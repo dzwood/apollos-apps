@@ -18,13 +18,6 @@ export const ImageSourceType = PropTypes.oneOfType([
   PropTypes.string,
 ]);
 
-const withBackgroundColor = styled(
-  ({ theme }) => ({
-    backgroundColor: theme.colors.background.inactive,
-  }),
-  'ui-kit.ConnectedImage.withBackgroundColor'
-);
-
 const aspectRatioPropValidator = (props, propName, componentName) => {
   if (props[propName] === undefined) return;
 
@@ -68,6 +61,9 @@ class ConnectedImage extends PureComponent {
   constructor(props) {
     super(props);
 
+    /* We store `this.props.source` as state so that IF our source doesn't have `width` and `height`
+     * values we can fetch them via `onLoad` and rerender with them.
+     */
     this.state = { source: { ...this.props.source } };
 
     this.imageOpacity = new Animated.Value(this.isLoading ? 0 : 1);
@@ -81,8 +77,6 @@ class ConnectedImage extends PureComponent {
       // TODO: Do we still need this with fastImage?
       style.aspectRatio = 1;
     } else if (this.props.maintainAspectRatio) {
-      console.log('Boom', this.state.source);
-
       // determine the aspect ratio of an image based on its width and height
       if (
         this.state.source &&
@@ -108,6 +102,13 @@ class ConnectedImage extends PureComponent {
   }
 
   handleOnLoad = (event) => {
+    // TODO: Look into removing this.
+    event.persist();
+
+    /* `onLoad` is triggered after or `ImageComponent` (default: `FastImage`) returns our requested
+     * image. We only need to execute this code if the our original source object didn't have
+     * `width` and `height` values which we need to calculate an `aspectRatio` with.
+     */
     if (!this.state.source.width || !this.state.source.height) {
       const loadedImageProperties = event.nativeEvent;
 
@@ -142,22 +143,6 @@ class ConnectedImage extends PureComponent {
       maintainAspectRatio,
       ...otherProps
     } = this.props;
-    // return (
-    // <SkeletonImage
-    // onReady={!this.isLoading}
-    // forceRatio={forceRatio}
-    // style={style}
-    // >
-    // <ImageComponent
-    // {...otherProps}
-    // source={source}
-    // onLoad={this.handleOnLoad}
-    // style={[this.aspectRatio, { opacity: this.imageOpacity }, style]}
-    // />
-    // </SkeletonImage>
-    // );
-
-    console.count('Render');
 
     return (
       <SkeletonImage
@@ -169,15 +154,20 @@ class ConnectedImage extends PureComponent {
           source={this.props.source}
           onLoad={this.handleOnLoad}
           style={[this.aspectRatio, style]}
-          // {...otherProps}
+          {...otherProps}
         />
       </SkeletonImage>
     );
   }
 }
 
-const enhanced = withBackgroundColor(ConnectedImage);
+const ConnectedImageWithBackgroundColor = styled(
+  ({ theme }) => ({
+    backgroundColor: theme.colors.background.inactive,
+  }),
+  'ui-kit.ConnectedImage.withBackgroundColor'
+)(ConnectedImage);
 
-enhanced.propTypes = ConnectedImage.propTypes;
+ConnectedImageWithBackgroundColor.propTypes = ConnectedImage.propTypes;
 
-export { enhanced as default };
+export default ConnectedImageWithBackgroundColor;
