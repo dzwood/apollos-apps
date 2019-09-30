@@ -371,6 +371,7 @@ type Query {
   personaFeed(first: Int, after: String): ContentItemsConnection
   currentUser: AuthenticatedUser
   liveStream: LiveStream
+  activeLiveStreamContent: [ContentItem]
   scripture(query: String!): Scripture
   scriptures(query: String!): [Scripture]
   userPass: Pass

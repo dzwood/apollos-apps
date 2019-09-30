@@ -217,15 +217,19 @@ export default class ContentItem extends RockApolloDataSource {
   }
 
   async isContentActiveLiveStream({ id }) {
+    const liveContent = await this.getActiveLiveStreamContent();
+    return liveContent.map(({ id }) => id).includes(id);
+  }
+
+  async getActiveLiveStreamContent() {
     const { LiveStream } = this.context.dataSources;
     const { isLive } = await LiveStream.getLiveStream();
     // if there is no live stream, then there is no live content. Easy enough!
-    if (!isLive) return false;
+    if (!isLive) return [];
 
     const mostRecentSermon = await this.getSermonFeed().first();
-
-    // If the most recent sermon is the sermon we are checking, this is the live sermon.
-    return mostRecentSermon.id === id;
+    console.log(mostRecentSermon);
+    return [mostRecentSermon];
   }
 
   async getCoverImage(root) {

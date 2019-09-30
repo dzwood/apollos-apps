@@ -458,6 +458,7 @@ export const liveSchema = gql`
 
   extend type Query {
     liveStream: LiveStream
+    activeLiveStreamContent: [ContentItem]
   }
 
   extend type WeekendContentItem {
