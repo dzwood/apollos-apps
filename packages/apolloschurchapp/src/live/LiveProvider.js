@@ -24,11 +24,13 @@ class LiveUpdater extends Component {
         this.props.activeLiveStreamContent
       ).length !== 0
     ) {
-      this.updateLiveCache();
+      this.updateLiveCache({
+        lastLiveContent: prevProps.activeLiveStreamContent,
+      });
     }
   }
 
-  updateLiveCache() {
+  updateLiveCache({ lastLiveContent }) {
     this.props.activeLiveStreamContent.map(({ id, liveStream }) => {
       this.props.client.updateFragment({
         id,
@@ -47,6 +49,26 @@ class LiveUpdater extends Component {
           }
         `,
         data: { liveStream },
+      });
+    });
+    lastLiveContent.map(({ id, liveStream }) => {
+      this.props.client.updateFragment({
+        id,
+        fragment: gql`
+          fragment LiveItem on WeekendContentItem {
+            liveStream {
+              isLive
+              eventStartTime
+              media {
+                sources {
+                  uri
+                }
+              }
+              webViewUrl
+            }
+          }
+        `,
+        data: { liveStream: { ...liveStream, isLive: false } },
       });
     });
   }

@@ -218,7 +218,7 @@ export default class ContentItem extends RockApolloDataSource {
 
   async isContentActiveLiveStream({ id }) {
     const liveContent = await this.getActiveLiveStreamContent();
-    return liveContent.map(({ id }) => id).includes(id);
+    return liveContent.map((c) => c.id).includes(id);
   }
 
   async getActiveLiveStreamContent() {
@@ -228,7 +228,6 @@ export default class ContentItem extends RockApolloDataSource {
     if (!isLive) return [];
 
     const mostRecentSermon = await this.getSermonFeed().first();
-    console.log(mostRecentSermon);
     return [mostRecentSermon];
   }
 

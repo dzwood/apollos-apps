@@ -458,7 +458,7 @@ export const liveSchema = gql`
 
   extend type Query {
     liveStream: LiveStream
-    activeLiveStreamContent: [ContentItem]
+    activeLiveStreamContent: [ContentItem] @cacheControl(maxAge: 0)
   }
 
   extend type WeekendContentItem {
