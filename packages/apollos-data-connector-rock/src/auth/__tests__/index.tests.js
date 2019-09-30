@@ -174,9 +174,9 @@ describe('Auth', () => {
     });
 
     it('generates a new token', async () => {
-      const { userToken, rockCookie } = registerToken(
-        generateToken({ cookie: 'some-cookie' })
-      );
+      const { userToken, rockCookie } = registerToken({
+        token: generateToken({ cookie: 'some-cookie' }),
+      });
       context.userToken = userToken;
       context.rockCookie = rockCookie;
       const {
