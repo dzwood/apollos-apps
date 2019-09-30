@@ -10,7 +10,7 @@ const resolver = {
       createGlobalId(id, parentType.name),
     childContentItemsConnection: ({ id }, args, { dataSources }) =>
       dataSources.ContentItem.paginate({
-        cursor: dataSources.ContentItem.byContentChannelId(id),
+        cursor: dataSources.ContentItem.byContentChannelId({ id }),
         args,
       }),
     iconName: () => 'text', // TODO

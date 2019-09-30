@@ -92,7 +92,7 @@ describe('Person', () => {
       Promise.resolve({ id: 321, firstName: 'John' })
     );
 
-    const result = await dataSource.getFromAliasId(51);
+    const result = await dataSource.getFromAliasId({ id: 51 });
     expect(result).toMatchSnapshot('The result from getAliasId');
     expect(dataSource.get.mock.calls).toMatchSnapshot(
       'The call to fetch the alias id'
@@ -106,7 +106,7 @@ describe('Person', () => {
     const dataSource = new Person();
     dataSource.get = jest.fn(() => Promise.resolve([]));
 
-    const result = await dataSource.getFromAliasId(51);
+    const result = await dataSource.getFromAliasId({ id: 51 });
     expect(result).toMatchSnapshot('The result from getAliasId');
     expect(dataSource.get.mock.calls).toMatchSnapshot(
       'The call to fetch the alias id'

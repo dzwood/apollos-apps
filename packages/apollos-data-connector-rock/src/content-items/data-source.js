@@ -63,7 +63,7 @@ export default class ContentItem extends RockApolloDataSource {
       key,
       name: attributes[key].name,
       sources: attributeValues[key].value
-        ? [{ uri: createImageUrlFromGuid(attributeValues[key].value) }]
+        ? [{ uri: createImageUrlFromGuid({ uri: attributeValues[key].value }) }]
         : [],
     }));
   };
@@ -194,7 +194,7 @@ export default class ContentItem extends RockApolloDataSource {
 
   getShareUrl = async ({ contentId, channelId }) => {
     const contentChannel = await this.context.dataSources.ContentChannel.getFromId(
-      channelId
+      { id: channelId }
     );
 
     if (!contentChannel.itemUrl) return ROCK.SHARE_URL;
@@ -211,9 +211,9 @@ export default class ContentItem extends RockApolloDataSource {
   };
 
   getSermonFeed() {
-    return this.byContentChannelId(ROCK_MAPPINGS.SERMON_CHANNEL_ID).andFilter(
-      this.LIVE_CONTENT()
-    );
+    return this.byContentChannelId({
+      id: ROCK_MAPPINGS.SERMON_CHANNEL_ID,
+    }).andFilter(this.LIVE_CONTENT());
   }
 
   async isContentActiveLiveStream({ id }) {
@@ -228,8 +228,8 @@ export default class ContentItem extends RockApolloDataSource {
     return mostRecentSermon.id === id;
   }
 
-  async getCoverImage(root) {
-    const pickBestImage = (images) => {
+  async getCoverImage({ root }) {
+    const pickBestImage = ({ images }) => {
       // TODO: there's probably a _much_ more explicit and better way to handle this
       const squareImage = images.find((image) =>
         image.key.toLowerCase().includes('square')
@@ -241,12 +241,14 @@ export default class ContentItem extends RockApolloDataSource {
     const withSources = (image) => image.sources.length;
 
     // filter images w/o URLs
-    const ourImages = this.getImages(root).filter(withSources);
+    const ourImages = this.getImages({ ...root }).filter(withSources);
 
-    if (ourImages.length) return pickBestImage(ourImages);
+    if (ourImages.length) return pickBestImage({ images: ourImages });
 
     // If no image, check parent for image:
-    const parentItemsCursor = await this.getCursorByChildContentItemId(root.id);
+    const parentItemsCursor = await this.getCursorByChildContentItemId({
+      id: root.id,
+    });
     if (!parentItemsCursor) return null;
 
     const parentItems = await parentItemsCursor.get();
@@ -256,7 +258,7 @@ export default class ContentItem extends RockApolloDataSource {
       const validParentImages = parentImages.filter(withSources);
 
       if (validParentImages && validParentImages.length)
-        return pickBestImage(validParentImages);
+        return pickBestImage({ images: validParentImages });
     }
 
     return null;
@@ -275,21 +277,21 @@ export default class ContentItem extends RockApolloDataSource {
 
   expanded = true;
 
-  getCursorByParentContentItemId = async (id) => {
+  getCursorByParentContentItemId = async ({ id }) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ContentChannelItemId eq ${id}`)
       .get();
 
     if (!associations || !associations.length) return this.request().empty();
 
-    return this.getFromIds(
-      associations.map(
+    return this.getFromIds({
+      ids: associations.map(
         ({ childContentChannelItemId }) => childContentChannelItemId
-      )
-    ).orderBy('Order');
+      ),
+    }).orderBy('Order');
   };
 
-  getCursorByChildContentItemId = async (id) => {
+  getCursorByChildContentItemId = async ({ id }) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ChildContentChannelItemId eq ${id}`)
       .get();
@@ -305,7 +307,7 @@ export default class ContentItem extends RockApolloDataSource {
     return request.orderBy('Order');
   };
 
-  getCursorBySiblingContentItemId = async (id) => {
+  getCursorBySiblingContentItemId = async ({ id }) => {
     // Get all parents for the current item.
     const parentAssociations = await this.request(
       'ContentChannelItemAssociations'
@@ -331,15 +333,15 @@ export default class ContentItem extends RockApolloDataSource {
     if (!siblingAssociations || !siblingAssociations.length)
       return this.request().empty();
 
-    return this.getFromIds(
-      siblingAssociations.map(
+    return this.getFromIds({
+      ids: siblingAssociations.map(
         ({ childContentChannelItemId }) => childContentChannelItemId
-      )
-    ).orderBy('Order');
+      ),
+    }).orderBy('Order');
   };
 
   // Generates feed based on persons dataview membership
-  byPersonaFeed = async (first) => {
+  byPersonaFeed = async ({ first }) => {
     const {
       dataSources: { Person },
     } = this.context;
@@ -382,19 +384,19 @@ export default class ContentItem extends RockApolloDataSource {
       )
       .andFilter(this.LIVE_CONTENT());
 
-  byContentChannelId = (id) =>
+  byContentChannelId = ({ id }) =>
     this.request()
       .filter(`ContentChannelId eq ${id}`)
       .andFilter(this.LIVE_CONTENT())
       .orderBy('StartDateTime', 'desc');
 
-  byContentChannelIds = (ids = []) =>
+  byContentChannelIds = ({ ids }) =>
     this.request()
       .filterOneOf(ids.map((id) => `ContentChannelId eq ${id}`))
       .andFilter(this.LIVE_CONTENT())
       .orderBy('StartDateTime', 'desc');
 
-  getFromIds = (ids = []) => {
+  getFromIds = ({ ids }) => {
     if (ids.length === 0) return this.request().empty();
     if (get(ApollosConfig, 'ROCK.USE_PLUGIN', false)) {
       // Avoids issue when fetching more than ~10 items
@@ -408,7 +410,7 @@ export default class ContentItem extends RockApolloDataSource {
       .andFilter(this.LIVE_CONTENT());
   };
 
-  getFromId = (id) =>
+  getFromId = ({ id }) =>
     this.request()
       .find(id)
       .get();

@@ -12,19 +12,23 @@ const { ROCK_MAPPINGS } = ApollosConfig;
 export const defaultContentItemResolvers = {
   id: ({ id }, args, context, { parentType }) =>
     createGlobalId(id, parentType.name),
-  htmlContent: ({ content }) => sanitizeHtml(content),
+  htmlContent: ({ content }) => sanitizeHtml({ dirty: content }),
   childContentItemsConnection: async ({ id }, args, { dataSources }) =>
     dataSources.ContentItem.paginate({
-      cursor: await dataSources.ContentItem.getCursorByParentContentItemId(id),
+      cursor: await dataSources.ContentItem.getCursorByParentContentItemId({
+        id,
+      }),
       args,
     }),
 
   parentChannel: ({ contentChannelId }, args, { dataSources }) =>
-    dataSources.ContentChannel.getFromId(contentChannelId),
+    dataSources.ContentChannel.getFromId({ id: contentChannelId }),
 
   siblingContentItemsConnection: async ({ id }, args, { dataSources }) =>
     dataSources.ContentItem.paginate({
-      cursor: await dataSources.ContentItem.getCursorBySiblingContentItemId(id),
+      cursor: await dataSources.ContentItem.getCursorBySiblingContentItemId({
+        id,
+      }),
       args,
     }),
 
@@ -59,9 +63,9 @@ const resolver = {
   Query: {
     campaigns: (root, args, { dataSources }) =>
       dataSources.ContentItem.paginate({
-        cursor: dataSources.ContentItem.byContentChannelIds(
-          ROCK_MAPPINGS.CAMPAIGN_CHANNEL_IDS
-        ),
+        cursor: dataSources.ContentItem.byContentChannelIds({
+          ids: ROCK_MAPPINGS.CAMPAIGN_CHANNEL_IDS,
+        }),
         args,
       }),
     userFeed: (root, args, { dataSources }) =>
@@ -70,9 +74,9 @@ const resolver = {
         args,
       }),
     personaFeed: async (root, args, { dataSources }) => {
-      const personaFeed = await dataSources.ContentItem.byPersonaFeed(
-        args.first
-      );
+      const personaFeed = await dataSources.ContentItem.byPersonaFeed({
+        first: args.first,
+      });
       return dataSources.ContentItem.paginate({
         cursor: personaFeed,
         args,

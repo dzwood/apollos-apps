@@ -3,7 +3,7 @@ import Config from '@apollosproject/config';
 
 const { ROCK_MAPPINGS } = Config;
 
-const mapApollosNameToRockName = (name) => {
+const mapApollosNameToRockName = ({ name }) => {
   if (ROCK_MAPPINGS.CONTENT_ITEM[name]) {
     return ROCK_MAPPINGS.CONTENT_ITEM[name].EntityType;
   }
@@ -84,7 +84,7 @@ class RockConstants extends RockApolloDataSource {
   }
 
   async modelType(nameInput) {
-    const name = mapApollosNameToRockName(nameInput);
+    const name = mapApollosNameToRockName({ name: nameInput });
 
     const types = await this.request('EntityTypes')
       .filter(`Name eq 'Rock.Model.${name}'`)

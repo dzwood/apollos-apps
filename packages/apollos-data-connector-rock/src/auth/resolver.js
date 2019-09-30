@@ -20,7 +20,7 @@ const resolver = {
     changePassword: (root, { password }, { dataSources }) =>
       dataSources.Auth.changePassword({ password }),
     registerPerson: (root, args, { dataSources }) =>
-      dataSources.Auth.registerPerson(args),
+      dataSources.Auth.registerPerson({ ...args }),
   },
 };
 

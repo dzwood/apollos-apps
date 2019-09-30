@@ -1,21 +1,26 @@
 import ApollosConfig from '@apollosproject/config';
 import { AuthenticationError } from 'apollo-server';
 
-export const enforceProtocol = (uri) =>
+export const enforceProtocol = ({ uri }) =>
   uri.startsWith('//') ? `https:${uri}` : uri;
 
-export const createImageUrlFromGuid = (uri) =>
+export const createImageUrlFromGuid = ({ uri }) =>
   uri.split('-').length === 5
     ? `${ApollosConfig.ROCK.IMAGE_URL}?guid=${uri}`
-    : enforceProtocol(uri);
+    : enforceProtocol({ uri });
 
-export const latLonDistance = (lat1, lon1, lat2, lon2) => {
-  if (lat1 === lat2 && lon1 === lon2) {
+export const latLonDistance = ({
+  lattitude,
+  longitude,
+  campusLattitude,
+  campusLongitude,
+}) => {
+  if (lattitude === campusLattitude && longitude === campusLongitude) {
     return 0;
   }
-  const radlat1 = (Math.PI * lat1) / 180;
-  const radlat2 = (Math.PI * lat2) / 180;
-  const theta = lon1 - lon2;
+  const radlat1 = (Math.PI * lattitude) / 180;
+  const radlat2 = (Math.PI * campusLattitude) / 180;
+  const theta = longitude - campusLongitude;
   const radtheta = (Math.PI * theta) / 180;
   let dist =
     Math.sin(radlat1) * Math.sin(radlat2) +
@@ -29,7 +34,7 @@ export const latLonDistance = (lat1, lon1, lat2, lon2) => {
   return dist;
 };
 
-export const enforceCurrentUser = (func) => async (
+export const enforceCurrentUser = ({ func }) => async (
   root,
   args,
   context,

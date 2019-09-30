@@ -7,7 +7,7 @@ export default class Campus extends RockApolloDataSource {
 
   expanded = true;
 
-  getFromId = (id) =>
+  getFromId = ({ id }) =>
     this.request()
       .find(id)
       .expand('Location')
@@ -25,12 +25,12 @@ export default class Campus extends RockApolloDataSource {
     let campuses = await this.getAll();
     campuses = campuses.map((campus) => ({
       ...campus,
-      distanceFromLocation: latLonDistance(
+      distanceFromLocation: latLonDistance({
         latitude,
         longitude,
-        campus.location.latitude,
-        campus.location.longitude
-      ),
+        campusLatitude: campus.location.latitude,
+        campusLongitude: campus.location.longitude,
+      }),
     }));
 
     campuses = campuses.sort(

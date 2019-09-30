@@ -8,12 +8,12 @@ export default class Event extends RockApolloDataSource {
 
   expanded = true;
 
-  getById = (id) =>
+  getById = ({ id }) =>
     this.request()
       .find(id)
       .get();
 
-  getByCampus = (id) =>
+  getByCampus = ({ id }) =>
     this.findRecent()
       .filter(`CampusId eq ${id}`)
       .get();
@@ -57,7 +57,7 @@ export default class Event extends RockApolloDataSource {
     return null;
   };
 
-  getDateTime = (schedule) => {
+  getDateTime = ({ schedule }) => {
     const iCal = schedule.iCalendarContent;
     const dateTimes = iCal.match(/DTEND:(\w+).*DTSTART:(\w+)/s);
     return {

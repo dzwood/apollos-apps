@@ -8,9 +8,9 @@ export { default as resolver } from './resolver';
 
 export const contextMiddleware = ({ req, context: ctx }) => {
   if (get(req, 'headers.authorization')) {
-    const { userToken, rockCookie, sessionId } = registerToken(
-      req.headers.authorization
-    );
+    const { userToken, rockCookie, sessionId } = registerToken({
+      token: req.headers.authorization,
+    });
     if (sessionId) {
       return {
         ...ctx,

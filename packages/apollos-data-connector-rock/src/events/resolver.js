@@ -6,12 +6,12 @@ export default {
       createGlobalId(id, parentType.name),
     name: (root, args, { dataSources }) => dataSources.Events.getName(root),
     start: ({ schedule }, args, { dataSources }) =>
-      dataSources.Events.getDateTime(schedule).start,
+      dataSources.Events.getDateTime({ schedule }).start,
     end: ({ schedule }, args, { dataSources }) =>
-      dataSources.Events.getDateTime(schedule).end,
+      dataSources.Events.getDateTime({ schedule }).end,
   },
   Campus: {
     events: ({ id }, args, { dataSources }) =>
-      dataSources.Events.getByCampus(id),
+      dataSources.Events.getByCampus({ id }),
   },
 };

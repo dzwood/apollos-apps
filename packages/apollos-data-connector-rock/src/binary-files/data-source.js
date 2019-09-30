@@ -5,7 +5,7 @@ import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
 export default class BinaryFiles extends RockApolloDataSource {
   resource = 'BinaryFiles';
 
-  getFromId(id) {
+  getFromId({ id }) {
     return this.request()
       .find(id)
       .get();
@@ -32,7 +32,7 @@ export default class BinaryFiles extends RockApolloDataSource {
     return response.text();
   }
 
-  async findOrReturnImageUrl(image) {
+  async findOrReturnImageUrl({ image }) {
     if (image == null) return image;
 
     const { url, id } = image;
@@ -40,7 +40,7 @@ export default class BinaryFiles extends RockApolloDataSource {
       return url;
     }
     if (id != null && typeof id !== 'object') {
-      const binaryImage = await this.getFromId(id);
+      const binaryImage = await this.getFromId({ id });
       return binaryImage.url;
     }
     return null;

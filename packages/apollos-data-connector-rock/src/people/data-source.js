@@ -13,13 +13,13 @@ const RockGenderMap = {
 export default class Person extends RockApolloDataSource {
   resource = 'People';
 
-  getFromId = (id) =>
+  getFromId = ({ id }) =>
     this.request()
       .filter(`Id eq ${id}`)
       .expand('Photo')
       .first();
 
-  getFromAliasId = async (id) => {
+  getFromAliasId = async ({ id }) => {
     // Fetch the PersonAlias, selecting only the PersonId.
     const personAlias = await this.request('/PersonAlias')
       .filter(`Id eq ${id}`)
@@ -28,7 +28,7 @@ export default class Person extends RockApolloDataSource {
 
     // If we have a personAlias, return him.
     if (personAlias) {
-      return this.getFromId(personAlias.personId);
+      return this.getFromId({ id: personAlias.personId });
     }
     // Otherwise, return null.
     return null;
@@ -63,7 +63,7 @@ export default class Person extends RockApolloDataSource {
 
   // fields is an array of objects matching the pattern
   // [{ field: String, value: String }]
-  updateProfile = async (fields) => {
+  updateProfile = async ({ fields }) => {
     const currentPerson = await this.context.dataSources.Auth.getCurrentPerson();
 
     if (!currentPerson) throw new AuthenticationError('Invalid Credentials');
@@ -126,11 +126,11 @@ export default class Person extends RockApolloDataSource {
     const { stream, filename } = await file;
 
     const photoId = await BinaryFiles.uploadFile({ filename, stream, length });
-    const person = await this.updateProfile([
-      { field: 'PhotoId', value: photoId },
-    ]);
+    const person = await this.updateProfile({
+      fields: [{ field: 'PhotoId', value: photoId }],
+    });
 
-    const photo = await BinaryFiles.getFromId(photoId);
+    const photo = await BinaryFiles.getFromId({ id: photoId });
     return { ...person, photo };
   };
 }

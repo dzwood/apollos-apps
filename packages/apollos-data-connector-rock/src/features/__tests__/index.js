@@ -294,11 +294,13 @@ describe('features', () => {
           content: '<p>Not the real verse</p>',
         },
       ]);
-      const result = await features.getScriptureShareMessage([
-        {
-          reference: 'John 3:16',
-        },
-      ]);
+      const result = await features.getScriptureShareMessage({
+        ref: [
+          {
+            reference: 'John 3:16',
+          },
+        ],
+      });
 
       expect(result).toMatchSnapshot();
     });

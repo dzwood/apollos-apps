@@ -5,13 +5,15 @@ export default {
   Group: {
     id: ({ id }, args, context, { parentType }) =>
       createGlobalId(id, parentType.name),
-    leader: ({ id }, args, { dataSources }) => dataSources.Group.getLeader(id),
+    leader: ({ id }, args, { dataSources }) =>
+      dataSources.Group.getLeader({ groupId: id }),
     members: ({ id }, args, { dataSources }) =>
-      dataSources.Group.getMembers(id),
+      dataSources.Group.getMembers({ groupId: id }),
   },
   Person: {
-    groups: enforceCurrentUser(({ id }, { type, asLeader }, { dataSources }) =>
-      dataSources.Group.getByPerson({ personId: id, type, asLeader })
-    ),
+    groups: enforceCurrentUser({
+      func: ({ id }, { type, asLeader }, { dataSources }) =>
+        dataSources.Group.getByPerson({ personId: id, type, asLeader })
+    }),
   },
 };

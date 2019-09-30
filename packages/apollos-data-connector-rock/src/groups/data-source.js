@@ -20,22 +20,22 @@ export default class Group extends RockApolloDataSource {
       .filter(`${activeOnly ? 'IsActive eq true and IsArchived eq false' : ''}`)
       .get();
 
-  getMembers = async (groupId) => {
+  getMembers = async ({ groupId }) => {
     const { Person } = this.context.dataSources;
     const members = await this.request('GroupMembers')
       .andFilter(`GroupId eq ${groupId}`)
       .get();
-    return members.map(({ personId }) => Person.getFromId(personId));
+    return members.map(({ personId }) => Person.getFromId({ id: personId }));
   };
 
-  getLeader = async (groupId) => {
+  getLeader = async ({ groupId }) => {
     const { Person } = this.context.dataSources;
     const leader = await this.request('GroupMembers')
       .filter(`GroupId eq ${groupId}`)
       .andFilter('GroupRole/IsLeader eq true')
       .expand('GroupRole')
       .first(); // assuming one leader
-    return leader ? Person.getFromId(leader.personId) : null;
+    return leader ? Person.getFromId({ id: leader.personId }) : null;
   };
 
   getByPerson = async ({ personId, type = null, asLeader = false }) => {

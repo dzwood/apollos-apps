@@ -6,9 +6,9 @@ import { enforceCurrentUser } from '../utils';
 export default {
   Mutation: {
     updateProfileField: (root, { input: { field, value } }, { dataSources }) =>
-      dataSources.Person.updateProfile([{ field, value }]),
+      dataSources.Person.updateProfile({ fields: [{ field, value }] }),
     updateProfileFields: (root, { input }, { dataSources }) =>
-      dataSources.Person.updateProfile(input),
+      dataSources.Person.updateProfile({ fields: input }),
     uploadProfileImage: async (root, { file, size }, { dataSources }) =>
       dataSources.Person.uploadProfileImage(file, size),
   },
@@ -16,13 +16,18 @@ export default {
     id: ({ id }, args, context, { parentType }) =>
       createGlobalId(id, parentType.name),
     photo: ({ photo: { url } }) => ({ uri: url }),
-    birthDate: enforceCurrentUser(({ birthDate }) =>
-      birthDate
-        ? moment.tz(birthDate, ApollosConfig.ROCK.TIMEZONE).toJSON()
-        : null
-    ),
-    gender: enforceCurrentUser(({ gender }) => gender),
-    email: enforceCurrentUser(({ email }) => email),
+    birthDate: enforceCurrentUser({
+      func: ({ birthDate }) =>
+        birthDate
+          ? moment.tz(birthDate, ApollosConfig.ROCK.TIMEZONE).toJSON()
+          : null,
+    }),
+    gender: enforceCurrentUser({
+      func: ({ gender }) => gender,
+    }),
+    email: enforceCurrentUser({
+      func: ({ email }) => email,
+    }),
   },
   GENDER: {
     Unknown: 0,

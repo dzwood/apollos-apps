@@ -32,7 +32,7 @@ export default class AuthDataSource extends RockApolloDataSource {
     throw new AuthenticationError('Must be logged in');
   };
 
-  fetchUserCookie = async (Username, Password) => {
+  fetchUserCookie = async ({ Username, Password }) => {
     try {
       // We use `new Response` rather than string/options b/c if conforms more closely with ApolloRESTDataSource
       // (makes mocking in tests WAY easier to use `new Request` as an input in both places)
@@ -65,10 +65,13 @@ export default class AuthDataSource extends RockApolloDataSource {
 
   authenticate = async ({ identity, password }) => {
     try {
-      const cookie = await this.fetchUserCookie(identity, password);
+      const cookie = await this.fetchUserCookie({
+        Username: identity,
+        Password: password,
+      });
       const sessionId = await this.createSession({ cookie });
       const token = generateToken({ cookie, sessionId });
-      const { userToken, rockCookie } = registerToken(token);
+      const { userToken, rockCookie } = registerToken({ token });
       this.context.rockCookie = rockCookie;
       this.context.userToken = userToken;
       this.context.sessionId = sessionId;
@@ -89,10 +92,8 @@ export default class AuthDataSource extends RockApolloDataSource {
     return false;
   };
 
-  createUserProfile = async (props = {}) => {
+  createUserProfile = async ({ email }) => {
     try {
-      const { email } = props;
-
       return await this.post('/People', {
         Email: email,
         IsSystem: false, // Required by Rock
@@ -103,10 +104,8 @@ export default class AuthDataSource extends RockApolloDataSource {
     }
   };
 
-  createUserLogin = async (props = {}) => {
+  createUserLogin = async ({ email, password, personId }) => {
     try {
-      const { email, password, personId } = props;
-
       return await this.post('/UserLogins', {
         PersonId: personId,
         EntityTypeId: 27, // A default setting we use in Rock-person-creation-flow

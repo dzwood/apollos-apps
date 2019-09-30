@@ -22,7 +22,7 @@ export default {
       Scripture.getScriptures(reference),
     sharing: ({ reference }, args, { dataSources: { Features } }) => ({
       title: 'Share scripture via...',
-      message: Features.getScriptureShareMessage(reference),
+      message: Features.getScriptureShareMessage({ ref: reference }),
     }),
   },
   Query: {

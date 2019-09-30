@@ -41,7 +41,9 @@ const resolvers = {
 
       const followings = await followingsPaginated.edges;
       const ids = followings.map((f) => f.node.entityId);
-      const contentItems = await dataSources.ContentItem.getFromIds(ids).get();
+      const contentItems = await dataSources.ContentItem.getFromIds({
+        ids,
+      }).get();
       const contentItemEdges = contentItems.map((contentItem) => ({
         node: { ...contentItem, isLiked: true },
         following: followings.find((f) => f.node.entityId === contentItem.id)

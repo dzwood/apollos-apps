@@ -3,11 +3,11 @@ import jwt from 'jsonwebtoken';
 
 export const secret = process.env.SECRET || 'ASea$2gadj#asd0';
 
-export const parseToken = (token) => jwt.verify(token, secret);
+export const parseToken = ({ token }) => jwt.verify(token, secret);
 
-export const registerToken = (token) => {
+export const registerToken = ({ token }) => {
   try {
-    const { cookie, sessionId } = parseToken(token);
+    const { cookie, sessionId } = parseToken({ token });
 
     return {
       userToken: token,

@@ -74,10 +74,10 @@ export default class Features extends RockApolloDataSource {
     // Map them into specific actions.
     return events.map((event, i) => ({
       id: createGlobalId(`${event.id}${i}`, 'ActionListAction'),
-      title: Events.getName(event),
-      subtitle: Events.getDateTime(event.schedule).start,
+      title: Events.getName({ ...event }),
+      subtitle: Events.getDateTime({ schedule: event.schedule }).start,
       relatedNode: { ...event, __type: 'Event' },
-      image: Events.getImage(event),
+      image: Events.getImage({ ...event }),
       action: 'READ_EVENT',
     }));
   }
@@ -94,8 +94,8 @@ export default class Features extends RockApolloDataSource {
       id: createGlobalId(`${item.id}${i}`, 'ActionListAction'),
       title: item.title,
       subtitle: get(item, 'contentChannel.name'),
-      relatedNode: { ...item, __type: ContentItem.resolveType(item) },
-      image: ContentItem.getCoverImage(item),
+      relatedNode: { ...item, __type: ContentItem.resolveType({ ...item }) },
+      image: ContentItem.getCoverImage({ ...item }),
       action: 'READ_CONTENT',
     }));
   }
@@ -109,7 +109,7 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
     }
 
     const { ContentItem } = this.context.dataSources;
-    const cursor = ContentItem.byContentChannelId(contentChannelId);
+    const cursor = ContentItem.byContentChannelId({ id: contentChannelId });
 
     const items = limit ? await cursor.top(limit).get() : await cursor.get();
 
@@ -117,8 +117,8 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
       id: createGlobalId(`${item.id}${i}`, 'ActionListAction'),
       title: item.title,
       subtitle: get(item, 'contentChannel.name'),
-      relatedNode: { ...item, __type: ContentItem.resolveType(item) },
-      image: ContentItem.getCoverImage(item),
+      relatedNode: { ...item, __type: ContentItem.resolveType({ ...item }) },
+      image: ContentItem.getCoverImage({ ...item }),
       action: 'READ_CONTENT',
     }));
   }
@@ -131,20 +131,22 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
       return [];
     }
 
-    const cursor = await ContentItem.getCursorByParentContentItemId(sermon.id);
+    const cursor = await ContentItem.getCursorByParentContentItemId({
+      id: sermon.id,
+    });
     const items = limit ? await cursor.top(limit).get() : await cursor.get();
 
     return items.map((item, i) => ({
       id: createGlobalId(`${item.id}${i}`, 'ActionListAction'),
       title: item.title,
       subtitle: get(item, 'contentChannel.name'),
-      relatedNode: { ...item, __type: ContentItem.resolveType(item) },
-      image: ContentItem.getCoverImage(item),
+      relatedNode: { ...item, __type: ContentItem.resolveType({ ...item }) },
+      image: ContentItem.getCoverImage({ ...item }),
       action: 'READ_CONTENT',
     }));
   }
 
-  async getScriptureShareMessage(ref) {
+  async getScriptureShareMessage({ ref }) {
     const { Scripture } = this.context.dataSources;
     const scriptures = await Scripture.getScriptures(ref);
     return scriptures
@@ -158,7 +160,7 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
   getHomeFeedFeatures() {
     return Promise.all(
       get(ApollosConfig, 'HOME_FEATURES', []).map((featureConfig) =>
-        this.createActionListFeature(featureConfig)
+        this.createActionListFeature({ ...featureConfig })
       )
     );
   }
