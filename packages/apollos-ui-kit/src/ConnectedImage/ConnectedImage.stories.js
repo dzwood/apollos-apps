@@ -8,12 +8,12 @@ storiesOf('ui-kit/ConnectedImage', module)
   .add('default', () => (
     <ConnectedImage
       style={{ width: 300, height: 200 }} // eslint-disable-line react-native/no-inline-styles
-      source={{ uri: 'https://picsum.photos/600/400/?random' }}
+      source={{ uri: 'http://picsum.photos/600/400/?random' }}
     />
   ))
   .add('maintainAspectRatio', () => (
     <ConnectedImage
-      source={{ uri: 'https://picsum.photos/600/400/?random' }}
+      source={'https://picsum.photos/600/400/?random'}
       maintainAspectRatio
     />
   ))
@@ -57,4 +57,10 @@ storiesOf('ui-kit/ConnectedImage', module)
         maxAspectRatio={1.2}
       />
     </ScrollView>
+  ))
+  .add('isLoading', () => (
+    <ConnectedImage
+      style={{ width: 400, height: 400 }} // eslint-disable-line react-native/no-inline-styles
+      isLoading
+    />
   ));
