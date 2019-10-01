@@ -20,7 +20,7 @@ export default class ContentChannel extends RockApolloDataSource {
       )
       .get();
 
-  getFromId = ({ id }) =>
+  getFromId = (id) =>
     this.request()
       .filter(`Id eq ${id}`)
       .expand('ChildContentChannels')
