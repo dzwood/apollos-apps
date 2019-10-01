@@ -140,12 +140,14 @@ describe('Person', () => {
       dataSources: { Auth },
     };
     dataSource.patch = buildGetMock({}, dataSource);
-    const result = dataSource.updateProfile([
-      {
-        field: 'Gender',
-        value: 'Male',
-      },
-    ]);
+    const result = dataSource.updateProfile({
+      fields: [
+        {
+          field: 'Gender',
+          value: 'Male',
+        },
+      ],
+    });
     expect(result).resolves.toMatchSnapshot();
     expect(Auth.getCurrentPerson.mock.calls).toMatchSnapshot();
     expect(dataSource.patch.mock.calls).toMatchSnapshot();
@@ -159,12 +161,14 @@ describe('Person', () => {
       dataSources: { Auth },
     };
     dataSource.patch = buildGetMock({}, dataSource);
-    const result = await dataSource.updateProfile([
-      {
-        field: 'BirthDate',
-        value: '1996-11-02T07:00:00.000Z',
-      },
-    ]);
+    const result = await dataSource.updateProfile({
+      fields: [
+        {
+          field: 'BirthDate',
+          value: '1996-11-02T07:00:00.000Z',
+        },
+      ],
+    });
     expect(result).toMatchSnapshot();
     expect(Auth.getCurrentPerson.mock.calls).toMatchSnapshot();
     expect(dataSource.patch.mock.calls).toMatchSnapshot();
@@ -178,12 +182,14 @@ describe('Person', () => {
       dataSources: { Auth },
     };
     dataSource.patch = buildGetMock({}, dataSource);
-    const result = dataSource.updateProfile([
-      {
-        field: 'BirthDate',
-        value: 'ABCD',
-      },
-    ]);
+    const result = dataSource.updateProfile({
+      fields: [
+        {
+          field: 'BirthDate',
+          value: 'ABCD',
+        },
+      ],
+    });
     expect(result).rejects.toThrowErrorMatchingSnapshot();
   });
 
@@ -195,12 +201,14 @@ describe('Person', () => {
       dataSources: { Auth },
     };
     dataSource.patch = buildGetMock({}, dataSource);
-    const result = dataSource.updateProfile([
-      {
-        field: 'Gender',
-        value: 'Squirrel',
-      },
-    ]);
+    const result = dataSource.updateProfile({
+      fields: [
+        {
+          field: 'Gender',
+          value: 'Squirrel',
+        },
+      ],
+    });
     expect(result).rejects.toThrowErrorMatchingSnapshot();
   });
 

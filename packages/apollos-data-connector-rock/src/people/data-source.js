@@ -13,7 +13,7 @@ const RockGenderMap = {
 export default class Person extends RockApolloDataSource {
   resource = 'People';
 
-  getFromId = ({ id }) =>
+  getFromId = (id) =>
     this.request()
       .filter(`Id eq ${id}`)
       .expand('Photo')

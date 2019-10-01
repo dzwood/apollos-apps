@@ -45,9 +45,9 @@ describe('Person', () => {
         }
       }
     `;
-    const { userToken, rockCookie } = registerToken(
-      generateToken({ cookie: 'some-cookie' })
-    );
+    const { userToken, rockCookie } = registerToken({
+      token: generateToken({ cookie: 'some-cookie' }),
+    });
     context.userToken = userToken;
     context.rockCookie = rockCookie;
     const rootValue = {};
@@ -68,9 +68,9 @@ describe('Person', () => {
         }
       }
     `;
-    const { userToken, rockCookie } = registerToken(
-      generateToken({ cookie: 'some-cookie' })
-    );
+    const { userToken, rockCookie } = registerToken({
+      token: generateToken({ cookie: 'some-cookie' }),
+    });
     context.userToken = userToken;
     context.rockCookie = rockCookie;
     const rootValue = {};
@@ -89,9 +89,9 @@ describe('Person', () => {
         }
       }
     `;
-    const { userToken, rockCookie } = registerToken(
-      generateToken({ cookie: 'some-cookie' })
-    );
+    const { userToken, rockCookie } = registerToken({
+      token: generateToken({ cookie: 'some-cookie' }),
+    });
     context.userToken = userToken;
     context.rockCookie = rockCookie;
     const rootValue = {};
@@ -143,7 +143,9 @@ describe('enforceCurrentUser', () => {
     const context = {
       dataSources: { Auth: { getCurrentPerson: () => ({ id: 1 }) } },
     };
-    const resultFunc = enforceCurrentUser(({ firstName }) => firstName);
+    const resultFunc = enforceCurrentUser({
+      func: ({ firstName }) => firstName,
+    });
 
     const result = await resultFunc(
       { firstName: 'John', id: 1 },
