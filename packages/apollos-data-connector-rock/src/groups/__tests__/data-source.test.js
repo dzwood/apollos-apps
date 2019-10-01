@@ -38,7 +38,7 @@ describe('Groups', () => {
   it('should get group members', async () => {
     Groups.get = jest.fn(() => personArrayMock);
 
-    const result = await Groups.getMembers(1);
+    const result = await Groups.getMembers({ groupId: 1 });
     expect(result).toMatchSnapshot();
     expect(Groups.get.mock.calls).toMatchSnapshot();
   });
