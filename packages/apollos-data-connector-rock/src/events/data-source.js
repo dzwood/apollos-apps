@@ -8,7 +8,7 @@ export default class Event extends RockApolloDataSource {
 
   expanded = true;
 
-  getById = ({ id }) =>
+  getById = (id) =>
     this.request()
       .find(id)
       .get();

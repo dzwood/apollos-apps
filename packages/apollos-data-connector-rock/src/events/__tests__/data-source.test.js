@@ -19,8 +19,10 @@ describe('Events', () => {
     const Events = new EventsDataSource();
 
     const result = await Events.getDateTime({
-      iCalendarContent:
-        'BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTEND:20130501T190000\r\nDTSTART:20130501T180000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEND:VEVENT\r\nEND:VCALENDAR',
+      schedule: {
+        iCalendarContent:
+          'BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTEND:20130501T190000\r\nDTSTART:20130501T180000\r\nRRULE:FREQ=WEEKLY;BYDAY=SA\r\nEND:VEVENT\r\nEND:VCALENDAR',
+      },
     });
     expect(result).toMatchSnapshot();
   });
@@ -86,7 +88,7 @@ describe('Events', () => {
       ])
     );
 
-    const result = await Events.getByCampus(456);
+    const result = await Events.getByCampus({ id: 456 });
     expect(result).toMatchSnapshot();
     expect(Events.get.mock.calls).toMatchSnapshot();
   });
