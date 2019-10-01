@@ -390,23 +390,26 @@ export default class ContentItem extends RockApolloDataSource {
       .andFilter(this.LIVE_CONTENT())
       .orderBy('StartDateTime', 'desc');
 
-  byContentChannelIds = ({ ids }) =>
-    this.request()
-      .filterOneOf((ids || []).map((id) => `ContentChannelId eq ${id}`))
+  byContentChannelIds = ({ ids }) => {
+    const contentChannelIds = ids || [];
+    return this.request()
+      .filterOneOf(contentChannelIds.map((id) => `ContentChannelId eq ${id}`))
       .andFilter(this.LIVE_CONTENT())
       .orderBy('StartDateTime', 'desc');
+  };
 
   getFromIds = ({ ids }) => {
-    if (ids.length === 0) return this.request().empty();
+    const contentIds = ids || [];
+    if (contentIds.length === 0) return this.request().empty();
     if (get(ApollosConfig, 'ROCK.USE_PLUGIN', false)) {
       // Avoids issue when fetching more than ~10 items
       // Caused by an Odata node limit.
       return this.request(
-        `Apollos/GetContentChannelItemsByIds?ids=${ids.join(',')}`
+        `Apollos/GetContentChannelItemsByIds?ids=${contentIds.join(',')}`
       ).andFilter(this.LIVE_CONTENT());
     }
     return this.request()
-      .filterOneOf(ids.map((id) => `Id eq ${id}`))
+      .filterOneOf(contentIds.map((id) => `Id eq ${id}`))
       .andFilter(this.LIVE_CONTENT());
   };
 
