@@ -20,7 +20,7 @@ export default class Search {
     this.context = context;
   }
 
-  async addObjects(args) {
+  async addObjects({ args }) {
     return new Promise((resolve, reject) => {
       this.index.addObjects(args, (err, result) => {
         if (err) {
@@ -31,9 +31,9 @@ export default class Search {
     });
   }
 
-  async mapItemToAlgolia(item) {
+  async mapItemToAlgolia({ item }) {
     const { ContentItem } = this.context.dataSources;
-    const type = await ContentItem.resolveType(item);
+    const type = await ContentItem.resolveType({ ...item });
 
     const { data } = await graphql(
       this.context.schema,
@@ -74,10 +74,10 @@ query getItem {
       if (itemsLeft) args.after = result[result.length - 1].cursor;
 
       const indexableItems = await Promise.all(
-        items.map((item) => this.mapItemToAlgolia(item))
+        items.map((item) => this.mapItemToAlgolia({ item }))
       );
 
-      await this.addObjects(indexableItems);
+      await this.addObjects({ args: indexableItems });
     }
   }
 

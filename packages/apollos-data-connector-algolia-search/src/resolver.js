@@ -3,7 +3,7 @@ import { withEdgePagination } from '@apollosproject/server-core';
 const resolver = {
   Query: {
     search: async (root, input, { dataSources }) =>
-      dataSources.Search.byPaginatedQuery(input),
+      dataSources.Search.byPaginatedQuery({ ...input }),
   },
   SearchResultsConnection: {
     edges: (edges) => edges,
