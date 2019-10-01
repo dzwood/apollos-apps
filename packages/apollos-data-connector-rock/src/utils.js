@@ -10,16 +10,16 @@ export const createImageUrlFromGuid = ({ uri }) =>
     : enforceProtocol({ uri });
 
 export const latLonDistance = ({
-  lattitude,
+  latitude,
   longitude,
-  campusLattitude,
+  campusLatitude,
   campusLongitude,
 }) => {
-  if (lattitude === campusLattitude && longitude === campusLongitude) {
+  if (latitude === campusLatitude && longitude === campusLongitude) {
     return 0;
   }
-  const radlat1 = (Math.PI * lattitude) / 180;
-  const radlat2 = (Math.PI * campusLattitude) / 180;
+  const radlat1 = (Math.PI * latitude) / 180;
+  const radlat2 = (Math.PI * campusLatitude) / 180;
   const theta = longitude - campusLongitude;
   const radtheta = (Math.PI * theta) / 180;
   let dist =

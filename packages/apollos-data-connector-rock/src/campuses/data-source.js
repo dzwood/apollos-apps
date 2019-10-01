@@ -7,7 +7,7 @@ export default class Campus extends RockApolloDataSource {
 
   expanded = true;
 
-  getFromId = ({ id }) =>
+  getFromId = (id) =>
     this.request()
       .find(id)
       .expand('Location')
