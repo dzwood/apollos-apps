@@ -33,19 +33,19 @@ export const defaultContentItemResolvers = {
     }),
 
   summary: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.createSummary(root),
+    ContentItem.createSummary({ ...root }),
 
   images: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getImages(root),
+    ContentItem.getImages({ ...root }),
 
   videos: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getVideos(root),
+    ContentItem.getVideos({ ...root }),
 
   audios: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getAudios(root),
+    ContentItem.getAudios({ ...root }),
 
   coverImage: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getCoverImage(root),
+    ContentItem.getCoverImage({ coverImage: root }),
 
   theme: () => null, // todo: integrate themes from Rock
 

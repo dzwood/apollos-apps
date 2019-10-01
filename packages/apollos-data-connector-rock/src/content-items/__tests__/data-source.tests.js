@@ -65,7 +65,7 @@ describe('ContentItemsModel', () => {
   it('filters by content channel id', () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
-    const result = dataSource.byContentChannelId(1).get();
+    const result = dataSource.byContentChannelId({ id: 1 }).get();
     expect(result).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -81,7 +81,7 @@ describe('ContentItemsModel', () => {
   it('gets by ids', () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
-    const result = dataSource.getFromIds([1, 2]).get();
+    const result = dataSource.getFromIds({ ids: [1, 2] }).get();
     expect(result).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -94,7 +94,7 @@ describe('ContentItemsModel', () => {
     });
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
-    const result = dataSource.getFromIds([1, 2]).get();
+    const result = dataSource.getFromIds({ ids: [1, 2] }).get();
     expect(result).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -102,7 +102,7 @@ describe('ContentItemsModel', () => {
   it('returns an empty array when calling getByIds with no ids', () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = jest.fn();
-    const result = dataSource.getFromIds([]).get();
+    const result = dataSource.getFromIds({ ids: [] }).get();
     expect(result).resolves.toEqual([]);
     expect(dataSource.get.mock.calls.length).toEqual(0);
   });
@@ -119,7 +119,7 @@ describe('ContentItemsModel', () => {
       ],
       dataSource
     );
-    const cursor = await dataSource.getCursorByParentContentItemId(1);
+    const cursor = await dataSource.getCursorByParentContentItemId({ id: 1 });
     expect(cursor.get()).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -141,7 +141,7 @@ describe('ContentItemsModel', () => {
       ],
       dataSource
     );
-    const cursor = await dataSource.getCursorByParentContentItemId(1);
+    const cursor = await dataSource.getCursorByParentContentItemId({ id: 1 });
     expect(cursor.get()).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -149,7 +149,7 @@ describe('ContentItemsModel', () => {
   it('returns an empty array when there are no child content items', async () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([], dataSource);
-    const cursor = await dataSource.getCursorByParentContentItemId(1);
+    const cursor = await dataSource.getCursorByParentContentItemId({ id: 1 });
     expect(await cursor.get()).toEqual([]);
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -163,7 +163,7 @@ describe('ContentItemsModel', () => {
       ],
       dataSource
     );
-    const cursor = await dataSource.getCursorByChildContentItemId(1);
+    const cursor = await dataSource.getCursorByChildContentItemId({ id: 1 });
     expect(cursor.get()).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -181,7 +181,7 @@ describe('ContentItemsModel', () => {
       ],
       dataSource
     );
-    const cursor = await dataSource.getCursorBySiblingContentItemId(1);
+    const cursor = await dataSource.getCursorBySiblingContentItemId({ id: 1 });
     expect(cursor.get()).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -204,7 +204,7 @@ describe('ContentItemsModel', () => {
       ],
       dataSource
     );
-    const cursor = await dataSource.getCursorBySiblingContentItemId(1);
+    const cursor = await dataSource.getCursorBySiblingContentItemId({ id: 1 });
     expect(cursor.get()).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -212,7 +212,7 @@ describe('ContentItemsModel', () => {
   it('returns an empty array when there are no sibling content items', async () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([], dataSource);
-    const cursor = await dataSource.getCursorBySiblingContentItemId(1);
+    const cursor = await dataSource.getCursorBySiblingContentItemId({ id: 1 });
     expect(await cursor.get()).toEqual([]);
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -220,7 +220,7 @@ describe('ContentItemsModel', () => {
   it('returns an empty array when there are no parent content items', async () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([], dataSource);
-    const cursor = await dataSource.getCursorByChildContentItemId(1);
+    const cursor = await dataSource.getCursorByChildContentItemId({ id: 1 });
     expect(await cursor.get()).toEqual([]);
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
@@ -387,7 +387,6 @@ describe('ContentItemsModel', () => {
     dataSource.byContentChannelId = jest.fn(() => ({
       andFilter: async () => Promise.resolve(),
     }));
-
     const result = dataSource.getSermonFeed({ id: '1' });
     expect(dataSource.byContentChannelId.mock.calls).toMatchSnapshot();
     expect(result).toMatchSnapshot();
@@ -407,7 +406,7 @@ describe('ContentItemsModel', () => {
 
     dataSource.get = jest.fn(() => Promise.resolve());
 
-    const query = await dataSource.byPersonaFeed();
+    const query = await dataSource.byPersonaFeed({});
     await query.get();
 
     expect(personaMock.mock.calls).toMatchSnapshot();
@@ -428,7 +427,7 @@ describe('ContentItemsModel', () => {
 
     dataSource.get = jest.fn(() => Promise.resolve());
 
-    const query = await dataSource.byPersonaFeed();
+    const query = await dataSource.byPersonaFeed({});
     await query.get();
 
     expect(personaMock.mock.calls).toMatchSnapshot();
@@ -454,7 +453,7 @@ describe('ContentItemsModel', () => {
 
     dataSource.get = jest.fn(() => Promise.resolve());
 
-    const query = await dataSource.byPersonaFeed();
+    const query = await dataSource.byPersonaFeed({});
     await query.get();
 
     expect(personaMock.mock.calls).toMatchSnapshot();
@@ -468,8 +467,10 @@ describe('ContentItemsModel', () => {
     });
 
     const image = await dataSource.getCoverImage({
-      attributeValues: {},
-      attributes: {},
+      root: {
+        attributeValues: {},
+        attributes: {},
+      },
     });
 
     expect(image).toBe(null);

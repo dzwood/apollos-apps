@@ -194,7 +194,7 @@ export default class ContentItem extends RockApolloDataSource {
 
   getShareUrl = async ({ contentId, channelId }) => {
     const contentChannel = await this.context.dataSources.ContentChannel.getFromId(
-      { id: channelId }
+      channelId
     );
 
     if (!contentChannel.itemUrl) return ROCK.SHARE_URL;
@@ -228,7 +228,7 @@ export default class ContentItem extends RockApolloDataSource {
     return mostRecentSermon.id === id;
   }
 
-  async getCoverImage({ root }) {
+  async getCoverImage({ coverImage }) {
     const pickBestImage = ({ images }) => {
       // TODO: there's probably a _much_ more explicit and better way to handle this
       const squareImage = images.find((image) =>
@@ -241,13 +241,13 @@ export default class ContentItem extends RockApolloDataSource {
     const withSources = (image) => image.sources.length;
 
     // filter images w/o URLs
-    const ourImages = this.getImages({ ...root }).filter(withSources);
+    const ourImages = this.getImages({ ...coverImage }).filter(withSources);
 
     if (ourImages.length) return pickBestImage({ images: ourImages });
 
     // If no image, check parent for image:
     const parentItemsCursor = await this.getCursorByChildContentItemId({
-      id: root.id,
+      id: coverImage.id,
     });
     if (!parentItemsCursor) return null;
 
@@ -392,7 +392,7 @@ export default class ContentItem extends RockApolloDataSource {
 
   byContentChannelIds = ({ ids }) =>
     this.request()
-      .filterOneOf(ids.map((id) => `ContentChannelId eq ${id}`))
+      .filterOneOf((ids || []).map((id) => `ContentChannelId eq ${id}`))
       .andFilter(this.LIVE_CONTENT())
       .orderBy('StartDateTime', 'desc');
 
@@ -410,7 +410,7 @@ export default class ContentItem extends RockApolloDataSource {
       .andFilter(this.LIVE_CONTENT());
   };
 
-  getFromId = ({ id }) =>
+  getFromId = (id) =>
     this.request()
       .find(id)
       .get();
