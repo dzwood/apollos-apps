@@ -21,9 +21,9 @@ const serverMiddleware = ({ app, getContext }) => {
       return res.send(e.message);
     }
 
-    const templatePath = context.dataSources.Pass.getPassPathFromTemplateName(
-      req.params.template
-    );
+    const templatePath = context.dataSources.Pass.getPassPathFromTemplateName({
+      templateName: req.params.template,
+    });
     const pass = new PassGenerator({
       model: templatePath,
     });

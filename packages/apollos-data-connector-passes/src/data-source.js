@@ -5,7 +5,8 @@ import { UserInputError } from 'apollo-server';
 import { promise as DataURI } from 'datauri';
 import ApollosConfig from '@apollosproject/config';
 
-const readFile = util.promisify(fs.readFile);
+const readFile = ({ templateFile, charSet }) =>
+  util.promisify(fs.readFile)(templateFile, charSet);
 
 export default class Pass extends DataSource {
   initialize(config) {
@@ -13,16 +14,16 @@ export default class Pass extends DataSource {
     this.cache = config.cache;
   }
 
-  getPassPathFromTemplateName = (templateName) =>
+  getPassPathFromTemplateName = ({ templateName }) =>
     ApollosConfig.PASS.TEMPLATES[templateName];
 
-  async getRawPassTemplate(templateFile) {
+  async getRawPassTemplate({ templateFile }) {
     // try to use cache:
-    const cacheHit = await this.tryCacheRead(templateFile);
+    const cacheHit = await this.tryCacheRead({ key: templateFile });
     if (cacheHit) return cacheHit;
 
-    const template = await readFile(templateFile, 'utf-8');
-    await this.tryCacheWrite(templateFile, template);
+    const template = await readFile({ templateFile, charSet: 'utf-8' });
+    await this.tryCacheWrite({ key: templateFile, value: template });
 
     return template;
   }
@@ -63,10 +64,10 @@ export default class Pass extends DataSource {
   async compileTemplate({ template, currentPersonId }) {
     if (!template) throw new UserInputError('no pass template provided');
 
-    const templateFile = `${this.getPassPathFromTemplateName(
-      template
-    )}/pass.json`;
-    const rawTemplate = await this.getRawPassTemplate(templateFile);
+    const templateFile = `${this.getPassPathFromTemplateName({
+      templateName: template,
+    })}/pass.json`;
+    const rawTemplate = await this.getRawPassTemplate({ templateFile });
 
     let compiledTemplate = rawTemplate;
     if (this.context.dataSources.Template) {
@@ -85,10 +86,12 @@ export default class Pass extends DataSource {
   getPassImage = async ({ template, image }) => {
     const cacheKey = `${template}/${image}`;
 
-    const cacheHit = await this.tryCacheRead(cacheKey);
+    const cacheHit = await this.tryCacheRead({ key: cacheKey });
     if (cacheHit) return cacheHit;
 
-    const templatePath = this.getPassPathFromTemplateName(template);
+    const templatePath = this.getPassPathFromTemplateName({
+      templateName: template,
+    });
 
     // try @2x first, fallback to normal res
     // Swallowing errors because these images are optional
@@ -107,7 +110,7 @@ export default class Pass extends DataSource {
     return { uri };
   };
 
-  async tryCacheRead(key) {
+  async tryCacheRead({ key }) {
     try {
       const cacheHit = await this.cache.get(key);
       if (cacheHit) return cacheHit;
@@ -118,7 +121,7 @@ export default class Pass extends DataSource {
     return null;
   }
 
-  async tryCacheWrite(key, value) {
+  async tryCacheWrite({ key, value }) {
     try {
       await this.cache.set(key, value);
     } catch (e) {

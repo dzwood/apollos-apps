@@ -5,14 +5,14 @@ import { camelCase } from 'lodash';
 import QRCode from 'qrcode';
 
 // Gets a list of supported pass types according to the graph schema
-const getSupportedPassTypes = (schema) => {
+const getSupportedPassTypes = ({ schema }) => {
   const { values = [] } = schema.getTypeMap().PassType.astNode;
   return values.map(({ name }) => name.value);
 };
 
 // Returns pass type... ex: 'GENERIC'
 const getPassType = ({ pass, schema }) => {
-  const types = getSupportedPassTypes(schema);
+  const types = getSupportedPassTypes({ schema });
   return types.find((type) =>
     Object.hasOwnProperty.call(pass, camelCase(type))
   );
