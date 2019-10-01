@@ -21,15 +21,15 @@ export default class Scripture extends RESTDataSource {
     return data;
   }
 
-  async getScripture(query) {
-    const scriptures = await this.getScriptures(query);
+  async getScripture({ query }) {
+    const scriptures = await this.getScriptures({ query });
     if (scriptures[0]) {
       return scriptures[0];
     }
     return null;
   }
 
-  async getScriptures(query) {
+  async getScriptures({ query }) {
     const bibleId = BIBLE_API.BIBLE_ID;
     const scriptures = await this.get(`${bibleId}/search?query=${query}`);
     // Bible.api has a history of making unexpected API changes.
