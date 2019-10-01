@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Animated } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import PropTypes from 'prop-types';
 
@@ -64,37 +63,54 @@ class ConnectedImage extends PureComponent {
     /* We store `this.props.source` as state so that IF our source doesn't have `width` and `height`
      * values we can fetch them via `onLoad` and rerender with them.
      */
-    this.state = { source: { ...this.props.source } };
+    this.state = { source: this.validSource };
+  }
 
-    this.imageOpacity = new Animated.Value(this.isLoading ? 0 : 1);
+  get validSource() {
+    let sources = this.props.source || {};
+
+    if (!this.props.isLoading) {
+      if (!Array.isArray(sources)) sources = [sources];
+
+      sources = sources.map((source) => {
+        let sourceAsObject = source;
+        if (typeof source === 'string') sourceAsObject = { uri: source };
+
+        return sourceAsObject;
+      });
+
+      // TODO: move this to the server!
+      sources = sources.map((source) => ({
+        uri: (source.uri || '').replace(/^http:\/\/|^\/\//i, 'https://'),
+        ...source,
+      }));
+    }
+
+    return sources;
   }
 
   get aspectRatio() {
     const style = {};
 
-    if (this.props.isLoading && !style.aspectRatio) {
-      // We only need to do this if the image is loading and not cached.
-      // TODO: Do we still need this with fastImage?
-      style.aspectRatio = 1;
-    } else if (this.props.maintainAspectRatio) {
-      // determine the aspect ratio of an image based on its width and height
-      if (
-        this.state.source &&
-        this.state.source.width &&
-        this.state.source.height
-      ) {
-        style.aspectRatio = this.state.source.width / this.state.source.height;
+    // determine the aspect ratio of an image based on its width and height
+    if (
+      this.props.maintainAspectRatio &&
+      this.state.source[0] &&
+      this.state.source[0].width &&
+      this.state.source[0].height
+    ) {
+      style.aspectRatio =
+        this.state.source[0].width / this.state.source[0].height;
 
-        // account for possible min/max aspectRatio bounds
-        if (this.props.minAspectRatio || this.props.maxAspectRatio) {
-          const maxAspectRatio = this.props.maxAspectRatio || style.aspectRatio;
-          const minAspectRatio = this.props.minAspectRatio || 0;
+      // account for possible min/max aspectRatio bounds
+      if (this.props.minAspectRatio || this.props.maxAspectRatio) {
+        const maxAspectRatio = this.props.maxAspectRatio || style.aspectRatio;
+        const minAspectRatio = this.props.minAspectRatio || 0;
 
-          style.aspectRatio = Math.max(
-            Math.min(maxAspectRatio, style.aspectRatio), // == smaller of maxAspectRatio and current aspectRatio
-            minAspectRatio
-          ); // == larger of calculated "max" aspect ratio and the minimum aspect ratio
-        }
+        style.aspectRatio = Math.max(
+          Math.min(maxAspectRatio, style.aspectRatio), // == smaller of maxAspectRatio and current aspectRatio
+          minAspectRatio
+        ); // == larger of calculated "max" aspect ratio and the minimum aspect ratio
       }
     }
 
@@ -102,35 +118,30 @@ class ConnectedImage extends PureComponent {
   }
 
   handleOnLoad = (event) => {
-    // TODO: Look into removing this.
-    event.persist();
-
     /* `onLoad` is triggered after or `ImageComponent` (default: `FastImage`) returns our requested
      * image. We only need to execute this code if the our original source object didn't have
      * `width` and `height` values which we need to calculate an `aspectRatio` with.
      */
-    if (!this.state.source.width || !this.state.source.height) {
-      const loadedImageProperties = event.nativeEvent;
 
+    event.persist(); // TODO: Look into removing this.
+
+    if (!this.state.source[0].width || !this.state.source[0].height) {
+      const loadedImageProperties = event.nativeEvent;
       // the linter is insisting we use the setState update syntax here 🙄
       this.setState((state) => {
-        const imageSource = { ...state.source };
+        const imageSources = [...state.source];
 
-        if (!state.source.width) {
-          imageSource.width = loadedImageProperties.width;
+        if (!state.source[0].width) {
+          imageSources[0].width = loadedImageProperties.width;
         }
 
-        if (!state.source.height) {
-          imageSource.height = loadedImageProperties.height;
+        if (!state.source[0].height) {
+          imageSources[0].height = loadedImageProperties.height;
         }
-
-        return { source: imageSource };
+        return { source: imageSources };
       });
     }
-    // Animated.timing(this.imageOpacity, {
-    //   toValue: 1,
-    //   duration: 250,
-    // }).start();
+
     if (this.props.onLoad) this.props.onLoad(event);
   };
 
@@ -145,13 +156,9 @@ class ConnectedImage extends PureComponent {
     } = this.props;
 
     return (
-      <SkeletonImage
-        onReady={!this.isLoading}
-        forceRatio={forceRatio}
-        style={style}
-      >
+      <SkeletonImage onReady={!isLoading} forceRatio={forceRatio} style={style}>
         <ImageComponent
-          source={this.props.source}
+          source={this.state.source}
           onLoad={this.handleOnLoad}
           style={[this.aspectRatio, style]}
           {...otherProps}
