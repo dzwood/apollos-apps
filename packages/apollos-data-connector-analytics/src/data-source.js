@@ -7,12 +7,14 @@ import RockInteractions from './interfaces/rock_interactions';
 
 const { ANALYTICS } = ApollosConfig;
 // Utility function to convert GQL array of key/values to Object.
-const mapArrayToObject = (array = []) =>
-  array.reduce((accum, { field, value }) => {
+const mapArrayToObject = ({ array }) => {
+  const arrayToReduce = array || [];
+  return arrayToReduce.reduce((accum, { field, value }) => {
     // eslint-disable-next-line no-param-reassign
     accum[field] = value;
     return accum;
   }, {});
+};
 
 // Add interfaces to this function to get picked up automatically.
 export const getInterfaces = () => {
@@ -75,7 +77,7 @@ export default class Analytics extends DataSource {
   async identify({ anonymousId, deviceInfo, traits }) {
     const currentUser = await this.getCurrentPerson();
     this.identifyInterfaces.forEach(async (iface) => {
-      const parsedTraits = mapArrayToObject(traits);
+      const parsedTraits = mapArrayToObject({ array: traits });
       iface.identify({
         userId: currentUser && currentUser.id,
         anonymousId,
@@ -95,7 +97,7 @@ export default class Analytics extends DataSource {
   // properties is an array of objects matching the pattern [{ field: String, value: String}]
   async track({ anonymousId, deviceInfo, eventName, properties }) {
     const currentUser = await this.getCurrentPerson();
-    const parsedProps = mapArrayToObject(properties);
+    const parsedProps = mapArrayToObject({ array: properties });
     this.trackInterfaces.forEach(async (iface) => {
       if (
         iface.eventWhitelist === null ||
