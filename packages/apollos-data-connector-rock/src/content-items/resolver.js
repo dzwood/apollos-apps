@@ -22,7 +22,7 @@ export const defaultContentItemResolvers = {
     }),
 
   parentChannel: ({ contentChannelId }, args, { dataSources }) =>
-    dataSources.ContentChannel.getFromId({ id: contentChannelId }),
+    dataSources.ContentChannel.getFromId(contentChannelId),
 
   siblingContentItemsConnection: async ({ id }, args, { dataSources }) =>
     dataSources.ContentItem.paginate({

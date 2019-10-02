@@ -25,7 +25,7 @@ export default class Group extends RockApolloDataSource {
     const members = await this.request('GroupMembers')
       .andFilter(`GroupId eq ${groupId}`)
       .get();
-    return members.map(({ personId }) => Person.getFromId({ id: personId }));
+    return members.map(({ personId }) => Person.getFromId(personId));
   };
 
   getLeaders = async ({ groupId }) => {

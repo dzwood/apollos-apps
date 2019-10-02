@@ -130,7 +130,7 @@ export default class Person extends RockApolloDataSource {
       fields: [{ field: 'PhotoId', value: photoId }],
     });
 
-    const photo = await BinaryFiles.getFromId({ id: photoId });
+    const photo = await BinaryFiles.getFromId(photoId);
     return { ...person, photo };
   };
 }
