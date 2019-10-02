@@ -76,7 +76,9 @@ Array [
 exports[`ContentItemsModel getSermonFeed fetches items from a specific content channel 1`] = `
 Array [
   Array [
-    "TEST_ID",
+    Object {
+      "id": "TEST_ID",
+    },
   ],
 ]
 `;

@@ -467,7 +467,7 @@ describe('ContentItemsModel', () => {
     });
 
     const image = await dataSource.getCoverImage({
-      root: {
+      coverImage: {
         attributeValues: {},
         attributes: {},
       },

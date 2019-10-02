@@ -134,18 +134,12 @@ Array [
 
 exports[`Person updates a user's profile attributes 2`] = `Array []`;
 
-exports[`Person updates a user's profile attributes 3`] = `
-Object {
-  "firstName": "Nick",
-  "id": 51,
-  "lastName": "Wilson",
-}
-`;
-
 exports[`Person uploads a user's profile picture: Get media datasource mock 1`] = `
 Array [
   Array [
-    "456",
+    Object {
+      "id": "456",
+    },
   ],
 ]
 `;
@@ -155,12 +149,14 @@ exports[`Person uploads a user's profile picture: Get updated profile mock 1`] =
 exports[`Person uploads a user's profile picture: Update profile mock 1`] = `
 Array [
   Array [
-    Array [
-      Object {
-        "field": "PhotoId",
-        "value": "456",
-      },
-    ],
+    Object {
+      "fields": Array [
+        Object {
+          "field": "PhotoId",
+          "value": "456",
+        },
+      ],
+    },
   ],
 ]
 `;

@@ -28,7 +28,7 @@ export default class Person extends RockApolloDataSource {
 
     // If we have a personAlias, return him.
     if (personAlias) {
-      return this.getFromId({ id: personAlias.personId });
+      return this.getFromId(personAlias.personId);
     }
     // Otherwise, return null.
     return null;
