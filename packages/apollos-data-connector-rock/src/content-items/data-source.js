@@ -173,8 +173,9 @@ export default class ContentItem extends RockApolloDataSource {
     return features;
   }
 
-  createSummary = ({ content, summary }) => {
-    if (summary) return summary;
+  createSummary = ({ content, attributeValues }) => {
+    const summary = get(attributeValues, 'summary.value', '');
+    if (summary !== '') return summary;
     if (!content || typeof content !== 'string') return '';
     // Protect against 0 length sentences (tokenizer will throw an error)
     if (content.split(' ').length === 1) return '';
@@ -201,6 +202,7 @@ export default class ContentItem extends RockApolloDataSource {
 
     const slug = await this.request('ContentChannelItemSlugs')
       .filter(`ContentChannelItemId eq ${contentId}`)
+      .cache({ ttl: 60 })
       .first();
 
     return [
@@ -280,6 +282,7 @@ export default class ContentItem extends RockApolloDataSource {
   getCursorByParentContentItemId = async ({ id }) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
     if (!associations || !associations.length) return this.request().empty();
@@ -294,17 +297,14 @@ export default class ContentItem extends RockApolloDataSource {
   getCursorByChildContentItemId = async ({ id }) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ChildContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
     if (!associations || !associations.length) return this.request().empty();
-    const request = this.request();
-    const associationsFilter = associations.map(
-      ({ contentChannelItemId }) => `Id eq ${contentChannelItemId}`
-    );
 
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      associations.map(({ contentChannelItemId }) => contentChannelItemId)
+    ).orderBy('Order');
   };
 
   getCursorBySiblingContentItemId = async ({ id }) => {
@@ -313,6 +313,7 @@ export default class ContentItem extends RockApolloDataSource {
       'ContentChannelItemAssociations'
     )
       .filter(`ChildContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
     if (!parentAssociations || !parentAssociations.length)
@@ -382,12 +383,14 @@ export default class ContentItem extends RockApolloDataSource {
           (id) => `ContentChannelId eq ${id}`
         )
       )
+      .cache({ ttl: 60 })
       .andFilter(this.LIVE_CONTENT());
 
   byContentChannelId = ({ id }) =>
     this.request()
       .filter(`ContentChannelId eq ${id}`)
       .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
       .orderBy('StartDateTime', 'desc');
 
   byContentChannelIds = ({ ids }) => {
@@ -395,6 +398,7 @@ export default class ContentItem extends RockApolloDataSource {
     return this.request()
       .filterOneOf(contentChannelIds.map((id) => `ContentChannelId eq ${id}`))
       .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
       .orderBy('StartDateTime', 'desc');
   };
 
