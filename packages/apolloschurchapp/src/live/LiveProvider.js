@@ -8,32 +8,30 @@ import getLiveContent from './getLiveContent';
 class LiveUpdater extends Component {
   static propTypes = {
     children: PropTypes.node,
-    activeLiveStreamContent: PropTypes.arrayOf(
+    liveContent: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string,
       })
-    ),
-    client: PropTypes.shape({ updateFragment: PropTypes.func }),
+    ).isRequired,
+    client: PropTypes.shape({ writeFragment: PropTypes.func.isRequired })
+      .isRequired,
   };
 
   componentDidUpdate(prevProps) {
     // If there is a difference between the old active content, and the new active content
     if (
-      uniqBy(
-        prevProps.activeLiveStreamContent,
-        this.props.activeLiveStreamContent
-      ).length !== 0
+      uniqBy(prevProps.liveContent, this.props.liveContent, 'id').length !== 0
     ) {
       this.updateLiveCache({
-        lastLiveContent: prevProps.activeLiveStreamContent,
+        lastLiveContent: prevProps.liveContent,
       });
     }
   }
 
   updateLiveCache({ lastLiveContent }) {
-    this.props.activeLiveStreamContent.map(({ id, liveStream }) => {
-      this.props.client.updateFragment({
-        id,
+    this.props.liveContent.map(({ id, liveStream, __typename }) => {
+      this.props.client.writeFragment({
+        id: `${__typename}:${id}`,
         fragment: gql`
           fragment LiveItem on WeekendContentItem {
             liveStream {
@@ -48,12 +46,12 @@ class LiveUpdater extends Component {
             }
           }
         `,
-        data: { liveStream },
+        data: { __typename, liveStream },
       });
     });
-    lastLiveContent.map(({ id, liveStream }) => {
-      this.props.client.updateFragment({
-        id,
+    lastLiveContent.map(({ id, liveStream, __typename }) => {
+      this.props.client.writeFragment({
+        id: `${__typename}:${id}`,
         fragment: gql`
           fragment LiveItem on WeekendContentItem {
             liveStream {
@@ -68,7 +66,7 @@ class LiveUpdater extends Component {
             }
           }
         `,
-        data: { liveStream: { ...liveStream, isLive: false } },
+        data: { __typename, liveStream: { ...liveStream, isLive: false } },
       });
     });
   }
