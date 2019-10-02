@@ -13,7 +13,7 @@ export default {
   Person: {
     groups: enforceCurrentUser({
       func: ({ id }, { type, asLeader }, { dataSources }) =>
-        dataSources.Group.getByPerson({ personId: id, type, asLeader })
+        dataSources.Group.getByPerson({ personId: id, type, asLeader }),
     }),
   },
 };
