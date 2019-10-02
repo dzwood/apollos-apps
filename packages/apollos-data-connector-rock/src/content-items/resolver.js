@@ -78,8 +78,6 @@ const resolver = {
         args,
       });
     },
-    activeLiveStreamContent: (root, args, { dataSources }) =>
-      dataSources.ContentItem.getActiveLiveStreamContent(),
   },
   DevotionalContentItem: {
     ...defaultContentItemResolvers,
