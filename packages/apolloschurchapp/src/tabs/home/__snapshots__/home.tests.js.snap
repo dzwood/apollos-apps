@@ -86,7 +86,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   }
                 }
               />
-              <LiveNowButton />
               <Query
                 fetchPolicy="cache-and-network"
                 query={

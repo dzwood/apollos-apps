@@ -29,7 +29,7 @@ class LiveUpdater extends Component {
   }
 
   updateLiveCache({ lastLiveContent }) {
-    this.props.liveContent.map(({ id, liveStream, __typename }) => {
+    this.props.liveContent.forEach(({ id, liveStream, __typename }) => {
       this.props.client.writeFragment({
         id: `${__typename}:${id}`,
         fragment: gql`
@@ -49,7 +49,7 @@ class LiveUpdater extends Component {
         data: { __typename, liveStream },
       });
     });
-    lastLiveContent.map(({ id, liveStream, __typename }) => {
+    lastLiveContent.forEach(({ id, liveStream, __typename }) => {
       this.props.client.writeFragment({
         id: `${__typename}:${id}`,
         fragment: gql`
