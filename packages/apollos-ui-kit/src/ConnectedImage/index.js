@@ -39,10 +39,7 @@ const aspectRatioPropValidator = (props, propName, componentName) => {
 
 class ConnectedImage extends PureComponent {
   static propTypes = {
-    source: PropTypes.oneOfType([
-      PropTypes.arrayOf(ImageSourceType),
-      ImageSourceType,
-    ]),
+    source: ImageSourceType,
     ImageComponent: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     maintainAspectRatio: PropTypes.bool,
     isLoading: PropTypes.bool,
@@ -67,26 +64,25 @@ class ConnectedImage extends PureComponent {
   }
 
   get validSource() {
-    let sources = this.props.source || {};
+    let source = this.props.source || {};
 
     if (!this.props.isLoading) {
-      if (!Array.isArray(sources)) sources = [sources];
+      // TODO: remove this when an array of sources support is removed.
+      if (Array.isArray(this.props.source)) {
+        // if we are givien an array of sources just use the first one.
+        [source] = source;
+        console.warn(
+          'ConnectedImage no longer accepts an array of sources. Currently we simply use the first one object in the array but in the future we will remove this backwards compatibily will be removed.'
+        );
+      }
 
-      sources = sources.map((source) => {
-        let sourceAsObject = source;
-        if (typeof source === 'string') sourceAsObject = { uri: source };
-
-        return sourceAsObject;
-      });
+      if (typeof source === 'string') source = { uri: source };
 
       // TODO: move this to the server!
-      sources = sources.map((source) => ({
-        uri: (source.uri || '').replace(/^http:\/\/|^\/\//i, 'https://'),
-        ...source,
-      }));
+      source.uri = (source.uri || '').replace(/^http:\/\/|^\/\//i, 'https://');
     }
 
-    return sources;
+    return source;
   }
 
   get aspectRatio() {
@@ -95,12 +91,11 @@ class ConnectedImage extends PureComponent {
     // determine the aspect ratio of an image based on its width and height
     if (
       this.props.maintainAspectRatio &&
-      this.state.source[0] &&
-      this.state.source[0].width &&
-      this.state.source[0].height
+      this.state.source &&
+      this.state.source.width &&
+      this.state.source.height
     ) {
-      style.aspectRatio =
-        this.state.source[0].width / this.state.source[0].height;
+      style.aspectRatio = this.state.source.width / this.state.source.height;
 
       // account for possible min/max aspectRatio bounds
       if (this.props.minAspectRatio || this.props.maxAspectRatio) {
@@ -125,20 +120,20 @@ class ConnectedImage extends PureComponent {
 
     event.persist(); // TODO: Look into removing this.
 
-    if (!this.state.source[0].width || !this.state.source[0].height) {
+    if (!this.state.source.width || !this.state.source.height) {
       const loadedImageProperties = event.nativeEvent;
       // the linter is insisting we use the setState update syntax here 🙄
       this.setState((state) => {
-        const imageSources = [...state.source];
+        const imageSource = { ...state.source };
 
-        if (!state.source[0].width) {
-          imageSources[0].width = loadedImageProperties.width;
+        if (!state.source.width) {
+          imageSource.width = loadedImageProperties.width;
         }
 
-        if (!state.source[0].height) {
-          imageSources[0].height = loadedImageProperties.height;
+        if (!state.source.height) {
+          imageSource.height = loadedImageProperties.height;
         }
-        return { source: imageSources };
+        return { source: imageSource };
       });
     }
 
