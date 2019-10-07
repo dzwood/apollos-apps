@@ -121,12 +121,14 @@ describe('Person', () => {
       dataSources: { Auth },
     };
     dataSource.patch = buildGetMock({}, dataSource);
-    const result = dataSource.updateProfile([
-      {
-        field: 'FirstName',
-        value: 'Nick',
-      },
-    ]);
+    const result = dataSource.updateProfile({
+      fields: [
+        {
+          field: 'FirstName',
+          value: 'Nick',
+        },
+      ],
+    });
     expect(result).resolves.toMatchSnapshot();
     expect(Auth.getCurrentPerson.mock.calls).toMatchSnapshot();
     expect(dataSource.patch.mock.calls).toMatchSnapshot();
@@ -232,7 +234,7 @@ describe('Person', () => {
     dataSource.get = buildGetMock([], dataSource);
 
     const result = await dataSource.uploadProfileImage(
-      { stream: '123', filename: 'img.jpg' },
+      { createReadStream: () => '123', filename: 'img.jpg' },
       456
     );
     expect(result).toMatchSnapshot('Upload result');
