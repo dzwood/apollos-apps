@@ -68,38 +68,37 @@ exports[`the MediaThumbnail component should render 1`] = `
         }
       >
         <View
-          animate={null}
-          customAnimate={null}
-          onReady={false}
           style={
-            Object {
-              "aspectRatio": 1,
-              "backgroundColor": "#A5A5A5",
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-              "width": "100%",
-            }
+            Array [
+              Object {
+                "overflow": "hidden",
+              },
+              Array [
+                Object {},
+                Object {
+                  "backgroundColor": "#A5A5A5",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ],
+            ]
           }
         >
-          <Image
-            onLoad={[Function]}
+          <FastImageView
+            onFastImageLoad={[Function]}
+            resizeMode="cover"
             source={
-              Array [
-                Object {
-                  "cache": "force-cache",
-                  "uri": "https://picsum.photos/900/1600/?random",
-                },
-              ]
+              Object {
+                "uri": "https://picsum.photos/900/1600/?random",
+              }
             }
             style={
               Object {
-                "backgroundColor": "#A5A5A5",
                 "bottom": 0,
                 "left": 0,
-                "opacity": 0,
                 "position": "absolute",
                 "right": 0,
                 "top": 0,

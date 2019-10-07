@@ -46,28 +46,46 @@ exports[`the GradientOverlayImage component should render 1`] = `
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
     </View>
   </View>
 </View>
@@ -119,28 +137,46 @@ exports[`the GradientOverlayImage component should render with an overlayColor 1
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [
@@ -229,28 +265,46 @@ exports[`the GradientOverlayImage component should render with overlayType.featu
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [
@@ -339,28 +393,46 @@ exports[`the GradientOverlayImage component should render with overlayType.gradi
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [
@@ -449,28 +521,46 @@ exports[`the GradientOverlayImage component should render with overlayType.gradi
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [
@@ -559,28 +649,46 @@ exports[`the GradientOverlayImage component should render with overlayType.high 
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [
@@ -669,28 +777,46 @@ exports[`the GradientOverlayImage component should render with overlayType.low 1
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [
@@ -779,28 +905,46 @@ exports[`the GradientOverlayImage component should render with overlayType.mediu
         }
       }
     >
-      <Image
-        onLoad={[Function]}
-        source={
+      <View
+        style={
           Array [
             Object {
-              "cache": "force-cache",
+              "overflow": "hidden",
+            },
+            Array [
+              Object {
+                "aspectRatio": 1.5,
+              },
+              Object {
+                "backgroundColor": "#A5A5A5",
+                "resizeMode": "cover",
+                "width": "100%",
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          onFastImageLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
               "height": 400,
               "uri": "https://picsum.photos/600/400/?random",
               "width": 600,
-            },
-          ]
-        }
-        style={
-          Object {
-            "aspectRatio": 1.5,
-            "backgroundColor": "#A5A5A5",
-            "opacity": 1,
-            "resizeMode": "cover",
-            "width": "100%",
+            }
           }
-        }
-      />
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        />
+      </View>
       <BVLinearGradient
         colors={
           Array [

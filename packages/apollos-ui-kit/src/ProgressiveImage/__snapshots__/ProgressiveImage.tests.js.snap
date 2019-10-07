@@ -9,48 +9,82 @@ exports[`the ProgressiveImage component should render 1`] = `
     }
   }
 >
-  <Image
-    blurRadius={2}
-    onLoad={[Function]}
-    source={
+  <View
+    style={
       Array [
         Object {
-          "cache": "force-cache",
+          "overflow": "hidden",
+        },
+        Array [
+          Object {},
+          Object {
+            "backgroundColor": "#A5A5A5",
+            "resizeMode": "cover",
+            "width": "100%",
+          },
+        ],
+      ]
+    }
+  >
+    <FastImageView
+      blurRadius={2}
+      onFastImageLoad={[Function]}
+      resizeMode="cover"
+      source={
+        Object {
           "height": 50,
           "uri": "https://placeholdit.co/i/50x50",
           "width": 50,
-        },
-      ]
-    }
-    style={
-      Object {
-        "backgroundColor": "#A5A5A5",
-        "opacity": 1,
-        "resizeMode": "cover",
-        "width": "100%",
+        }
       }
-    }
-  />
-  <Image
-    onLoad={[Function]}
-    source={
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
       Array [
         Object {
-          "cache": "force-cache",
+          "overflow": "hidden",
+        },
+        Array [
+          Object {},
+          Object {
+            "backgroundColor": "#A5A5A5",
+            "resizeMode": "cover",
+            "width": "100%",
+          },
+        ],
+      ]
+    }
+  >
+    <FastImageView
+      onFastImageLoad={[Function]}
+      resizeMode="cover"
+      source={
+        Object {
           "height": 1500,
           "uri": "https://placeholdit.co/i/1500x1500",
           "width": 1500,
-        },
-      ]
-    }
-    style={
-      Object {
-        "backgroundColor": "#A5A5A5",
-        "opacity": 1,
-        "resizeMode": "cover",
-        "width": "100%",
+        }
       }
-    }
-  />
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
 </View>
 `;

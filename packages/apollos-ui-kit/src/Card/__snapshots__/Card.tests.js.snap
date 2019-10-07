@@ -252,35 +252,37 @@ exports[`the Card component should render 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 1,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
-              onLoad={[Function]}
+            <FastImageView
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/600/400/?image=63",
-                    "url": "https://picsum.photos/600/400/?image=63",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/600/400/?image=63",
+                }
               }
               style={
                 Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />

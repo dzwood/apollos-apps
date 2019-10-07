@@ -74,38 +74,40 @@ exports[`HorizontalDefaultCard should render 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            forceRatio={1.5}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 1.5,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
+            <FastImageView
               hasTitleAndSummary={false}
               maxAspectRatio={1.5}
               minAspectRatio={1.5}
-              onLoad={[Function]}
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/800/1600/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/800/1600/?random",
+                }
               }
               style={
                 Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />
@@ -377,29 +379,47 @@ exports[`HorizontalDefaultCard should render a loading state with isLoading 1`] 
               }
             }
           >
-            <Image
-              hasTitleAndSummary={true}
-              maxAspectRatio={2}
-              minAspectRatio={2}
-              onLoad={[Function]}
-              source={
+            <View
+              style={
                 Array [
                   Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/800/1600/?random",
+                    "overflow": "hidden",
                   },
+                  Array [
+                    Object {},
+                    Object {
+                      "backgroundColor": "#A5A5A5",
+                      "resizeMode": "cover",
+                      "width": "100%",
+                    },
+                  ],
                 ]
               }
-              style={
-                Object {
-                  "aspectRatio": 1,
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+            >
+              <FastImageView
+                hasTitleAndSummary={true}
+                maxAspectRatio={2}
+                minAspectRatio={2}
+                onFastImageLoad={[Function]}
+                resizeMode="cover"
+                source={
+                  Array [
+                    Object {
+                      "uri": "https://picsum.photos/800/1600/?random",
+                    },
+                  ]
                 }
-              }
-            />
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <BVLinearGradient
             colors={
@@ -575,38 +595,40 @@ exports[`HorizontalDefaultCard should render with a summary 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            forceRatio={2}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 2,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
+            <FastImageView
               hasTitleAndSummary={true}
               maxAspectRatio={2}
               minAspectRatio={2}
-              onLoad={[Function]}
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/800/1600/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/800/1600/?random",
+                }
               }
               style={
                 Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />
@@ -907,29 +929,47 @@ exports[`HorizontalDefaultCard should render with a title 1`] = `
               }
             }
           >
-            <Image
-              hasTitleAndSummary={false}
-              maxAspectRatio={1.5}
-              minAspectRatio={1.5}
-              onLoad={[Function]}
-              source={
+            <View
+              style={
                 Array [
                   Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/800/1600/?random",
+                    "overflow": "hidden",
                   },
+                  Array [
+                    Object {},
+                    Object {
+                      "backgroundColor": "#A5A5A5",
+                      "resizeMode": "cover",
+                      "width": "100%",
+                    },
+                  ],
                 ]
               }
-              style={
-                Object {
-                  "aspectRatio": 1,
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+            >
+              <FastImageView
+                hasTitleAndSummary={false}
+                maxAspectRatio={1.5}
+                minAspectRatio={1.5}
+                onFastImageLoad={[Function]}
+                resizeMode="cover"
+                source={
+                  Array [
+                    Object {
+                      "uri": "https://picsum.photos/800/1600/?random",
+                    },
+                  ]
                 }
-              }
-            />
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
           <BVLinearGradient
             colors={
@@ -1092,38 +1132,40 @@ exports[`HorizontalDefaultCard should should render as isLiked 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            forceRatio={1.5}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 1.5,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
+            <FastImageView
               hasTitleAndSummary={false}
               maxAspectRatio={1.5}
               minAspectRatio={1.5}
-              onLoad={[Function]}
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/800/1600/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/800/1600/?random",
+                }
               }
               style={
                 Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />

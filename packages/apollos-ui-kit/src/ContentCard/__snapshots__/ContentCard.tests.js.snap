@@ -72,34 +72,37 @@ exports[`ContentCard renders Basic card, with Image 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 1,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
-              onLoad={[Function]}
+            <FastImageView
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/600/400/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/600/400/?random",
+                }
               }
               style={
                 Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />
@@ -427,19 +430,39 @@ exports[`ContentCard renders a Default Placeholder 1`] = `
               }
             }
           >
-            <Image
-              onLoad={[Function]}
-              source={Array []}
+            <View
               style={
-                Object {
-                  "aspectRatio": 2,
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Array [
+                    Object {},
+                    Object {
+                      "aspectRatio": 2,
+                      "backgroundColor": "#A5A5A5",
+                      "resizeMode": "cover",
+                      "width": "100%",
+                    },
+                  ],
+                ]
               }
-            />
+            >
+              <FastImageView
+                onFastImageLoad={[Function]}
+                resizeMode="cover"
+                source={Object {}}
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
         </View>
         <View
@@ -645,35 +668,38 @@ exports[`ContentCard renders as Tile/Image only 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 1,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "aspectRatio": 1,
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
-              onLoad={[Function]}
+            <FastImageView
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/600/400/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/600/400/?random",
+                }
               }
               style={
                 Object {
-                  "aspectRatio": 1,
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />
@@ -1303,35 +1329,38 @@ exports[`ContentCard renders basic tile card, with Image 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 2,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "aspectRatio": 2,
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
-              onLoad={[Function]}
+            <FastImageView
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/600/400/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/600/400/?random",
+                }
               }
               style={
                 Object {
-                  "aspectRatio": 2,
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />
@@ -1664,19 +1693,39 @@ exports[`ContentCard renders with Default Placeholder 1`] = `
               }
             }
           >
-            <Image
-              onLoad={[Function]}
-              source={Array []}
+            <View
               style={
-                Object {
-                  "aspectRatio": 2,
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
-                }
+                Array [
+                  Object {
+                    "overflow": "hidden",
+                  },
+                  Array [
+                    Object {},
+                    Object {
+                      "aspectRatio": 2,
+                      "backgroundColor": "#A5A5A5",
+                      "resizeMode": "cover",
+                      "width": "100%",
+                    },
+                  ],
+                ]
               }
-            />
+            >
+              <FastImageView
+                onFastImageLoad={[Function]}
+                resizeMode="cover"
+                source={Object {}}
+                style={
+                  Object {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              />
+            </View>
           </View>
         </View>
         <View
@@ -2183,34 +2232,37 @@ exports[`ContentCard renders with an Image only 1`] = `
           }
         >
           <View
-            animate={null}
-            customAnimate={null}
-            onReady={false}
             style={
-              Object {
-                "aspectRatio": 1,
-                "backgroundColor": "#A5A5A5",
-                "resizeMode": "cover",
-                "width": "100%",
-              }
+              Array [
+                Object {
+                  "overflow": "hidden",
+                },
+                Array [
+                  Object {},
+                  Object {
+                    "backgroundColor": "#A5A5A5",
+                    "resizeMode": "cover",
+                    "width": "100%",
+                  },
+                ],
+              ]
             }
           >
-            <Image
-              onLoad={[Function]}
+            <FastImageView
+              onFastImageLoad={[Function]}
+              resizeMode="cover"
               source={
-                Array [
-                  Object {
-                    "cache": "force-cache",
-                    "uri": "https://picsum.photos/600/400/?random",
-                  },
-                ]
+                Object {
+                  "uri": "https://picsum.photos/600/400/?random",
+                }
               }
               style={
                 Object {
-                  "backgroundColor": "#A5A5A5",
-                  "opacity": 0,
-                  "resizeMode": "cover",
-                  "width": "100%",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
             />
