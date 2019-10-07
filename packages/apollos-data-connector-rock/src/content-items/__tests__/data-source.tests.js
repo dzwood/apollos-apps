@@ -182,7 +182,7 @@ describe('ContentItemsModel', () => {
       ],
       dataSource
     );
-    const cursor = await dataSource.getCursorByChildContentItemId(1);
+    const cursor = await dataSource.getCursorByChildContentItemId({ id: 1 });
     expect(cursor.get()).resolves.toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });

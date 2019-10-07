@@ -34,752 +34,1052 @@ exports[`The algolia search dataSource must be able to perform a full index of d
 Array [
   Array [
     Object {
-      "id": 0,
+      "item": Object {
+        "id": 0,
+      },
     },
   ],
   Array [
     Object {
-      "id": 1,
+      "item": Object {
+        "id": 1,
+      },
     },
   ],
   Array [
     Object {
-      "id": 2,
+      "item": Object {
+        "id": 2,
+      },
     },
   ],
   Array [
     Object {
-      "id": 3,
+      "item": Object {
+        "id": 3,
+      },
     },
   ],
   Array [
     Object {
-      "id": 4,
+      "item": Object {
+        "id": 4,
+      },
     },
   ],
   Array [
     Object {
-      "id": 5,
+      "item": Object {
+        "id": 5,
+      },
     },
   ],
   Array [
     Object {
-      "id": 6,
+      "item": Object {
+        "id": 6,
+      },
     },
   ],
   Array [
     Object {
-      "id": 7,
+      "item": Object {
+        "id": 7,
+      },
     },
   ],
   Array [
     Object {
-      "id": 8,
+      "item": Object {
+        "id": 8,
+      },
     },
   ],
   Array [
     Object {
-      "id": 9,
+      "item": Object {
+        "id": 9,
+      },
     },
   ],
   Array [
     Object {
-      "id": 10,
+      "item": Object {
+        "id": 10,
+      },
     },
   ],
   Array [
     Object {
-      "id": 11,
+      "item": Object {
+        "id": 11,
+      },
     },
   ],
   Array [
     Object {
-      "id": 12,
+      "item": Object {
+        "id": 12,
+      },
     },
   ],
   Array [
     Object {
-      "id": 13,
+      "item": Object {
+        "id": 13,
+      },
     },
   ],
   Array [
     Object {
-      "id": 14,
+      "item": Object {
+        "id": 14,
+      },
     },
   ],
   Array [
     Object {
-      "id": 15,
+      "item": Object {
+        "id": 15,
+      },
     },
   ],
   Array [
     Object {
-      "id": 16,
+      "item": Object {
+        "id": 16,
+      },
     },
   ],
   Array [
     Object {
-      "id": 17,
+      "item": Object {
+        "id": 17,
+      },
     },
   ],
   Array [
     Object {
-      "id": 18,
+      "item": Object {
+        "id": 18,
+      },
     },
   ],
   Array [
     Object {
-      "id": 19,
+      "item": Object {
+        "id": 19,
+      },
     },
   ],
   Array [
     Object {
-      "id": 20,
+      "item": Object {
+        "id": 20,
+      },
     },
   ],
   Array [
     Object {
-      "id": 21,
+      "item": Object {
+        "id": 21,
+      },
     },
   ],
   Array [
     Object {
-      "id": 22,
+      "item": Object {
+        "id": 22,
+      },
     },
   ],
   Array [
     Object {
-      "id": 23,
+      "item": Object {
+        "id": 23,
+      },
     },
   ],
   Array [
     Object {
-      "id": 24,
+      "item": Object {
+        "id": 24,
+      },
     },
   ],
   Array [
     Object {
-      "id": 25,
+      "item": Object {
+        "id": 25,
+      },
     },
   ],
   Array [
     Object {
-      "id": 26,
+      "item": Object {
+        "id": 26,
+      },
     },
   ],
   Array [
     Object {
-      "id": 27,
+      "item": Object {
+        "id": 27,
+      },
     },
   ],
   Array [
     Object {
-      "id": 28,
+      "item": Object {
+        "id": 28,
+      },
     },
   ],
   Array [
     Object {
-      "id": 29,
+      "item": Object {
+        "id": 29,
+      },
     },
   ],
   Array [
     Object {
-      "id": 30,
+      "item": Object {
+        "id": 30,
+      },
     },
   ],
   Array [
     Object {
-      "id": 31,
+      "item": Object {
+        "id": 31,
+      },
     },
   ],
   Array [
     Object {
-      "id": 32,
+      "item": Object {
+        "id": 32,
+      },
     },
   ],
   Array [
     Object {
-      "id": 33,
+      "item": Object {
+        "id": 33,
+      },
     },
   ],
   Array [
     Object {
-      "id": 34,
+      "item": Object {
+        "id": 34,
+      },
     },
   ],
   Array [
     Object {
-      "id": 35,
+      "item": Object {
+        "id": 35,
+      },
     },
   ],
   Array [
     Object {
-      "id": 36,
+      "item": Object {
+        "id": 36,
+      },
     },
   ],
   Array [
     Object {
-      "id": 37,
+      "item": Object {
+        "id": 37,
+      },
     },
   ],
   Array [
     Object {
-      "id": 38,
+      "item": Object {
+        "id": 38,
+      },
     },
   ],
   Array [
     Object {
-      "id": 39,
+      "item": Object {
+        "id": 39,
+      },
     },
   ],
   Array [
     Object {
-      "id": 40,
+      "item": Object {
+        "id": 40,
+      },
     },
   ],
   Array [
     Object {
-      "id": 41,
+      "item": Object {
+        "id": 41,
+      },
     },
   ],
   Array [
     Object {
-      "id": 42,
+      "item": Object {
+        "id": 42,
+      },
     },
   ],
   Array [
     Object {
-      "id": 43,
+      "item": Object {
+        "id": 43,
+      },
     },
   ],
   Array [
     Object {
-      "id": 44,
+      "item": Object {
+        "id": 44,
+      },
     },
   ],
   Array [
     Object {
-      "id": 45,
+      "item": Object {
+        "id": 45,
+      },
     },
   ],
   Array [
     Object {
-      "id": 46,
+      "item": Object {
+        "id": 46,
+      },
     },
   ],
   Array [
     Object {
-      "id": 47,
+      "item": Object {
+        "id": 47,
+      },
     },
   ],
   Array [
     Object {
-      "id": 48,
+      "item": Object {
+        "id": 48,
+      },
     },
   ],
   Array [
     Object {
-      "id": 49,
+      "item": Object {
+        "id": 49,
+      },
     },
   ],
   Array [
     Object {
-      "id": 50,
+      "item": Object {
+        "id": 50,
+      },
     },
   ],
   Array [
     Object {
-      "id": 51,
+      "item": Object {
+        "id": 51,
+      },
     },
   ],
   Array [
     Object {
-      "id": 52,
+      "item": Object {
+        "id": 52,
+      },
     },
   ],
   Array [
     Object {
-      "id": 53,
+      "item": Object {
+        "id": 53,
+      },
     },
   ],
   Array [
     Object {
-      "id": 54,
+      "item": Object {
+        "id": 54,
+      },
     },
   ],
   Array [
     Object {
-      "id": 55,
+      "item": Object {
+        "id": 55,
+      },
     },
   ],
   Array [
     Object {
-      "id": 56,
+      "item": Object {
+        "id": 56,
+      },
     },
   ],
   Array [
     Object {
-      "id": 57,
+      "item": Object {
+        "id": 57,
+      },
     },
   ],
   Array [
     Object {
-      "id": 58,
+      "item": Object {
+        "id": 58,
+      },
     },
   ],
   Array [
     Object {
-      "id": 59,
+      "item": Object {
+        "id": 59,
+      },
     },
   ],
   Array [
     Object {
-      "id": 60,
+      "item": Object {
+        "id": 60,
+      },
     },
   ],
   Array [
     Object {
-      "id": 61,
+      "item": Object {
+        "id": 61,
+      },
     },
   ],
   Array [
     Object {
-      "id": 62,
+      "item": Object {
+        "id": 62,
+      },
     },
   ],
   Array [
     Object {
-      "id": 63,
+      "item": Object {
+        "id": 63,
+      },
     },
   ],
   Array [
     Object {
-      "id": 64,
+      "item": Object {
+        "id": 64,
+      },
     },
   ],
   Array [
     Object {
-      "id": 65,
+      "item": Object {
+        "id": 65,
+      },
     },
   ],
   Array [
     Object {
-      "id": 66,
+      "item": Object {
+        "id": 66,
+      },
     },
   ],
   Array [
     Object {
-      "id": 67,
+      "item": Object {
+        "id": 67,
+      },
     },
   ],
   Array [
     Object {
-      "id": 68,
+      "item": Object {
+        "id": 68,
+      },
     },
   ],
   Array [
     Object {
-      "id": 69,
+      "item": Object {
+        "id": 69,
+      },
     },
   ],
   Array [
     Object {
-      "id": 70,
+      "item": Object {
+        "id": 70,
+      },
     },
   ],
   Array [
     Object {
-      "id": 71,
+      "item": Object {
+        "id": 71,
+      },
     },
   ],
   Array [
     Object {
-      "id": 72,
+      "item": Object {
+        "id": 72,
+      },
     },
   ],
   Array [
     Object {
-      "id": 73,
+      "item": Object {
+        "id": 73,
+      },
     },
   ],
   Array [
     Object {
-      "id": 74,
+      "item": Object {
+        "id": 74,
+      },
     },
   ],
   Array [
     Object {
-      "id": 75,
+      "item": Object {
+        "id": 75,
+      },
     },
   ],
   Array [
     Object {
-      "id": 76,
+      "item": Object {
+        "id": 76,
+      },
     },
   ],
   Array [
     Object {
-      "id": 77,
+      "item": Object {
+        "id": 77,
+      },
     },
   ],
   Array [
     Object {
-      "id": 78,
+      "item": Object {
+        "id": 78,
+      },
     },
   ],
   Array [
     Object {
-      "id": 79,
+      "item": Object {
+        "id": 79,
+      },
     },
   ],
   Array [
     Object {
-      "id": 80,
+      "item": Object {
+        "id": 80,
+      },
     },
   ],
   Array [
     Object {
-      "id": 81,
+      "item": Object {
+        "id": 81,
+      },
     },
   ],
   Array [
     Object {
-      "id": 82,
+      "item": Object {
+        "id": 82,
+      },
     },
   ],
   Array [
     Object {
-      "id": 83,
+      "item": Object {
+        "id": 83,
+      },
     },
   ],
   Array [
     Object {
-      "id": 84,
+      "item": Object {
+        "id": 84,
+      },
     },
   ],
   Array [
     Object {
-      "id": 85,
+      "item": Object {
+        "id": 85,
+      },
     },
   ],
   Array [
     Object {
-      "id": 86,
+      "item": Object {
+        "id": 86,
+      },
     },
   ],
   Array [
     Object {
-      "id": 87,
+      "item": Object {
+        "id": 87,
+      },
     },
   ],
   Array [
     Object {
-      "id": 88,
+      "item": Object {
+        "id": 88,
+      },
     },
   ],
   Array [
     Object {
-      "id": 89,
+      "item": Object {
+        "id": 89,
+      },
     },
   ],
   Array [
     Object {
-      "id": 90,
+      "item": Object {
+        "id": 90,
+      },
     },
   ],
   Array [
     Object {
-      "id": 91,
+      "item": Object {
+        "id": 91,
+      },
     },
   ],
   Array [
     Object {
-      "id": 92,
+      "item": Object {
+        "id": 92,
+      },
     },
   ],
   Array [
     Object {
-      "id": 93,
+      "item": Object {
+        "id": 93,
+      },
     },
   ],
   Array [
     Object {
-      "id": 94,
+      "item": Object {
+        "id": 94,
+      },
     },
   ],
   Array [
     Object {
-      "id": 95,
+      "item": Object {
+        "id": 95,
+      },
     },
   ],
   Array [
     Object {
-      "id": 96,
+      "item": Object {
+        "id": 96,
+      },
     },
   ],
   Array [
     Object {
-      "id": 97,
+      "item": Object {
+        "id": 97,
+      },
     },
   ],
   Array [
     Object {
-      "id": 98,
+      "item": Object {
+        "id": 98,
+      },
     },
   ],
   Array [
     Object {
-      "id": 99,
+      "item": Object {
+        "id": 99,
+      },
     },
   ],
   Array [
     Object {
-      "id": 0,
+      "item": Object {
+        "id": 0,
+      },
     },
   ],
   Array [
     Object {
-      "id": 1,
+      "item": Object {
+        "id": 1,
+      },
     },
   ],
   Array [
     Object {
-      "id": 2,
+      "item": Object {
+        "id": 2,
+      },
     },
   ],
   Array [
     Object {
-      "id": 3,
+      "item": Object {
+        "id": 3,
+      },
     },
   ],
   Array [
     Object {
-      "id": 4,
+      "item": Object {
+        "id": 4,
+      },
     },
   ],
   Array [
     Object {
-      "id": 5,
+      "item": Object {
+        "id": 5,
+      },
     },
   ],
   Array [
     Object {
-      "id": 6,
+      "item": Object {
+        "id": 6,
+      },
     },
   ],
   Array [
     Object {
-      "id": 7,
+      "item": Object {
+        "id": 7,
+      },
     },
   ],
   Array [
     Object {
-      "id": 8,
+      "item": Object {
+        "id": 8,
+      },
     },
   ],
   Array [
     Object {
-      "id": 9,
+      "item": Object {
+        "id": 9,
+      },
     },
   ],
   Array [
     Object {
-      "id": 10,
+      "item": Object {
+        "id": 10,
+      },
     },
   ],
   Array [
     Object {
-      "id": 11,
+      "item": Object {
+        "id": 11,
+      },
     },
   ],
   Array [
     Object {
-      "id": 12,
+      "item": Object {
+        "id": 12,
+      },
     },
   ],
   Array [
     Object {
-      "id": 13,
+      "item": Object {
+        "id": 13,
+      },
     },
   ],
   Array [
     Object {
-      "id": 14,
+      "item": Object {
+        "id": 14,
+      },
     },
   ],
   Array [
     Object {
-      "id": 15,
+      "item": Object {
+        "id": 15,
+      },
     },
   ],
   Array [
     Object {
-      "id": 16,
+      "item": Object {
+        "id": 16,
+      },
     },
   ],
   Array [
     Object {
-      "id": 17,
+      "item": Object {
+        "id": 17,
+      },
     },
   ],
   Array [
     Object {
-      "id": 18,
+      "item": Object {
+        "id": 18,
+      },
     },
   ],
   Array [
     Object {
-      "id": 19,
+      "item": Object {
+        "id": 19,
+      },
     },
   ],
   Array [
     Object {
-      "id": 20,
+      "item": Object {
+        "id": 20,
+      },
     },
   ],
   Array [
     Object {
-      "id": 21,
+      "item": Object {
+        "id": 21,
+      },
     },
   ],
   Array [
     Object {
-      "id": 22,
+      "item": Object {
+        "id": 22,
+      },
     },
   ],
   Array [
     Object {
-      "id": 23,
+      "item": Object {
+        "id": 23,
+      },
     },
   ],
   Array [
     Object {
-      "id": 24,
+      "item": Object {
+        "id": 24,
+      },
     },
   ],
   Array [
     Object {
-      "id": 25,
+      "item": Object {
+        "id": 25,
+      },
     },
   ],
   Array [
     Object {
-      "id": 26,
+      "item": Object {
+        "id": 26,
+      },
     },
   ],
   Array [
     Object {
-      "id": 27,
+      "item": Object {
+        "id": 27,
+      },
     },
   ],
   Array [
     Object {
-      "id": 28,
+      "item": Object {
+        "id": 28,
+      },
     },
   ],
   Array [
     Object {
-      "id": 29,
+      "item": Object {
+        "id": 29,
+      },
     },
   ],
   Array [
     Object {
-      "id": 30,
+      "item": Object {
+        "id": 30,
+      },
     },
   ],
   Array [
     Object {
-      "id": 31,
+      "item": Object {
+        "id": 31,
+      },
     },
   ],
   Array [
     Object {
-      "id": 32,
+      "item": Object {
+        "id": 32,
+      },
     },
   ],
   Array [
     Object {
-      "id": 33,
+      "item": Object {
+        "id": 33,
+      },
     },
   ],
   Array [
     Object {
-      "id": 34,
+      "item": Object {
+        "id": 34,
+      },
     },
   ],
   Array [
     Object {
-      "id": 35,
+      "item": Object {
+        "id": 35,
+      },
     },
   ],
   Array [
     Object {
-      "id": 36,
+      "item": Object {
+        "id": 36,
+      },
     },
   ],
   Array [
     Object {
-      "id": 37,
+      "item": Object {
+        "id": 37,
+      },
     },
   ],
   Array [
     Object {
-      "id": 38,
+      "item": Object {
+        "id": 38,
+      },
     },
   ],
   Array [
     Object {
-      "id": 39,
+      "item": Object {
+        "id": 39,
+      },
     },
   ],
   Array [
     Object {
-      "id": 40,
+      "item": Object {
+        "id": 40,
+      },
     },
   ],
   Array [
     Object {
-      "id": 41,
+      "item": Object {
+        "id": 41,
+      },
     },
   ],
   Array [
     Object {
-      "id": 42,
+      "item": Object {
+        "id": 42,
+      },
     },
   ],
   Array [
     Object {
-      "id": 43,
+      "item": Object {
+        "id": 43,
+      },
     },
   ],
   Array [
     Object {
-      "id": 44,
+      "item": Object {
+        "id": 44,
+      },
     },
   ],
   Array [
     Object {
-      "id": 45,
+      "item": Object {
+        "id": 45,
+      },
     },
   ],
   Array [
     Object {
-      "id": 46,
+      "item": Object {
+        "id": 46,
+      },
     },
   ],
   Array [
     Object {
-      "id": 47,
+      "item": Object {
+        "id": 47,
+      },
     },
   ],
   Array [
     Object {
-      "id": 48,
+      "item": Object {
+        "id": 48,
+      },
     },
   ],
   Array [
     Object {
-      "id": 49,
+      "item": Object {
+        "id": 49,
+      },
     },
   ],
 ]

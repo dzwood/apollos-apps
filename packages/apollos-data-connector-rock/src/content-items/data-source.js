@@ -303,9 +303,9 @@ export default class ContentItem extends RockApolloDataSource {
 
     if (!associations || !associations.length) return this.request().empty();
 
-    return this.getFromIds(
-      associations.map(({ contentChannelItemId }) => contentChannelItemId)
-    ).orderBy('Order');
+    return this.getFromIds({
+      ids: associations.map(({ contentChannelItemId }) => contentChannelItemId),
+    }).orderBy('Order');
   };
 
   getCursorBySiblingContentItemId = async ({ id }) => {
