@@ -7,6 +7,8 @@ import { Linking } from 'react-native';
 import gql from 'graphql-tag';
 import { withApollo } from 'react-apollo';
 
+const { APP } = ApollosConfig;
+
 const GET_CONTENT_ITEM_BY_SLUG = gql`
   query ContentItemIdFromSlug($slug: String!) {
     contentItemFromSlug(slug: $slug) {
@@ -63,7 +65,7 @@ class ExternalLinkProvider extends Component {
       variables: { slug: urlSlug },
     });
     if (contentItemFromSlug) {
-      const newUrl = `${ApollosConfig.DEEP_LINK_SITE}
+      const newUrl = `${APP.DEEP_LINK_SITE}
       ://AppStackNavigator/ContentSingle?itemId=${contentItemFromSlug.id}`;
       this.navigate(newUrl);
     }

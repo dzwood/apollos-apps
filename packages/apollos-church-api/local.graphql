@@ -370,6 +370,7 @@ type Query {
   campaigns: ContentItemsConnection
   userFeed(first: Int, after: String): ContentItemsConnection
   personaFeed(first: Int, after: String): ContentItemsConnection
+  contentItemFromSlug(slug: String!): ContentItem
   currentUser: AuthenticatedUser
   liveStream: LiveStream
   scripture(query: String!): Scripture
