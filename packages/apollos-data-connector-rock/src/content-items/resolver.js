@@ -78,6 +78,8 @@ const resolver = {
         args,
       });
     },
+    contentItemFromSlug: (root, { slug }, { dataSources }) =>
+      dataSources.ContentItem.getBySlug(slug),
   },
   DevotionalContentItem: {
     ...defaultContentItemResolvers,

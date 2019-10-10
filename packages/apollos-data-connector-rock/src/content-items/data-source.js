@@ -419,6 +419,15 @@ export default class ContentItem extends RockApolloDataSource {
       .find(id)
       .get();
 
+  getBySlug = async (slug) => {
+    const contentItemSlug = await this.request('ContentChannelItemSlugs')
+      .filter(`Slug eq '${slug}'`)
+      .first();
+    if (!contentItemSlug) throw new Error('Slug does not exist.');
+
+    return this.getFromId(`${contentItemSlug.contentChannelItemId}`);
+  };
+
   resolveType({
     attributeValues,
     attributes,

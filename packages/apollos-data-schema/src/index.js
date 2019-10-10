@@ -380,6 +380,7 @@ export const contentItemSchema = gql`
       @cacheControl(maxAge: 0)
     personaFeed(first: Int, after: String): ContentItemsConnection
       @cacheControl(maxAge: 0)
+    contentItemFromSlug(slug: String!): ContentItem
   }
 `;
 
