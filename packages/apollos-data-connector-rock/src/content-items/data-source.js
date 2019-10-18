@@ -407,7 +407,14 @@ export default class ContentItem extends RockApolloDataSource {
       // Caused by an Odata node limit.
       return this.request(
         `Apollos/GetContentChannelItemsByIds?ids=${ids.join(',')}`
-      ).andFilter(this.LIVE_CONTENT());
+      )
+        .andFilter(this.LIVE_CONTENT())
+        .expand('ContentChannel'); // TODO: Fix plugin issue
+      // Right now the endpoints in our apollos plugin auto expand all properties by default
+      // If you pass a speciic expansion, the auto expansion doesn't happen.
+      // The auto expansion can cause issues if there's a circular reference,
+      // so we need to force auto expansion off for the time being by expanding an
+      // arbitrary property
     }
     return this.request()
       .filterOneOf(ids.map((id) => `Id eq ${id}`))
