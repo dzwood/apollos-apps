@@ -1,6 +1,6 @@
 import { graphql } from 'graphql';
 import { createTestHelpers } from '@apollosproject/server-core/lib/testUtils';
-import { peopleSchema } from '@apollosproject/data-schema';
+import { peopleSchema, deviceSchema } from '@apollosproject/data-schema';
 import * as OneSignal from '../index';
 
 const { getContext, getSchema } = createTestHelpers({ OneSignal });
@@ -9,7 +9,7 @@ describe('OneSignal', () => {
   let schema;
   let context;
   beforeEach(() => {
-    schema = getSchema([peopleSchema]);
+    schema = getSchema([peopleSchema, deviceSchema]);
     context = getContext();
   });
 
