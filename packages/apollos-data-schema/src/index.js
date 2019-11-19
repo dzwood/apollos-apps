@@ -87,7 +87,8 @@ export const peopleSchema = gql`
 export const deviceSchema = gql`
   type Device implements Node {
     id: ID!
-    notificationsEnabled: Boolean
+    pushId: String!
+    notificationsEnabled: Boolean!
   }
 `;
 

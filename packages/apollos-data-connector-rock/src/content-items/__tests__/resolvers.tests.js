@@ -13,6 +13,7 @@ import {
   scriptureSchema,
   liveSchema,
   featuresSchema,
+  deviceSchema,
 } from '@apollosproject/data-schema';
 
 import * as RockConstants from '../../rock-constants';
@@ -188,6 +189,7 @@ describe('UniversalContentItem', () => {
       mediaSchema,
       scriptureSchema,
       liveSchema,
+      deviceSchema,
     ]);
 
     const token = generateToken({ cookie: 'some-cookie', sessionId: 123 });

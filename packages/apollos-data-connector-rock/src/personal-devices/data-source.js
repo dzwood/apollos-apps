@@ -27,4 +27,10 @@ export default class PersonalDevices extends RockApolloDataSource {
 
     return currentUser;
   }
+
+  getByPersonAliasId(id) {
+    return this.request()
+      .filter(`PersonAliasId eq ${id}`)
+      .get();
+  }
 }

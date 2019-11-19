@@ -1,7 +1,11 @@
 import { graphql } from 'graphql';
 import { createTestHelpers } from '@apollosproject/server-core/lib/testUtils';
 
-import { peopleSchema, authSchema } from '@apollosproject/data-schema';
+import {
+  peopleSchema,
+  authSchema,
+  deviceSchema,
+} from '@apollosproject/data-schema';
 import * as Group from '../index';
 import { Auth } from '../../index';
 
@@ -15,7 +19,7 @@ describe('Groups resolver', () => {
   let context;
   let rootValue;
   beforeEach(() => {
-    schema = getSchema([authSchema, peopleSchema]);
+    schema = getSchema([authSchema, peopleSchema, deviceSchema]);
     context = getContext();
     rootValue = {};
   });

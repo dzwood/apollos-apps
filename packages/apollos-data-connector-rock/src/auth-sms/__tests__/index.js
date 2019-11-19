@@ -2,7 +2,7 @@ import { graphql } from 'graphql';
 import { fetch } from 'apollo-server-env';
 import ApollosConfig from '@apollosproject/config';
 import { createTestHelpers } from '@apollosproject/server-core/lib/testUtils';
-import { peopleSchema } from '@apollosproject/data-schema';
+import { peopleSchema, deviceSchema } from '@apollosproject/data-schema';
 
 import * as AuthSms from '../index';
 import * as Auth from '../../auth/index';
@@ -37,7 +37,7 @@ describe('AuthSms schema', () => {
   beforeEach(() => {
     fetch.resetMocks();
     fetch.mockRockDataSourceAPI();
-    schema = getSchema([peopleSchema]);
+    schema = getSchema([peopleSchema, deviceSchema]);
     context = getContext();
     sendSms.mockClear();
   });

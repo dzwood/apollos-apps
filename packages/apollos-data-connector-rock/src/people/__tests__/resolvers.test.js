@@ -8,6 +8,7 @@ import {
   peopleSchema,
   mediaSchema,
   authSchema,
+  deviceSchema,
 } from '@apollosproject/data-schema';
 import { generateToken, registerToken } from '../../auth';
 // we import the root-level schema and resolver so we test the entire integration:
@@ -32,7 +33,7 @@ describe('Person', () => {
   beforeEach(() => {
     fetch.resetMocks();
     fetch.mockRockDataSourceAPI();
-    schema = getSchema([peopleSchema, mediaSchema]);
+    schema = getSchema([peopleSchema, mediaSchema, deviceSchema]);
     context = getContext();
   });
 
