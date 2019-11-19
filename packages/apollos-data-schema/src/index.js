@@ -92,8 +92,9 @@ export const deviceSchema = gql`
   }
 
   extend type Mutation {
-      enableNotifications(deviceId: String!): Device
-      disableNotifications(deviceId: String!): Device
+    enableNotifications(deviceId: String!): Device
+    disableNotifications(deviceId: String!): Device
+  }
 `;
 
 export const mediaSchema = gql`
