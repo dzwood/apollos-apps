@@ -74,12 +74,20 @@ export const peopleSchema = gql`
     gender: GENDER
     birthDate: String
     photo: ImageMediaSource
+    devices: [Device]
   }
 
   extend type Mutation {
     updateProfileField(input: UpdateProfileInput!): Person
     updateProfileFields(input: [UpdateProfileInput]!): Person
     uploadProfileImage(file: Upload!, size: Int!): Person
+  }
+`;
+
+export const deviceSchema = gql`
+  type Device implements Node {
+    id: ID!
+    notificationsEnabled: Boolean
   }
 `;
 
