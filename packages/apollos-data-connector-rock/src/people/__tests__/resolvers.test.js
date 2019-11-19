@@ -144,15 +144,19 @@ describe('Person', () => {
       }
     `;
 
-    context.dataSources.PersonalDevice.getByPersonAliasId = jest.fn(() =>
-      Promise.resolve([
-        {
-          id: '1',
-          deviceRegistrationId: 'abc-123',
-          notificationsEnabled: true,
-        },
-      ])
-    );
+    context.dataSources.PersonalDevice.request = jest.fn(() => ({
+      filter: jest.fn(() => ({
+        get: jest.fn(() =>
+          Promise.resolve([
+            {
+              id: '1',
+              deviceRegistrationId: 'abc-123',
+              notificationsEnabled: true,
+            },
+          ])
+        ),
+      })),
+    }));
 
     const rootValue = {};
     const result = await graphql(schema, query, rootValue, context);
