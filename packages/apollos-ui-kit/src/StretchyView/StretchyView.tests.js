@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { ScrollView, View } from 'react-native';
+import { ScrollView, FlatList } from 'react-native';
 import {
   ConnectedImage,
   GradientOverlayImage,
@@ -31,7 +31,10 @@ describe('the StretchyView component', () => {
           }
         >
           {(scrollViewProps) => (
-            <ScrollView {...scrollViewProps}>
+            <ScrollView
+              {...scrollViewProps}
+              onEndReached={() => console.log('yay!')}
+            >
               <PaddedView>
                 <H1 padded>Well hello there!</H1>
                 <H2 padded>
@@ -60,24 +63,23 @@ describe('the StretchyView component', () => {
           }
         >
           {({ stretchyHeight, ...scrollViewProps }) => (
-            <ScrollView {...scrollViewProps}>
-              <View
-                style={{
-                  height: stretchyHeight,
-                }}
-              >
-                <H2>Text on top of the stretchy!</H2>
-              </View>
-              <PaddedView>
-                <H1 padded>Well hello there!</H1>
-                <H2 padded>
-                  Hello there!
-                  {'\n'}
-                </H2>
-                <H3 padded>Hello there!</H3>
-                <H1 padded>Try to scroll me around.</H1>
-              </PaddedView>
-            </ScrollView>
+            <FlatList
+              {...scrollViewProps}
+              data={[1, 2, 3, 4, 5]}
+              keyExtractor={(item) => item}
+              onEndReached={() => console.warn('done')}
+              renderItem={() => (
+                <PaddedView>
+                  <H1 padded>Well bye there!</H1>
+                  <H2 padded>
+                    Hello there!
+                    {'\n'}
+                  </H2>
+                  <H3 padded>Hello there!</H3>
+                  <H1 padded>Try to scroll me around.</H1>
+                </PaddedView>
+              )}
+            />
           )}
         </StretchyView>
       </Providers>
