@@ -1,5 +1,24 @@
+import { Alert, Linking } from 'react-native';
 import OneSignal from 'react-native-onesignal';
 import gql from 'graphql-tag';
+
+const softPrompt = ({ onConfirm, onCancel }) => {
+  Alert.alert(
+    'Notifications Disabled',
+    'Notifications are disabled for this app. Would you like to enable them now?',
+    [
+      { text: 'Enable Notifications', onPress: () => onConfirm() },
+      { text: 'Cancel', onPress: () => onCancel(), style: 'cancel' },
+    ]
+  );
+};
+
+const getHasPrompted = async () =>
+  new Promise((resolve) =>
+    OneSignal.getPermissionSubscriptionState((status) =>
+      resolve(status.hasPrompted)
+    )
+  );
 
 const getPushPermissions = async () =>
   new Promise((resolve) =>
@@ -33,6 +52,22 @@ const GET_PUSH_ID = gql`
 `;
 
 const requestPushPermissions = async ({ client }) => {
+  const hasPrompted = await getHasPrompted();
+  if (hasPrompted) {
+    return new Promise((resolve) =>
+      softPrompt({
+        onConfirm: () => {
+          Linking.openSettings();
+          client.mutate({
+            mutation: SET_NOTIFCATIONS_ENABLED,
+            variables: { enabled: true },
+          });
+          resolve(true);
+        },
+        onCancel: () => resolve(false),
+      })
+    );
+  }
   const notificationsEnabled = await promptForPushNotificationsWithUserResponse();
   await client.mutate({
     mutation: SET_NOTIFCATIONS_ENABLED,
