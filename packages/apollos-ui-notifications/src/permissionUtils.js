@@ -52,12 +52,14 @@ const GET_PUSH_ID = gql`
 `;
 
 const requestPushPermissions = async ({ client }) => {
+  const pushPermission = await getPushPermissions();
   const hasPrompted = await getHasPrompted();
-  if (hasPrompted) {
+  if (hasPrompted && !pushPermission) {
     return new Promise((resolve) =>
       softPrompt({
         onConfirm: () => {
           Linking.openSettings();
+          OneSignal.setSubscription(true);
           client.mutate({
             mutation: SET_NOTIFCATIONS_ENABLED,
             variables: { enabled: true },
