@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Text } from 'react-native';
 
-import { GET_NOTIFICATIONS_ENABLED } from '@apollosproject/ui-notifications';
+import { GET_NOTIFICATIONS_STATUS } from '@apollosproject/ui-notifications';
 import { renderWithApolloData, Providers } from '../../testUtils';
 
 import AskNotificationsConnected from './AskNotificationsConnected';
@@ -12,7 +12,7 @@ describe('The Onboarding AskNotificationsConnected component', () => {
     const mocks = [
       {
         request: {
-          query: GET_NOTIFICATIONS_ENABLED,
+          query: GET_NOTIFICATIONS_STATUS,
         },
         result: {
           data: { notificationsEnabled: false },
@@ -33,7 +33,7 @@ describe('The Onboarding AskNotificationsConnected component', () => {
     const mocks = [
       {
         request: {
-          query: GET_NOTIFICATIONS_ENABLED,
+          query: GET_NOTIFICATIONS_STATUS,
         },
         result: {
           data: { notificationsEnabled: true },
@@ -53,7 +53,7 @@ describe('The Onboarding AskNotificationsConnected component', () => {
     const mocks = [
       {
         request: {
-          query: GET_NOTIFICATIONS_ENABLED,
+          query: GET_NOTIFICATIONS_STATUS,
         },
         result: {
           data: { notificationsEnabled: true },

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 // This query is also found in core/permissionUtils. We should refactor into a notifications module.
-import { GET_NOTIFICATIONS_ENABLED } from '@apollosproject/ui-notifications';
+import { GET_NOTIFICATIONS_STATUS } from '@apollosproject/ui-notifications';
 
 import AskNotifications from './AskNotifications';
 // eslint-disable-next-line react/display-name
@@ -14,26 +14,27 @@ const AskNotificationsConnected = memo(
     onRequestPushPermissions,
     ...props
   }) => (
-    <Query query={GET_NOTIFICATIONS_ENABLED}>
-      {({ data: { notificationsEnabled = false } = {} }) => (
-        <Component
+    <Query query={GET_NOTIFICATIONS_STATUS}>
+      {({ data: { notificationsEnabled, hasPrompted } = {} }) => {
+        console.log(hasPrompted, notificationsEnabled);
+        return <Component
           onPressButton={() => onRequestPushPermissions()}
-          buttonDisabled={notificationsEnabled}
+          buttonDisabled={notificationsEnabled || hasPrompted}
           buttonText={
             notificationsEnabled
               ? 'Notifications Enabled!'
               : 'Yes, enable notifications'
           }
-          onPressPrimary={notificationsEnabled ? onPressPrimary : null} // if notifications are enabled show the primary nav button (next/finish)
+          onPressPrimary={(notificationsEnabled || hasPrompted) ? onPressPrimary : null} // if notifications are enabled show the primary nav button (next/finish)
           onPressSecondary={
             // if notifications are not enabled show the secondary nav button (skip)
-            notificationsEnabled ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
+            (notificationsEnabled || hasPrompted) ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
           }
           pressPrimaryEventName={'Ask Notifications Completed'}
           pressSecondaryEventName={'Ask Notifications Skipped'}
           {...props}
         />
-      )}
+      }}
     </Query>
   )
 );

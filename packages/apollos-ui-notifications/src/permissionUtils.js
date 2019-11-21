@@ -1,6 +1,13 @@
 import OneSignal from 'react-native-onesignal';
 import gql from 'graphql-tag';
 
+const getHasPrompted = async () =>
+  new Promise((resolve) =>
+    OneSignal.getPermissionSubscriptionState((status) =>
+      resolve(status.hasPrompted)
+    )
+  );
+
 const getPushPermissions = async () =>
   new Promise((resolve) =>
     OneSignal.getPermissionSubscriptionState((status) =>
@@ -20,9 +27,10 @@ const SET_NOTIFCATIONS_ENABLED = gql`
   }
 `;
 
-const GET_NOTIFICATIONS_ENABLED = gql`
+const GET_NOTIFICATIONS_STATUS = gql`
   query getPushPermissions {
     notificationsEnabled @client(always: true)
+    hasPrompted @client
   }
 `;
 
@@ -44,7 +52,8 @@ const requestPushPermissions = async ({ client }) => {
 
 export {
   getPushPermissions,
+  getHasPrompted,
   requestPushPermissions,
-  GET_NOTIFICATIONS_ENABLED,
+  GET_NOTIFICATIONS_STATUS,
   GET_PUSH_ID,
 };
