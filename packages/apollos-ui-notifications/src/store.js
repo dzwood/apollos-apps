@@ -11,6 +11,7 @@ import updatePushId from './updatePushId';
 export const defaults = {
   pushId: null,
   notificationsEnabled: Platform.OS === 'android',
+  hasPrompted: false,
 };
 
 export const resolvers = {
