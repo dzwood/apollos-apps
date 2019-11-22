@@ -15,9 +15,8 @@ const AskNotificationsConnected = memo(
     ...props
   }) => (
     <Query query={GET_NOTIFICATIONS_STATUS}>
-      {({ data: { notificationsEnabled, hasPrompted } = {} }) => {
-        console.log(hasPrompted, notificationsEnabled);
-        return <Component
+      {({ data: { notificationsEnabled, hasPrompted } = {} }) => (
+        <Component
           onPressButton={() => onRequestPushPermissions()}
           buttonDisabled={notificationsEnabled || hasPrompted}
           buttonText={
@@ -25,16 +24,20 @@ const AskNotificationsConnected = memo(
               ? 'Notifications Enabled!'
               : 'Yes, enable notifications'
           }
-          onPressPrimary={(notificationsEnabled || hasPrompted) ? onPressPrimary : null} // if notifications are enabled show the primary nav button (next/finish)
+          onPressPrimary={
+            notificationsEnabled || hasPrompted ? onPressPrimary : null
+          } // if notifications are enabled show the primary nav button (next/finish)
           onPressSecondary={
             // if notifications are not enabled show the secondary nav button (skip)
-            (notificationsEnabled || hasPrompted) ? null : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
+            notificationsEnabled || hasPrompted
+              ? null
+              : onPressSecondary || onPressPrimary // if onPressSecondary exists use it else default onPressPrimary
           }
           pressPrimaryEventName={'Ask Notifications Completed'}
           pressSecondaryEventName={'Ask Notifications Skipped'}
           {...props}
         />
-      }}
+      )}
     </Query>
   )
 );
