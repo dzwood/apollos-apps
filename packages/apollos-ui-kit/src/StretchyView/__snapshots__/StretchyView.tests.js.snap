@@ -33,8 +33,9 @@ exports[`the StretchyView component should render as a background 1`] = `
 >
   <RCTScrollView
     Stretchy={[Function]}
+    onEndReached={[Function]}
     onScroll={[Function]}
-    scrollEventThrottle={16}
+    scrollEventThrottle={0.5}
   >
     <View>
       <View
@@ -141,98 +142,409 @@ exports[`the StretchyView component should render as a header 1`] = `
 >
   <RCTScrollView
     Stretchy={[Function]}
+    data={
+      Array [
+        1,
+        2,
+        3,
+        4,
+        5,
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
     onScroll={[Function]}
-    scrollEventThrottle={16}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={0.5}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
   >
     <View>
       <View
-        style={
-          Object {
-            "height": undefined,
-          }
-        }
+        onLayout={[Function]}
+        style={null}
       >
-        <Text
+        <View
           style={
             Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
             }
           }
         >
-          Text on top of the stretchy!
-        </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Well bye there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+                "paddingBottom": 20,
+                "paddingTop": 24,
+              }
+            }
+          >
+            Hello there!
+            
+
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 24,
+                "lineHeight": 27.6,
+                "paddingBottom": 17.28,
+                "paddingTop": 25.92,
+              }
+            }
+          >
+            Hello there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Try to scroll me around.
+          </Text>
+        </View>
       </View>
       <View
-        style={
-          Object {
-            "paddingHorizontal": 16,
-            "paddingVertical": 16,
-          }
-        }
+        onLayout={[Function]}
+        style={null}
       >
-        <Text
-          padded={true}
+        <View
           style={
             Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "paddingVertical": 46.44,
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
             }
           }
         >
-          Well hello there!
-        </Text>
-        <Text
-          padded={true}
-          style={
-            Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 36,
-              "lineHeight": 41.4,
-              "paddingBottom": 20,
-              "paddingTop": 24,
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
             }
-          }
-        >
-          Hello there!
-          
+          >
+            Well bye there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+                "paddingBottom": 20,
+                "paddingTop": 24,
+              }
+            }
+          >
+            Hello there!
+            
 
-        </Text>
-        <Text
-          padded={true}
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 24,
+                "lineHeight": 27.6,
+                "paddingBottom": 17.28,
+                "paddingTop": 25.92,
+              }
+            }
+          >
+            Hello there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Try to scroll me around.
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
           style={
             Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 24,
-              "lineHeight": 27.6,
-              "paddingBottom": 17.28,
-              "paddingTop": 25.92,
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
             }
           }
         >
-          Hello there!
-        </Text>
-        <Text
-          padded={true}
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Well bye there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+                "paddingBottom": 20,
+                "paddingTop": 24,
+              }
+            }
+          >
+            Hello there!
+            
+
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 24,
+                "lineHeight": 27.6,
+                "paddingBottom": 17.28,
+                "paddingTop": 25.92,
+              }
+            }
+          >
+            Hello there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Try to scroll me around.
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
           style={
             Object {
-              "color": "#303030",
-              "fontFamily": "InterUI-Black",
-              "fontSize": 43,
-              "lineHeight": 49.45,
-              "paddingVertical": 46.44,
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
             }
           }
         >
-          Try to scroll me around.
-        </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Well bye there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+                "paddingBottom": 20,
+                "paddingTop": 24,
+              }
+            }
+          >
+            Hello there!
+            
+
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 24,
+                "lineHeight": 27.6,
+                "paddingBottom": 17.28,
+                "paddingTop": 25.92,
+              }
+            }
+          >
+            Hello there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Try to scroll me around.
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 16,
+            }
+          }
+        >
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Well bye there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+                "paddingBottom": 20,
+                "paddingTop": 24,
+              }
+            }
+          >
+            Hello there!
+            
+
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 24,
+                "lineHeight": 27.6,
+                "paddingBottom": 17.28,
+                "paddingTop": 25.92,
+              }
+            }
+          >
+            Hello there!
+          </Text>
+          <Text
+            padded={true}
+            style={
+              Object {
+                "color": "#303030",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 43,
+                "lineHeight": 49.45,
+                "paddingVertical": 46.44,
+              }
+            }
+          >
+            Try to scroll me around.
+          </Text>
+        </View>
       </View>
     </View>
   </RCTScrollView>
