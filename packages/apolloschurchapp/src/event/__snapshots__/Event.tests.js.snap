@@ -42,7 +42,7 @@ exports[`The Event component should render 1`] = `
   >
     <RCTScrollView
       onScroll={[Function]}
-      scrollEventThrottle={16}
+      scrollEventThrottle={0.5}
       style={
         Object {
           "flex": 1,
