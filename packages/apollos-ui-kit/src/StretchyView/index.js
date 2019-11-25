@@ -123,7 +123,6 @@ class StretchyView extends PureComponent {
           scrollEventThrottle: 0.5,
           onScroll: this.handleScroll,
           Stretchy: this.StretchyPortal,
-          ref: this.setRef,
         })}
       </View>
     );
