@@ -50,8 +50,11 @@ const WeekendContentItem = ({ content, loading }) => {
         {(theme) => (
           <BackgroundView>
             <StretchyView>
-              {({ Stretchy, ...scrollViewProps }) => (
-                <FlexedScrollView {...scrollViewProps}>
+              {({ Stretchy, onScroll, ...scrollViewProps }) => (
+                <FlexedScrollView
+                  {...scrollViewProps}
+                  onScroll={(e) => onScroll(e)({})}
+                >
                   <Header hasMedia={content.videos && content.videos.sources}>
                     <ThemeMixin mixin={{ type: 'dark' }}>
                       {coverImageSources.length || loading ? (

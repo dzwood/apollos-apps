@@ -17,11 +17,12 @@ class StretchyView extends PureComponent {
   scrollY = new Animated.Value(0);
 
   handleScroll = (e) => ({ onEndReached }) => {
-    if (
-      e.nativeEvent.contentOffset.y + e.nativeEvent.layoutMeasurement.height ===
-      e.nativeEvent.contentSize.height
-    ) {
-      if (onEndReached) {
+    if (onEndReached) {
+      if (
+        e.nativeEvent.contentOffset.y +
+          e.nativeEvent.layoutMeasurement.height ===
+        e.nativeEvent.contentSize.height
+      ) {
         onEndReached();
       }
     }

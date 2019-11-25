@@ -24,8 +24,11 @@ const Event = ({ event, loading }) => {
   return (
     <BackgroundView>
       <StretchyView>
-        {({ Stretchy, ...scrollViewProps }) => (
-          <FlexedScrollView {...scrollViewProps}>
+        {({ Stretchy, onScroll, ...scrollViewProps }) => (
+          <FlexedScrollView
+            {...scrollViewProps}
+            onScroll={(e) => onScroll(e)({})}
+          >
             {coverImageSources.length || loading ? (
               <Stretchy>
                 <GradientOverlayImage
