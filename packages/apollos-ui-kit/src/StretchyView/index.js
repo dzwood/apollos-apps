@@ -16,25 +16,19 @@ class StretchyView extends PureComponent {
 
   scrollY = new Animated.Value(0);
 
-  ref = null;
-
-  handleScroll = (e) => {
+  handleScroll = (e) => ({ onEndReached }) => {
     if (
       e.nativeEvent.contentOffset.y + e.nativeEvent.layoutMeasurement.height ===
       e.nativeEvent.contentSize.height
     ) {
-      if (this.ref && this.ref.props && this.ref.props.onEndReached) {
-        console.log(this.ref);
-        this.ref.onEndReached.call(this.ref);
+      if (onEndReached) {
+        onEndReached();
       }
     }
     Animated.event([
       { nativeEvent: { contentOffset: { y: this.scrollY } } },
       {
         useNativeDriver: true,
-        listener: (e) => {
-          console.warn(e);
-        },
       },
     ])(e);
   };
@@ -106,8 +100,6 @@ class StretchyView extends PureComponent {
 
     return 1;
   };
-
-  setRef = (ref) => (this.ref = ref);
 
   render() {
     const { children, ...otherProps } = this.props;

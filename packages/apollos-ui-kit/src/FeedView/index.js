@@ -25,6 +25,7 @@ class FeedView extends Component {
     numColumns: PropTypes.number,
     onEndReachedThreshold: PropTypes.number,
     onPressItem: PropTypes.func,
+    onScroll: PropTypes.func,
     refetch: PropTypes.func,
     renderEmptyState: PropTypes.func,
     renderItem: PropTypes.func,
@@ -79,11 +80,24 @@ class FeedView extends Component {
       refetch,
       renderEmptyState,
       renderItem,
+      onScroll,
       ...otherProps
     } = this.props;
     return (
       <FlatList
         {...otherProps}
+        onScroll={
+          this.props.onScroll
+            ? (e) =>
+                this.props.onScroll(e)({
+                  onEndReached: this.fetchMoreHandler({
+                    fetchMore,
+                    error,
+                    isLoading,
+                  }),
+                })
+            : () => {}
+        }
         data={content}
         keyExtractor={keyExtractor}
         ListEmptyComponent={

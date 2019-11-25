@@ -1,7 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { storiesOf } from '@apollosproject/ui-storybook';
-import { StyleSheet, ScrollView, FlatList, View } from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  View,
+} from 'react-native';
 import {
   ConnectedImage,
   GradientOverlayImage,
@@ -9,10 +15,17 @@ import {
   H1,
   H2,
   H3,
+  FeedView,
 } from '@apollosproject/ui-kit';
 
 import StretchyView from '.';
 
+const itemStyle = {
+  height: Dimensions.get('window').height / 1.5,
+  width: '100%',
+  backgroundColor: 'green',
+  marginVertical: 20,
+};
 const imageStyle = { width: '100%', aspectRatio: 1 };
 
 storiesOf('StretchyView', module)
@@ -139,6 +152,26 @@ storiesOf('StretchyView', module)
             />
           </Stretchy>
         </ScrollView>
+      )}
+    </StretchyView>
+  ))
+  .add('embeded FeedView', () => (
+    <StretchyView
+      StretchyComponent={
+        <ConnectedImage
+          style={imageStyle}
+          source={{ uri: 'https://picsum.photos/600/600' }}
+        />
+      }
+    >
+      {({ Stretchy, stretchyHeight, ...scrollViewProps }) => (
+        <FeedView
+          {...scrollViewProps}
+          ListHeaderComponent={<Stretchy />}
+          content={[{}, {}]}
+          renderItem={() => <View style={itemStyle} />}
+          fetchMore={() => console.warn('fetchMore')}
+        />
       )}
     </StretchyView>
   ));
