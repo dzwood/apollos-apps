@@ -36,7 +36,7 @@ describe('The Onboarding AskNotificationsConnected component', () => {
           query: GET_NOTIFICATIONS_STATUS,
         },
         result: {
-          data: { notificationsEnabled: true },
+          data: { notificationsEnabled: true, hasPrompted: true },
         },
       },
     ];
@@ -56,7 +56,7 @@ describe('The Onboarding AskNotificationsConnected component', () => {
           query: GET_NOTIFICATIONS_STATUS,
         },
         result: {
-          data: { notificationsEnabled: true },
+          data: { notificationsEnabled: true, hasPrompted: true },
         },
       },
     ];
