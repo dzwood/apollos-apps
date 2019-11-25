@@ -96,7 +96,7 @@ class FeedView extends Component {
                     isLoading,
                   }),
                 })
-            : () => {}
+            : undefined
         }
         data={content}
         keyExtractor={keyExtractor}
