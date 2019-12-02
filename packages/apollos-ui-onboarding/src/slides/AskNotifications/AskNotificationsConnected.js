@@ -5,6 +5,17 @@ import PropTypes from 'prop-types';
 import { GET_NOTIFICATIONS_STATUS } from '@apollosproject/ui-notifications';
 
 import AskNotifications from './AskNotifications';
+
+function getButtonText({ notificationsEnabled, hasPrompted }) {
+  if (notificationsEnabled) {
+    return 'Notifications Enabled!';
+  }
+  if (hasPrompted) {
+    return 'Notifications disabled in settings';
+  }
+  return 'Yes, enable notifications';
+}
+
 // eslint-disable-next-line react/display-name
 const AskNotificationsConnected = memo(
   ({
@@ -14,16 +25,12 @@ const AskNotificationsConnected = memo(
     onRequestPushPermissions,
     ...props
   }) => (
-    <Query query={GET_NOTIFICATIONS_STATUS}>
+    <Query fetchPolicy={'network-only'} query={GET_NOTIFICATIONS_STATUS}>
       {({ data: { notificationsEnabled, hasPrompted } = {} }) => (
         <Component
           onPressButton={() => onRequestPushPermissions()}
           buttonDisabled={notificationsEnabled || hasPrompted}
-          buttonText={
-            notificationsEnabled
-              ? 'Notifications Enabled!'
-              : 'Yes, enable notifications'
-          }
+          buttonText={getButtonText({ notificationsEnabled, hasPrompted })}
           onPressPrimary={
             notificationsEnabled || hasPrompted ? onPressPrimary : null
           } // if notifications are enabled show the primary nav button (next/finish)
