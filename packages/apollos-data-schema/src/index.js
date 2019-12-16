@@ -10,24 +10,24 @@ export const authSmsSchema = gql`
     success: Boolean
   }
 
-  enum USER_AUTH_STATUS {
-    NONE
-    NEW_APP_USER
-    EXISTING_APP_USER
-  }
-
   extend type Mutation {
     requestSmsLoginPin(phoneNumber: String!): SmsPinResult
     authenticateWithSms(phoneNumber: String!, pin: String!): Authentication
     registerWithSms(
       phoneNumber: String!
       pin: String!
-      userProfile: UpdateProfileInput
+      userProfile: [UpdateProfileInput]
     ): Authentication
   }
 
+  enum USER_AUTH_STATUS {
+    NONE
+    NEW_APP_USER
+    EXISTING_APP_USER
+  }
+
   extend type Query {
-    userExists(login: String): USER_EXISTS_STATUS
+    userExists(identity: String): USER_AUTH_STATUS
   }
 `;
 
@@ -55,7 +55,7 @@ export const authSchema = gql`
     registerPerson(
       email: String!
       password: String!
-      userProfile: UpdateProfileInput
+      userProfile: [UpdateProfileInput]
     ): Authentication
   }
 

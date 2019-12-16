@@ -3,6 +3,7 @@ import { camelCase, mapKeys, get } from 'lodash';
 import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
 import moment from 'moment';
 import ApollosConfig from '@apollosproject/config';
+import { fieldsAsObject } from '../utils';
 
 const RockGenderMap = {
   Unknown: 0,
@@ -67,14 +68,6 @@ export default class Person extends RockApolloDataSource {
     const currentPerson = await this.context.dataSources.Auth.getCurrentPerson();
 
     if (!currentPerson) throw new AuthenticationError('Invalid Credentials');
-
-    const fieldsAsObject = fields.reduce(
-      (accum, { field, value }) => ({
-        ...accum,
-        [field]: typeof value === 'string' ? value.trim() : value,
-      }),
-      {}
-    );
 
     // Because we have a custom enum for Gender, we do this transform prior to creating our "update object"
     // i.e. our schema will send Gender: 1 as Gender: Male
