@@ -372,6 +372,7 @@ Object {
   "data": Object {
     "requestSmsLoginPin": Object {
       "success": true,
+      "userAuthStatus": "EXISTING_APP_USER",
     },
   },
 }
@@ -477,6 +478,7 @@ Object {
   "data": Object {
     "requestSmsLoginPin": Object {
       "success": true,
+      "userAuthStatus": "NONE",
     },
   },
 }

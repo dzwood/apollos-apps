@@ -8,6 +8,7 @@ export const testSchema = gql`
 export const authSmsSchema = gql`
   type SmsPinResult {
     success: Boolean
+    userAuthStatus: USER_AUTH_STATUS
   }
 
   extend type Mutation {

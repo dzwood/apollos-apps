@@ -96,7 +96,7 @@ describe('AuthSms schema', () => {
   it('requests an SMS pin without an existing user login', async () => {
     const query = `
       mutation {
-        requestSmsLoginPin(phoneNumber: "5133061126") { success }
+        requestSmsLoginPin(phoneNumber: "5133061126") { success, userAuthStatus }
       }
     `;
     const rootValue = {};
@@ -123,7 +123,7 @@ describe('AuthSms schema', () => {
   it('requests an SMS pin with an existing user login', async () => {
     const query = `
       mutation {
-        requestSmsLoginPin(phoneNumber: "5133061126") { success }
+        requestSmsLoginPin(phoneNumber: "5133061126") { success, userAuthStatus }
       }
     `;
     const rootValue = {};

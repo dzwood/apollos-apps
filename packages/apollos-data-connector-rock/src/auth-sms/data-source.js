@@ -174,6 +174,9 @@ export default class AuthSmsDataSource extends RockApolloDataSource {
       body: `Your login code is ${pin}`,
     });
 
-    return { success: true };
+    return {
+      success: true,
+      userAuthStatus: existingUserLogin ? 'EXISTING_APP_USER' : 'NONE',
+    };
   };
 }
