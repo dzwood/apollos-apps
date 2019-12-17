@@ -44,7 +44,7 @@ export default class AuthSmsDataSource extends RockApolloDataSource {
     });
 
     if (userExists) {
-      // We are a Rock user and have logged in via sms
+      // We are a Rock user and have logged in via sms or username/password
       return 'EXISTING_APP_USER';
     }
     return 'NONE';
