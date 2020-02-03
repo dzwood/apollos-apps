@@ -72,7 +72,7 @@ export default class Person extends RockApolloDataSource {
     // Because we have a custom enum for Gender, we do this transform prior to creating our "update object"
     // i.e. our schema will send Gender: 1 as Gender: Male
 
-    const profileFields = fieldsAsObject(fields);
+    const profileFields = fieldsAsObject({ fields });
 
     if (profileFields.Gender) {
       if (!['Unknown', 'Male', 'Female'].includes(profileFields.Gender)) {

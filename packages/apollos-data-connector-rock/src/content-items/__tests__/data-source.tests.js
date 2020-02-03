@@ -95,7 +95,7 @@ describe('ContentItemsModel', () => {
   it('defaults to filtering content', async () => {
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
-    await dataSource.getFromIds([1, 2]).get();
+    await dataSource.getFromIds({ ids: [1, 2] }).get();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
 
@@ -107,7 +107,7 @@ describe('ContentItemsModel', () => {
     });
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
-    await dataSource.getFromIds([1, 2]).get();
+    await dataSource.getFromIds({ ids: [1, 2] }).get();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
 
@@ -119,7 +119,7 @@ describe('ContentItemsModel', () => {
     });
     const dataSource = new ContentItemsDataSource();
     dataSource.get = buildGetMock([{ Id: 1 }, { Id: 2 }], dataSource);
-    await dataSource.getFromIds([1, 2]).get();
+    await dataSource.getFromIds({ ids: [1, 2] }).get();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
 
@@ -596,10 +596,8 @@ describe('ContentItemsModel', () => {
     };
 
     const image = await dataSource.getCoverImage({
-      coverImage: {
-        attributeValues: {},
-        attributes: {},
-      },
+      attributeValues: {},
+      attributes: {},
     });
 
     expect(image).toBe(null);

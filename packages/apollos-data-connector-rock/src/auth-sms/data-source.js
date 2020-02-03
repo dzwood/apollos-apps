@@ -85,7 +85,7 @@ export default class AuthSmsDataSource extends RockApolloDataSource {
     }
 
     // Otherwise, create a new user.
-    const personAttributes = fieldsAsObject(userProfile || []);
+    const personAttributes = fieldsAsObject({ fields: userProfile || [] });
     const personId = await this.context.dataSources.Auth.createUserProfile({
       email: null,
       ...personAttributes,

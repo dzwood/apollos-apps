@@ -94,7 +94,7 @@ export const defaultContentItemResolvers = {
     ContentItem.getAudios({ ...root }),
 
   coverImage: (root, args, { dataSources: { ContentItem } }) =>
-    ContentItem.getCoverImage({ coverImage: root }),
+    ContentItem.getCoverImage({ ...root }),
 
   theme: () => null, // todo: integrate themes from Rock
 
