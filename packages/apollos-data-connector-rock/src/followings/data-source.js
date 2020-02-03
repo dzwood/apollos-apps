@@ -1,11 +1,11 @@
 import { AuthenticationError } from 'apollo-server';
-import { parseGlobalId, createGlobalId } from '@apollosproject/server-core';
+import { parseGlobalId } from '@apollosproject/server-core';
 import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
 
 export default class Followings extends RockApolloDataSource {
   resource = 'Followings';
 
-  async updateLikeContentItem({ nodeId, operation, schema }) {
+  async updateLikeContentItem({ nodeId, operation, resolveInfo }) {
     const {
       dataSources,
       models: { Node },
@@ -15,7 +15,7 @@ export default class Followings extends RockApolloDataSource {
     } else {
       await this.unFollowNode({ nodeId });
     }
-    const item = await Node.get(nodeId, dataSources, schema);
+    const item = await Node.get(nodeId, dataSources, resolveInfo);
     return { ...item, isLiked: operation === 'Like' };
   }
 
@@ -40,7 +40,7 @@ export default class Followings extends RockApolloDataSource {
     });
 
     await Cache.increment({
-      key: ['likedCount', currentUser.id, nodeType.id, id],
+      key: ['likedCount', nodeType.id, id],
     });
 
     return this.get(`/Followings/${followingsId}`);
@@ -62,7 +62,7 @@ export default class Followings extends RockApolloDataSource {
     });
 
     await Cache.decrement({
-      key: ['likedCount', currentUser.id, nodeType.id, id],
+      key: ['likedCount', nodeType.id, id],
     });
 
     return this.delete(`/Followings/${nodeType.id}/${id}/${currentUser.id}`);
@@ -92,7 +92,7 @@ export default class Followings extends RockApolloDataSource {
       .get()).length;
 
     await Cache.set({
-      key: ['likedCount', createGlobalId(id, nodeType)],
+      key: ['likedCount', nodeType.id, id],
       data: count,
     });
 

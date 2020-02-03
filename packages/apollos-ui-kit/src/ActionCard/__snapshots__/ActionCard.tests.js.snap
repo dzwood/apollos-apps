@@ -9,7 +9,7 @@ exports[`the ActionCard component should accept additional Card props 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -62,7 +62,7 @@ exports[`the ActionCard component should render an action 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -228,7 +228,7 @@ exports[`the ActionCard component should render an action 1`] = `
                 "color": "#00676D",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 12,
-                "lineHeight": 17.28,
+                "lineHeight": 18,
               }
             }
             tint="#00676D"
@@ -409,7 +409,7 @@ exports[`the ActionCard component should render an action 1`] = `
               "fontFamily": "InterUI-Bold",
               "fontSize": 12,
               "justifyContent": "center",
-              "lineHeight": 17.28,
+              "lineHeight": 18,
               "paddingLeft": 8,
               "textAlign": "center",
             }
@@ -432,7 +432,7 @@ exports[`the ActionCard component should render an icon and label 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -598,7 +598,7 @@ exports[`the ActionCard component should render an icon and label 1`] = `
                 "color": "#00676D",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 12,
-                "lineHeight": 17.28,
+                "lineHeight": 18,
               }
             }
             tint="#00676D"
@@ -634,7 +634,7 @@ exports[`the ActionCard component should render children 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,

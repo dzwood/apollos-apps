@@ -50,7 +50,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
               }
             }
           />
-          <LiveNowButton />
           <Query
             fetchPolicy="cache-and-network"
             query={
@@ -144,15 +143,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                                                               "kind": "FragmentSpread",
                                                               "name": Object {
                                                                 "kind": "Name",
-                                                                "value": "largeCardFragment",
-                                                              },
-                                                            },
-                                                            Object {
-                                                              "directives": Array [],
-                                                              "kind": "FragmentSpread",
-                                                              "name": Object {
-                                                                "kind": "Name",
-                                                                "value": "contentItemFragment",
+                                                                "value": "contentCardFragment",
                                                               },
                                                             },
                                                           ],
@@ -182,7 +173,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                     "kind": "FragmentDefinition",
                     "name": Object {
                       "kind": "Name",
-                      "value": "contentItemFragment",
+                      "value": "contentCardFragment",
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
@@ -205,40 +196,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                           "kind": "Field",
                           "name": Object {
                             "kind": "Name",
-                            "value": "title",
-                          },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "isLiked",
-                          },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "likedCount",
-                          },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "summary",
+                            "value": "__typename",
                           },
                           "selectionSet": undefined,
                         },
@@ -254,17 +212,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                           "selectionSet": Object {
                             "kind": "SelectionSet",
                             "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "name",
-                                },
-                                "selectionSet": undefined,
-                              },
                               Object {
                                 "alias": undefined,
                                 "arguments": Array [],
@@ -386,249 +333,28 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                           "kind": "Field",
                           "name": Object {
                             "kind": "Name",
-                            "value": "parentChannel",
+                            "value": "title",
                           },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "id",
-                                },
-                                "selectionSet": undefined,
-                              },
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "name",
-                                },
-                                "selectionSet": undefined,
-                              },
-                            ],
-                          },
+                          "selectionSet": undefined,
                         },
                         Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
+                          "alias": Object {
                             "kind": "Name",
-                            "value": "videos",
+                            "value": "hyphenatedTitle",
                           },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "sources",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "uri",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                  ],
-                                },
+                          "arguments": Array [
+                            Object {
+                              "kind": "Argument",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "hyphenated",
                               },
-                            ],
-                          },
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "audios",
-                          },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "sources",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "uri",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                  ],
-                                },
+                              "value": Object {
+                                "kind": "BooleanValue",
+                                "value": true,
                               },
-                            ],
-                          },
-                        },
-                        Object {
-                          "directives": Array [],
-                          "kind": "InlineFragment",
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "liveStream",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "isLive",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                  ],
-                                },
-                              },
-                            ],
-                          },
-                          "typeCondition": Object {
-                            "kind": "NamedType",
-                            "name": Object {
-                              "kind": "Name",
-                              "value": "WeekendContentItem",
                             },
-                          },
-                        },
-                      ],
-                    },
-                    "typeCondition": Object {
-                      "kind": "NamedType",
-                      "name": Object {
-                        "kind": "Name",
-                        "value": "ContentItem",
-                      },
-                    },
-                  },
-                  Object {
-                    "directives": Array [],
-                    "kind": "FragmentDefinition",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "largeCardFragment",
-                    },
-                    "selectionSet": Object {
-                      "kind": "SelectionSet",
-                      "selections": Array [
-                        Object {
-                          "directives": Array [],
-                          "kind": "FragmentSpread",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "baseCardFragment",
-                          },
-                        },
-                      ],
-                    },
-                    "typeCondition": Object {
-                      "kind": "NamedType",
-                      "name": Object {
-                        "kind": "Name",
-                        "value": "ContentItem",
-                      },
-                    },
-                  },
-                  Object {
-                    "directives": Array [],
-                    "kind": "FragmentDefinition",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "baseCardFragment",
-                    },
-                    "selectionSet": Object {
-                      "kind": "SelectionSet",
-                      "selections": Array [
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "id",
-                          },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "__typename",
-                          },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "directives": Array [],
-                          "kind": "FragmentSpread",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "coverImageFragment",
-                          },
-                        },
-                        Object {
-                          "directives": Array [],
-                          "kind": "FragmentSpread",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "themeFragment",
-                          },
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
+                          ],
                           "directives": Array [],
                           "kind": "Field",
                           "name": Object {
@@ -645,17 +371,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                           "name": Object {
                             "kind": "Name",
                             "value": "summary",
-                          },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "isLiked",
                           },
                           "selectionSet": undefined,
                         },
@@ -702,6 +417,43 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                                           },
                                         ],
                                       },
+                                    },
+                                  ],
+                                },
+                              },
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "parentChannel",
+                                },
+                                "selectionSet": Object {
+                                  "kind": "SelectionSet",
+                                  "selections": Array [
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "id",
+                                      },
+                                      "selectionSet": undefined,
+                                    },
+                                    Object {
+                                      "alias": undefined,
+                                      "arguments": Array [],
+                                      "directives": Array [],
+                                      "kind": "Field",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "name",
+                                      },
+                                      "selectionSet": undefined,
                                     },
                                   ],
                                 },
@@ -759,32 +511,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                                           },
                                         ],
                                       },
-                                    },
-                                  ],
-                                },
-                              },
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "liveStream",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "isLive",
-                                      },
-                                      "selectionSet": undefined,
                                     },
                                   ],
                                 },
@@ -899,176 +625,10 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       },
                     },
                   },
-                  Object {
-                    "directives": Array [],
-                    "kind": "FragmentDefinition",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "coverImageFragment",
-                    },
-                    "selectionSet": Object {
-                      "kind": "SelectionSet",
-                      "selections": Array [
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "coverImage",
-                          },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "sources",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "uri",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                  ],
-                                },
-                              },
-                            ],
-                          },
-                        },
-                      ],
-                    },
-                    "typeCondition": Object {
-                      "kind": "NamedType",
-                      "name": Object {
-                        "kind": "Name",
-                        "value": "ContentItem",
-                      },
-                    },
-                  },
-                  Object {
-                    "directives": Array [],
-                    "kind": "FragmentDefinition",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "themeFragment",
-                    },
-                    "selectionSet": Object {
-                      "kind": "SelectionSet",
-                      "selections": Array [
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "theme",
-                          },
-                          "selectionSet": Object {
-                            "kind": "SelectionSet",
-                            "selections": Array [
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "type",
-                                },
-                                "selectionSet": undefined,
-                              },
-                              Object {
-                                "alias": undefined,
-                                "arguments": Array [],
-                                "directives": Array [],
-                                "kind": "Field",
-                                "name": Object {
-                                  "kind": "Name",
-                                  "value": "colors",
-                                },
-                                "selectionSet": Object {
-                                  "kind": "SelectionSet",
-                                  "selections": Array [
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "primary",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "secondary",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "screen",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                    Object {
-                                      "alias": undefined,
-                                      "arguments": Array [],
-                                      "directives": Array [],
-                                      "kind": "Field",
-                                      "name": Object {
-                                        "kind": "Name",
-                                        "value": "paper",
-                                      },
-                                      "selectionSet": undefined,
-                                    },
-                                  ],
-                                },
-                              },
-                            ],
-                          },
-                        },
-                      ],
-                    },
-                    "typeCondition": Object {
-                      "kind": "NamedType",
-                      "name": Object {
-                        "kind": "Name",
-                        "value": "ContentItem",
-                      },
-                    },
-                  },
                 ],
                 "kind": "Document",
                 "loc": Object {
-                  "end": 1734,
+                  "end": 982,
                   "start": 0,
                 },
               }
@@ -1283,7 +843,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -1342,8 +902,8 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        1711302509,
-                        4278216557,
+                        1725684697,
+                        4292598745,
                       ]
                     }
                     endPoint={
@@ -1358,7 +918,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                         0.8,
                       ]
                     }
-                    overlayColor="#00676D"
+                    overlayColor="#DBDBD9"
                     overlayType="featured"
                     startPoint={
                       Object {
@@ -1421,26 +981,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                     </View>
                   </View>
                 </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
-                </View>
               </View>
             </View>
           </View>
@@ -1452,7 +992,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                 "borderRadius": 16,
                 "marginHorizontal": 16,
                 "marginVertical": 12,
-                "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                "shadowColor": "rgba(165, 165, 165, 0.6)",
                 "shadowOffset": Object {
                   "height": 1,
                   "width": 0,
@@ -1485,7 +1025,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       "backgroundColor": "#A5A5A5",
                       "borderRadius": 16,
                       "height": 12,
-                      "marginVertical": 2.6400000000000006,
+                      "marginVertical": 3,
                       "width": "50%",
                     }
                   }
@@ -1508,7 +1048,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   Object {
                     "backgroundColor": "#FFFFFF",
                     "borderBottomWidth": 0,
-                    "borderColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                    "borderColor": "rgba(165, 165, 165, 0.6)",
                     "borderLeftWidth": 0,
                     "borderRightWidth": 0,
                     "borderTopWidth": 0,
@@ -1590,7 +1130,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       style={
                         Object {
                           "borderBottomWidth": 0.5,
-                          "borderColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                          "borderColor": "rgba(165, 165, 165, 0.6)",
                           "flex": 1,
                           "height": 68,
                           "justifyContent": "center",
@@ -1604,9 +1144,9 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                             "alignSelf": "stretch",
                             "backgroundColor": "#A5A5A5",
                             "borderRadius": 16,
-                            "height": 16,
-                            "marginVertical": 3.5199999999999996,
-                            "width": "80%",
+                            "height": 12,
+                            "marginVertical": 3,
+                            "width": "100%",
                           }
                         }
                       />
@@ -1687,7 +1227,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       style={
                         Object {
                           "borderBottomWidth": 0.5,
-                          "borderColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                          "borderColor": "rgba(165, 165, 165, 0.6)",
                           "flex": 1,
                           "height": 68,
                           "justifyContent": "center",
@@ -1701,9 +1241,9 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                             "alignSelf": "stretch",
                             "backgroundColor": "#A5A5A5",
                             "borderRadius": 16,
-                            "height": 16,
-                            "marginVertical": 3.5199999999999996,
-                            "width": "80%",
+                            "height": 12,
+                            "marginVertical": 3,
+                            "width": "100%",
                           }
                         }
                       />
@@ -1784,7 +1324,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       style={
                         Object {
                           "borderBottomWidth": 0.5,
-                          "borderColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                          "borderColor": "rgba(165, 165, 165, 0.6)",
                           "flex": 1,
                           "height": 68,
                           "justifyContent": "center",
@@ -1798,9 +1338,9 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                             "alignSelf": "stretch",
                             "backgroundColor": "#A5A5A5",
                             "borderRadius": 16,
-                            "height": 16,
-                            "marginVertical": 3.5199999999999996,
-                            "width": "80%",
+                            "height": 12,
+                            "marginVertical": 3,
+                            "width": "100%",
                           }
                         }
                       />
@@ -1881,7 +1421,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       style={
                         Object {
                           "borderBottomWidth": 0.5,
-                          "borderColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                          "borderColor": "rgba(165, 165, 165, 0.6)",
                           "flex": 1,
                           "height": 68,
                           "justifyContent": "center",
@@ -1895,9 +1435,9 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                             "alignSelf": "stretch",
                             "backgroundColor": "#A5A5A5",
                             "borderRadius": 16,
-                            "height": 16,
-                            "marginVertical": 3.5199999999999996,
-                            "width": "80%",
+                            "height": 12,
+                            "marginVertical": 3,
+                            "width": "100%",
                           }
                         }
                       />
@@ -1940,7 +1480,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -1999,7 +1539,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -2066,26 +1606,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -2123,7 +1643,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -2182,7 +1702,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -2249,26 +1769,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -2306,7 +1806,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -2365,7 +1865,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -2432,26 +1932,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -2489,7 +1969,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -2548,7 +2028,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -2615,26 +2095,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -2672,7 +2132,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -2731,7 +2191,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -2798,26 +2258,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -2855,7 +2295,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -2914,7 +2354,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -2981,26 +2421,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -3038,7 +2458,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -3097,7 +2517,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -3164,26 +2584,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -3221,7 +2621,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -3280,7 +2680,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -3347,26 +2747,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -3404,7 +2784,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -3463,7 +2843,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -3530,26 +2910,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -3587,7 +2947,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   "borderRadius": 16,
                   "marginHorizontal": 16,
                   "marginVertical": 12,
-                  "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+                  "shadowColor": "rgba(165, 165, 165, 0.6)",
                   "shadowOffset": Object {
                     "height": 1,
                     "width": 0,
@@ -3646,7 +3006,7 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        3003121664,
+                        2147483648,
                         0,
                       ]
                     }
@@ -3713,26 +3073,6 @@ exports[`User Home Feed Query should return correct query results 1`] = `
                       }
                     />
                   </View>
-                </View>
-                <View
-                  style={
-                    Object {
-                      "position": "absolute",
-                      "right": 24,
-                      "top": 24,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "backgroundColor": "#A5A5A5",
-                        "borderRadius": 16,
-                        "height": 24,
-                        "width": 24,
-                      }
-                    }
-                  />
                 </View>
               </View>
             </View>

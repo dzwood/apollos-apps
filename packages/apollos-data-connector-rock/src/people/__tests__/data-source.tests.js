@@ -124,7 +124,7 @@ describe('Person', () => {
     const result = dataSource.updateProfile({
       fields: [
         {
-          field: 'FirstName',
+          field: '        FirstName',
           value: 'Nick',
         },
       ],

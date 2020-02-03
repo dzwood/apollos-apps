@@ -5,7 +5,7 @@ Object {
   "alpha": Object {
     "high": 0.9,
     "low": 0.4,
-    "medium": 0.7,
+    "medium": 0.5,
   },
   "breakpoints": Object {
     "lg": 1200,
@@ -60,7 +60,7 @@ Object {
     },
     "alert": "#c64f55",
     "background": Object {
-      "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+      "accent": "rgba(165, 165, 165, 0.5)",
       "inactive": "#A5A5A5",
       "paper": "#FFFFFF",
       "screen": "#F8F7F4",
@@ -77,10 +77,11 @@ Object {
     "screen": "#F8F7F4",
     "secondary": "#17B582",
     "shadows": Object {
-      "default": "rgba(165, 165, 165, 0.30000000000000004)",
+      "default": "rgba(165, 165, 165, 0.6)",
     },
     "tertiary": "#6EC5B8",
     "text": Object {
+      "invert": "#F8F7F4",
       "link": "#17B582",
       "primary": "#303030",
       "secondary": "#505050",
@@ -115,13 +116,21 @@ Object {
         "elevation": 5,
       },
       "ios": Object {
-        "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+        "shadowColor": "rgba(165, 165, 165, 0.6)",
         "shadowOffset": Object {
           "height": 1,
           "width": 0,
         },
         "shadowOpacity": 1,
         "shadowRadius": 6,
+      },
+    },
+    "none": Object {
+      "android": Object {
+        "elevation": 0,
+      },
+      "ios": Object {
+        "shadowOpacity": 0,
       },
     },
   },
@@ -131,6 +140,7 @@ Object {
       "medium": 80,
       "small": 40,
     },
+    "baseBorderRadius": 16,
     "baseUnit": 16,
   },
   "type": "light",
@@ -144,13 +154,13 @@ Object {
           "tertiary": "#6EC5B8",
         },
         "background": Object {
-          "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+          "accent": "rgba(165, 165, 165, 0.5)",
           "inactive": "#A5A5A5",
           "paper": "#303030",
           "screen": "#000000",
         },
         "shadows": Object {
-          "default": "rgba(165, 165, 165, 0.30000000000000004)",
+          "default": "rgba(165, 165, 165, 0.6)",
         },
         "text": Object {
           "link": "#17B582",
@@ -169,15 +179,16 @@ Object {
           "tertiary": "#6EC5B8",
         },
         "background": Object {
-          "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+          "accent": "rgba(165, 165, 165, 0.5)",
           "inactive": "#A5A5A5",
           "paper": "#FFFFFF",
           "screen": "#F8F7F4",
         },
         "shadows": Object {
-          "default": "rgba(165, 165, 165, 0.30000000000000004)",
+          "default": "rgba(165, 165, 165, 0.6)",
         },
         "text": Object {
+          "invert": "#F8F7F4",
           "link": "#17B582",
           "primary": "#303030",
           "secondary": "#505050",
@@ -188,7 +199,7 @@ Object {
   },
   "typography": Object {
     "baseFontSize": 16,
-    "baseLineHeight": 23.04,
+    "baseLineHeight": 24,
     "sans": Object {
       "black": Object {
         "default": "InterUI-Black",
@@ -234,7 +245,7 @@ Object {
   },
   "alert": "#c64f55",
   "background": Object {
-    "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+    "accent": "rgba(165, 165, 165, 0.5)",
     "inactive": "#A5A5A5",
     "paper": "#FFFFFF",
     "screen": "#F8F7F4",
@@ -252,10 +263,11 @@ Object {
   "screen": "#F8F7F4",
   "secondary": "#17B582",
   "shadows": Object {
-    "default": "rgba(165, 165, 165, 0.30000000000000004)",
+    "default": "rgba(165, 165, 165, 0.6)",
   },
   "tertiary": "#6EC5B8",
   "text": Object {
+    "invert": "#F8F7F4",
     "link": "#17B582",
     "primary": "#303030",
     "secondary": "#505050",
@@ -270,7 +282,7 @@ Object {
 exports[`createTheme has custom typography 1`] = `
 Object {
   "baseFontSize": "24",
-  "baseLineHeight": 23.04,
+  "baseLineHeight": 24,
   "otherProp": true,
   "sans": Object {
     "black": Object {
@@ -311,7 +323,7 @@ Object {
   "alpha": Object {
     "high": 0.9,
     "low": 0.4,
-    "medium": 0.7,
+    "medium": 0.5,
   },
   "breakpoints": Object {
     "lg": 1200,
@@ -366,7 +378,7 @@ Object {
     },
     "alert": "#c64f55",
     "background": Object {
-      "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+      "accent": "rgba(165, 165, 165, 0.5)",
       "inactive": "#A5A5A5",
       "paper": "#303030",
       "screen": "#000000",
@@ -383,7 +395,7 @@ Object {
     "screen": "#F8F7F4",
     "secondary": "#17B582",
     "shadows": Object {
-      "default": "rgba(165, 165, 165, 0.30000000000000004)",
+      "default": "rgba(165, 165, 165, 0.6)",
     },
     "tertiary": "#6EC5B8",
     "text": Object {
@@ -417,13 +429,21 @@ Object {
         "elevation": 5,
       },
       "ios": Object {
-        "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+        "shadowColor": "rgba(165, 165, 165, 0.6)",
         "shadowOffset": Object {
           "height": 1,
           "width": 0,
         },
         "shadowOpacity": 1,
         "shadowRadius": 6,
+      },
+    },
+    "none": Object {
+      "android": Object {
+        "elevation": 0,
+      },
+      "ios": Object {
+        "shadowOpacity": 0,
       },
     },
   },
@@ -433,6 +453,7 @@ Object {
       "medium": 80,
       "small": 40,
     },
+    "baseBorderRadius": 16,
     "baseUnit": 16,
   },
   "type": "dark",
@@ -446,13 +467,13 @@ Object {
           "tertiary": "#6EC5B8",
         },
         "background": Object {
-          "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+          "accent": "rgba(165, 165, 165, 0.5)",
           "inactive": "#A5A5A5",
           "paper": "#303030",
           "screen": "#000000",
         },
         "shadows": Object {
-          "default": "rgba(165, 165, 165, 0.30000000000000004)",
+          "default": "rgba(165, 165, 165, 0.6)",
         },
         "text": Object {
           "link": "#17B582",
@@ -471,15 +492,16 @@ Object {
           "tertiary": "#6EC5B8",
         },
         "background": Object {
-          "accent": "rgba(165, 165, 165, 0.30000000000000004)",
+          "accent": "rgba(165, 165, 165, 0.5)",
           "inactive": "#A5A5A5",
           "paper": "#FFFFFF",
           "screen": "#F8F7F4",
         },
         "shadows": Object {
-          "default": "rgba(165, 165, 165, 0.30000000000000004)",
+          "default": "rgba(165, 165, 165, 0.6)",
         },
         "text": Object {
+          "invert": "#F8F7F4",
           "link": "#17B582",
           "primary": "#303030",
           "secondary": "#505050",
@@ -490,7 +512,7 @@ Object {
   },
   "typography": Object {
     "baseFontSize": 16,
-    "baseLineHeight": 23.04,
+    "baseLineHeight": 24,
     "sans": Object {
       "black": Object {
         "default": "InterUI-Black",

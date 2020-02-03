@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Query, Mutation } from 'react-apollo';
 import { Dimensions } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
+import MapView from '@apollosproject/ui-mapview';
 import { PaddedView, ButtonLink } from '@apollosproject/ui-kit';
-import requestLocation from './requestLocation';
+import { get } from 'lodash';
 
 import GET_CAMPUSES from './getCampusLocations';
 import CHANGE_CAMPUS from './campusChange';
-import MapView from './MapView';
 
 class Location extends PureComponent {
   static propTypes = {
@@ -55,7 +55,6 @@ class Location extends PureComponent {
   };
 
   async componentDidMount() {
-    await requestLocation();
     Geolocation.getCurrentPosition(
       (position) => {
         this.setState({
@@ -65,7 +64,7 @@ class Location extends PureComponent {
           },
         });
       },
-      () => null,
+      (e) => console.warn('Error getting location!', e),
       { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
   }
@@ -80,20 +79,28 @@ class Location extends PureComponent {
         }}
         fetchPolicy="cache-and-network"
       >
-        {({ loading, error, data: { campuses = [] } = {} }) => (
+        {({ loading, error, data: { campuses, currentUser } = {} }) => (
           <Mutation mutation={CHANGE_CAMPUS}>
             {(handlePress) => (
               <MapView
                 navigation={this.props.navigation}
                 isLoading={loading}
                 error={error}
-                campuses={campuses}
+                campuses={campuses || []}
                 initialRegion={this.props.initialRegion}
                 userLocation={this.state.userLocation}
-                onLocationSelect={async ({ id }) => {
-                  await handlePress({
+                currentCampus={get(currentUser, 'profile.campus')}
+                onLocationSelect={async (campus) => {
+                  handlePress({
                     variables: {
-                      campusId: id,
+                      campusId: campus.id,
+                    },
+                    optimisticResponse: {
+                      updateUserCampus: {
+                        __typename: 'Mutation',
+                        id: currentUser.id,
+                        campus,
+                      },
                     },
                   });
                   this.props.navigation.goBack();

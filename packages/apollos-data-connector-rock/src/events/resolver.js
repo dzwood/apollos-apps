@@ -4,8 +4,9 @@ export default {
   Event: {
     id: ({ id }, args, context, { parentType }) =>
       createGlobalId(id, parentType.name),
-    name: (root, args, { dataSources }) =>
-      dataSources.Event.getName({ ...root }),
+    name: (root, args, { dataSources }) => dataSources.Event.getName(root),
+    description: (root, args, { dataSources }) =>
+      dataSources.Event.getDescription(root),
     start: ({ schedule }, args, { dataSources }) =>
       dataSources.Event.getDateTime({ schedule }).start,
     end: ({ schedule }, args, { dataSources }) =>

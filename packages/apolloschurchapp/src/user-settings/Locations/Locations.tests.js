@@ -1,7 +1,7 @@
 import React from 'react';
-import { renderWithApolloData } from 'apolloschurchapp/src/utils/testUtils';
+import { renderWithApolloData } from '../../utils/testUtils';
 
-import Providers from 'apolloschurchapp/src/Providers';
+import Providers from '../../Providers';
 import GET_CAMPUS_LOCATIONS from './getCampusLocations';
 import Location from './index';
 
@@ -110,6 +110,15 @@ describe('Display Native Map with Locations', () => {
       result: {
         data: {
           campuses,
+          currentUser: {
+            id: 'AuthenticatedUser:123',
+            __typename: 'AuthenticatedUser',
+            profile: {
+              id: 'Person:123',
+              __typename: 'Person',
+              campus: campuses[3],
+            },
+          },
         },
       },
     };

@@ -8,7 +8,7 @@ exports[`ContentCard renders Basic card, with Image 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -288,7 +288,7 @@ exports[`ContentCard renders Basic card, with Image 1`] = `
                   "color": "#A5A5A5",
                   "fontFamily": "InterUI-Bold",
                   "fontSize": 12,
-                  "lineHeight": 17.28,
+                  "lineHeight": 18,
                 }
               }
               tint="#A5A5A5"
@@ -312,7 +312,7 @@ exports[`ContentCard renders a Default Placeholder 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -477,7 +477,7 @@ exports[`ContentCard renders a Default Placeholder 1`] = `
                   "backgroundColor": "#A5A5A5",
                   "borderRadius": 16,
                   "height": 12,
-                  "marginVertical": 2.6400000000000006,
+                  "marginVertical": 3,
                   "width": "50%",
                 }
               }
@@ -500,7 +500,7 @@ exports[`ContentCard renders as Tile/Image only 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -782,7 +782,7 @@ exports[`ContentCard renders as Tile/Image only 1`] = `
                   "color": "rgb(110, 161, 163)",
                   "fontFamily": "InterUI-Bold",
                   "fontSize": 12,
-                  "lineHeight": 17.28,
+                  "lineHeight": 18,
                 }
               }
               tint="rgb(110, 161, 163)"
@@ -807,7 +807,7 @@ exports[`ContentCard renders as Tile/No image 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -832,7 +832,7 @@ exports[`ContentCard renders as Tile/No image 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "rgba(165, 165, 165, 0.30000000000000004)",
+          "backgroundColor": "rgba(165, 165, 165, 0.5)",
           "paddingHorizontal": 16,
           "paddingVertical": 16,
         }
@@ -872,7 +872,7 @@ exports[`ContentCard renders as Tile/No image 1`] = `
             "color": "#505050",
             "fontFamily": "InterUI-Bold",
             "fontSize": 12,
-            "lineHeight": 17.28,
+            "lineHeight": 18,
           }
         }
       >
@@ -1057,7 +1057,7 @@ exports[`ContentCard renders as Tile/No image 1`] = `
                   "color": "#A5A5A5",
                   "fontFamily": "InterUI-Bold",
                   "fontSize": 12,
-                  "lineHeight": 17.28,
+                  "lineHeight": 18,
                 }
               }
               tint="#A5A5A5"
@@ -1082,7 +1082,7 @@ exports[`ContentCard renders basic tile card, with Image 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -1168,7 +1168,7 @@ exports[`ContentCard renders basic tile card, with Image 1`] = `
             "color": "#303030",
             "fontFamily": "InterUI-Bold",
             "fontSize": 16,
-            "lineHeight": 23.04,
+            "lineHeight": 24,
           }
         }
       >
@@ -1182,7 +1182,7 @@ exports[`ContentCard renders basic tile card, with Image 1`] = `
             "color": "#505050",
             "fontFamily": "InterUI-Bold",
             "fontSize": 12,
-            "lineHeight": 17.28,
+            "lineHeight": 18,
           }
         }
       >
@@ -1367,7 +1367,7 @@ exports[`ContentCard renders basic tile card, with Image 1`] = `
                   "color": "#A5A5A5",
                   "fontFamily": "InterUI-Bold",
                   "fontSize": 12,
-                  "lineHeight": 17.28,
+                  "lineHeight": 18,
                 }
               }
               tint="#A5A5A5"
@@ -1393,7 +1393,7 @@ exports[`ContentCard renders with Default Placeholder 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -1471,7 +1471,7 @@ exports[`ContentCard renders with Default Placeholder 1`] = `
             "backgroundColor": "#A5A5A5",
             "borderRadius": 16,
             "height": 16,
-            "marginVertical": 3.5199999999999996,
+            "marginVertical": 4,
             "width": "80%",
           }
         }
@@ -1483,7 +1483,7 @@ exports[`ContentCard renders with Default Placeholder 1`] = `
             "backgroundColor": "#A5A5A5",
             "borderRadius": 16,
             "height": 12,
-            "marginVertical": 2.6400000000000006,
+            "marginVertical": 3,
             "width": "50%",
           }
         }
@@ -1563,7 +1563,7 @@ exports[`ContentCard renders with Default Placeholder 1`] = `
                   "backgroundColor": "#A5A5A5",
                   "borderRadius": 16,
                   "height": 12,
-                  "marginVertical": 2.6400000000000006,
+                  "marginVertical": 3,
                   "width": "50%",
                 }
               }
@@ -1584,7 +1584,7 @@ exports[`ContentCard renders with No image 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -1605,7 +1605,7 @@ exports[`ContentCard renders with No image 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "rgba(165, 165, 165, 0.30000000000000004)",
+          "backgroundColor": "rgba(165, 165, 165, 0.5)",
           "paddingHorizontal": 16,
           "paddingVertical": 16,
         }
@@ -1830,7 +1830,7 @@ exports[`ContentCard renders with No image 1`] = `
                   "color": "#A5A5A5",
                   "fontFamily": "InterUI-Bold",
                   "fontSize": 12,
-                  "lineHeight": 17.28,
+                  "lineHeight": 18,
                 }
               }
               tint="#A5A5A5"
@@ -1853,7 +1853,7 @@ exports[`ContentCard renders with an Image only 1`] = `
       "borderRadius": 16,
       "marginHorizontal": 16,
       "marginVertical": 12,
-      "shadowColor": "rgba(165, 165, 165, 0.30000000000000004)",
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
       "shadowOffset": Object {
         "height": 1,
         "width": 0,
@@ -2129,7 +2129,7 @@ exports[`ContentCard renders with an Image only 1`] = `
                   "color": "rgb(110, 161, 163)",
                   "fontFamily": "InterUI-Bold",
                   "fontSize": 12,
-                  "lineHeight": 17.28,
+                  "lineHeight": 18,
                 }
               }
               tint="rgb(110, 161, 163)"

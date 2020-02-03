@@ -13,7 +13,7 @@ exports[`the TableView Component should render 1`] = `
       Object {
         "backgroundColor": "#FFFFFF",
         "borderBottomWidth": 0.5,
-        "borderColor": "rgba(165, 165, 165, 0.30000000000000004)",
+        "borderColor": "rgba(165, 165, 165, 0.6)",
         "borderLeftWidth": 0,
         "borderRightWidth": 0,
         "borderTopWidth": 0.5,
@@ -161,7 +161,7 @@ exports[`the TableView Component should render 1`] = `
             "fontSize": 14,
             "fontStyle": null,
             "fontWeight": null,
-            "lineHeight": 20.16,
+            "lineHeight": 21,
             "paddingLeft": 8,
             "paddingRight": 8,
           }
@@ -173,7 +173,7 @@ exports[`the TableView Component should render 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "rgba(165, 165, 165, 0.30000000000000004)",
+          "backgroundColor": "rgba(165, 165, 165, 0.6)",
           "height": 0.5,
           "marginLeft": 10.666666666666666,
           "width": "100%",
@@ -320,7 +320,7 @@ exports[`the TableView Component should render 1`] = `
             "fontSize": 14,
             "fontStyle": null,
             "fontWeight": null,
-            "lineHeight": 20.16,
+            "lineHeight": 21,
             "paddingLeft": 8,
             "paddingRight": 8,
           }
@@ -391,7 +391,7 @@ exports[`the TableView Component should render 1`] = `
                       "color": "#505050",
                       "fontFamily": "InterUI-Bold",
                       "fontSize": 12,
-                      "lineHeight": 17.28,
+                      "lineHeight": 18,
                       "paddingVertical": 4,
                     }
                   }
@@ -436,7 +436,7 @@ exports[`the TableView Component should render 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "rgba(165, 165, 165, 0.30000000000000004)",
+          "backgroundColor": "rgba(165, 165, 165, 0.6)",
           "height": 0.5,
           "marginLeft": 10.666666666666666,
           "width": "100%",
@@ -466,7 +466,7 @@ exports[`the TableView Component should render 1`] = `
             "fontSize": 14,
             "fontStyle": null,
             "fontWeight": null,
-            "lineHeight": 20.16,
+            "lineHeight": 21,
             "paddingLeft": 0,
             "paddingRight": 8,
           }
@@ -478,7 +478,7 @@ exports[`the TableView Component should render 1`] = `
     <View
       style={
         Object {
-          "backgroundColor": "rgba(165, 165, 165, 0.30000000000000004)",
+          "backgroundColor": "rgba(165, 165, 165, 0.6)",
           "height": 0.5,
           "marginLeft": 10.666666666666666,
           "width": "100%",
@@ -508,7 +508,7 @@ exports[`the TableView Component should render 1`] = `
             "fontSize": 14,
             "fontStyle": null,
             "fontWeight": null,
-            "lineHeight": 20.16,
+            "lineHeight": 21,
             "paddingLeft": 0,
             "paddingRight": 8,
           }

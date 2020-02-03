@@ -9,6 +9,15 @@ export const createImageUrlFromGuid = ({ uri }) =>
     ? `${ApollosConfig.ROCK.IMAGE_URL}?guid=${uri}`
     : enforceProtocol({ uri });
 
+export const fieldsAsObject = ({ fields }) =>
+  fields.reduce(
+    (accum, { field, value }) => ({
+      ...accum,
+      [field]: typeof value === 'string' ? value.trim() : value,
+    }),
+    {}
+  );
+
 export const latLonDistance = ({
   latitude,
   longitude,

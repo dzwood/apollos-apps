@@ -1,11 +1,19 @@
 import React from 'react';
 import { NativeModules } from 'react-native';
-// We ran into an issue where SafeAreaView would break jest tests.
+import ApollosConfig from '@apollosproject/config';
+import FRAGMENTS from '@apollosproject/ui-fragments';
 
-jest.mock('../apollos-ui-kit/node_modules/react-native-safe-area-context/', () => ({
-  SafeAreaConsumer: ({ children }) => children({ top: 0, bottom: 0, left: 0, right: 0 }),
-  SafeAreaProvider: ({ children }) => children,
-}));
+ApollosConfig.loadJs({ FRAGMENTS });
+
+// We ran into an issue where SafeAreaView would break jest tests.
+jest.mock(
+  '../apollos-ui-kit/node_modules/react-native-safe-area-context/',
+  () => ({
+    SafeAreaConsumer: ({ children }) =>
+      children({ top: 0, bottom: 0, left: 0, right: 0 }),
+    SafeAreaProvider: ({ children }) => children,
+  })
+);
 
 jest.mock('react-navigation', () => {
   const ActualNavigation = require.requireActual('react-navigation');
@@ -24,9 +32,9 @@ jest.mock('react-native-music-control', () => ({
   STATE_PAUSED: true,
 }));
 
-jest.mock('react-native-config', () => ({
+ApollosConfig.loadJs({
   ONE_SIGNAL_KEY: 'doesntmatter',
-}));
+});
 
 jest.mock('Animated', () => {
   const ActualAnimated = require.requireActual('Animated');
@@ -55,7 +63,7 @@ jest.mock('react-native-safari-view', () => ({
 }));
 
 jest.mock('react-native-device-info', () => ({
-  getUniqueID: () => 'id-123',
+  getUniqueId: () => 'id-123',
   getSystemVersion: () => 'sys-version-123',
   getModel: () => 'ios',
   getVersion: () => 'version-123',
@@ -80,6 +88,8 @@ jest.mock('@apollosproject/ui-notifications', () => ({
   NotificationsProvider: ({ children }) => children,
 }));
 
+jest.mock('@apollosproject/ui-mapview', () => 'MapView');
+
 jest.mock('@apollosproject/ui-media-player', () => ({
   MediaPlayerSpacer: ({ children }) => children,
   MediaPlayer: () => 'MediaPlayer',
@@ -92,7 +102,6 @@ jest.mock('react-native-video', () => 'Video');
 
 jest.mock('NativeEventEmitter');
 
-jest.mock('react-native-maps');
 jest.mock('DatePickerIOS', () => 'DatePicker');
 jest.mock('./src/client/index');
 
