@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentCardConnected component renders ContentCardConnected 1`] = `
+<View
+  cardColor="#00676D"
+  isLoading={false}
+  style={
+    Object {
+      "backgroundColor": "#00676D",
+      "borderRadius": 16,
+      "marginHorizontal": 16,
+      "marginVertical": 12,
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 6,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderRadius": 16,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#A5A5A5",
+          "overflow": "hidden",
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "aspectRatio": 1,
+            "backgroundColor": "#A5A5A5",
+            "width": "100%",
+          }
+        }
+      />
+      <BVLinearGradient
+        colors={
+          Array [
+            1711302509,
+            4278216557,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0,
+            "y": 1,
+          }
+        }
+        locations={
+          Array [
+            0,
+            0.8,
+          ]
+        }
+        overlayColor="#00676D"
+        overlayType="featured"
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
+          }
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "marginTop": "-40%",
+          "paddingBottom": 32,
+          "paddingHorizontal": 24,
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        hasSummary={false}
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flexDirection": "row",
+            "paddingTop": 16,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "marginRight": 16,
+            }
+          }
+        >
+          <Text
+            numberOfLines={4}
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
+              }
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
