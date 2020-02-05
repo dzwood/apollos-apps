@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentHTMLViewConnected component renders ContentHTMLViewConnected 1`] = `
+<View
+  style={
+    Object {
+      "paddingBottom": 18,
+    }
+  }
+>
+  <View>
+    <Text
+      bold={false}
+      italic={false}
+      style={
+        Object {
+          "color": "#303030",
+          "fontFamily": "InterUI-Regular",
+          "fontSize": 16,
+          "lineHeight": 26,
+        }
+      }
+    >
+      <Text
+        bold={true}
+        italic={false}
+        style={
+          Object {
+            "color": "#303030",
+            "fontFamily": "InterUI-Bold",
+            "fontSize": 16,
+            "lineHeight": 26,
+          }
+        }
+      >
+        <Text>
+          Some content!
+        </Text>
+      </Text>
+    </Text>
+  </View>
+</View>
+`;
