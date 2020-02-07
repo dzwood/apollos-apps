@@ -1,114 +1,58 @@
-// import React from 'react';
-// import renderer from 'react-test-renderer';
-// import gql from 'graphql-tag';
+import React from 'react';
+import renderer from 'react-test-renderer';
 
-// import { Providers } from '../utils/testUtils';
+import { Providers } from '../utils/testUtils';
+import GET_LIKED_CONTENT_ITEM from './getLikedContentItem';
 
-// import LikeButtonConnected from '.';
+import LikeButtonConnected from './LikeButtonConnected';
 
-describe('the LikeButtonConnected component', () => {
-  it('should render', () => {
-    //     const updateLikeEntity = {
-    //       request: {
-    //         query: gql`
-    //           mutation updateLikeEntity($itemId: ID!, $operation: LIKE_OPERATION!) {
-    //             updateLikeEntity(
-    //               input: { nodeId: $itemId, operation: $operation }
-    //             ) {
-    //               id
-    //               operation
-    //               interactionDateTime
-    //             }
-    //           }
-    //         `,
-    //         variables: {
-    //           itemId: 'asdf',
-    //           operation: 'Like',
-    //         },
-    //       },
-    //       result: {
-    //         data: {
-    //           node: { isLiked: true },
-    //         },
-    //       },
-    //     };
-    //     const getLikedContentItem = {
-    //       request: {
-    //         query: gql`
-    //           query getLikedContentItem($itemId: ID!) {
-    //             node(id: $itemId) {
-    //               ... on ContentItem {
-    //                 id
-    //                 isLiked
-    //               }
-    //             }
-    //           }
-    //         `,
-    //         variables: {
-    //           itemId: 'asdf',
-    //         },
-    //       },
-    //       result: {
-    //         data: {
-    //           updateLikeEntity: { operation: 'Like' },
-    //         },
-    //       },
-    //     };
-    //     const tree = renderer.create(
-    //       <Providers mocks={[updateLikeEntity, getLikedContentItem]}>
-    //         <LikeButtonConnected itemId={'asdf'} />
-    //       </Providers>
-    //     );
-    //     expect(tree).toMatchSnapshot();
+describe('LikeButtonConnected component', () => {
+  it('renders Unliked LikeButtonConnected', async () => {
+    const mock = {
+      request: {
+        query: GET_LIKED_CONTENT_ITEM,
+        variables: { itemId: '1' },
+      },
+      result: {
+        data: {
+          node: {
+            id: '1',
+            isLiked: false,
+            __typename: 'FAKE_TYPE_NAME',
+          },
+        },
+      },
+    };
+
+    const tree = renderer.create(
+      <Providers mocks={[mock]}>
+        <LikeButtonConnected itemId={'1'} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
   });
-  it('should render when loading', () => {
-    //     const updateLikeEntity = {
-    //       request: {
-    //         query: gql`
-    //           mutation updateLikeEntity($itemId: ID!, $operation: LIKE_OPERATION!) {
-    //             updateLikeEntity(
-    //               input: { nodeId: $itemId, operation: $operation }
-    //             ) {
-    //               id
-    //               operation
-    //               interactionDateTime
-    //             }
-    //           }
-    //         `,
-    //         variables: {
-    //           itemId: 'asdf',
-    //           operation: 'Like',
-    //         },
-    //       },
-    //       result: {
-    //         data: {
-    //           node: { isLiked: true },
-    //         },
-    //       },
-    //     };
-    //     const getLikedContentItem = {
-    //       request: {
-    //         query: gql`
-    //           query getLikedContentItem($itemId: ID!) {
-    //             node(id: $itemId) {
-    //               ... on ContentItem {
-    //                 id
-    //                 isLiked
-    //               }
-    //             }
-    //           }
-    //         `,
-    //         variables: {
-    //           itemId: 'asdf',
-    //         },
-    //       },
-    //       result: null,
-    //     };
-    //     const tree = renderer.create(
-    //       <Providers mocks={[updateLikeEntity, getLikedContentItem]}>
-    //         <LikeButtonConnected itemId={'asdf'} />
-    //       </Providers>
-    //     );
-    //     expect(tree).toMatchSnapshot();
+  it('renders Liked LikeButtonConnected', async () => {
+    const mock = {
+      request: {
+        query: GET_LIKED_CONTENT_ITEM,
+        variables: { itemId: '1' },
+      },
+      result: {
+        data: {
+          node: {
+            id: '1',
+            isLiked: true,
+            __typename: 'FAKE_TYPE_NAME',
+          },
+        },
+      },
+    };
+
+    const tree = renderer.create(
+      <Providers mocks={[mock]}>
+        <LikeButtonConnected itemId={'1'} />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
   });
 });

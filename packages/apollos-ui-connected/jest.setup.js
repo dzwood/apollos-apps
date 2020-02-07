@@ -1,3 +1,4 @@
+import React from 'react';
 import { NativeModules } from 'react-native';
 import ApollosConfig from '@apollosproject/config';
 import FRAGMENTS from '@apollosproject/ui-fragments';
@@ -13,6 +14,13 @@ jest.mock(
     SafeAreaProvider: ({ children }) => children,
   })
 );
+
+jest.mock('react-navigation', () => ({
+  withNavigation: (Component) => (props) => (
+    <Component navigation={{ navigate: jest.fn() }} {...props} />
+  ),
+  SafeAreaView: ({ children }) => <>{children}</>,
+}));
 
 NativeModules.RNGestureHandlerModule = {
   attachGestureHandler: jest.fn(),
