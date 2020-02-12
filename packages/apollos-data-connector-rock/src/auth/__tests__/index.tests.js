@@ -9,6 +9,8 @@ import {
 } from '@apollosproject/data-schema';
 
 import * as Auth from '../index';
+import * as Person from '../../people/index';
+
 import { generateToken, registerToken } from '../token';
 
 ApollosConfig.loadJs({
@@ -18,7 +20,7 @@ ApollosConfig.loadJs({
   },
 });
 
-const { getContext, getSchema } = createTestHelpers({ Auth });
+const { getContext, getSchema } = createTestHelpers({ Auth, Person });
 
 describe('Auth', () => {
   let schema;

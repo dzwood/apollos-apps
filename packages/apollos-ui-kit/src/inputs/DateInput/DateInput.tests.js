@@ -6,7 +6,17 @@ import Providers from '../../Providers';
 
 import DateInput from '.';
 
+let realDateNow;
+
 describe('The DateInput component', () => {
+  beforeAll(() => {
+    realDateNow = Date.now.bind(global.Date);
+    const dateNowStub = jest.fn(() => 1530518207007);
+    global.Date.now = dateNowStub;
+  });
+  afterAll(() => {
+    global.Date.now = realDateNow;
+  });
   it('should render', () => {
     const tree = renderer.create(
       <Providers>
@@ -49,6 +59,18 @@ describe('The DateInput component', () => {
           value={moment.utc('1/1/2015').toDate()}
           displayValue={moment.utc('1/1/2015').format('YYYY/MM/DD')}
           maximumDate={moment.utc('1/1/2015').toDate()}
+          label={'Date Label'}
+        />
+      </Providers>
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render without a maximum date', () => {
+    const tree = renderer.create(
+      <Providers>
+        <DateInput
+          value={moment.utc('1/1/2015').toDate()}
+          displayValue={moment.utc('1/1/2015').format('YYYY/MM/DD')}
           label={'Date Label'}
         />
       </Providers>

@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { PaddedView } from '@apollosproject/ui-kit';
 import ScriptureItem from '@apollosproject/ui-scripture';
-import HorizontalContentFeed from '../HorizontalContentFeed';
+import { HorizontalContentSeriesFeedConnected } from '@apollosproject/ui-connected';
 
 /**
  * This is the Scripture side of the Devotional tabbed component.
@@ -13,18 +13,24 @@ import HorizontalContentFeed from '../HorizontalContentFeed';
 const ScriptureTab = ({ id, scripture, isLoading, navigation }) => (
   <ScrollView>
     <PaddedView>
-      {scripture.map((ref) => (
+      {scripture.map((ref, i) => (
         <ScriptureItem
           key={ref.id}
           reference={ref.reference}
           html={ref.html}
           isLoading={isLoading}
-          copyright={ref.copyright}
+          copyright={
+            // only show last copyright
+            scripture.length - 1 === i ? ref.copyright : null
+          }
           version={ref.version}
         />
       ))}
     </PaddedView>
-    <HorizontalContentFeed contentId={id} navigation={navigation} />
+    <HorizontalContentSeriesFeedConnected
+      contentId={id}
+      navigation={navigation}
+    />
   </ScrollView>
 );
 

@@ -8,11 +8,27 @@ export const testSchema = gql`
 export const authSmsSchema = gql`
   type SmsPinResult {
     success: Boolean
+    userAuthStatus: USER_AUTH_STATUS
   }
 
   extend type Mutation {
     requestSmsLoginPin(phoneNumber: String!): SmsPinResult
     authenticateWithSms(phoneNumber: String!, pin: String!): Authentication
+    registerWithSms(
+      phoneNumber: String!
+      pin: String!
+      userProfile: [UpdateProfileInput]
+    ): Authentication
+  }
+
+  enum USER_AUTH_STATUS {
+    NONE
+    NEW_APP_USER
+    EXISTING_APP_USER
+  }
+
+  extend type Query {
+    userExists(identity: String): USER_AUTH_STATUS @cacheControl(maxAge: 0)
   }
 `;
 
@@ -37,7 +53,11 @@ export const authSchema = gql`
   extend type Mutation {
     authenticate(identity: String!, password: String!): Authentication
     changePassword(password: String!): Authentication
-    registerPerson(email: String!, password: String!): Authentication
+    registerPerson(
+      email: String!
+      password: String!
+      userProfile: [UpdateProfileInput]
+    ): Authentication
   }
 
   extend type Query {
@@ -263,7 +283,6 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
   }
 
@@ -306,8 +325,8 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
@@ -329,8 +348,8 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
@@ -352,8 +371,8 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
@@ -375,7 +394,6 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
   }
 
@@ -545,8 +563,8 @@ export const campusSchema = gql`
   }
 
   input CampusLocationInput {
-    latitude: Float!
-    longitude: Float!
+    latitude: Float
+    longitude: Float
   }
 
   extend type Person {

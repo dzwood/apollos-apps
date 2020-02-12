@@ -3,6 +3,7 @@ import { RESTDataSource } from 'apollo-datasource-rest';
 import ApollosConfig from '@apollosproject/config';
 
 const { BIBLE_API } = ApollosConfig;
+const ONE_DAY = 60 * 60 * 24;
 
 export default class Scripture extends RESTDataSource {
   resource = 'Scripture';
@@ -12,7 +13,7 @@ export default class Scripture extends RESTDataSource {
   token = BIBLE_API.KEY;
 
   // default to the first one listed in the config
-  defaultVersion = Object.keys(BIBLE_API.BIBLE_ID)[0];
+  availableVersions = Object.keys(BIBLE_API.BIBLE_ID);
 
   willSendRequest(request) {
     request.headers.set('api-key', `${this.token}`);
@@ -23,7 +24,9 @@ export default class Scripture extends RESTDataSource {
     const version = Object.keys(BIBLE_API.BIBLE_ID).find(
       (key) => BIBLE_API.BIBLE_ID[key] === bibleId
     );
-    const { data } = await this.get(`${bibleId}/passages/${parsedID}`);
+    const { data } = await this.get(`${bibleId}/passages/${parsedID}`, null, {
+      cacheOptions: { ttl: ONE_DAY },
+    });
     return { ...data, version };
   }
 
@@ -38,9 +41,23 @@ export default class Scripture extends RESTDataSource {
 
   async getScriptures(query, version) {
     if (query === '') return [];
-    const selectedVersion = version || this.defaultVersion;
-    const bibleId = BIBLE_API.BIBLE_ID[selectedVersion];
-    const scriptures = await this.get(`${bibleId}/search?query=${query}`);
+    let safeVersion = version ? version.toUpperCase() : null;
+    if (!this.availableVersions.includes(safeVersion)) {
+      console.warn(
+        `${safeVersion} version not available, using ${
+          this.availableVersions[0]
+        }`
+      );
+      [safeVersion] = this.availableVersions;
+    }
+    const bibleId = BIBLE_API.BIBLE_ID[safeVersion];
+    const scriptures = await this.get(
+      `${bibleId}/search?query=${query}`,
+      null,
+      {
+        cacheOptions: { ttl: ONE_DAY },
+      }
+    );
     // Bible.api has a history of making unexpected API changes.
     // At one point scriptures had a sub field, "passages"
     // At another point, they returned the passage data on the `data` key directly.
@@ -48,12 +65,12 @@ export default class Scripture extends RESTDataSource {
     if (get(scriptures, 'data.passages')) {
       return scriptures.data.passages.map((passage) => ({
         ...passage,
-        version: selectedVersion,
+        version: safeVersion,
       }));
     }
     return scriptures.data.map((passage) => ({
       ...passage,
-      version: selectedVersion,
+      version: safeVersion,
     }));
   }
 }

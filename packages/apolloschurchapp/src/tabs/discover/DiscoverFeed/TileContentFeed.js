@@ -16,7 +16,7 @@ import {
   withIsLoading,
 } from '@apollosproject/ui-kit';
 
-import HorizontalContentCardConnected from '../../../ui/HorizontalContentCardConnected';
+import { HorizontalContentCardConnected } from '@apollosproject/ui-connected';
 
 const RowHeader = styled(({ theme }) => ({
   flexDirection: 'row',
@@ -31,7 +31,7 @@ const Name = styled({
 })(View);
 
 const AndroidTouchableFix = withTheme(({ theme }) => ({
-  borderRadius: theme.sizing.baseUnit / 2,
+  borderRadius: theme.sizing.baseBorderRadius / 2,
 }))(Touchable);
 
 const ButtonLinkSpacing = styled(({ theme }) => ({
