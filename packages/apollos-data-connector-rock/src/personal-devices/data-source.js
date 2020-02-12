@@ -33,4 +33,23 @@ export default class PersonalDevices extends RockApolloDataSource {
       .filter(`PersonAliasId eq ${id}`)
       .get();
   }
+
+  updateNotificationsEnabled = async (pushId, enabled) => {
+    if (pushId === null || enabled === null)
+      throw new Error("Device ID and 'enabled' required.");
+
+    const {
+      primaryAliasId,
+    } = await this.context.dataSources.Auth.getCurrentPerson();
+
+    const { id } = await this.request()
+      .filter(`PersonAliasId eq ${primaryAliasId}`)
+      .andFilter(`DeviceRegistrationId eq '${pushId}'`)
+      .first();
+    if (!id) throw new Error(`Device doesn't exist`);
+
+    return this.patch(`/PersonalDevices/${id}`, {
+      NotificationsEnabled: enabled,
+    });
+  };
 }

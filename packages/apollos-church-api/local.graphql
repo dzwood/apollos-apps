@@ -310,8 +310,6 @@ type Mutation {
   identifySelf(input: AnalyticsIdentifyInput!): AnalyticsResult
   trackEvent(input: AnalyticsTrackInput!): AnalyticsResult
   updateUserPushSettings(input: PushSettingsInput!): Person
-  enableNotifications(deviceId: String!): Device
-  disableNotifications(deviceId: String!): Device
   updateUserCampus(campusId: String!): Person
 }
 

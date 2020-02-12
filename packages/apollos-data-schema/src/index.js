@@ -110,11 +110,6 @@ export const deviceSchema = gql`
     pushId: String!
     notificationsEnabled: Boolean!
   }
-
-  extend type Mutation {
-    enableNotifications(deviceId: String!): Device
-    disableNotifications(deviceId: String!): Device
-  }
 `;
 
 export const mediaSchema = gql`
