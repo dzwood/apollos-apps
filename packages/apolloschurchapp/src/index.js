@@ -67,14 +67,14 @@ const App = () => (
     <BackgroundView>
       <AppStatusBar barStyle="dark-content" />
       <CoreAnalytics>
-      {(props) => (
-      <AppContainer
-        ref={(navigatorRef) => {
-          NavigationService.setTopLevelNavigator(navigatorRef);
-        }}
-        {...props}
-      />
-      )}
+        {(props) => (
+          <AppContainer
+            ref={(navigatorRef) => {
+              NavigationService.setTopLevelNavigator(navigatorRef);
+            }}
+            {...props}
+          />
+        )}
       </CoreAnalytics>
       <MediaPlayer />
     </BackgroundView>

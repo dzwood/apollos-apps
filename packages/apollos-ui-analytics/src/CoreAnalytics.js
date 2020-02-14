@@ -33,4 +33,4 @@ analytics.setup('a27aHBJqZgkDDfvZ4Q3Zr', {
 
 const CoreAnalytics = ({ children }) => children({ onNavigationStateChange });
 
-export default CoreAnalytics;
+export default CoreNavigationAnalytics;
