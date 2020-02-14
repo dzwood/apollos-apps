@@ -5,12 +5,12 @@ import AnalyticsProvider, {
 } from './Provider';
 import TrackEventWhenLoaded from './TrackEventWhenLoaded';
 import withTrackOnPress from './withTrackOnPress';
-import CoreNavigationAnalytics from './CoreAnalytics';
+import CoreNavigationAnalytics from './CoreNavigationAnalytics';
 
 export {
   AnalyticsConsumer,
   AnalyticsProvider,
-  CoreAnalytics,
+  CoreNavigationAnalytics,
   identify,
   track,
   TrackEventWhenLoaded,

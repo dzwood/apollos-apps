@@ -15,8 +15,13 @@ function getActiveRouteName(navigationState, routeNames = []) {
 }
 
 const onNavigationStateChange = (prevState, currentState) => {
-  const { routeName: currentScreen, params: currentParams } = getActiveRouteName(currentState);
-  const { routeName: prevScreen, params: prevParams } = getActiveRouteName(prevState);
+  const {
+    routeName: currentScreen,
+    params: currentParams,
+  } = getActiveRouteName(currentState);
+  const { routeName: prevScreen, params: prevParams } = getActiveRouteName(
+    prevState
+  );
 
   if (prevScreen !== currentScreen || !isEqual(currentParams, prevParams)) {
     analytics.track(`Viewed Screen ${currentScreen}`);
@@ -31,6 +36,7 @@ analytics.setup('a27aHBJqZgkDDfvZ4Q3Zr', {
   trackAppLifecycleEvents: true,
 });
 
-const CoreAnalytics = ({ children }) => children({ onNavigationStateChange });
+const CoreNavigationAnalytics = ({ children }) =>
+  children({ onNavigationStateChange });
 
 export default CoreNavigationAnalytics;

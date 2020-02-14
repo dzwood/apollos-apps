@@ -7,7 +7,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { BackgroundView, withTheme } from '@apollosproject/ui-kit';
 import Passes from '@apollosproject/ui-passes';
 import { MediaPlayer } from '@apollosproject/ui-media-player';
-import { CoreAnalytics } from '@apollosproject/ui-analytics';
+import { CoreNavigationAnalytics } from '@apollosproject/ui-analytics';
 import Auth, { ProtectedRoute } from '@apollosproject/ui-auth';
 
 import Providers from './Providers';
@@ -66,7 +66,7 @@ const App = () => (
   <Providers>
     <BackgroundView>
       <AppStatusBar barStyle="dark-content" />
-      <CoreAnalytics>
+      <CoreNavigationAnalytics>
         {(props) => (
           <AppContainer
             ref={(navigatorRef) => {
@@ -75,7 +75,7 @@ const App = () => (
             {...props}
           />
         )}
-      </CoreAnalytics>
+      </CoreNavigationAnalytics>
       <MediaPlayer />
     </BackgroundView>
   </Providers>
