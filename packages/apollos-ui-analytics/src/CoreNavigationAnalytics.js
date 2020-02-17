@@ -1,17 +1,25 @@
 import analytics from '@metarouter/analytics-react-native';
-import { isEqual } from 'lodash';
+import { isEqual, last } from 'lodash';
 
 function getActiveRouteName(navigationState, routeNames = []) {
   if (!navigationState) {
     return null;
   }
   const route = navigationState.routes[navigationState.index];
-  const nextRouteNames = [...routeNames, route.routeName];
   // dive into nested navigators
   if (route.routes) {
-    return getActiveRouteName(route, nextRouteNames);
+    return getActiveRouteName(route, [...routeNames, route.routeName]);
   }
-  return { routeName: nextRouteNames.join(' > '), params: route.params };
+
+  // Handles routes like ContentItem -> ContentItem (the ContentItem route in the ContentItem navigator)
+  if (last(routeNames) === route.routeName) {
+    return { routeName: routeNames.join(' > '), params: route.params };
+  }
+  // Handles all other routes.
+  return {
+    routeName: [...routeNames, route.routeName].join(' > '),
+    params: route.params,
+  };
 }
 
 const onNavigationStateChange = (prevState, currentState) => {
@@ -25,7 +33,8 @@ const onNavigationStateChange = (prevState, currentState) => {
 
   if (prevScreen !== currentScreen || !isEqual(currentParams, prevParams)) {
     analytics.track(`Viewed Screen ${currentScreen}`);
-    analytics.screen(currentScreen);
+    // Not tracking for now.
+    // analytics.screen(currentScreen);
   }
 };
 
