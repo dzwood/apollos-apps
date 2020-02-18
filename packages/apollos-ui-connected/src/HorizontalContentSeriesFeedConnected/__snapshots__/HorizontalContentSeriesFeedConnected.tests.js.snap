@@ -32,7 +32,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
         "summary": "bla bla bla",
         "theme": null,
         "title": "God sees who you can be not who you are",
-        "videos": Array [],
       },
       Object {
         "__typename": "DevotionalContentItem",
@@ -55,7 +54,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
         "summary": "bla bla bla",
         "theme": null,
         "title": "Thank God for the friends who will tell it like it is",
-        "videos": Array [],
       },
       Object {
         "__typename": "DevotionalContentItem",
@@ -78,7 +76,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
         "summary": "bla bla bla",
         "theme": null,
         "title": "No sin is too bad",
-        "videos": Array [],
       },
       Object {
         "__typename": "DevotionalContentItem",
@@ -101,7 +98,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
         "summary": "bla bla bla",
         "theme": null,
         "title": "Change starts with a choice",
-        "videos": Array [],
       },
     ]
   }
@@ -215,7 +211,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
             }
           }
           summary="bla bla bla"
-          videos={Array []}
         >
           <View
             style={
@@ -412,7 +407,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
             }
           }
           summary="bla bla bla"
-          videos={Array []}
         >
           <View
             style={
@@ -609,7 +603,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
             }
           }
           summary="bla bla bla"
-          videos={Array []}
         >
           <View
             style={
@@ -806,7 +799,6 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
             }
           }
           summary="bla bla bla"
-          videos={Array []}
         >
           <View
             style={

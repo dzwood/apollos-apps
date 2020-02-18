@@ -1,11 +1,20 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import wait from 'waait';
+import {
+  IntrospectionFragmentMatcher,
+  InMemoryCache,
+} from 'apollo-cache-inmemory';
+import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
 
 import { Providers } from '../utils/testUtils';
 import GET_CONTENT_ITEM_CONTENT from './getContentItemContent';
 
 import ContentHTMLViewConnected from './ContentHTMLViewConnected';
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData,
+});
 
 describe('ContentHTMLViewConnected component', () => {
   it('renders ContentHTMLViewConnected', async () => {
@@ -25,7 +34,14 @@ describe('ContentHTMLViewConnected component', () => {
       },
     };
     const tree = renderer.create(
-      <Providers mocks={[mock]}>
+      <Providers
+        mocks={[mock]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <ContentHTMLViewConnected contentId={'1'} />
       </Providers>
     );

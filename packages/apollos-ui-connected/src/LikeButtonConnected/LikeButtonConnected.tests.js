@@ -1,10 +1,18 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import {
+  IntrospectionFragmentMatcher,
+  InMemoryCache,
+} from 'apollo-cache-inmemory';
+import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
 
-import { Providers } from '../utils/testUtils';
+import { Providers, renderWithApolloData } from '../utils/testUtils';
 import GET_LIKED_CONTENT_ITEM from './getLikedContentItem';
 
 import LikeButtonConnected from './LikeButtonConnected';
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData,
+});
 
 describe('LikeButtonConnected component', () => {
   it('renders Unliked LikeButtonConnected', async () => {
@@ -24,8 +32,15 @@ describe('LikeButtonConnected component', () => {
       },
     };
 
-    const tree = renderer.create(
-      <Providers mocks={[mock]}>
+    const tree = await renderWithApolloData(
+      <Providers
+        mocks={[mock]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <LikeButtonConnected itemId={'1'} />
       </Providers>
     );
@@ -48,8 +63,15 @@ describe('LikeButtonConnected component', () => {
       },
     };
 
-    const tree = renderer.create(
-      <Providers mocks={[mock]}>
+    const tree = await renderWithApolloData(
+      <Providers
+        mocks={[mock]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <LikeButtonConnected itemId={'1'} />
       </Providers>
     );

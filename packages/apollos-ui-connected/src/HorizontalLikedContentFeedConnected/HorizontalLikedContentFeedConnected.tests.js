@@ -1,9 +1,18 @@
 import React from 'react';
 import { GET_LIKED_CONTENT } from '@apollosproject/ui-connected';
+import {
+  IntrospectionFragmentMatcher,
+  InMemoryCache,
+} from 'apollo-cache-inmemory';
 
+import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
 import { Providers, renderWithApolloData } from '../utils/testUtils';
 
 import HorizontalLikedContentFeedConnected from './HorizontalLikedContentFeedConnected';
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData,
+});
 
 describe('HorizontalLikedContentFeedConnected', () => {
   it('renders a HorizontalLikedContentFeedConnected', async () => {
@@ -73,7 +82,14 @@ describe('HorizontalLikedContentFeedConnected', () => {
     };
     const navigation = { navigate: jest.fn(), getParam: jest.fn() };
     const tree = await renderWithApolloData(
-      <Providers mocks={[mock]}>
+      <Providers
+        mocks={[mock]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <HorizontalLikedContentFeedConnected navigation={navigation} />
       </Providers>
     );
@@ -100,7 +116,14 @@ describe('HorizontalLikedContentFeedConnected', () => {
     };
     const navigation = { navigate: jest.fn(), getParam: jest.fn() };
     const tree = await renderWithApolloData(
-      <Providers mocks={[mock]}>
+      <Providers
+        mocks={[mock]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <HorizontalLikedContentFeedConnected navigation={navigation} />
       </Providers>
     );

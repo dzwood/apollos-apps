@@ -1,10 +1,20 @@
 import React from 'react';
 import { GET_CONTENT_CARD } from '@apollosproject/ui-connected';
 
+import {
+  IntrospectionFragmentMatcher,
+  InMemoryCache,
+} from 'apollo-cache-inmemory';
+import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
+
 import { Providers, renderWithApolloData } from '../utils/testUtils';
 
 import GET_CONTENT_SERIES from './getContentSeries';
 import HorizontalContentSeriesFeedConnected from '.';
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData,
+});
 
 const mock = {
   request: {
@@ -210,7 +220,14 @@ const additionalMocks = mock.result.data.node.childContentItemsConnection.edges.
 describe('the HorizontalContentSeriesFeedConnected component', () => {
   it('should render', async () => {
     const tree = await renderWithApolloData(
-      <Providers mocks={[mock, ...additionalMocks]}>
+      <Providers
+        mocks={[mock, ...additionalMocks]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <HorizontalContentSeriesFeedConnected
           contentId={'ContentSeriesContentItem:123'}
           navigation={navigation}

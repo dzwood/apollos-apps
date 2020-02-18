@@ -1,6 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import wait from 'waait';
+import {
+  IntrospectionFragmentMatcher,
+  InMemoryCache,
+} from 'apollo-cache-inmemory';
+import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
 
 import { FeaturedCard } from '@apollosproject/ui-kit';
 
@@ -8,6 +13,10 @@ import { Providers } from '../utils/testUtils';
 import GET_CONTENT_CARD from './getContentCard';
 
 import ContentCardConnected from './ContentCardConnected';
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData,
+});
 
 describe('ContentCardConnected component', () => {
   it('renders ContentCardConnected', async () => {
@@ -60,7 +69,14 @@ describe('ContentCardConnected component', () => {
       },
     };
     const tree = renderer.create(
-      <Providers mocks={[mock]}>
+      <Providers
+        mocks={[mock]}
+        cache={
+          new InMemoryCache({
+            fragmentMatcher,
+          })
+        }
+      >
         <ContentCardConnected
           Component={FeaturedCard}
           contentId={'DevotionalContentItem:d395278cd4b68e074ca4e595c8feab6d'}

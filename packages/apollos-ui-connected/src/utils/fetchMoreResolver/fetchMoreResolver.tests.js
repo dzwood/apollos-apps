@@ -24,16 +24,16 @@ describe('the fetchMoreResolver util', () => {
       },
     },
   };
-  test('no endCursor', () => {
+  test('no endCursor', async () => {
     expect(
-      fetchMoreResolver({
+      await fetchMoreResolver({
         ...args,
         data: { userFeed: { edges: [], pageInfo: {} } },
       })()
     ).toBeUndefined();
   });
-  test('combines data', () => {
-    fetchMoreResolver({ ...args })();
+  test('combines data', async () => {
+    await fetchMoreResolver({ ...args })();
     const previousResult = args.data;
     const fetchMoreResult = {
       userFeed: {
