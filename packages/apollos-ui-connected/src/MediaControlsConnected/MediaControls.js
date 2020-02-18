@@ -61,7 +61,7 @@ const MediaControls = ({
 MediaControls.propTypes = {
   coverImageSources: PropTypes.arrayOf(PropTypes.shape({})),
   error: PropTypes.string,
-  liveStreamSource: PropTypes.string,
+  liveStreamSource: PropTypes.shape({}),
   loading: PropTypes.bool,
   parentChannelName: PropTypes.string,
   title: PropTypes.string,
