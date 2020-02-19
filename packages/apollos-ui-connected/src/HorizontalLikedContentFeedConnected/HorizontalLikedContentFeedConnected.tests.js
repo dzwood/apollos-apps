@@ -35,7 +35,16 @@ describe('HorizontalLikedContentFeedConnected', () => {
                 node: {
                   __typename: 'UniversalContentItem',
                   id: 'UniversalContentItem:d57994350b9d213866b24dea3a97433d',
-                  coverImage: null,
+                  coverImage: {
+                    sources: [
+                      {
+                        uri:
+                          'https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e',
+                        __typename: 'ImageMediaSource',
+                      },
+                    ],
+                    __typename: 'ImageMedia',
+                  },
                   parentChannel: {
                     id: 'ContentChannel:4f68015ba18662a7409d1219a4ce013e',
                     name: 'Editorial',
@@ -57,7 +66,16 @@ describe('HorizontalLikedContentFeedConnected', () => {
                 node: {
                   __typename: 'UniversalContentItem',
                   id: 'UniversalContentItem:b36e55d803443431e96bb4b5068147ec',
-                  coverImage: null,
+                  coverImage: {
+                    sources: [
+                      {
+                        uri:
+                          'https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e',
+                        __typename: 'ImageMediaSource',
+                      },
+                    ],
+                    __typename: 'ImageMedia',
+                  },
                   parentChannel: {
                     id: 'ContentChannel:4f68015ba18662a7409d1219a4ce013e',
                     name: 'Editorial',

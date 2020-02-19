@@ -103,7 +103,15 @@ exports[`HorizontalLikedContentFeedConnected renders a HorizontalLikedContentFee
       Array [
         Object {
           "__typename": "UniversalContentItem",
-          "coverImage": null,
+          "coverImage": Object {
+            "__typename": "ImageMedia",
+            "sources": Array [
+              Object {
+                "__typename": "ImageMediaSource",
+                "uri": "https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e",
+              },
+            ],
+          },
           "hyphenatedTitle": "Mea Animal Aperiam Ornatus Eu",
           "id": "UniversalContentItem:d57994350b9d213866b24dea3a97433d",
           "isLiked": false,
@@ -113,7 +121,15 @@ exports[`HorizontalLikedContentFeedConnected renders a HorizontalLikedContentFee
         },
         Object {
           "__typename": "UniversalContentItem",
-          "coverImage": null,
+          "coverImage": Object {
+            "__typename": "ImageMedia",
+            "sources": Array [
+              Object {
+                "__typename": "ImageMediaSource",
+                "uri": "https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e",
+              },
+            ],
+          },
           "hyphenatedTitle": "Probo Senserit Id Mea, Ut Sed Malis Postea,",
           "id": "UniversalContentItem:b36e55d803443431e96bb4b5068147ec",
           "isLiked": false,
