@@ -47,7 +47,7 @@ describe('HorizontalLikedContentFeed', () => {
         },
       ],
       name: 'Liked Content',
-      navigation: jest.fn(),
+      navigation: { navigate: jest.fn() },
       isLoading: false,
     };
 
@@ -98,7 +98,7 @@ describe('HorizontalLikedContentFeed', () => {
         },
       ],
       name: 'Liked Content',
-      navigation: jest.fn(),
+      navigation: { navigate: jest.fn() },
       isLoading: true,
     };
 
