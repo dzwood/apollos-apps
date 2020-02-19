@@ -31,6 +31,14 @@ describe('ContentCardConnected component', () => {
         data: {
           node: {
             id: 'DevotionalContentItem:d395278cd4b68e074ca4e595c8feab6d',
+            title: 'God sees who you can be not who you are',
+            parentChannel: {
+              id: 'ContentChannel:559b23fd0aa90e81b1c023e72e230fa1',
+              name: 'Devotional',
+              iconName: 'text',
+              __typename: 'ContentChannel',
+            },
+            hyphenatedTitle: 'Fake-hyphenated-title',
             node: {
               id: 'DevotionalContentItem:d395278cd4b68e074ca4e595c8feab6d',
               coverImage: {
@@ -64,7 +72,16 @@ describe('ContentCardConnected component', () => {
             summary: 'bla bla bla',
             isLiked: false,
             theme: null,
-            coverImage: null,
+            coverImage: {
+              sources: [
+                {
+                  uri:
+                    'https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e',
+                  __typename: 'ImageMediaSource',
+                },
+              ],
+              __typename: 'ImageMedia',
+            },
             __typename: 'DevotionalContentItem',
           },
         },
