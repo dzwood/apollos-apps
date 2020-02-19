@@ -3,7 +3,7 @@
 exports[`ContentCardConnected component renders ContentCardConnected 1`] = `
 <View
   cardColor="#00676D"
-  isLoading={true}
+  isLoading={false}
   style={
     Object {
       "backgroundColor": "#00676D",
@@ -38,41 +38,19 @@ exports[`ContentCardConnected component renders ContentCardConnected 1`] = `
       }
     >
       <View
-        animate={null}
-        customAnimate={null}
-        onReady={false}
         style={
           Object {
             "aspectRatio": 1,
             "backgroundColor": "#A5A5A5",
-            "resizeMode": "cover",
             "width": "100%",
           }
         }
-      >
-        <RCTImageView
-          maxAspectRatio={1}
-          minAspectRatio={1}
-          onLoad={[Function]}
-          resizeMode="cover"
-          source={Array []}
-          style={
-            Object {
-              "aspectRatio": 1,
-              "backgroundColor": "#A5A5A5",
-              "opacity": 0,
-              "overflow": "hidden",
-              "resizeMode": "cover",
-              "width": "100%",
-            }
-          }
-        />
-      </View>
+      />
       <BVLinearGradient
         colors={
           Array [
-            1725684697,
-            4292598745,
+            1711302509,
+            4278216557,
           ]
         }
         endPoint={
@@ -87,7 +65,7 @@ exports[`ContentCardConnected component renders ContentCardConnected 1`] = `
             0.8,
           ]
         }
-        overlayColor="#DBDBD9"
+        overlayColor="#00676D"
         overlayType="featured"
         startPoint={
           Object {
@@ -135,15 +113,14 @@ exports[`ContentCardConnected component renders ContentCardConnected 1`] = `
             }
           }
         >
-          <View
+          <Text
+            numberOfLines={4}
             style={
               Object {
-                "alignSelf": "stretch",
-                "backgroundColor": "#A5A5A5",
-                "borderRadius": 16,
-                "height": 36,
-                "marginVertical": 2.6999999999999993,
-                "width": "100%",
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 36,
+                "lineHeight": 41.4,
               }
             }
           />

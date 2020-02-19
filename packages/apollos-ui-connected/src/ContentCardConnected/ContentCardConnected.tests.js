@@ -30,6 +30,7 @@ describe('ContentCardConnected component', () => {
       result: {
         data: {
           node: {
+            id: 'DevotionalContentItem:d395278cd4b68e074ca4e595c8feab6d',
             node: {
               id: 'DevotionalContentItem:d395278cd4b68e074ca4e595c8feab6d',
               coverImage: {
@@ -64,6 +65,7 @@ describe('ContentCardConnected component', () => {
             isLiked: false,
             theme: null,
             coverImage: null,
+            __typename: 'DevotionalContentItem',
           },
         },
       },
