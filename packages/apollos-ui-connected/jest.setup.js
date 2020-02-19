@@ -69,6 +69,9 @@ jest.mock('@apollosproject/ui-media-player', () => ({
   MediaPlayerSpacer: ({ children }) => children,
   MediaPlayer: () => 'MediaPlayer',
   MediaPlayerProvider: ({ children }) => children,
-  playVideoMutation: 'mutation { playVideo }',
+  PLAY_VIDEO: {
+    kind: 'Document',
+    definitions: [{ kind: 'OperationDefinition', operation: 'mutation' }],
+  },
   withTabBarMediaSpacer: () => ({ children }) => children,
 }));
