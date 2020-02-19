@@ -27,6 +27,7 @@ const shareMock = {
         sharing: {
           url: 'https://apolloschurchapp.newspring.cc',
           title: 'Test Title ',
+          message: 'test message',
           __typename: 'SharableContentItem',
         },
       },
