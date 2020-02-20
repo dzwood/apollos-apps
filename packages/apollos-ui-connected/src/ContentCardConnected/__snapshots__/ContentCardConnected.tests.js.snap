@@ -42,9 +42,20 @@ exports[`ContentCardConnected component renders ContentCardConnected 1`] = `
         minAspectRatio={1}
         onLoad={[Function]}
         resizeMode="cover"
-        source={Array []}
+        source={
+          Array [
+            Object {
+              "__typename": "ImageMediaSource",
+              "cache": "force-cache",
+              "height": 600,
+              "uri": "https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e",
+              "width": 500,
+            },
+          ]
+        }
         style={
           Object {
+            "aspectRatio": 1,
             "backgroundColor": "#A5A5A5",
             "opacity": 0,
             "overflow": "hidden",

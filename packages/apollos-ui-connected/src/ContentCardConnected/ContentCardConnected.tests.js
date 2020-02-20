@@ -1,15 +1,14 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import wait from 'waait';
 import {
   IntrospectionFragmentMatcher,
   InMemoryCache,
 } from 'apollo-cache-inmemory';
+
 import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
 
 import { FeaturedCard } from '@apollosproject/ui-kit';
 
-import { Providers } from '../utils/testUtils';
+import { Providers, renderWithApolloData } from '../utils/testUtils';
 import GET_CONTENT_CARD from './getContentCard';
 
 import ContentCardConnected from './ContentCardConnected';
@@ -87,7 +86,7 @@ describe('ContentCardConnected component', () => {
         },
       },
     };
-    const tree = renderer.create(
+    const tree = await renderWithApolloData(
       <Providers
         mocks={[mock]}
         cache={
@@ -103,7 +102,6 @@ describe('ContentCardConnected component', () => {
         />
       </Providers>
     );
-    await wait(0); // wait for response from graphql
     expect(tree).toMatchSnapshot();
   });
 });
