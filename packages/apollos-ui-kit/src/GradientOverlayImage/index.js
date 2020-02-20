@@ -81,6 +81,12 @@ const source = PropTypes.oneOfType([
       height: PropTypes.number,
     })
   ),
+  PropTypes.shape({
+    uri: PropTypes.string,
+    label: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+  }),
   PropTypes.string,
 ]);
 
