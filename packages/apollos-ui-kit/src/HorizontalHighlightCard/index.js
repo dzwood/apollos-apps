@@ -149,12 +149,37 @@ const HorizontalHighlightCard = withIsLoading(
   )
 );
 
-HorizontalHighlightCard.propTypes = {
+const loadingPropsTypes = {
+  coverImage: PropTypes.oneOfType([
+    PropTypes.arrayOf(ImageSourceType),
+    ImageSourceType,
+  ]),
+  title: PropTypes.string,
+};
+
+const completedPropTypes = {
   coverImage: PropTypes.oneOfType([
     PropTypes.arrayOf(ImageSourceType),
     ImageSourceType,
   ]).isRequired,
   title: PropTypes.string.isRequired,
+};
+
+HorizontalHighlightCard.propTypes = {
+  coverImage: (props, propName, componentName) =>
+    PropTypes.checkPropTypes(
+      props.isLoading ? loadingPropsTypes : completedPropTypes,
+      props,
+      propName,
+      componentName
+    ),
+  title: (props, propName, componentName) =>
+    PropTypes.checkPropTypes(
+      props.isLoading ? loadingPropsTypes : completedPropTypes,
+      props,
+      propName,
+      componentName
+    ),
   actionIcon: PropTypes.string,
   hasAction: PropTypes.bool,
   disabled: PropTypes.bool, // "Disabled state". Alternatively use this to highlight/differentiate the "active" card in a list.

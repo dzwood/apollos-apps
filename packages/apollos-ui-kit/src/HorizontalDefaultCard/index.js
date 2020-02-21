@@ -70,14 +70,31 @@ const HorizontalDefaultCard = withIsLoading(
   )
 );
 
-HorizontalDefaultCard.propTypes = {
+const loadingPropsTypes = {
+  coverImage: PropTypes.oneOfType([
+    PropTypes.arrayOf(ImageSourceType),
+    ImageSourceType,
+  ]),
+};
+
+const completedPropTypes = {
   coverImage: PropTypes.oneOfType([
     PropTypes.arrayOf(ImageSourceType),
     ImageSourceType,
   ]).isRequired,
+};
+
+HorizontalDefaultCard.propTypes = {
+  coverImage: (props, propName, componentName) =>
+    PropTypes.checkPropTypes(
+      props.isLoading ? loadingPropsTypes : completedPropTypes,
+      props,
+      propName,
+      componentName
+    ),
+  title: PropTypes.string,
   isLiked: PropTypes.bool,
   summary: PropTypes.string,
-  title: PropTypes.string,
 };
 
 HorizontalDefaultCard.displayName = 'HorizontalDefaultCard';
