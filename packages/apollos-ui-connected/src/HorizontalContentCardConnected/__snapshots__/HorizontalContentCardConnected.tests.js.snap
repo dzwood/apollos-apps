@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HorizontalContentCardConnected component renders HorizontalContentCardConnected 1`] = `
+<View
+  __typename="DevotionalContentItem"
+  id="DevotionalContentItem:d395278cd4b68e074ca4e595c8feab6d"
+  inHorizontalList={true}
+  isLive={false}
+  isLoading={false}
+  parentChannel={
+    Object {
+      "__typename": "ContentChannel",
+      "id": "ContentChannel:559b23fd0aa90e81b1c023e72e230fa1",
+      "name": "Devotional",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "#303030",
+      "borderRadius": 16,
+      "height": 240,
+      "margin": 8,
+      "shadowColor": "rgba(165, 165, 165, 0.6)",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 1,
+      "shadowRadius": 6,
+      "width": 240,
+    }
+  }
+  summary="bla bla bla"
+>
+  <View
+    style={
+      Object {
+        "borderRadius": 16,
+        "overflow": "hidden",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#A5A5A5",
+          "overflow": "hidden",
+          "width": "100%",
+        }
+      }
+    >
+      <RCTImageView
+        customTheme={null}
+        maxAspectRatio={1}
+        minAspectRatio={1}
+        onLoad={[Function]}
+        resizeMode="cover"
+        source={
+          Array [
+            Object {
+              "__typename": "ImageMediaSource",
+              "cache": "force-cache",
+              "height": 600,
+              "uri": "https://apollosrock.newspring.cc/GetImage.ashx?guid=993efb47-47ec-4dec-a3d3-47bcacfbd58e",
+              "width": 500,
+            },
+          ]
+        }
+        style={
+          Object {
+            "aspectRatio": 1,
+            "backgroundColor": "#A5A5A5",
+            "opacity": 0,
+            "overflow": "hidden",
+            "resizeMode": "cover",
+            "width": "100%",
+          }
+        }
+      />
+      <BVLinearGradient
+        colors={
+          Array [
+            1711276032,
+            2147483648,
+          ]
+        }
+        endPoint={
+          Object {
+            "x": 0,
+            "y": 1,
+          }
+        }
+        locations={
+          Array [
+            0,
+            1,
+          ]
+        }
+        overlayColor="#000000"
+        overlayType="gradient-bottom"
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
+          }
+        }
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "bottom": 0,
+          "paddingBottom": 24,
+          "paddingHorizontal": 16,
+          "paddingVertical": 16,
+          "position": "absolute",
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        bordered={false}
+        disabled={false}
+        pill={false}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": Object {
+              "color": Array [
+                255,
+                255,
+                255,
+              ],
+              "model": "rgb",
+              "valpha": 0.4,
+            },
+            "borderColor": Object {
+              "color": Array [
+                255,
+                255,
+                255,
+              ],
+              "model": "rgb",
+              "valpha": 0.4,
+            },
+            "borderRadius": 16,
+            "borderWidth": 0,
+            "elevation": 2,
+            "flexDirection": "row",
+            "height": 32,
+            "justifyContent": "center",
+            "opacity": 1,
+            "overflow": "hidden",
+            "paddingHorizontal": 12,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "alignItems": "center",
+              "color": "#FFFFFF",
+              "fontFamily": "InterUI-Bold",
+              "fontSize": 12,
+              "justifyContent": "center",
+              "lineHeight": 18,
+              "paddingLeft": null,
+              "textAlign": "center",
+            }
+          }
+        >
+          Devotional
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flexDirection": "row",
+            "paddingTop": 16,
+          }
+        }
+      >
+        <View
+          hasAction={false}
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        >
+          <Text
+            numberOfLines={4}
+            style={
+              Object {
+                "color": "#F8F7F4",
+                "fontFamily": "InterUI-Black",
+                "fontSize": 24,
+                "lineHeight": 27.6,
+              }
+            }
+          >
+            Fake-hyphenated-title
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
