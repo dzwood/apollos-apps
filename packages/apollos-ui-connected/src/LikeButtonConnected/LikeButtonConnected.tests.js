@@ -40,6 +40,7 @@ describe('LikeButtonConnected component', () => {
             fragmentMatcher,
           })
         }
+        resolvers={{}}
       >
         <LikeButtonConnected itemId={'1'} />
       </Providers>
@@ -71,6 +72,7 @@ describe('LikeButtonConnected component', () => {
             fragmentMatcher,
           })
         }
+        resolvers={{}}
       >
         <LikeButtonConnected itemId={'1'} />
       </Providers>
