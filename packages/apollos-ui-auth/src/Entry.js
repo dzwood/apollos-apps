@@ -6,11 +6,11 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
 } from 'react-native';
 import { get } from 'lodash';
 import {
   BackgroundView,
+  Button,
   PaddedView,
   TextInput,
   styled,
@@ -21,9 +21,9 @@ import {
 import {
   FlexedSafeAreaView,
   LegalText,
-  NextButton,
   PromptText,
   TabButton,
+  TabButtonText,
   TabButtonWrapper,
   TabCard,
   TabContainer,
@@ -68,7 +68,7 @@ const Entry = ({
     >
       <BackgroundComponent />
       <FlexedSafeAreaView>
-        <ScrollView>
+        <ScrollView keyboardShouldPersistTaps="always">
           <PaddedView>
             <TitleText>{authTitleText}</TitleText>
             <PromptText padded>{promptText}</PromptText>
@@ -76,8 +76,8 @@ const Entry = ({
               <TabContainer alternateLogin={alternateLogin}>
                 <TabButtonWrapper>
                   <Touchable>
-                    <TabButton alternateLogin={alternateLogin} isActive>
-                      <Text>{tabTitle}</Text>
+                    <TabButton isActive>
+                      <TabButtonText isActive>{tabTitle}</TabButtonText>
                     </TabButton>
                   </Touchable>
                 </TabButtonWrapper>
@@ -85,8 +85,8 @@ const Entry = ({
                 {onPressAlternateLogin ? (
                   <TabButtonWrapper>
                     <Touchable onPress={onPressAlternateLogin}>
-                      <TabButton alternateLogin={alternateLogin}>
-                        <Text>{alternateLoginText}</Text>
+                      <TabButton>
+                        <TabButtonText>{alternateLoginText}</TabButtonText>
                       </TabButton>
                     </Touchable>
                   </TabButtonWrapper>
@@ -116,11 +116,13 @@ const Entry = ({
 
         {onPressNext ? (
           <PaddedView>
-            <NextButton
-              title={'Next'}
+            <Button
               onPress={onPressNext}
               disabled={disabled}
               loading={isLoading}
+              title={'Next'}
+              type={'primary'}
+              pill={false}
             />
           </PaddedView>
         ) : null}

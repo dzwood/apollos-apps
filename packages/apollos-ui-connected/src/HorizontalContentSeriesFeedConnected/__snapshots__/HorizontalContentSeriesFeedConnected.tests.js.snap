@@ -18,7 +18,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
           "sources": Array [
             Object {
               "__typename": "ImageMediaSource",
-              "uri": "https://picsum.photos/600/400/?random",
+              "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
             },
           ],
         },
@@ -41,7 +41,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
           "sources": Array [
             Object {
               "__typename": "ImageMediaSource",
-              "uri": "https://picsum.photos/600/400/?random",
+              "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
             },
           ],
         },
@@ -64,7 +64,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
           "sources": Array [
             Object {
               "__typename": "ImageMediaSource",
-              "uri": "https://picsum.photos/600/400/?random",
+              "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
             },
           ],
         },
@@ -87,7 +87,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
           "sources": Array [
             Object {
               "__typename": "ImageMediaSource",
-              "uri": "https://picsum.photos/600/400/?random",
+              "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
             },
           ],
         },
@@ -234,20 +234,21 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                 }
               }
             >
-              <Image
+              <RCTImageView
                 customTheme={null}
                 disabled={false}
                 maxAspectRatio={1}
                 minAspectRatio={1}
                 onLoad={[Function]}
+                resizeMode="cover"
                 source={
                   Array [
                     Object {
                       "__typename": "ImageMediaSource",
                       "cache": "force-cache",
-                      "height": 240,
-                      "uri": "https://picsum.photos/600/400/?random",
-                      "width": 320,
+                      "height": 600,
+                      "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
+                      "width": 500,
                     },
                   ]
                 }
@@ -256,6 +257,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                     "aspectRatio": 1,
                     "backgroundColor": "#A5A5A5",
                     "opacity": 0,
+                    "overflow": "hidden",
                     "resizeMode": "cover",
                     "width": "100%",
                   }
@@ -429,20 +431,21 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                 }
               }
             >
-              <Image
+              <RCTImageView
                 customTheme={null}
                 disabled={false}
                 maxAspectRatio={1}
                 minAspectRatio={1}
                 onLoad={[Function]}
+                resizeMode="cover"
                 source={
                   Array [
                     Object {
                       "__typename": "ImageMediaSource",
                       "cache": "force-cache",
-                      "height": 240,
-                      "uri": "https://picsum.photos/600/400/?random",
-                      "width": 320,
+                      "height": 600,
+                      "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
+                      "width": 500,
                     },
                   ]
                 }
@@ -451,6 +454,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                     "aspectRatio": 1,
                     "backgroundColor": "#A5A5A5",
                     "opacity": 0,
+                    "overflow": "hidden",
                     "resizeMode": "cover",
                     "width": "100%",
                   }
@@ -624,20 +628,21 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                 }
               }
             >
-              <Image
+              <RCTImageView
                 customTheme={null}
                 disabled={false}
                 maxAspectRatio={1}
                 minAspectRatio={1}
                 onLoad={[Function]}
+                resizeMode="cover"
                 source={
                   Array [
                     Object {
                       "__typename": "ImageMediaSource",
                       "cache": "force-cache",
-                      "height": 240,
-                      "uri": "https://picsum.photos/600/400/?random",
-                      "width": 320,
+                      "height": 600,
+                      "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
+                      "width": 500,
                     },
                   ]
                 }
@@ -646,6 +651,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                     "aspectRatio": 1,
                     "backgroundColor": "#A5A5A5",
                     "opacity": 0,
+                    "overflow": "hidden",
                     "resizeMode": "cover",
                     "width": "100%",
                   }
@@ -819,20 +825,21 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                 }
               }
             >
-              <Image
+              <RCTImageView
                 customTheme={null}
                 disabled={false}
                 maxAspectRatio={1}
                 minAspectRatio={1}
                 onLoad={[Function]}
+                resizeMode="cover"
                 source={
                   Array [
                     Object {
                       "__typename": "ImageMediaSource",
                       "cache": "force-cache",
-                      "height": 240,
-                      "uri": "https://picsum.photos/600/400/?random",
-                      "width": 320,
+                      "height": 600,
+                      "uri": "https://res.cloudinary.com/apollos/image/fetch/c_limit,f_auto,w_1600/https://apollosrock.newspring.cc/GetImage.ashx%3Fguid%3D31af1a61-360c-4b1e-8e62-45517c06a9a2",
+                      "width": 500,
                     },
                   ]
                 }
@@ -841,6 +848,7 @@ exports[`the HorizontalContentSeriesFeedConnected component should render 1`] = 
                     "aspectRatio": 1,
                     "backgroundColor": "#A5A5A5",
                     "opacity": 0,
+                    "overflow": "hidden",
                     "resizeMode": "cover",
                     "width": "100%",
                   }

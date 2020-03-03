@@ -60,7 +60,9 @@ exports[`The Auth Entry component should render 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -127,7 +129,7 @@ exports[`The Auth Entry component should render 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -149,7 +151,6 @@ exports[`The Auth Entry component should render 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -157,10 +158,7 @@ exports[`The Auth Entry component should render 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -168,7 +166,19 @@ exports[`The Auth Entry component should render 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -442,7 +452,9 @@ exports[`The Auth Entry component should render a custom policyInfo text 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -509,7 +521,7 @@ exports[`The Auth Entry component should render a custom policyInfo text 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -531,7 +543,6 @@ exports[`The Auth Entry component should render a custom policyInfo text 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -539,10 +550,7 @@ exports[`The Auth Entry component should render a custom policyInfo text 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -550,7 +558,19 @@ exports[`The Auth Entry component should render a custom policyInfo text 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -826,7 +846,9 @@ exports[`The Auth Entry component should render as disabled 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -893,7 +915,7 @@ exports[`The Auth Entry component should render as disabled 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -915,7 +937,6 @@ exports[`The Auth Entry component should render as disabled 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -923,10 +944,7 @@ exports[`The Auth Entry component should render as disabled 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -934,7 +952,19 @@ exports[`The Auth Entry component should render as disabled 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -1181,7 +1211,6 @@ exports[`The Auth Entry component should render as disabled 1`] = `
               "borderColor": "#00676D",
               "borderRadius": 16,
               "borderWidth": 2,
-              "color": "#F8F7F4",
               "elevation": 2,
               "flexDirection": "row",
               "height": 48,
@@ -1195,8 +1224,7 @@ exports[`The Auth Entry component should render as disabled 1`] = `
           <Text
             style={
               Object {
-                "backgroundColor": "#00676D",
-                "color": "#F8F7F4",
+                "color": "#FFFFFF",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -1272,7 +1300,9 @@ exports[`The Auth Entry component should render in a loading state 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -1339,7 +1369,7 @@ exports[`The Auth Entry component should render in a loading state 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -1361,7 +1391,6 @@ exports[`The Auth Entry component should render in a loading state 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -1369,10 +1398,7 @@ exports[`The Auth Entry component should render in a loading state 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -1380,7 +1406,19 @@ exports[`The Auth Entry component should render in a loading state 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -1627,7 +1665,6 @@ exports[`The Auth Entry component should render in a loading state 1`] = `
               "borderColor": "#00676D",
               "borderRadius": 16,
               "borderWidth": 2,
-              "color": "#F8F7F4",
               "elevation": 2,
               "flexDirection": "row",
               "height": 48,
@@ -1711,7 +1748,9 @@ exports[`The Auth Entry component should render in a next button 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -1778,7 +1817,7 @@ exports[`The Auth Entry component should render in a next button 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -1800,7 +1839,6 @@ exports[`The Auth Entry component should render in a next button 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -1808,10 +1846,7 @@ exports[`The Auth Entry component should render in a next button 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -1819,7 +1854,19 @@ exports[`The Auth Entry component should render in a next button 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -2066,7 +2113,6 @@ exports[`The Auth Entry component should render in a next button 1`] = `
               "borderColor": "#00676D",
               "borderRadius": 16,
               "borderWidth": 2,
-              "color": "#F8F7F4",
               "elevation": 2,
               "flexDirection": "row",
               "height": 48,
@@ -2080,8 +2126,7 @@ exports[`The Auth Entry component should render in a next button 1`] = `
           <Text
             style={
               Object {
-                "backgroundColor": "#00676D",
-                "color": "#F8F7F4",
+                "color": "#FFFFFF",
                 "fontFamily": "InterUI-Bold",
                 "fontSize": 16,
                 "lineHeight": 24,
@@ -2157,7 +2202,9 @@ exports[`The Auth Entry component should render in an error state 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -2224,7 +2271,7 @@ exports[`The Auth Entry component should render in an error state 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -2246,7 +2293,6 @@ exports[`The Auth Entry component should render in an error state 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -2254,10 +2300,7 @@ exports[`The Auth Entry component should render in an error state 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -2265,7 +2308,19 @@ exports[`The Auth Entry component should render in an error state 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -2539,7 +2594,9 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -2606,7 +2663,7 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -2628,7 +2685,6 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
                     }
                   >
                     <View
-                      alternateLogin={true}
                       isActive={true}
                       style={
                         Object {
@@ -2636,10 +2692,7 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -2647,14 +2700,26 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -2676,17 +2741,13 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
                     }
                   >
                     <View
-                      alternateLogin={true}
                       style={
                         Object {
                           "alignItems": "center",
                           "backgroundColor": "#F8F7F4",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#A5A5A5",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -2694,7 +2755,18 @@ exports[`The Auth Entry component should render with a custom alternateLoginText
                         }
                       }
                     >
-                      <Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#A5A5A5",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      >
                         Custom Text to direct people to an alternate login flow
                       </Text>
                     </View>
@@ -2970,7 +3042,9 @@ exports[`The Auth Entry component should render with a custom authTitleText 1`] 
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -3037,7 +3111,7 @@ exports[`The Auth Entry component should render with a custom authTitleText 1`] 
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -3059,7 +3133,6 @@ exports[`The Auth Entry component should render with a custom authTitleText 1`] 
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -3067,10 +3140,7 @@ exports[`The Auth Entry component should render with a custom authTitleText 1`] 
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -3078,7 +3148,19 @@ exports[`The Auth Entry component should render with a custom authTitleText 1`] 
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -3352,7 +3434,9 @@ exports[`The Auth Entry component should render with a custom promptText 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -3419,7 +3503,7 @@ exports[`The Auth Entry component should render with a custom promptText 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -3441,7 +3525,6 @@ exports[`The Auth Entry component should render with a custom promptText 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -3449,10 +3532,7 @@ exports[`The Auth Entry component should render with a custom promptText 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -3460,7 +3540,19 @@ exports[`The Auth Entry component should render with a custom promptText 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -3734,7 +3826,9 @@ exports[`The Auth Entry component should render with a custom tabTitle 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -3801,7 +3895,7 @@ exports[`The Auth Entry component should render with a custom tabTitle 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -3823,7 +3917,6 @@ exports[`The Auth Entry component should render with a custom tabTitle 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -3831,10 +3924,7 @@ exports[`The Auth Entry component should render with a custom tabTitle 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -3842,7 +3932,19 @@ exports[`The Auth Entry component should render with a custom tabTitle 1`] = `
                         }
                       }
                     >
-                      <Text>
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      >
                         Custom Tab Title
                       </Text>
                     </View>
@@ -4118,7 +4220,9 @@ exports[`The Auth Entry component should render with a inputAutoComplete as tel 
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -4185,7 +4289,7 @@ exports[`The Auth Entry component should render with a inputAutoComplete as tel 
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -4207,7 +4311,6 @@ exports[`The Auth Entry component should render with a inputAutoComplete as tel 
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -4215,10 +4318,7 @@ exports[`The Auth Entry component should render with a inputAutoComplete as tel 
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -4226,7 +4326,19 @@ exports[`The Auth Entry component should render with a inputAutoComplete as tel 
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -4502,7 +4614,9 @@ exports[`The Auth Entry component should render with a inputLabel Phone Number 1
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -4569,7 +4683,7 @@ exports[`The Auth Entry component should render with a inputLabel Phone Number 1
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -4591,7 +4705,6 @@ exports[`The Auth Entry component should render with a inputLabel Phone Number 1
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -4599,10 +4712,7 @@ exports[`The Auth Entry component should render with a inputLabel Phone Number 1
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -4610,7 +4720,19 @@ exports[`The Auth Entry component should render with a inputLabel Phone Number 1
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -4886,7 +5008,9 @@ exports[`The Auth Entry component should render with a inputType phone 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -4953,7 +5077,7 @@ exports[`The Auth Entry component should render with a inputType phone 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -4975,7 +5099,6 @@ exports[`The Auth Entry component should render with a inputType phone 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -4983,10 +5106,7 @@ exports[`The Auth Entry component should render with a inputType phone 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -4994,7 +5114,19 @@ exports[`The Auth Entry component should render with a inputType phone 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -5270,7 +5402,9 @@ exports[`The Auth Entry component should render with a value 1`] = `
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -5337,7 +5471,7 @@ exports[`The Auth Entry component should render with a value 1`] = `
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -5359,7 +5493,6 @@ exports[`The Auth Entry component should render with a value 1`] = `
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -5367,10 +5500,7 @@ exports[`The Auth Entry component should render with a value 1`] = `
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -5378,7 +5508,19 @@ exports[`The Auth Entry component should render with a value 1`] = `
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -5652,7 +5794,9 @@ exports[`The Auth Entry component should render with an alternate login option w
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -5719,7 +5863,7 @@ exports[`The Auth Entry component should render with an alternate login option w
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -5741,7 +5885,6 @@ exports[`The Auth Entry component should render with an alternate login option w
                     }
                   >
                     <View
-                      alternateLogin={false}
                       isActive={true}
                       style={
                         Object {
@@ -5749,10 +5892,7 @@ exports[`The Auth Entry component should render with an alternate login option w
                           "backgroundColor": "#FFFFFF",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#303030",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -5760,14 +5900,26 @@ exports[`The Auth Entry component should render with an alternate login option w
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        isActive={true}
+                        style={
+                          Object {
+                            "color": "#303030",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -5789,17 +5941,13 @@ exports[`The Auth Entry component should render with an alternate login option w
                     }
                   >
                     <View
-                      alternateLogin={false}
                       style={
                         Object {
                           "alignItems": "center",
                           "backgroundColor": "#F8F7F4",
                           "borderRadius": 0,
                           "borderWidth": 0,
-                          "color": "#A5A5A5",
                           "flexDirection": "row",
-                          "fontSize": 12,
-                          "fontWeight": "normal",
                           "height": 48,
                           "justifyContent": "center",
                           "overflow": "hidden",
@@ -5807,7 +5955,18 @@ exports[`The Auth Entry component should render with an alternate login option w
                         }
                       }
                     >
-                      <Text />
+                      <Text
+                        style={
+                          Object {
+                            "color": "#A5A5A5",
+                            "fontFamily": "System",
+                            "fontSize": 14,
+                            "fontStyle": null,
+                            "fontWeight": null,
+                            "lineHeight": 21,
+                          }
+                        }
+                      />
                     </View>
                   </View>
                 </View>
@@ -6081,7 +6240,9 @@ exports[`The Auth Entry component should render with keyboard vertical offset fo
       }
     }
   >
-    <RCTScrollView>
+    <RCTScrollView
+      keyboardShouldPersistTaps="always"
+    >
       <View>
         <View
           style={
@@ -6148,7 +6309,7 @@ exports[`The Auth Entry component should render with keyboard vertical offset fo
                 <View
                   style={
                     Object {
-                      "width": "50%",
+                      "flex": 1,
                     }
                   }
                 >
@@ -6179,7 +6340,6 @@ exports[`The Auth Entry component should render with keyboard vertical offset fo
                       }
                     >
                       <View
-                        alternateLogin={false}
                         isActive={true}
                         style={
                           Object {
@@ -6187,10 +6347,7 @@ exports[`The Auth Entry component should render with keyboard vertical offset fo
                             "backgroundColor": "#FFFFFF",
                             "borderRadius": 0,
                             "borderWidth": 0,
-                            "color": "#303030",
                             "flexDirection": "row",
-                            "fontSize": 12,
-                            "fontWeight": "normal",
                             "height": 48,
                             "justifyContent": "center",
                             "overflow": "hidden",
@@ -6198,7 +6355,19 @@ exports[`The Auth Entry component should render with keyboard vertical offset fo
                           }
                         }
                       >
-                        <Text />
+                        <Text
+                          isActive={true}
+                          style={
+                            Object {
+                              "color": "#303030",
+                              "fontFamily": "System",
+                              "fontSize": 14,
+                              "fontStyle": null,
+                              "fontWeight": null,
+                              "lineHeight": 21,
+                            }
+                          }
+                        />
                       </View>
                     </View>
                   </View>

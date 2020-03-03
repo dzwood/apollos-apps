@@ -1,5 +1,13 @@
 import React from 'react';
-import { Platform, View } from 'react-native';
+import {
+  Platform,
+  View,
+  KeyboardAvoidingView,
+  StatusBar,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+import PropTypes from 'prop-types';
 import { compose, withProps } from 'recompose';
 import { SafeAreaView } from 'react-navigation';
 import {
@@ -11,7 +19,13 @@ import {
   H2,
   H5,
   H6,
+  UIText,
+  Radio,
+  DateInput,
+  PaddedView,
+  BackgroundView,
 } from '@apollosproject/ui-kit';
+import BackButton from './BackButton';
 
 const FlexedSafeAreaView = compose(
   styled({ height: '100%' }, 'ui-auth.FlexedSafeAreaView'),
@@ -48,14 +62,6 @@ const LegalText = styled(
   'ui-auth.EmailEntry.LegalText'
 )(H6);
 
-const NextButton = styled(
-  ({ theme }) => ({
-    backgroundColor: theme.colors.action.primary,
-    color: theme.colors.text.invert,
-  }),
-  'ui-auth.NextButton'
-)((props) => <Button pill={false} {...props} />);
-
 // Tab Login
 
 const TabWrapper = styled(
@@ -75,9 +81,8 @@ const TabContainer = styled(
   'ui-auth.TabContainer'
 )(View);
 
-const TabButtonWrapper = styled({ width: '50%' }, 'ui-auth.TabButtonWrapper')(
-  View
-);
+// We need a wrapping `View` because this style doesn't work when applied to a `Touchable` on android.
+const TabButtonWrapper = styled({ flex: 1 }, 'ui-auth.TabButtonWrapper')(View);
 
 const TabButton = styled(
   ({ theme, isActive }) => ({
@@ -87,10 +92,7 @@ const TabButton = styled(
       : theme.colors.background.screen,
     borderRadius: 0,
     borderWidth: 0,
-    color: isActive ? theme.colors.text.primary : theme.colors.text.tertiary,
     flexDirection: 'row',
-    fontSize: theme.helpers.rem(0.75),
-    fontWeight: 'normal',
     height: theme.sizing.baseUnit * 3,
     justifyContent: 'center',
     overflow: 'hidden',
@@ -100,6 +102,10 @@ const TabButton = styled(
   }),
   'ui-auth.TabButton'
 )(View);
+
+const TabButtonText = styled(({ theme, isActive }) => ({
+  color: isActive ? theme.colors.text.primary : theme.colors.text.tertiary,
+}))(UIText);
 
 const TabCard = styled(
   ({ theme }) => ({
@@ -113,16 +119,115 @@ const TabCard = styled(
   'ui-auth.TabCard'
 )(Card);
 
+const FieldLabel = styled(
+  ({ theme, padded }) => ({
+    color: 'gray',
+    opacity: 0.7,
+    ...(padded ? { marginTop: theme.sizing.baseUnit } : {}),
+  }),
+  'ui-auth.FieldLabel'
+)(H6);
+
+const DatePicker = styled(
+  ({ theme }) => ({
+    marginTop: 0,
+    marginBottom: theme.sizing.baseUnit,
+  }),
+  'ui-auth.DatePicker'
+)(DateInput);
+
+const RadioInput = styled(
+  ({ theme }) => ({
+    marginBottom: theme.sizing.baseUnit,
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  }),
+  'ui-auth.RadioInput'
+)(Radio);
+
+const RadioLabel = styled(
+  ({ theme }) => ({
+    marginLeft: theme.sizing.baseUnit * 0.5,
+  }),
+  'ui-auth.RadioLabel'
+)(H5);
+
+const ProfileEntryFieldContainer = ({
+  BackgroundComponent,
+  onPressBack,
+  onPressNext,
+  disabled,
+  title,
+  prompt,
+  isLoading,
+  children,
+}) => (
+  <KeyboardAvoidingView
+    style={StyleSheet.absoluteFill}
+    behavior={'padding'}
+    keyboardVerticalOffset={
+      Platform.OS === 'android' ? StatusBar.currentHeight : 0
+    }
+  >
+    <BackgroundComponent>
+      <FlexedSafeAreaView>
+        <ScrollView>
+          <BackButton onPress={() => onPressBack()} />
+          <PaddedView>
+            <TitleText>{title}</TitleText>
+            <PromptText padded>{prompt}</PromptText>
+            {children}
+          </PaddedView>
+        </ScrollView>
+
+        {onPressNext ? (
+          <PaddedView>
+            <Button
+              onPress={onPressNext}
+              disabled={disabled}
+              loading={isLoading}
+              title={'Next'}
+              type={'primary'}
+              pill={false}
+            />
+          </PaddedView>
+        ) : null}
+      </FlexedSafeAreaView>
+    </BackgroundComponent>
+  </KeyboardAvoidingView>
+);
+
+ProfileEntryFieldContainer.propTypes = {
+  title: PropTypes.node,
+  prompt: PropTypes.string,
+  disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  onPressNext: PropTypes.func, // used to navigate and/or submit the form
+  BackgroundComponent: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  onPressBack: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+ProfileEntryFieldContainer.defaultProps = {
+  BackgroundComponent: BackgroundView,
+};
+
 export {
   FlexedSafeAreaView,
   BrandIcon,
   TitleText,
   PromptText,
-  NextButton,
   LegalText,
   TabCard,
   TabButton,
+  TabButtonText,
   TabContainer,
   TabButtonWrapper,
   TabWrapper,
+  FieldLabel,
+  DatePicker,
+  RadioInput,
+  RadioLabel,
+  ProfileEntryFieldContainer,
 };

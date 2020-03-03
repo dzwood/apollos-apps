@@ -12,13 +12,18 @@ const ProfileSchema = Yup.object().shape({
   lastName: Yup.string().required('Required'),
 });
 
-const ProfileEntryConnected = ({ screenProps, navigation, profileSchema }) => (
+const ProfileEntryConnected = ({
+  screenProps,
+  navigation,
+  profileSchema,
+  Component,
+}) => (
   <LoginConsumer>
-    {({ handleProfileComplete }) => (
+    {({ handleUpdateProfile }) => (
       <Formik
         onSubmit={async ({ firstName, lastName }, { setSubmitting }) => {
           setSubmitting(true);
-          await handleProfileComplete({
+          await handleUpdateProfile({
             userProfile: { FirstName: firstName, LastName: lastName },
           });
           setSubmitting(false);
@@ -26,7 +31,7 @@ const ProfileEntryConnected = ({ screenProps, navigation, profileSchema }) => (
         validationSchema={profileSchema}
       >
         {(formikBag) => (
-          <ProfileEntry
+          <Component
             {...screenProps}
             {...formikBag}
             disabled={!formikBag.isValid}
@@ -46,11 +51,17 @@ ProfileEntryConnected.propTypes = {
   emailRequired: PropTypes.bool,
   screenProps: PropTypes.shape({}),
   profileSchema: PropTypes.shape({}),
+  Component: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.object, // type check for React fragments
+  ]),
 };
 
 ProfileEntryConnected.defaultProps = {
   emailRequired: true,
   profileSchema: ProfileSchema,
+  Component: ProfileEntry,
 };
 
 export default ProfileEntryConnected;
