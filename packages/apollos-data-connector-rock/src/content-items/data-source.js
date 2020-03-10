@@ -1,4 +1,4 @@
-import { get, flatten } from 'lodash';
+import { get } from 'lodash';
 import RockApolloDataSource, {
   parseKeyValueAttribute,
 } from '@apollosproject/rock-apollo-data-source';
@@ -110,14 +110,17 @@ export default class ContentItem extends RockApolloDataSource {
     const features = [];
 
     // TODO this should replace all other methods
+    // TODO this should be written in a more extendable way for partners
     const genericFeatures = get(attributeValues, 'features.value', '');
     const keyValuePairs = parseKeyValueAttribute(genericFeatures);
     keyValuePairs.forEach(({ key, value }, i) => {
-      switch (key) {
+      const [type, modifier] = key.split('/');
+      switch (type) {
         case 'scripture':
           features.push(
             Features.createScriptureFeature({
               reference: value,
+              version: modifier,
               id: `${attributeValues.features.id}-${i}`,
             })
           );
@@ -173,8 +176,9 @@ export default class ContentItem extends RockApolloDataSource {
     return features;
   }
 
-  createSummary = ({ content, summary }) => {
-    if (summary) return summary;
+  createSummary = ({ content, attributeValues }) => {
+    const summary = get(attributeValues, 'summary.value', '');
+    if (summary !== '') return summary;
     if (!content || typeof content !== 'string') return '';
     // Protect against 0 length sentences (tokenizer will throw an error)
     if (content.split(' ').length === 1) return '';
@@ -182,8 +186,9 @@ export default class ContentItem extends RockApolloDataSource {
     const tokenizer = new natural.SentenceTokenizer();
     const tokens = tokenizer.tokenize(
       sanitizeHtmlNode(content, {
-        allowedTags: [],
+        allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
         allowedAttributes: [],
+        exclusiveFilter: (frame) => frame.tag.match(/^(h1|h2|h3|h4|h5|h6)$/),
       })
     );
     // protects from starting with up to a three digit number and period
@@ -201,6 +206,7 @@ export default class ContentItem extends RockApolloDataSource {
 
     const slug = await this.request('ContentChannelItemSlugs')
       .filter(`ContentChannelItemId eq ${contentId}`)
+      .cache({ ttl: 60 })
       .first();
 
     return [
@@ -217,49 +223,75 @@ export default class ContentItem extends RockApolloDataSource {
   }
 
   async isContentActiveLiveStream({ id }) {
+    const liveContent = await this.getActiveLiveStreamContent();
+    return liveContent.map((c) => c.id).includes(id);
+  }
+
+  // having this as a method instead of a property will cause issues in the
+  // data-connector-church-online package.
+  getActiveLiveStreamContent = async () => {
     const { LiveStream } = this.context.dataSources;
     const { isLive } = await LiveStream.getLiveStream();
     // if there is no live stream, then there is no live content. Easy enough!
-    if (!isLive) return false;
+    if (!isLive) return [];
 
     const mostRecentSermon = await this.getSermonFeed().first();
+    return [mostRecentSermon];
+  };
 
-    // If the most recent sermon is the sermon we are checking, this is the live sermon.
-    return mostRecentSermon.id === id;
+  // eslint-disable-next-line class-methods-use-this
+  pickBestImage({ images }) {
+    // TODO: there's probably a _much_ more explicit and better way to handle this
+    const squareImage = images.find((image) =>
+      image.key.toLowerCase().includes('square')
+    );
+    if (squareImage) return { ...squareImage, __typename: 'ImageMedia' };
+    return { ...images[0], __typename: 'ImageMedia' };
   }
 
   async getCoverImage(root) {
-    const pickBestImage = (images) => {
-      // TODO: there's probably a _much_ more explicit and better way to handle this
-      const squareImage = images.find((image) =>
-        image.key.toLowerCase().includes('square')
-      );
-      if (squareImage) return { ...squareImage, __typename: 'ImageMedia' };
-      return { ...images[0], __typename: 'ImageMedia' };
-    };
+    const { Cache } = this.context.dataSources;
+    const cachedValue = await Cache.get({
+      key: `contentItem:coverImage:${root.id}`,
+    });
 
-    const withSources = (image) => image.sources.length;
-
-    // filter images w/o URLs
-    const ourImages = this.getImages(root).filter(withSources);
-
-    if (ourImages.length) return pickBestImage(ourImages);
-
-    // If no image, check parent for image:
-    const parentItemsCursor = await this.getCursorByChildContentItemId(root.id);
-    if (!parentItemsCursor) return null;
-
-    const parentItems = await parentItemsCursor.get();
-
-    if (parentItems.length) {
-      const parentImages = flatten(parentItems.map(this.getImages));
-      const validParentImages = parentImages.filter(withSources);
-
-      if (validParentImages && validParentImages.length)
-        return pickBestImage(validParentImages);
+    if (cachedValue) {
+      return cachedValue;
     }
 
-    return null;
+    let image = null;
+
+    // filter images w/o URLs
+    const ourImages = this.getImages(root).filter(
+      ({ sources }) => sources.length
+    );
+
+    if (ourImages.length) {
+      image = this.pickBestImage({ images: ourImages });
+    }
+
+    // If no image, check parent for image:
+    if (!image) {
+      // The cursor returns a promise which returns a promisee, hence th edouble eawait.
+      const parentItems = await (await this.getCursorByChildContentItemId(
+        root.id
+      )).get();
+
+      if (parentItems.length) {
+        const validParentImages = parentItems
+          .flatMap(this.getImages)
+          .filter(({ sources }) => sources.length);
+
+        if (validParentImages && validParentImages.length)
+          image = this.pickBestImage({ images: validParentImages });
+      }
+    }
+
+    if (image != null) {
+      Cache.set({ key: `contentItem:coverImage:${root.id}`, data: image });
+    }
+
+    return image;
   }
 
   LIVE_CONTENT = () => {
@@ -270,7 +302,8 @@ export default class ContentItem extends RockApolloDataSource {
       .tz(ROCK.TIMEZONE)
       .format()
       .split(/[-+]\d+:\d+/)[0];
-    return `((StartDateTime lt datetime'${date}') or (StartDateTime eq null)) and ((ExpireDateTime gt datetime'${date}') or (ExpireDateTime eq null)) `;
+    const filter = `(((StartDateTime lt datetime'${date}') or (StartDateTime eq null)) and ((ExpireDateTime gt datetime'${date}') or (ExpireDateTime eq null))) and (((Status eq 'Approved') or (ContentChannel/RequiresApproval eq false)))`;
+    return get(ROCK, 'SHOW_INACTIVE_CONTENT', false) ? null : filter;
   };
 
   expanded = true;
@@ -278,6 +311,7 @@ export default class ContentItem extends RockApolloDataSource {
   getCursorByParentContentItemId = async (id) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
     if (!associations || !associations.length) return this.request().empty();
@@ -292,17 +326,14 @@ export default class ContentItem extends RockApolloDataSource {
   getCursorByChildContentItemId = async (id) => {
     const associations = await this.request('ContentChannelItemAssociations')
       .filter(`ChildContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
     if (!associations || !associations.length) return this.request().empty();
-    const request = this.request();
-    const associationsFilter = associations.map(
-      ({ contentChannelItemId }) => `Id eq ${contentChannelItemId}`
-    );
 
-    request.filterOneOf(associationsFilter).andFilter(this.LIVE_CONTENT());
-
-    return request.orderBy('Order');
+    return this.getFromIds(
+      associations.map(({ contentChannelItemId }) => contentChannelItemId)
+    ).orderBy('Order');
   };
 
   getCursorBySiblingContentItemId = async (id) => {
@@ -311,6 +342,7 @@ export default class ContentItem extends RockApolloDataSource {
       'ContentChannelItemAssociations'
     )
       .filter(`ChildContentChannelItemId eq ${id}`)
+      .cache({ ttl: 60 })
       .get();
 
     if (!parentAssociations || !parentAssociations.length)
@@ -371,7 +403,10 @@ export default class ContentItem extends RockApolloDataSource {
       .orderBy('StartDateTime', 'desc');
   };
 
-  byUserFeed = () => this.byActive().orderBy('StartDateTime', 'desc');
+  byUserFeed = () =>
+    this.byActive()
+      .orderBy('StartDateTime', 'desc')
+      .expand('ContentChannel');
 
   byActive = () =>
     this.request()
@@ -380,18 +415,34 @@ export default class ContentItem extends RockApolloDataSource {
           (id) => `ContentChannelId eq ${id}`
         )
       )
+      .cache({ ttl: 60 })
+      .andFilter(this.LIVE_CONTENT());
+
+  byDateAndActive = async ({ datetime }) =>
+    this.request()
+      .filterOneOf(
+        ROCK_MAPPINGS.FEED_CONTENT_CHANNEL_IDS.map(
+          (id) => `ContentChannelId eq ${id}`
+        )
+      )
+      .cache({ ttl: 60 })
+      .andFilter(
+        `(CreatedDateTime gt datetime'${datetime}') or (ModifiedDateTime gt datetime'${datetime}')`
+      )
       .andFilter(this.LIVE_CONTENT());
 
   byContentChannelId = (id) =>
     this.request()
       .filter(`ContentChannelId eq ${id}`)
       .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
       .orderBy('StartDateTime', 'desc');
 
   byContentChannelIds = (ids = []) =>
     this.request()
       .filterOneOf(ids.map((id) => `ContentChannelId eq ${id}`))
       .andFilter(this.LIVE_CONTENT())
+      .cache({ ttl: 60 })
       .orderBy('StartDateTime', 'desc');
 
   getFromIds = (ids = []) => {

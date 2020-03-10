@@ -19,8 +19,11 @@ export default {
     title: () => 'Share text via...',
   },
   ScriptureFeature: {
-    scriptures: ({ reference }, args, { dataSources: { Scripture } }) =>
-      Scripture.getScriptures(reference),
+    scriptures: (
+      { reference, version },
+      args,
+      { dataSources: { Scripture } }
+    ) => Scripture.getScriptures(reference, version),
     sharing: (root) => root,
   },
   ScriptureFeatureSharable: {

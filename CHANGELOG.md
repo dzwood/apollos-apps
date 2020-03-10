@@ -1,3 +1,346 @@
+v1.3.0: March 5, 2020
+
+- Splits Apolloschurchapp and apollos-church-api into separate repo (#1368) (8c6842f3)
+- Adds more structure to theme overrides (#1367) (bfa91e8d)
+- Adds ui-kit documentation (#1369) (d4507c9e)
+- Adds Style overides can be a function of component props (#1359) (3d52b639)
+- Adds background audio playback (#1362) (9658b946)
+- Adds Auth to External Browser (#1353) (1057b88f)
+
+- Moves features to ui-connected (#1345) (e9d0f150)
+- Remove header tags from contnet summary (#1370) (ab597683)
+- Abstracts Device Type ID (#1351) (92ee0678)
+- Updates to version 7 of react-native-webview (#1364) (93fcfc2a)
+- Polishes auth tab (#1342) (34a18b7c)
+- With theme works with overrides (#1360) (74adae91)
+- Reduces create theme calls (#1361) (e3dd611f)
+- Bumps codecov from 3.0.2 to 3.6.5 (#1350) (bcc48cd2)
+- Don't try and run the onEndReached method when loading (#1355) (f00ae032)
+
+- Fixes isLoading story not showing up in storybook (#1366) (73beed48)
+- Fixes being forced through register after you have already registered (#1356) (ad528492)
+
+
+v1.3.0-beta.6: February 19, 2020
+
+- Adds Gender and BirthDate slide to Auth (#1331) (9b2af8c0)
+- Adds mailto link support for InAppWebBrowser(#1338) (3712e153)
+- Sets Missing ENV Variables to null (#1119) (c308a6cb)
+- Moves the "Location Finder" to ui-mapview as `MapViewConnected` (#1344) (02917dd6)
+- Moves and refactor MediaControls (#1317) (e8d2380c)
+- Moves HorizontalContentSeriesFeedConnected to the ui-connected package (#1334) (91738ec3)
+
+- Removes images from the mocks to fix inconsistent tests (#1341) (444b0786)
+
+- Fixes being able to swipe down to auth (#1339) (e34754ec)
+- Fixes ui-connected tests (#1346) (1255281b)
+- Fixes Android background button issue (#1305) (e998ee7d)
+
+v1.3.0-beta.5: February 6, 2020
+
+- Adds validation for firstName and lastName on the ui-auth screen (#1321) (41dd0596)
+- Adds support for the auth register endpoints to properly accept Gender/Birthdate (#1330) (468517c1)
+- Adds Algolia Custom Configuration (#1325) (0bf512e3)
+- Adds configurablity to Mapview button text (#1323) (6e854880)
+- Adds document detailing performance goals (#1320) (942db509)
+
+- Removes auth prefetch cache attempt (#1324) (de4a99dd)
+- Moves HtmlContent to ui-connected (#1310) (2b302304)
+- Increases default cache time to one hour (#1322) (d3a2e47d)
+- Moves UserAvatar to connected package (#1306) (1ebc0ded)
+- Moves SearchCard to ui-connected (#1309) (19f5b757)
+- Removes Polyfill and Adds UI Dependency (#1313) (51aed6e1)
+- Exports share function (#1311) (c00b15b8)
+
+- Fixes AuthedBrowser crashing without user (#1328) (58e562e2)
+- Fixes Videos on iOS (#1335) (18684ff8)
+- Fixes location finder preferring Cincinnati without a location (#1315) (d16c4826)
+- Fixes another animated test warning (#1327) (0f85c76d)
+- Fixes cache on the user exists query (#1314) (7294b200)
+- Fixes animated test warning (#1326) (c4d2598d)
+- Fixes crash caused by unnedeed theme ThemeMixin (#1316) (5be23dea)
+
+v1.3.0-beta.3: January 28, 2020
+
+- Improves android profile image quality (#1303) (b448a3ee)
+- Compresses images from cloudinary using q_auto by default (#1299) (7d38807e)
+
+
+v1.3.0-beta.2: January 28, 2020
+
+- Adds Improvements from Willow's MapView (#1298) (9519169c)
+- Adds persisted cookies to core (#1302) (b8315a13)
+- Adds Rock Entity Mapper (#1277) (60521331)
+- Adds OrderBy RequestBuilder method (#1289) (3468f347)
+
+- Clears apollo store instead of reseting store (#1304) (e14932a5)
+- Simplifies Auth Function (#1301) (14e99d0b)
+- Removes inactive or archived groups from group list in api (#1297) (c6725634)
+- Changes Auth Error Message (#1294) (edbd7493)
+- Uses default import in root index (#1292) (9be9d4c2)
+
+- Moves WebBrowser into the ui-connected package (#1300) (48b9ca5e)
+- Moves ShareContentButtonConnected into the ui-connected package (#1296) (ea650f75)
+- Moves the `LikeContentButtonConnected` component into ui-connected (#1293) (5d3f3b66)
+- Moves HorizontalContentCardConnected into the ui-connected package (#1295) (484035c1)
+- Moves ContentCardConnected into the ui-connected package (#1291) (cb4f7360)
+- Moves liked content feeds to ui-connected (#1288) (05985765)
+
+- Fixes current campus not showing "distance to location" (#1286) (bb8709fe)
+
+
+v1.3.0-beta.1: January 16, 2020
+
+- Properly publishes the react-native part of the @apollosproject/config package.
+
+v1.3.0-beta.0: January 16, 2020
+
+- Adds Caching to requests made to api.bible (#1284) (21a54110)
+- Adds Fragments Package (#1279) (e38eb925)
+- Adds Auth api frontend (#1273) (84b43ffb)
+- Adds Caching documentation (#1281) (8aa4f95f)
+- Adds scaffolding for the apollos-ui-connected package (#1280) (d5a38ca0)
+- Adds Search field polish (#1272) (e292f910)
+- Adds ui config to apollos config package (#1275) (1f825f6c)
+- Adds New Auth Flow API (#1270) (e5cbc0aa)
+- Adds Push Provider/Consumer/Context (#1266) (9b4580f6)
+- Adds MapView component package (#1217) (556d9e03)
+
+- Upgrades handlebars from 4.1.2 to 4.5.3 (#1274) (76830168)
+- Simplify pod management with Bundler (#1283) (74a0e1a5)
+- Changes Imports to Relative Paths (#1257) (9f360559)
+- Updates typographic styles (#1267) (603bdc17)
+- Updates the design for ActionListItem (#1264) (a3604bea)
+- Changes BodySmall to use HorizontalDefaultCard (#1265) (38021e72)
+
+- Fixes redirecting to landing on auth error (#1282) (59fa276e)
+- Fixed issue causing stray BR's to crash the app (#1271) (7056c4ba)
+- Fixes StretchyView bug on overscroll effect (#1278) (fadf216c)
+- Fixes crash in the date picker input (#1268) (ce6b9dd9)
+- Fixes auth thrashing (#1269) (0730a7b3)
+- Fixes Featured Card Loading State (#1249) (63091c73)
+
+v1.2.5: December 10, 2019
+
+- Adds baseBorderRadius value to the defaultTheme (#1260) (c5a25dda)
+- Adds calendar spinner view on android by default (#1253) (d44ec6ea)
+- Allows During Onboarding the Skipping of Birthdate, Gender, or Both (#1255) (b7a6c952)
+
+- Upgrades Analytics Package (#1250) (356356c6)
+
+- Removes second give link. (#1252) (5433a986)
+- Removes willow specific field when creating new users (#1254) (7055e938)
+
+- Fixes auth android Back Button Width (#1251) (94747b3f)
+- Fixes Photo Permissions asking twice (#1259) (b9548974)
+- Fixes apollo server mismatched versions (#1261) (db32b636)
+- Fixes Campus Parts Error (#1258) (1cf8f0b6)
+- Fixes Profile Fields whitespace (#1256) (d45890da)
+- Fixes n+3 redis connections being created (#1248) (df8f4038)
+
+v1.2.4: November 20, 2019
+
+- Adds Optimistic Response for Location Selector (#1236) (bd2c2256)
+- Adds Scripture Selection to Content (#1178) (eaeb3824)
+- Adds Total Count to Paginated Queries (#1215) (f9422a1a)
+- Adds Algolia Delta Sync (#1210) (eabc622f)
+- Adds additional server analytics (#1225) (73552f21)
+
+- Renders Devotionals That Have No Scripture (#1242) (2f6982c9)
+- Removes Duplicate Copyright Info (#1230) (44fc2228)
+- Improves the Error Card (#1240) (963279d1)
+- Improves Content Schema Style (#1233) (21f1d6cf)
+- Improves Mergify (#1238) (762ed137)
+- Improves Caching of Content (#1170) (6ead92b4)
+- Improves Default Type (#1220) (1d6237c8)
+- Optimizes Scripture Version (#1219) (97bd8d6c)
+- Handles links using in app browser in the webview. (#1229) (bce16dde)
+- Checks for valid images when rendering campus cards. (#1222) (4d7d116c)
+
+- Fixes HTMLView placeholder/loading state (#1226) (620de3ab)
+- Fixes auth back button color (#1227) (561b54c3)
+- Fixes logging users with bad cookies out of the app (#1221) (c879eb14)
+
+
+v1.2.3: November 12, 2019
+
+- Adds Client Info in Request Headers (#1214) (a8a4d75e)
+- Adds Mergify (#1209) (90122723)
+- Optimizes Live Stream Query (#1202) (736faabf)
+- Optimizes Content Query (#1203) (a8acc502)
+- Updates Floating Input Label placement (#1019) (978de246)
+- Adds Live item polling (#1086) (ca61e557)
+- Improves Map Bounce (#1206) (bb7f6ef4)
+- Increases Miniplayer Button Size (#1205) (125d45d1)
+
+- Fixes tab view cant scroll devos android (#1212) (034c3783)
+- Fixes Mergify so that it will delete branch (#1211) (3795386b)
+
+v1.2.2: November 6, 2019
+
+- Ensures user feed is cachables (#1201) (3113ed97)
+- Fixes padding issue with close icon when image is not available (e863d223)
+- Only tries to get the current person if you have a rock cookie (#1199) (e5270df3)
+
+
+v1.2.1: November 5, 2019
+
+- Adds gif support on Android 💥 (#1194) (4f59534a)
+- Adds Forgot Password Functionality (#1152) (88132e41)
+- Updates load tests (#1190) (54466809)
+- Adds <b> and <i> tag support to HTMLView (#1185) (eee680e9)
+- Attempts to prefetch the result of getCurrentPerson. (#1186) (28aa0f1b)
+- Defaults to using ROCK for analytics ONLY if enabled in config.yml. (#1187) (fb111b52)
+- Secures Jobs Board (#1188) (c9a41000)
+- Cleans up front-end fragments and removes LikeIcon from FeedView (#1183) (1be5ac59)
+- Makes like icon optional on cards (#1182) (7b3d5798)
+
+- Fixes Map Zoom to Nothing (#1189) (b1f25774)
+- Fixes typename not being pulled from node and removes LikeIcon from feeds (#1180) (0aadebed)
+
+v1.2.0: October 31, 2019 🎃
+
+- Moves Picture Loading Indicator (#1177) (45aae728)
+- Clears Algolia Index Before Doing a Full Index. (#1172) (5646eb57)
+- Adjusts search feed UI to pull items only from Algolia (#1171) (207440df)
+- Adds Tests node shortcutting functionality (#1173) (ca31ecf2)
+- Updates Scripture (#1149) (bfd2af79)
+- Orders Content Channels based on Config.yml (#1166) (dba9f052)
+- Removes like-count from content tile (#1168) (bc0d260d)
+- Caches coverImages and don't fetch ContentChannels if not needed to reduce home feed query count (#1167) (74720df0)
+- Adds Autofocus back to SMS Login (#1151) (558950e7)
+- Sets maximum date for date picker (#1161) (cb9c40a1)
+- Adds the media player spacer around the selection button that appears on the location select screen. (#1163) (b267b831)
+- Adds additional eslint recommendation to readme (#1162) (3b1e9ed1)
+
+- Fixes twilio sid logged on every request (#1169) (5e38448d)
+- Fixes Trailing Slash Bug (#1165) (267d9a54)
+- Hides content feed item when sections are empty (#1154) (a5b626a9)
+- Fixes text theme colors in navigation headers (#1156) (a57333b0)
+
+v1.2.0-beta.7: October 23, 2019
+
+- Adds Version Number (#1148) (4cf5f0e8)
+- Adds "Soft" Hyphenation of HorizontalHighlightCard Item Titles (#1132) (6e46b4df)
+
+- Includes items from Channels that don't require approval (#1147) (5be303fb)
+- Makes markers tappable, campuses tappable, and always show current campus first (#1143) (0df5241e)
+- Improves consistency of tab view fix (#1146) (8e7cf7f5)
+
+- Fixes content item feature subtitles vanishing (#1145) (c349ae57)
+- Fixes for 'take image' option not uploading photo (#1144) (9bd4c003)
+- Fixes HTMLView content rendering bugs (#1112) (b3012901)
+
+v1.2.0-beta.6: October 21, 2019
+
+- Prevents Extra Space in Tab Bar (#1094) (0e645894)
+- Ensures that invalid nodes don't break search results (#1141) (c0b49a08)
+- Fixes Tappable Areas in Devotional Content Items (#1137) (e9cad8bb)
+
+v1.2.0-beta.5: October 18, 2019
+
+- Adds LOAD_TESTING documentation (#1133) (7e247438)
+- Adds an active/disabled state to HorizontalHighlightCard (#1122) (65f8dca4)
+
+- Reduces Warnings (#1117) (0ca02fb8)
+- Removes Caching of Auth Tokens (#1129) (561081a8)
+
+- Updates some of theme alpha values to match new Apollos style guide (#1124) (8debd3cf)
+- Upgrades react native device info (#1136) (9e846854)
+- Highlights the active card in HorizontalContentFeeds (#1135) (40a93ad6)
+
+- Fixes Group members function (#1134) (dee54131)
+- Fixes media player titles on android not being centered. (#1130) (cc9a47c7)
+- Fix close button play state issue. (#1128) (e0f824c6)
+
+
+v1.2.0-beta.4: October 14, 2019
+
+- Adds event descriptions (#1121) (44e5f5b3)
+- Adds Back Navigation to Auth Screens (#1113) (2f266bf1)
+- Adds Rock Token to In App Browser (#1120) (fd2bc47a)
+- Adds translation prop to ScriptureItem component (#1111) (36d4307d)
+
+v1.2.0-beta.3: October 10, 2019
+
+- Adds Rock Token to API (#1103) (dfba44c0)
+- Adds Redis Cache and stores isLiked / likeCount in RedisCache. (#1093) (977b2fbf)
+- Adds Filtering for only Active Group Members (#1099) (1fdc94a2)
+- Adds Filter control for Unpublished Content (#1102) (d3b08409)
+
+- Removes Redis warnings and fixes cache keys for like counts (#1110) (aae10c9e)
+
+- Fixes profile image uploading (#1101) (43e6d492)
+- Fixes occasional expansion of the TabBar (hopefully final fix) (#1105) (f694e426)
+- Fixes location finder connected not updating after location permission is granted (android) (#1104) (f76b0be6)
+
+
+v1.2.0-beta.2: October 7, 2019
+
+- Adds ability for server to pick up REDIS_URL (#1092) (bfb972ad)
+- Adds Explicit Apollo Engine Config (#1089) (fd47bc13)
+- Adds Publishing of Schema to Engine (#1090) (0d2ae1f0)
+
+- Refactors Locations in Onboarding (#1098) (5f23ed9e)
+- Removes Campus Distance from Onboarding Screen (#1078) (6efa7f3d)
+
+- Fixes safe area layout provider, which fixes tab bar height issue (#1095) (566b20ec)
+- Fixes decoding Feature Text (#1097) (3cba43ea)
+- Fixes maxage of livestream cache (#1087) (29d12cd1)
+
+v1.2.0-beta.1: October 2, 2019
+
+- Adds Apollos Plugin support to `getCursorByChildContentItemId` (#1072) (43c1b5fb)
+- Adds TTLs throughout the app to speed up repeat Rock requests (#1077) (71a08e9f)
+- Adds Multiple Group Leader Support (#1073) (8b1e29c2)
+- Adds ability to view events in app (#1068) (eda59ff6)
+
+- Removes last name as a required attribute (#1081) (0586bc0f)
+
+- Fixes Summary Field (#1084) (5c302a17)
+- Fixes apple email warnings (#1080) (954cff66)
+
+
+v1.2.0-beta.0: September 25, 2019
+
+- Adds Groups Functionality to API (#939) (b0913abd)
+- Adds Search indexing and Job Queue (#1062) (7218ad9f)
+- Adds spacing to miniplayer controls (#1036) (7b11760a)
+- Adds search to Discover tab (#1044) (58b7f823)
+- Adds action list feed feature for upcoming events (#1059) (80f11156)
+- Uses apollos plugin to fix max node issues (#1049) (da61db16)
+- Adds Algolia Search (#1037) (eccd30b5)
+- Adds Search input component (#1017) (c8e1590f)
+- Adds Apollos Plugin Integration (#1021) (00e0fe05)
+- Allows Username Login (#997) (68718e8e)
+- Adds Events to API (#1015) (a4323d7a)
+- Adds numColumns={1} prop to fix ipad. fixes #846 (#1000) (d8308b6b)
+
+- Updates Development to iPhone 11 Sim (#1066) (7348511b)
+- Installs Pods Automatically (#1051) (1a97ca2a)
+- Improves In App Browser and Chrome Custom Tabs (#972) (0761d53a)
+- Adjusts Scripture Padding and Legal Text Logic (#1058) (1a4f40a6)
+- Improves testing coverage and performance. (#1057) (67064f79)
+- Updates Tab Header Colors (#1043) (8baf7686)
+- Bumps lodash-es from 4.17.11 to 4.17.15 (#1050) (4d7b1b8c)
+- Removes unneeded FeedView padding (#1042) (10540ced)
+- Moves Xcode schemas into workspace (#1048) (27a739ab)
+- Updates Cocoapods to 1.7.5 (#1047) (ac855c14)
+- Upgrades to React Native 60 (#1020) (410abe40)
+- Configures tests to only run story generation when actually publishing (#1039) (58106855)
+- Improves Header Contrast (#1035) (be58bab9)
+- Bumps mixin-deep from 1.3.1 to 1.3.2 (#1027) (748c0acd)
+
+- Fixes MiniPlayer Safe View (#1034) (c959524e)
+- Fixes Lint Error (#1056) (c3258ea0)
+- Fixes 20+ Content Children Issue (#1054) (7a5ca1fa)
+- Fixes phone entry keyboard covering link (#1055) (64709289)
+- Fixes onesignal pod not installing (#1046) (3834a1da)
+- Fixes Highlight Play Icon (#1038) (b3c9cff3)
+- Fixes calling removed function (#1040) (ad0faf0b)
+- Fixes like icon positioning for horizontal cards (#998) (7f5d141e)
+- Fixes User Location View (#1001) (da064f4c)
+- Fixes bug where sermon algorithm would return an error if current sermon had no children (#1016) (50e5e7fa)
 
 v1.1.0: August 14, 2019
 

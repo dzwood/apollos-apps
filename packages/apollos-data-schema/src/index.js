@@ -8,19 +8,41 @@ export const testSchema = gql`
 export const authSmsSchema = gql`
   type SmsPinResult {
     success: Boolean
+    userAuthStatus: USER_AUTH_STATUS
   }
 
   extend type Mutation {
     requestSmsLoginPin(phoneNumber: String!): SmsPinResult
     authenticateWithSms(phoneNumber: String!, pin: String!): Authentication
+    registerWithSms(
+      phoneNumber: String!
+      pin: String!
+      userProfile: [UpdateProfileInput]
+    ): Authentication
+  }
+
+  enum USER_AUTH_STATUS {
+    NONE
+    NEW_APP_USER
+    EXISTING_APP_USER
+  }
+
+  extend type Query {
+    userExists(identity: String): USER_AUTH_STATUS @cacheControl(maxAge: 0)
   }
 `;
 
 export const authSchema = gql`
+  type RockPersonDetails {
+    authToken: String
+    authCookie: String
+  }
+
   type AuthenticatedUser @cacheControl(maxAge: 0) {
     id: ID!
     profile: Person
-    rockToken: String
+    rock: RockPersonDetails
+    rockToken: String @deprecated(reason: "Use rock.authCookie instead")
   }
 
   type Authentication {
@@ -31,7 +53,11 @@ export const authSchema = gql`
   extend type Mutation {
     authenticate(identity: String!, password: String!): Authentication
     changePassword(password: String!): Authentication
-    registerPerson(email: String!, password: String!): Authentication
+    registerPerson(
+      email: String!
+      password: String!
+      userProfile: [UpdateProfileInput]
+    ): Authentication
   }
 
   extend type Query {
@@ -62,7 +88,7 @@ export const peopleSchema = gql`
   type Person implements Node @cacheControl(maxAge: 0) {
     id: ID!
     firstName: String
-    lastName: String!
+    lastName: String
     nickName: String
     email: String
     gender: GENDER
@@ -163,11 +189,18 @@ export const scriptureSchema = gql`
     html: String
     reference: String
     copyright: String
+    version: String
+  }
+
+  enum VERSION {
+    WEB
+    KJV
   }
 
   extend type Query {
-    scripture(query: String!): Scripture
-    scriptures(query: String!): [Scripture]
+    scripture(query: String!, version: VERSION): Scripture
+      @deprecated(reason: "Use 'scriptures' instead.")
+    scriptures(query: String!, version: VERSION): [Scripture]
   }
 `;
 
@@ -220,7 +253,7 @@ export const analyticsSchema = gql`
 export const contentItemSchema = gql`
   interface ContentItem {
     id: ID!
-    title: String
+    title(hyphenated: Boolean): String
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
@@ -236,13 +269,12 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
   }
 
   type UniversalContentItem implements ContentItem & Node {
     id: ID!
-    title: String
+    title(hyphenated: Boolean): String
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
@@ -263,7 +295,7 @@ export const contentItemSchema = gql`
 
   type DevotionalContentItem implements ContentItem & Node {
     id: ID!
-    title: String
+    title(hyphenated: Boolean): String
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
@@ -279,14 +311,14 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
   type MediaContentItem implements ContentItem & Node {
     id: ID!
-    title: String
+    title(hyphenated: Boolean): String
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
@@ -302,14 +334,14 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
   type ContentSeriesContentItem implements ContentItem & Node {
     id: ID!
-    title: String
+    title(hyphenated: Boolean): String
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
@@ -325,14 +357,14 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
+
     scriptures: [Scripture]
   }
 
   type WeekendContentItem implements ContentItem & Node {
     id: ID!
-    title: String
+    title(hyphenated: Boolean): String
     coverImage: ImageMedia
     images: [ImageMedia]
     videos: [VideoMedia]
@@ -348,7 +380,6 @@ export const contentItemSchema = gql`
       after: String
     ): ContentItemsConnection
     parentChannel: ContentChannel
-
     theme: Theme
   }
 
@@ -359,7 +390,7 @@ export const contentItemSchema = gql`
 
   type ContentItemsConnection {
     edges: [ContentItemsConnectionEdge]
-    # TODO totalCount: Int
+    totalCount: Int
     pageInfo: PaginationInfo
   }
 
@@ -371,7 +402,6 @@ export const contentItemSchema = gql`
   extend type Query {
     campaigns: ContentItemsConnection
     userFeed(first: Int, after: String): ContentItemsConnection
-      @cacheControl(maxAge: 0)
     personaFeed(first: Int, after: String): ContentItemsConnection
       @cacheControl(maxAge: 0)
   }
@@ -470,14 +500,17 @@ export const sharableSchema = gql`
 
 export const liveSchema = gql`
   type LiveStream {
-    isLive: Boolean
+    isLive: Boolean @cacheControl(maxAge: 10)
     eventStartTime: String
     media: VideoMedia
     webViewUrl: String
+    contentItem: ContentItem @cacheControl(maxAge: 10)
   }
 
   extend type Query {
     liveStream: LiveStream
+      @deprecated(reason: "Use liveStreams, there may be multiple.")
+    liveStreams: [LiveStream]
   }
 
   extend type WeekendContentItem {
@@ -493,6 +526,26 @@ export const pushSchema = gql`
 
   extend type Mutation {
     updateUserPushSettings(input: PushSettingsInput!): Person
+  }
+`;
+
+export const groupSchema = gql`
+  enum GROUP_TYPE {
+    Serving
+    Community
+    Family
+  }
+
+  type Group implements Node {
+    id: ID!
+    name: String
+    leader: Person @deprecated(reason: "No longer used, use 'leaders' instead")
+    leaders: [Person]
+    members: [Person]
+  }
+
+  extend type Person {
+    groups(type: GROUP_TYPE, asLeader: Boolean): [Group]
   }
 `;
 
@@ -516,8 +569,8 @@ export const campusSchema = gql`
   }
 
   input CampusLocationInput {
-    latitude: Float!
-    longitude: Float!
+    latitude: Float
+    longitude: Float
   }
 
   extend type Person {
@@ -656,9 +709,11 @@ export const eventSchema = gql`
   type Event implements Node {
     id: ID!
     name: String
+    description: String
     location: String
     start: String
     end: String
+    image: ImageMedia
   }
 
   extend type Campus {

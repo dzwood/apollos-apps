@@ -20,7 +20,9 @@ Array [
     "InteractionChannels?%24filter=%28Name%20eq%20%27Apollos%20App%27%29%20and%20%28UsesSession%20eq%20true%29%20and%20%28IsActive%20eq%20true%29%20and%20%28ComponentEntityTypeId%20eq%20101%29%20and%20%28ChannelTypeMediumValueId%20eq%20512%29",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
   Array [
@@ -60,7 +62,9 @@ Array [
     "InteractionChannels?%24filter=%28Name%20eq%20%27Apollos%20App%27%29%20and%20%28UsesSession%20eq%20true%29%20and%20%28IsActive%20eq%20true%29%20and%20%28ComponentEntityTypeId%20eq%20101%29%20and%20%28ChannelTypeMediumValueId%20eq%20512%29",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
   Array [
@@ -70,7 +74,9 @@ Array [
     "InteractionComponents?%24filter=%28Name%20eq%20%27Apollos%20Content%20Item%20-%207%27%29%20and%20%28ChannelId%20eq%201%29%20and%20%28EntityId%20eq%207%29",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
 ]
@@ -103,7 +109,9 @@ Array [
     "EntityTypes?%24filter=Name%20eq%20%27Rock.Model.ContentChannelItem%27",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
 ]
@@ -121,7 +129,29 @@ Array [
     "EntityTypes?%24filter=Name%20eq%20%27Rock.Model.ContentChannelItem%27",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
+    },
+  ],
+]
+`;
+
+exports[`RockConstants finds a custom entity model ID 1`] = `
+Object {
+  "id": 1,
+}
+`;
+
+exports[`RockConstants finds a custom entity model ID 2`] = `
+Array [
+  Array [
+    "EntityTypes?%24filter=Name%20eq%20%27Rock.Model.Group%27",
+    Object {},
+    Object {
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
 ]
@@ -139,7 +169,9 @@ Array [
     "EntityTypes?%24filter=Name%20eq%20%27Rock.Model.SomeOtherEntity%27",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
 ]
@@ -157,14 +189,18 @@ Array [
     "EntityTypes?%24filter=Name%20eq%20%27Rock.Model.ContentChannelItem%27",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
   Array [
     "InteractionChannels?%24filter=%28Name%20eq%20%27Apollos%20App%27%29%20and%20%28UsesSession%20eq%20true%29%20and%20%28IsActive%20eq%20true%29%20and%20%28ComponentEntityTypeId%20eq%201%29%20and%20%28ChannelTypeMediumValueId%20eq%20512%29",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
 ]
@@ -182,21 +218,27 @@ Array [
     "EntityTypes?%24filter=Name%20eq%20%27Rock.Model.ContentChannelItem%27",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
   Array [
     "InteractionChannels?%24filter=%28Name%20eq%20%27Apollos%20App%27%29%20and%20%28UsesSession%20eq%20true%29%20and%20%28IsActive%20eq%20true%29%20and%20%28ComponentEntityTypeId%20eq%201%29%20and%20%28ChannelTypeMediumValueId%20eq%20512%29",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
   Array [
     "InteractionComponents?%24filter=%28Name%20eq%20%27Apollos%20Content%20Item%20-%207%27%29%20and%20%28ChannelId%20eq%201%29%20and%20%28EntityId%20eq%207%29",
     Object {},
     Object {
-      "ttl": 86400,
+      "cacheOptions": Object {
+        "ttl": 86400,
+      },
     },
   ],
 ]
