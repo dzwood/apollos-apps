@@ -495,6 +495,7 @@ export const liveSchema = gql`
 
   extend type WeekendContentItem {
     liveStream: LiveStream
+      @deprecated(reason: "Use livesStreams root level query.")
   }
 `;
 
