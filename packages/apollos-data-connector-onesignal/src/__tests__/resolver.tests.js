@@ -16,24 +16,29 @@ describe('OneSignal', () => {
   it('updates an external push id with a valid user', async () => {
     const query = `
       mutation updatePushId {
-        updateUserPushSettings(input: { pushProviderUserId: "some-push-id" }) {
+        updateUserPushSettings(input: { pushProviderUserId: "some-push-id", enabled: false }) {
           id
         }
       }
     `;
     const rootValue = {};
 
-    const put = jest.fn();
-    const getCurrentPerson = jest.fn(() =>
-      Promise.resolve({ primaryAliasId: 'user123', id: 'user123' })
-    );
-    const Auth = { getCurrentPerson };
-
-    context.dataSources.OneSignal.put = put;
-    context.dataSources.Auth = Auth;
+    context.dataSources = {
+      ...context.dataSources,
+      Auth: {
+        getCurrentPerson: jest.fn(() =>
+          Promise.resolve({ primaryAliasId: 'user123', id: 'user123' })
+        ),
+      },
+      PersonalDevice: { updateNotificationsEnabled: jest.fn() },
+    };
+    context.dataSources.OneSignal.put = jest.fn();
 
     const result = await graphql(schema, query, rootValue, context);
     expect(result).toMatchSnapshot();
-    expect(put).toMatchSnapshot();
+    expect(context.dataSources.OneSignal.put).toMatchSnapshot();
+    expect(
+      context.dataSources.PersonalDevice.updateNotificationsEnabled
+    ).toMatchSnapshot();
   });
 });
