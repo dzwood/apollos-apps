@@ -3,6 +3,15 @@ import { extendForEachContentItemType } from './utils';
 
 export const testSchema = gql`
   scalar Upload
+
+  enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+  }
+  directive @cacheControl(
+    maxAge: Int
+    scope: CacheControlScope
+  ) on FIELD_DEFINITION | OBJECT | INTERFACE
 `;
 
 export const authSmsSchema = gql`
@@ -250,6 +259,33 @@ export const analyticsSchema = gql`
   }
 `;
 
+export const interactionsSchema = gql`
+  scalar InteractionValue
+
+  enum InteractionAction {
+    VIEW
+    COMPLETE
+  }
+
+  input InteractionDataField {
+    field: String!
+    value: InteractionValue
+  }
+
+  type InteractionResult {
+    success: Boolean
+    node: Node
+  }
+
+  extend type Mutation {
+    interactWithNode(
+      action: InteractionAction!
+      nodeId: ID!
+      data: [InteractionDataField]
+    ): InteractionResult
+  }
+`;
+
 export const contentItemSchema = gql`
   interface ContentItem {
     id: ID!
@@ -359,6 +395,7 @@ export const contentItemSchema = gql`
     parentChannel: ContentChannel
     theme: Theme
 
+    upNext: ContentItem
     scriptures: [Scripture]
   }
 
@@ -490,7 +527,7 @@ export const liveSchema = gql`
   extend type Query {
     liveStream: LiveStream
       @deprecated(reason: "Use liveStreams, there may be multiple.")
-    liveStreams: [LiveStream]
+    liveStreams: [LiveStream] @cacheControl(maxAge: 10)
   }
 
   extend type WeekendContentItem {

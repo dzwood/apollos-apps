@@ -1,6 +1,7 @@
 import { fetch } from 'apollo-server-env';
 import ApollosConfig from '@apollosproject/config';
 import { createGlobalId } from '@apollosproject/server-core';
+import { AuthenticationError } from 'apollo-server';
 import { dataSource as Interactions } from '../index';
 import { buildGetMock } from '../../test-utils';
 
@@ -22,6 +23,7 @@ const context = {
     RockConstants: {
       modelType: buildGetMock({ Id: 123 }, ds),
       contentItemInteractionComponent: buildGetMock({ Id: 789 }, ds),
+      interactionComponent: buildGetMock({ Id: 321 }, ds),
     },
     Auth: {
       getCurrentPerson: buildGetMock({ Id: 456, PrimaryAliasId: 456 }, ds),
@@ -34,7 +36,7 @@ describe('Interactions', () => {
     fetch.resetMocks();
   });
 
-  it('creates a new interaction', async () => {
+  it('creates a new content item interaction', async () => {
     const dataSource = new Interactions();
     dataSource.initialize({ context });
     dataSource.get = buildGetMock({ Id: 1 }, ds);
@@ -49,5 +51,79 @@ describe('Interactions', () => {
     expect(result).toMatchSnapshot();
     expect(dataSource.get.mock.calls).toMatchSnapshot();
     expect(dataSource.post.mock.calls).toMatchSnapshot();
+  });
+
+  it('creates a new interaction from a content item', async () => {
+    const dataSource = new Interactions();
+    dataSource.initialize({ context });
+    dataSource.get = buildGetMock({ Id: 1 }, ds);
+    dataSource.post = buildGetMock('1', ds);
+
+    const result = await dataSource.createNodeInteraction({
+      nodeId: createGlobalId(1, 'UniversalContentItem'),
+      action: 'VIEW',
+    });
+    delete dataSource.post.mock.calls[0][1].InteractionDateTime;
+    expect(result).toMatchSnapshot();
+    expect(dataSource.get.mock.calls).toMatchSnapshot();
+    expect(dataSource.post.mock.calls).toMatchSnapshot();
+  });
+
+  it('returns a success: false from an invalid nodeId', async () => {
+    const dataSource = new Interactions();
+    dataSource.initialize({ context });
+    dataSource.get = buildGetMock({ Id: 1 }, ds);
+    dataSource.post = buildGetMock('1', ds);
+    context.dataSources.RockConstants.modelType = () => Promise.resolve(null);
+
+    const result = await dataSource.createNodeInteraction({
+      nodeId: createGlobalId(1, 'InvalidNodeType'),
+      action: 'VIEW',
+    });
+
+    expect(result).toMatchSnapshot();
+    expect(dataSource.get.mock.calls).toMatchSnapshot();
+    expect(dataSource.post.mock.calls).toMatchSnapshot();
+  });
+  it('fetches interactions for a logged in user and nodeId', async () => {
+    const dataSource = new Interactions();
+    dataSource.initialize({ context });
+    dataSource.get = buildGetMock([{ Id: 1 }], ds);
+
+    const result = await dataSource.getNodeInteractionsForCurrentUser({
+      nodeId: createGlobalId(1, 'UniversalContentItem'),
+    });
+
+    expect(result).toEqual([{ id: 1 }]);
+    expect(dataSource.get.mock.calls).toMatchSnapshot();
+  });
+  it('fetches interactions for a logged in user, nodeId, and actions', async () => {
+    const dataSource = new Interactions();
+    dataSource.initialize({ context });
+    dataSource.get = buildGetMock([{ Id: 1 }], ds);
+
+    const result = await dataSource.getNodeInteractionsForCurrentUser({
+      nodeId: createGlobalId(1, 'UniversalContentItem'),
+      actions: ['READ', 'COMPLETE'],
+    });
+
+    expect(result).toEqual([{ id: 1 }]);
+    expect(dataSource.get.mock.calls).toMatchSnapshot();
+  });
+  it('fetches interactions without throwing an error for a logged out user', async () => {
+    const dataSource = new Interactions();
+    dataSource.initialize({ context });
+    dataSource.get = buildGetMock([{ Id: 1 }], ds);
+    dataSource.context.dataSources.Auth.getCurrentPerson = () => {
+      throw new AuthenticationError();
+    };
+
+    const result = await dataSource.getNodeInteractionsForCurrentUser({
+      nodeId: createGlobalId(1, 'UniversalContentItem'),
+      actions: ['READ', 'COMPLETE'],
+    });
+
+    expect(result).toEqual([]);
+    expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
 });

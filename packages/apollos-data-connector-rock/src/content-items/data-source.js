@@ -6,6 +6,7 @@ import ApollosConfig from '@apollosproject/config';
 import moment from 'moment-timezone';
 import natural from 'natural';
 import sanitizeHtmlNode from 'sanitize-html';
+import { createGlobalId } from '@apollosproject/server-core';
 
 import { createImageUrlFromGuid } from '../utils';
 
@@ -186,8 +187,9 @@ export default class ContentItem extends RockApolloDataSource {
     const tokenizer = new natural.SentenceTokenizer();
     const tokens = tokenizer.tokenize(
       sanitizeHtmlNode(content, {
-        allowedTags: [],
+        allowedTags: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
         allowedAttributes: [],
+        exclusiveFilter: (frame) => frame.tag.match(/^(h1|h2|h3|h4|h5|h6)$/),
       })
     );
     // protects from starting with up to a three digit number and period
@@ -457,6 +459,48 @@ export default class ContentItem extends RockApolloDataSource {
       .filterOneOf(ids.map((id) => `Id eq ${id}`))
       .andFilter(this.LIVE_CONTENT());
   };
+
+  async getUpNext({ id }) {
+    const { Auth, Interactions } = this.context.dataSources;
+
+    // Safely exit if we don't have a current user.
+    try {
+      await Auth.getCurrentPerson();
+    } catch (e) {
+      return null;
+    }
+
+    const childItemsCursor = await this.getCursorByParentContentItemId(id);
+    const childItems = await childItemsCursor
+      .orderBy()
+      .sort([
+        { field: 'Order', direction: 'desc' },
+        { field: 'StartDateTime', direction: 'desc' },
+      ])
+      .get();
+
+    // Returns the item _after_ the most recent item you have interacted with.
+    let lastItem = null;
+    for (let i = 0; i < childItems.length; i += 1) {
+      const item = childItems[i];
+      // This implementation is extremly niave.
+      // The non niave version of this implementation, however, has an extremly likelyhood to breakdown
+      // and throw errors when working with more than 25 items. Further solutions will need to be done
+      // on the rock level.
+      // eslint-disable-next-line no-await-in-loop
+      const interactions = await Interactions.getNodeInteractionsForCurrentUser(
+        {
+          nodeId: createGlobalId(item.id, this.resolveType(item)),
+          actions: ['COMPLETE'],
+        }
+      );
+      if (interactions.length !== 0) {
+        return lastItem;
+      }
+      lastItem = item;
+    }
+    return lastItem;
+  }
 
   getFromId = (id) =>
     this.request()
