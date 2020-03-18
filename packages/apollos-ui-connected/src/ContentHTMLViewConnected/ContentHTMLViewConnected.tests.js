@@ -5,7 +5,7 @@ import {
   IntrospectionFragmentMatcher,
   InMemoryCache,
 } from 'apollo-cache-inmemory';
-import introspectionQueryResultData from 'apolloschurchapp/src/client/fragmentTypes.json';
+import introspectionQueryResultData from '../utils/fragmentTypes.json';
 
 import { Providers } from '../utils/testUtils';
 import GET_CONTENT_ITEM_CONTENT from './getContentItemContent';
