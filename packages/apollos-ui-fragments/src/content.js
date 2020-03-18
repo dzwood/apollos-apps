@@ -1,5 +1,15 @@
 import gql from 'graphql-tag';
 
+const CONTENT_UP_NEXT_FRAGMENT = gql`
+  fragment ContentUpNextFragment on ContentItem {
+    ... on ContentSeriesContentItem {
+      upNext {
+        id
+      }
+    }
+  }
+`;
+
 const CONTENT_ITEM_FRAGMENT = gql`
   fragment contentItemFragment on ContentItem {
     id
