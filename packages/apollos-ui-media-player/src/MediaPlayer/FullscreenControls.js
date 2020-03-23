@@ -61,6 +61,12 @@ const LowerControls = styled({
   right: 0,
 })(PaddedView);
 
+const CastButtons = styled({
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+})(PaddedView);
+
 const PlayControls = styled(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-around',
@@ -279,13 +285,13 @@ class FullscreenControls extends PureComponent {
                   <Title>{get(mediaPlayer, 'currentTrack.title')}</Title>
                   <Artist>{get(mediaPlayer, 'currentTrack.artist')}</Artist>
                 </Titles>
-                {Platform.OS === 'ios' ? (
-                  <AirPlayButton />
-                ) : (
-                  <IconSm name="empty" disabled />
-                )}
+                <IconSm name="empty" disabled />
               </UpperControls>
               <LowerControls horizontal={false}>
+                <CastButtons>
+                  <AirPlayButton />
+                  <IconMd name="video" disabled />
+                </CastButtons>
                 <PlayHead>
                   <Seeker onScrubbing={this.handleOnScrubbing} />
                 </PlayHead>
