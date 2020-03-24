@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Query, withApollo } from 'react-apollo';
 import LinearGradient from 'react-native-linear-gradient';
+import GoogleCast from 'react-native-google-cast';
 import { SafeAreaView } from 'react-navigation';
 import { get } from 'lodash';
 import { compose } from 'recompose';
@@ -37,6 +38,7 @@ import {
 import { ControlsConsumer } from './PlayheadState';
 import Seeker from './Seeker';
 import AirPlayButton from './AirPlayButton';
+import GoogleCastButton from './GoogleCastButton';
 
 const Background = withTheme(({ theme }) => ({
   style: StyleSheet.absoluteFill,
@@ -110,6 +112,20 @@ class FullscreenControls extends PureComponent {
     }),
     showAudioToggleControl: PropTypes.bool,
     showVideoToggleControl: PropTypes.bool,
+    cast: PropTypes.shape({
+      currentTrack: PropTypes.shape({
+        mediaSource: PropTypes.shape({ uri: PropTypes.string }),
+        posterSources: PropTypes.arrayOf(
+          PropTypes.shape({ uri: PropTypes.string })
+        ),
+        title: PropTypes.string,
+        artist: PropTypes.string,
+      }),
+      progress: PropTypes.shape({
+        duration: PropTypes.number,
+        currentTime: PropTypes.number,
+      }),
+    }),
   };
 
   static defaultProps = {
@@ -149,6 +165,35 @@ class FullscreenControls extends PureComponent {
         return true;
       }
       return false;
+    });
+    console.log(this.props.cast);
+    console.log(get(this.props.cast, 'currentTrack.mediaSource.uri', ''));
+
+    // Google Cast Connection established
+    GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_STARTED, () => {
+      GoogleCast.castMedia({
+        // mediaUrl: get(this.props.cast, 'currentTrack.mediaSource.uri', ''),
+        mediaUrl:
+          'http://embed.wistia.com/deliveries/9efa110e114daab2cf975320c7db5eaee29519a6.m3u8',
+        imageUrl: get(this.props.cast, 'currentTrack.posterSources[0].uri', ''),
+        title: get(this.props.cast, 'currentTrack.title', ''),
+        subtitle: get(this.props.cast, 'currentTrack.artist', ''),
+        studio: 'Apollos Church',
+        // TODO, get this from API
+        // streamDuration: 596, // seconds
+        // contentType: 'video/mp4', // Optional, default is "video/mp4"
+        playPosition: get(this.props.cast, 'progress.currentTime', 0), // seconds
+      });
+
+      this.isCasting = true;
+      this.handleHideVideo();
+    });
+
+    // Google Cast Disconnected (error provides explanation if ended forcefully)
+    GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_ENDED, (error) => {
+      console.warn(error);
+      this.isCasting = false;
+      this.handleShowVideo();
     });
   }
 
@@ -245,8 +290,8 @@ class FullscreenControls extends PureComponent {
       {this.props.showVideoToggleControl ? (
         <IconSm
           onPress={this.isVideo ? this.handleHideVideo : this.handleShowVideo}
-          name={this.isVideo ? 'video' : 'video-off'}
-          disabled={isLoading}
+          name={this.isVideo && !this.isCasting ? 'video' : 'video-off'}
+          disabled={isLoading || this.isCasting}
         />
       ) : (
         <IconSm name="empty" />
@@ -290,7 +335,7 @@ class FullscreenControls extends PureComponent {
               <LowerControls horizontal={false}>
                 <CastButtons>
                   <AirPlayButton />
-                  <IconMd name="video" disabled />
+                  <GoogleCastButton />
                 </CastButtons>
                 <PlayHead>
                   <Seeker onScrubbing={this.handleOnScrubbing} />

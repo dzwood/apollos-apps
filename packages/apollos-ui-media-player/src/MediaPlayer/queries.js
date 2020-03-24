@@ -113,6 +113,27 @@ const GET_TOTAL_TIME = gql`
   }
 `;
 
+const GET_CAST_INFO = gql`
+  query {
+    mediaPlayer @client {
+      currentTrack {
+        mediaSource {
+          uri
+        }
+        posterSources {
+          uri
+        }
+        title
+        artist
+      }
+      progress {
+        currentTime
+        duration
+      }
+    }
+  }
+`;
+
 export {
   GET_MEDIA_PLAYER_IS_PLAYING,
   GET_MEDIA_PLAYER_VISIBILITY,
@@ -123,4 +144,5 @@ export {
   GET_ELAPSED_TIME,
   GET_PROGRESS,
   GET_TOTAL_TIME,
+  GET_CAST_INFO,
 };

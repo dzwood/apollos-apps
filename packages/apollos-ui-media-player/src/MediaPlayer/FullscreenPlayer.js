@@ -18,7 +18,7 @@ import MiniControls, { MINI_PLAYER_HEIGHT } from './MiniControls';
 import FullscreenControls from './FullscreenControls';
 import VideoWindow from './VideoWindow';
 import MusicControls from './MusicControls';
-import { GET_FULL_VISIBILITY_STATE } from './queries';
+import { GET_FULL_VISIBILITY_STATE, GET_CAST_INFO } from './queries';
 import { EXIT_FULLSCREEN, GO_FULLSCREEN } from './mutations';
 import { Provider, ControlsConsumer } from './PlayheadState';
 import MediaPlayerSafeLayout from './MediaPlayerSafeLayout';
@@ -205,10 +205,15 @@ class FullscreenPlayer extends PureComponent {
           </ControlsConsumer>
         </VideoSizer>
         <Animated.View style={this.fullscreenControlsAnimation}>
-          <FullscreenControls
-            showAudioToggleControl={this.props.showAudioToggleControl}
-            showVideoToggleControl={this.props.showVideoToggleControl}
-          />
+          <Query query={GET_CAST_INFO}>
+            {({ data: { mediaPlayer: cast = {} } = {} }) => (
+              <FullscreenControls
+                showAudioToggleControl={this.props.showAudioToggleControl}
+                showVideoToggleControl={this.props.showVideoToggleControl}
+                cast={cast}
+              />
+            )}
+          </Query>
         </Animated.View>
       </Animated.View>,
       <MusicControls key="music-controls" />,
