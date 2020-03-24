@@ -20,7 +20,7 @@ import VideoWindow from './VideoWindow';
 import MusicControls from './MusicControls';
 import { GET_FULL_VISIBILITY_STATE, GET_CAST_INFO } from './queries';
 import { EXIT_FULLSCREEN, GO_FULLSCREEN } from './mutations';
-import { Provider, ControlsConsumer } from './PlayheadState';
+import { Provider, ControlsConsumer, PlayheadConsumer } from './PlayheadState';
 import MediaPlayerSafeLayout from './MediaPlayerSafeLayout';
 
 const VideoSizer = styled(({ isFullscreen, isVideo, theme }) =>
@@ -207,11 +207,16 @@ class FullscreenPlayer extends PureComponent {
         <Animated.View style={this.fullscreenControlsAnimation}>
           <Query query={GET_CAST_INFO}>
             {({ data: { mediaPlayer: cast = {} } = {} }) => (
-              <FullscreenControls
-                showAudioToggleControl={this.props.showAudioToggleControl}
-                showVideoToggleControl={this.props.showVideoToggleControl}
-                cast={cast}
-              />
+              <PlayheadConsumer>
+                {(playhead) => (
+                  <FullscreenControls
+                    showAudioToggleControl={this.props.showAudioToggleControl}
+                    showVideoToggleControl={this.props.showVideoToggleControl}
+                    cast={cast}
+                    playhead={playhead}
+                  />
+                )}
+              </PlayheadConsumer>
             )}
           </Query>
         </Animated.View>

@@ -126,10 +126,6 @@ const GET_CAST_INFO = gql`
         title
         artist
       }
-      progress {
-        currentTime
-        duration
-      }
     }
   }
 `;

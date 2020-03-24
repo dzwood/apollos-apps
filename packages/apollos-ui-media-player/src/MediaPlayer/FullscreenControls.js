@@ -121,10 +121,9 @@ class FullscreenControls extends PureComponent {
         title: PropTypes.string,
         artist: PropTypes.string,
       }),
-      progress: PropTypes.shape({
-        duration: PropTypes.number,
-        currentTime: PropTypes.number,
-      }),
+    }),
+    playhead: PropTypes.shape({
+      currentTime: PropTypes.shape({ stopAnimation: PropTypes.func }),
     }),
   };
 
@@ -174,8 +173,14 @@ class FullscreenControls extends PureComponent {
 
     // Google Cast Connection established
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_STARTED, () => {
+      let playPosition;
+      this.props.playhead.currentTime.stopAnimation((value) => {
+        playPosition = value;
+      });
       GoogleCast.castMedia({
+        // TODO need to insure Google Cast can accept the format (maybe)
         // mediaUrl: get(this.props.cast, 'currentTrack.mediaSource.uri', ''),
+        // NOTE: this is just for testing, it can't read our .bin files
         mediaUrl:
           'http://embed.wistia.com/deliveries/9efa110e114daab2cf975320c7db5eaee29519a6.m3u8',
         imageUrl: get(this.props.cast, 'currentTrack.posterSources[0].uri', ''),
@@ -183,20 +188,37 @@ class FullscreenControls extends PureComponent {
         subtitle: get(this.props.cast, 'currentTrack.artist', ''),
         studio: 'Apollos Church',
         // TODO, get this from API
-        // streamDuration: 596, // seconds
+        // streamDuration: 596,
         // contentType: 'video/mp4', // Optional, default is "video/mp4"
-        playPosition: get(this.props.cast, 'progress.currentTime', 0), // seconds
+        playPosition,
       });
 
       this.isCasting = true;
       this.handleHideVideo();
+      this.handleMute();
     });
+
+    // Google Cast media status update
+    GoogleCast.EventEmitter.addListener(
+      GoogleCast.MEDIA_STATUS_UPDATED,
+      ({ mediaStatus }) => {
+        if (mediaStatus.streamPosition !== this.castPosition) {
+          this.castPosition = mediaStatus.streamPosition;
+        }
+        // NOTE: I'm sure the library has these as constants but I couldn't find
+        // them in the documentation
+        if (mediaStatus.playerState === 2 && !this.isPlaying) this.handlePlay();
+        if (mediaStatus.playerState === 3 && this.isPlaying) this.handlePause();
+      }
+    );
 
     // Google Cast Disconnected (error provides explanation if ended forcefully)
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_ENDED, (error) => {
-      console.warn(error);
+      console.log(error);
       this.isCasting = false;
+      this.handlePause();
       this.handleShowVideo();
+      this.handleUnMute();
     });
   }
 
@@ -214,10 +236,12 @@ class FullscreenControls extends PureComponent {
   };
 
   handlePlay = () => {
+    if (this.isCasting) GoogleCast.play();
     this.props.client.mutate({ mutation: PLAY });
   };
 
   handlePause = () => {
+    if (this.isCasting) GoogleCast.pause();
     this.props.client.mutate({ mutation: PAUSE });
   };
 
@@ -269,14 +293,16 @@ class FullscreenControls extends PureComponent {
       {this.props.showAudioToggleControl ? (
         <IconSm
           onPress={this.isMuted ? this.handleUnMute : this.handleMute}
-          name={this.isMuted ? 'mute' : 'volume'}
-          disabled={isLoading}
+          name={this.isMuted && !this.isCasting ? 'mute' : 'volume'}
+          disabled={isLoading || this.isCasting}
         />
       ) : (
         <IconSm name="empty" />
       )}
       <IconMd
-        onPress={() => skip(-30)}
+        onPress={() =>
+          this.isCasting ? GoogleCast.seek(this.castPosition - 30) : skip(-30)
+        }
         name={'skip-back-thirty'}
         disabled={isLoading}
       />
@@ -286,7 +312,9 @@ class FullscreenControls extends PureComponent {
         disabled={isLoading}
       />
       <IconMd
-        onPress={() => skip(30)}
+        onPress={() =>
+          this.isCasting ? GoogleCast.seek(this.castPosition + 30) : skip(30)
+        }
         name={'skip-forward-thirty'}
         disabled={isLoading}
       />
@@ -337,7 +365,7 @@ class FullscreenControls extends PureComponent {
               </UpperControls>
               <LowerControls horizontal={false}>
                 <CastButtons>
-                  <AirPlayButton />
+                  {Platform.OS === 'ios' ? <AirPlayButton /> : null}
                   <GoogleCastButton />
                 </CastButtons>
                 <PlayHead>
