@@ -15,9 +15,9 @@ const StyledCastButton = styled(({ theme }) => ({
   tintColor: 'gray',
 }))(CastButton);
 
-const AirPlayButton = () => (
+const CastBtn = () => (
   <Wrapper>
     <StyledCastButton />
   </Wrapper>
 );
-export default AirPlayButton;
+export default CastBtn;
