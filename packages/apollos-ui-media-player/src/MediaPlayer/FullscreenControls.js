@@ -166,8 +166,11 @@ class FullscreenControls extends PureComponent {
       }
       return false;
     });
-    console.log(this.props.cast);
-    console.log(get(this.props.cast, 'currentTrack.mediaSource.uri', ''));
+
+    // get Google Cast state
+    GoogleCast.getCastState().then((state) => {
+      if (state === 'Connected') this.isCasting = true;
+    });
 
     // Google Cast Connection established
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_STARTED, () => {
