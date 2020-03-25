@@ -3,8 +3,16 @@ import gql from 'graphql-tag';
 const CONTENT_UP_NEXT_FRAGMENT = gql`
   fragment ContentUpNextFragment on ContentItem {
     ... on ContentSeriesContentItem {
+      id
       upNext {
         id
+      }
+      childContentItemsConnection {
+        edges {
+          node {
+            id
+          }
+        }
       }
     }
   }
@@ -121,4 +129,9 @@ const CONTENT_MEDIA_FRAGMENT = gql`
   }
 `;
 
-export { CONTENT_ITEM_FRAGMENT, CONTENT_CARD_FRAGMENT, CONTENT_MEDIA_FRAGMENT };
+export {
+  CONTENT_ITEM_FRAGMENT,
+  CONTENT_CARD_FRAGMENT,
+  CONTENT_MEDIA_FRAGMENT,
+  CONTENT_UP_NEXT_FRAGMENT,
+};
