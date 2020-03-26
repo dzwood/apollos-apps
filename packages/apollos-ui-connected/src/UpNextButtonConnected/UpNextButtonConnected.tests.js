@@ -127,7 +127,7 @@ describe('the UpNextButtonConnected', () => {
         <UpNextButtonConnected
           finishedText={"You're done forever!"}
           continueText="Hold on cowboy, you got more to do"
-          Component={'View'}
+          Component={View}
           contentId="1"
           navigation={navigation}
         />
