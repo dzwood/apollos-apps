@@ -111,6 +111,23 @@ describe('Interactions', () => {
     expect(result).toEqual([{ id: 1 }]);
     expect(dataSource.get.mock.calls).toMatchSnapshot();
   });
+  it('fetches interactions for multiple nodeIds', async () => {
+    const dataSource = new Interactions();
+    dataSource.initialize({ context });
+    dataSource.get = buildGetMock([{ Id: 1 }], ds);
+
+    const result = await dataSource.getInteractionsForCurrentUserAndNodes({
+      nodeIds: [
+        createGlobalId(1, 'UniversalContentItem'),
+        createGlobalId(2, 'UniversalContentItem'),
+        createGlobalId(3, 'UniversalContentItem'),
+      ],
+      actions: ['READ', 'COMPLETE'],
+    });
+
+    expect(result).toEqual([{ id: 1 }]);
+    expect(dataSource.get.mock.calls).toMatchSnapshot();
+  });
   it('it calls different endpoints if USE_PLUGIN is false', async () => {
     const dataSource = new Interactions();
     ApollosConfig.loadJs({
