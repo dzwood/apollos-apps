@@ -12,6 +12,7 @@ ApollosConfig.loadJs({
     IMAGE_URL: 'https://apollosrock.newspring.cc/GetImage.ashx',
     SHARE_URL: 'https://apollosrock.newspring.cc',
     TIMEZONE: 'America/New_York',
+    USE_PLUGIN: true,
   },
   ROCK_MAPPINGS: {
     SERMON_CHANNEL_ID: 'TEST_ID',

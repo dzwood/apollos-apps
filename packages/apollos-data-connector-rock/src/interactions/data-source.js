@@ -1,6 +1,7 @@
 import { parseGlobalId } from '@apollosproject/server-core';
 import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
 import ApollosConfig from '@apollosproject/config';
+import { flatten } from 'lodash';
 
 export default class Interactions extends RockApolloDataSource {
   resource = 'Interactions';
@@ -47,12 +48,31 @@ export default class Interactions extends RockApolloDataSource {
       return [];
     }
 
-    return this.request(
-      `/Apollos/GetInteractionsByForeignKeys?keys=${nodeIds.join(',')}`
-    )
-      .filterOneOf(actions.map((a) => `Operation eq '${a}'`))
-      .andFilter(`PersonAliasId eq ${currentUser.primaryAliasId}`)
-      .get();
+    if (ApollosConfig.ROCK.USE_PLUGIN) {
+      return this.request(
+        `/Apollos/GetInteractionsByForeignKeys?keys=${nodeIds.join(',')}`
+      )
+        .filterOneOf(actions.map((a) => `Operation eq '${a}'`))
+        .andFilter(`PersonAliasId eq ${currentUser.primaryAliasId}`)
+        .get();
+    }
+    console.warn(
+      'Fetching interactions without the Rock plugin is extremly inefficient\n\nWe highly recommend using plugin version 1.6.0 or higher'
+    );
+    return flatten(
+      await Promise.all(
+        nodeIds.map(async (nodeId) =>
+          this.request()
+            .filterOneOf(actions.map((a) => `Operation eq '${a}'`))
+            .andFilter(
+              `(ForeignKey eq '${nodeId}') and (PersonAliasId eq ${
+                currentUser.primaryAliasId
+              })`
+            )
+            .get()
+        )
+      )
+    );
   }
 
   getNodeInteractionsForCurrentUser({ nodeId, actions = [] }) {
