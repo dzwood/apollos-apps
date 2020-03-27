@@ -1,4 +1,4 @@
-import { get, uniq, flatten } from 'lodash';
+import { get } from 'lodash';
 import RockApolloDataSource, {
   parseKeyValueAttribute,
 } from '@apollosproject/rock-apollo-data-source';
