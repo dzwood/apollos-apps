@@ -376,6 +376,15 @@ export default class ContentItem extends RockApolloDataSource {
     ).sort(this.DEFAULT_SORT());
   };
 
+  getUpNextSeries = async () => {
+    const contentTypes = Object.keys(ROCK_MAPPINGS.CONTENT_ITEM).filter(
+      (type) => type !== 'ContentItem'
+    );
+    const interactions = this.context.dataSources.getInteractionsForCurrentUserAndTypes(
+      { types: contentTypes, action: 'COMPLETE' }
+    );
+  };
+
   // Generates feed based on persons dataview membership
   byPersonaFeed = async (first) => {
     const {

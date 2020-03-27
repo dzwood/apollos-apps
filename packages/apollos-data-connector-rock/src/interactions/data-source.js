@@ -82,6 +82,28 @@ export default class Interactions extends RockApolloDataSource {
     });
   }
 
+  async getInteractionsForCurrentUserAndTypes({ types = [], action }) {
+    let currentUser;
+    try {
+      currentUser = await this.context.dataSources.Auth.getCurrentPerson();
+    } catch (e) {
+      return [];
+    }
+
+    if (types.length === 0) {
+      return [];
+    }
+
+    const request = this.request()
+      .filterOneOf(types.map((type) => `startswith(foreignKey, ${type}`))
+      .andFilter(`PersonAliasId eq ${currentUser.primaryAliasId}`);
+
+    if (action) {
+      return request.andFilter(`Operation eq ${action}`).get();
+    }
+    return request.get();
+  }
+
   async createNodeInteraction({ nodeId, action }) {
     const {
       dataSources: { RockConstants, Auth },
