@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, uniq } from 'lodash';
 import RockApolloDataSource, {
   parseKeyValueAttribute,
 } from '@apollosproject/rock-apollo-data-source';
@@ -6,7 +6,7 @@ import ApollosConfig from '@apollosproject/config';
 import moment from 'moment-timezone';
 import natural from 'natural';
 import sanitizeHtmlNode from 'sanitize-html';
-import { createGlobalId } from '@apollosproject/server-core';
+import { createGlobalId, parseGlobalId } from '@apollosproject/server-core';
 
 import { createImageUrlFromGuid } from '../utils';
 
@@ -380,8 +380,14 @@ export default class ContentItem extends RockApolloDataSource {
     const contentTypes = Object.keys(ROCK_MAPPINGS.CONTENT_ITEM).filter(
       (type) => type !== 'ContentItem'
     );
-    const interactions = this.context.dataSources.getInteractionsForCurrentUserAndTypes(
+    const interactions = await this.context.dataSources.getInteractionsForCurrentUserAndTypes(
       { types: contentTypes, action: 'COMPLETE' }
+    );
+    const contentIds = uniq(
+      interactions.map((interaction) => {
+        const { id } = parseGlobalId(interaction);
+        return id;
+      })
     );
   };
 
