@@ -143,6 +143,10 @@ const resolver = {
   },
   ContentSeriesContentItem: {
     ...defaultContentItemResolvers,
+    upNext: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getUpNext(root),
+    percentComplete: (root, args, { dataSources }) =>
+      dataSources.ContentItem.getPercentComplete(root),
   },
   MediaContentItem: {
     ...defaultContentItemResolvers,

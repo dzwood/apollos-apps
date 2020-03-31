@@ -6,6 +6,7 @@ import ApollosConfig from '@apollosproject/config';
 import moment from 'moment-timezone';
 import natural from 'natural';
 import sanitizeHtmlNode from 'sanitize-html';
+import { createGlobalId } from '@apollosproject/server-core';
 
 import { createImageUrlFromGuid } from '../utils';
 
@@ -306,6 +307,11 @@ export default class ContentItem extends RockApolloDataSource {
     return get(ROCK, 'SHOW_INACTIVE_CONTENT', false) ? null : filter;
   };
 
+  DEFAULT_SORT = () => [
+    { field: 'Order', direction: 'asc' },
+    { field: 'StartDateTime', direction: 'asc' },
+  ];
+
   expanded = true;
 
   getCursorByParentContentItemId = async (id) => {
@@ -320,7 +326,7 @@ export default class ContentItem extends RockApolloDataSource {
       associations.map(
         ({ childContentChannelItemId }) => childContentChannelItemId
       )
-    ).orderBy('Order');
+    ).sort(this.DEFAULT_SORT());
   };
 
   getCursorByChildContentItemId = async (id) => {
@@ -333,7 +339,7 @@ export default class ContentItem extends RockApolloDataSource {
 
     return this.getFromIds(
       associations.map(({ contentChannelItemId }) => contentChannelItemId)
-    ).orderBy('Order');
+    ).sort(this.DEFAULT_SORT());
   };
 
   getCursorBySiblingContentItemId = async (id) => {
@@ -367,7 +373,7 @@ export default class ContentItem extends RockApolloDataSource {
       siblingAssociations.map(
         ({ childContentChannelItemId }) => childContentChannelItemId
       )
-    ).orderBy('Order');
+    ).sort(this.DEFAULT_SORT());
   };
 
   // Generates feed based on persons dataview membership
@@ -458,6 +464,82 @@ export default class ContentItem extends RockApolloDataSource {
       .filterOneOf(ids.map((id) => `Id eq ${id}`))
       .andFilter(this.LIVE_CONTENT());
   };
+
+  async getUpNext({ id }) {
+    const { Auth, Interactions } = this.context.dataSources;
+
+    // Safely exit if we don't have a current user.
+    try {
+      await Auth.getCurrentPerson();
+    } catch (e) {
+      return null;
+    }
+
+    const childItemsCursor = await this.getCursorByParentContentItemId(id);
+    const childItemsOldestFirst = await childItemsCursor
+      .orderBy()
+      .sort(this.DEFAULT_SORT())
+      .get();
+
+    const childItems = childItemsOldestFirst.reverse();
+    // Returns the item _after_ the most recent item you have interacted with.
+
+    let lastItem = null;
+    for (let i = 0; i < childItems.length; i += 1) {
+      const item = childItems.reverse()[i];
+      // This implementation is extremly niave.
+      // The non niave version of this implementation, however, has an extremly likelyhood to breakdown
+      // and throw errors when working with more than 25 items. Further solutions will need to be done
+      // on the rock level.
+      // eslint-disable-next-line no-await-in-loop
+      const interactions = await Interactions.getNodeInteractionsForCurrentUser(
+        {
+          nodeId: createGlobalId(item.id, this.resolveType(item)),
+          actions: ['COMPLETE'],
+        }
+      );
+      if (interactions.length !== 0) {
+        return lastItem;
+      }
+      lastItem = item;
+    }
+    return lastItem;
+  }
+
+  async getPercentComplete({ id }) {
+    const { Auth, Interactions } = this.context.dataSources;
+
+    // Safely exit if we don't have a current user.
+    try {
+      await Auth.getCurrentPerson();
+    } catch (e) {
+      return null;
+    }
+
+    const childItemsCursor = await this.getCursorByParentContentItemId(id);
+    const childItems = await childItemsCursor.get();
+
+    if (childItems.length === 0) {
+      return 0;
+    }
+
+    const itemsWithInteractions = (await Promise.all(
+      childItems.map(async (item) => {
+        const interaction = await Interactions.getNodeInteractionsForCurrentUser(
+          {
+            nodeId: createGlobalId(item.id, this.resolveType(item)),
+            actions: ['COMPLETE'],
+          }
+        );
+
+        if (interaction.length > 0) {
+          return item;
+        }
+        return null;
+      })
+    )).filter((item) => item);
+    return (itemsWithInteractions.length / childItems.length) * 100;
+  }
 
   getFromId = (id) =>
     this.request()
