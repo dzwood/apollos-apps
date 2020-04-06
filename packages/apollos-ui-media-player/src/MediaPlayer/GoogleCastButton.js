@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { CastButton } from 'react-native-google-cast';
 
@@ -15,9 +16,18 @@ const StyledCastButton = styled(({ theme }) => ({
   tintColor: 'gray',
 }))(CastButton);
 
-const CastBtn = () => (
-  <Wrapper>
-    <StyledCastButton />
-  </Wrapper>
-);
+const CastBtn = ({ setCastState }) => {
+  useEffect(() => {
+    console.log('add listeners');
+  }, []);
+  return (
+    <Wrapper>
+      <StyledCastButton />
+    </Wrapper>
+  );
+};
+
+CastBtn.propTypes = {
+  setCastState: PropTypes.func,
+};
 export default CastBtn;

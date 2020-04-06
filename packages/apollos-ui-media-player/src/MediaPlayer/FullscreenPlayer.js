@@ -53,8 +53,15 @@ class FullscreenPlayer extends PureComponent {
       PropTypes.string,
       PropTypes.func,
     ]),
+    airPlayEnabled: PropTypes.bool,
+    googleCastEnabled: PropTypes.bool,
     showAudioToggleControl: PropTypes.bool,
     showVideoToggleControl: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    airPlayEnabled: true,
+    googleCastEnabled: true,
   };
 
   // Tracks the fullscreen animation
@@ -213,6 +220,8 @@ class FullscreenPlayer extends PureComponent {
                     showAudioToggleControl={this.props.showAudioToggleControl}
                     showVideoToggleControl={this.props.showVideoToggleControl}
                     cast={cast}
+                    airPlayEnabled={this.props.airPlayEnabled}
+                    googleCastEnabled={this.props.googleCastEnabled}
                     playhead={playhead}
                   />
                 )}

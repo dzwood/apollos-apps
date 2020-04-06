@@ -122,6 +122,8 @@ class FullscreenControls extends PureComponent {
         artist: PropTypes.string,
       }),
     }),
+    airPlayEnabled: PropTypes.bool,
+    googleCastEnabled: PropTypes.bool,
     playhead: PropTypes.shape({
       currentTime: PropTypes.shape({ stopAnimation: PropTypes.func }),
     }),
@@ -130,9 +132,11 @@ class FullscreenControls extends PureComponent {
   static defaultProps = {
     showAudioToggleControl: true,
     showVideoToggleControl: true,
+    airPlayEnabled: true,
+    googleCastEnabled: true,
   };
 
-  state = {};
+  state = { isCasting: false };
 
   fader = new Animated.Value(1);
 
@@ -179,15 +183,12 @@ class FullscreenControls extends PureComponent {
       });
       GoogleCast.castMedia({
         // TODO need to insure Google Cast can accept the format (maybe)
-        // mediaUrl: get(this.props.cast, 'currentTrack.mediaSource.uri', ''),
-        // NOTE: this is just for testing, it can't read our .bin files
-        mediaUrl:
-          'http://embed.wistia.com/deliveries/9efa110e114daab2cf975320c7db5eaee29519a6.m3u8',
+        mediaUrl: get(this.props.cast, 'currentTrack.mediaSource.uri', ''),
         imageUrl: get(this.props.cast, 'currentTrack.posterSources[0].uri', ''),
         title: get(this.props.cast, 'currentTrack.title', ''),
         subtitle: get(this.props.cast, 'currentTrack.artist', ''),
-        studio: 'Apollos Church',
-        // TODO, get this from API
+        // TODO, get this information from API
+        // studio: 'Apollos Church',
         // streamDuration: 596,
         // contentType: 'video/mp4', // Optional, default is "video/mp4"
         playPosition,
@@ -365,8 +366,14 @@ class FullscreenControls extends PureComponent {
               </UpperControls>
               <LowerControls horizontal={false}>
                 <CastButtons>
-                  {Platform.OS === 'ios' ? <AirPlayButton /> : null}
-                  <GoogleCastButton />
+                  {Platform.OS === 'ios' && this.props.airPlayEnabled ? (
+                    <AirPlayButton />
+                  ) : null}
+                  {this.props.googleCastEnabled ? (
+                    <GoogleCastButton
+                      setCastState={(isCasting) => this.setState({ isCasting })}
+                    />
+                  ) : null}
                 </CastButtons>
                 <PlayHead>
                   <Seeker onScrubbing={this.handleOnScrubbing} />
