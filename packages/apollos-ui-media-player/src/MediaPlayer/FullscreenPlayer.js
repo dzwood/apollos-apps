@@ -219,7 +219,7 @@ class FullscreenPlayer extends PureComponent {
                   <FullscreenControls
                     showAudioToggleControl={this.props.showAudioToggleControl}
                     showVideoToggleControl={this.props.showVideoToggleControl}
-                    cast={cast}
+                    castMedia={cast}
                     airPlayEnabled={this.props.airPlayEnabled}
                     googleCastEnabled={this.props.googleCastEnabled}
                     playhead={playhead}
