@@ -51,7 +51,12 @@ export default class Features extends RockApolloDataSource {
     };
   }
 
-  async createVerticalCardListFeature({ algorithms = [], title, subtitle }) {
+  async createVerticalCardListFeature({
+    algorithms = [],
+    title,
+    subtitle,
+    isFeatured = false,
+  }) {
     // Generate a list of cards.
     const cards = await this.runAlgorithms({ algorithms });
     return {
@@ -64,10 +69,37 @@ export default class Features extends RockApolloDataSource {
         'VerticalCardListFeature'
       ),
       cards,
+      isFeatured,
       title,
       subtitle,
       // Typename is required so GQL knows specifically what Feature is being created
       __typename: 'VerticalCardListFeature',
+    };
+  }
+
+  async createHorizontalCardListFeature({
+    algorithms = [],
+    hyphenatedTitle,
+    title,
+    subtitle,
+  }) {
+    // Generate a list of horizontal cards.
+    const cards = await this.runAlgorithms({ algorithms });
+    return {
+      // The Feature ID is based on all of the action ids, added together.
+      // This is naive, and could be improved.
+      id: createGlobalId(
+        cards
+          .map(({ relatedNode: { id } }) => id)
+          .reduce((acc, sum) => acc + sum, 0),
+        'HorizontalCardListFeature'
+      ),
+      cards,
+      hyphenatedTitle,
+      title,
+      subtitle,
+      // Typename is required so GQL knows specifically what Feature is being created
+      __typename: 'HorizontalCardListFeature',
     };
   }
 
@@ -235,6 +267,8 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
         switch (featureConfig.type) {
           case 'VerticalCardList':
             return this.createVerticalCardListFeature(featureConfig);
+          case 'HorizontalCardList':
+            return this.createHorizontalCardListFeature(featureConfig);
           case 'ActionList':
           default:
             // Action list was the default in 1.3.0 and prior.
