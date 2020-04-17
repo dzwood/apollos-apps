@@ -3,7 +3,7 @@ import RockApolloDataSource from '@apollosproject/rock-apollo-data-source';
 import { createGlobalId } from '@apollosproject/server-core';
 import ApollosConfig from '@apollosproject/config';
 
-export default class Features extends RockApolloDataSource {
+export default class Feature extends RockApolloDataSource {
   resource = '';
 
   // Names of Action Algoritms mapping to the functions that create the actions.
@@ -14,7 +14,20 @@ export default class Features extends RockApolloDataSource {
     SERMON_CHILDREN: this.sermonChildrenAlgorithm.bind(this),
     UPCOMING_EVENTS: this.upcomingEventsAlgorithm.bind(this),
     CAMPAIGN_ITEMS: this.campaignItemsAlgorithm.bind(this),
+    USER_FEED: this.userFeedAlgorithm.bind(this),
   };
+
+  getFromId(args, id) {
+    const type = id.split(':')[0];
+    const funcArgs = JSON.parse(args);
+    const method = this[`create${type}`].bind(this);
+    return method(funcArgs);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  createFeatureId({ args, type }) {
+    return createGlobalId(JSON.stringify(args), type);
+  }
 
   async runAlgorithms({ algorithms }) {
     // We should flatten just in case a single algorithm generates multiple actions
@@ -33,16 +46,18 @@ export default class Features extends RockApolloDataSource {
 
   async createActionListFeature({ algorithms = [], title, subtitle }) {
     // Generate a list of actions.
-    const actions = await this.runAlgorithms({ algorithms });
+    const actions = () => this.runAlgorithms({ algorithms });
     return {
       // The Feature ID is based on all of the action ids, added together.
       // This is naive, and could be improved.
-      id: createGlobalId(
-        actions
-          .map(({ relatedNode: { id } }) => id)
-          .reduce((acc, sum) => acc + sum, 0),
-        'ActionListFeature'
-      ),
+      id: this.createFeatureId({
+        type: 'ActionListFeature',
+        args: {
+          algorithms,
+          title,
+          subtitle,
+        },
+      }),
       actions,
       title,
       subtitle,
@@ -58,16 +73,19 @@ export default class Features extends RockApolloDataSource {
     isFeatured = false,
   }) {
     // Generate a list of cards.
-    const cards = await this.runAlgorithms({ algorithms });
+    const cards = () => this.runAlgorithms({ algorithms });
     return {
       // The Feature ID is based on all of the action ids, added together.
       // This is naive, and could be improved.
-      id: createGlobalId(
-        cards
-          .map(({ relatedNode: { id } }) => id)
-          .reduce((acc, sum) => acc + sum, 0),
-        'VerticalCardListFeature'
-      ),
+      id: this.createFeatureId({
+        type: 'VerticalCardListFeature',
+        args: {
+          algorithms,
+          title,
+          subtitle,
+          isFeatured,
+        },
+      }),
       cards,
       isFeatured,
       title,
@@ -84,16 +102,18 @@ export default class Features extends RockApolloDataSource {
     subtitle,
   }) {
     // Generate a list of horizontal cards.
-    const cards = await this.runAlgorithms({ algorithms });
+    const cards = () => this.runAlgorithms({ algorithms });
     return {
       // The Feature ID is based on all of the action ids, added together.
       // This is naive, and could be improved.
-      id: createGlobalId(
-        cards
-          .map(({ relatedNode: { id } }) => id)
-          .reduce((acc, sum) => acc + sum, 0),
-        'HorizontalCardListFeature'
-      ),
+      id: this.createFeatureId({
+        type: 'HorizontalCardListFeature',
+        args: {
+          algorithms,
+          title,
+          subtitle,
+        },
+      }),
       cards,
       hyphenatedTitle,
       title,
@@ -229,7 +249,10 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
             id
           );
 
-          const childItems = await childItemsCursor.top(limit).get();
+          const childItems = await childItemsCursor
+            .top(limit)
+            .expand('ContentChannel')
+            .get();
 
           return childItems.map((item) => ({
             ...item,
@@ -242,7 +265,25 @@ Make sure you structure your algorithm entry as \`{ type: 'CONTENT_CHANNEL', aru
     return items.map((item, i) => ({
       id: createGlobalId(`${item.id}${i}`, 'ActionListAction'),
       title: item.title,
-      subtitle: get(item, 'channelSubtitle'),
+      subtitle: get(item, 'contentChannel.name'),
+      relatedNode: { ...item, __type: ContentItem.resolveType(item) },
+      image: ContentItem.getCoverImage(item),
+      action: 'READ_CONTENT',
+      summary: ContentItem.createSummary(item),
+    }));
+  }
+
+  async userFeedAlgorithm({ limit = 20 } = {}) {
+    const { ContentItem } = this.context.dataSources;
+
+    const items = await ContentItem.byUserFeed()
+      .top(limit)
+      .get();
+
+    return items.map((item, i) => ({
+      id: createGlobalId(`${item.id}${i}`, 'ActionListAction'),
+      title: item.title,
+      subtitle: get(item, 'contentChannel.name'),
       relatedNode: { ...item, __type: ContentItem.resolveType(item) },
       image: ContentItem.getCoverImage(item),
       action: 'READ_CONTENT',
