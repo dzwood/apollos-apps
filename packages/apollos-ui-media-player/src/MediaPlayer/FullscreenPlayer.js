@@ -22,6 +22,7 @@ import { GET_FULL_VISIBILITY_STATE, GET_CAST_INFO } from './queries';
 import { EXIT_FULLSCREEN, GO_FULLSCREEN } from './mutations';
 import { Provider, ControlsConsumer, PlayheadConsumer } from './PlayheadState';
 import MediaPlayerSafeLayout from './MediaPlayerSafeLayout';
+import GoogleCastController from './GoogleCastController';
 
 const VideoSizer = styled(({ isFullscreen, isVideo, theme }) =>
   isFullscreen
@@ -181,7 +182,7 @@ class FullscreenPlayer extends PureComponent {
   ]);
 
   renderCover = ({ data: { mediaPlayer = {} } = {} }) => {
-    const { isFullscreen = false } = mediaPlayer;
+    const { isFullscreen = false, isCasting = false } = mediaPlayer;
 
     Animated.spring(this.fullscreen, {
       toValue: isFullscreen ? 1 : 0,
@@ -198,6 +199,21 @@ class FullscreenPlayer extends PureComponent {
           ? this.panResponder.panHandlers
           : {})}
       >
+        {this.props.googleCastEnabled ? (
+          <Query query={GET_CAST_INFO}>
+            {({ data: { mediaPlayer: cast = {} } = {} }) => (
+              <PlayheadConsumer>
+                {({ currentTime }) => (
+                  <GoogleCastController
+                    client={this.props.client}
+                    media={cast}
+                    playerPositionAnimation={currentTime}
+                  />
+                )}
+              </PlayheadConsumer>
+            )}
+          </Query>
+        ) : null}
         <VideoSizer
           isFullscreen={isFullscreen}
           isVideo={get(mediaPlayer, 'currentTrack.isVideo')}
@@ -205,6 +221,7 @@ class FullscreenPlayer extends PureComponent {
           <ControlsConsumer>
             {(controlHandlers) => (
               <VideoWindow
+                posterOnly={this.props.googleCastEnabled && isCasting}
                 VideoComponent={this.props.VideoWindowComponent}
                 {...controlHandlers}
               />
@@ -212,22 +229,13 @@ class FullscreenPlayer extends PureComponent {
           </ControlsConsumer>
         </VideoSizer>
         <Animated.View style={this.fullscreenControlsAnimation}>
-          <Query query={GET_CAST_INFO}>
-            {({ data: { mediaPlayer: cast = {} } = {} }) => (
-              <PlayheadConsumer>
-                {(playhead) => (
-                  <FullscreenControls
-                    showAudioToggleControl={this.props.showAudioToggleControl}
-                    showVideoToggleControl={this.props.showVideoToggleControl}
-                    castMedia={cast}
-                    airPlayEnabled={this.props.airPlayEnabled}
-                    googleCastEnabled={this.props.googleCastEnabled}
-                    playhead={playhead}
-                  />
-                )}
-              </PlayheadConsumer>
-            )}
-          </Query>
+          <FullscreenControls
+            showAudioToggleControl={this.props.showAudioToggleControl}
+            showVideoToggleControl={this.props.showVideoToggleControl}
+            airPlayEnabled={this.props.airPlayEnabled}
+            googleCastEnabled={this.props.googleCastEnabled}
+            isCasting={isCasting}
+          />
         </Animated.View>
       </Animated.View>,
       <MusicControls key="music-controls" />,

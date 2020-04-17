@@ -112,21 +112,9 @@ class FullscreenControls extends PureComponent {
     }),
     showAudioToggleControl: PropTypes.bool,
     showVideoToggleControl: PropTypes.bool,
-    castMedia: PropTypes.shape({
-      currentTrack: PropTypes.shape({
-        mediaSource: PropTypes.shape({ uri: PropTypes.string }),
-        posterSources: PropTypes.arrayOf(
-          PropTypes.shape({ uri: PropTypes.string })
-        ),
-        title: PropTypes.string,
-        artist: PropTypes.string,
-      }),
-    }),
     airPlayEnabled: PropTypes.bool,
     googleCastEnabled: PropTypes.bool,
-    playhead: PropTypes.shape({
-      currentTime: PropTypes.shape({ stopAnimation: PropTypes.func }),
-    }),
+    isCasting: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -134,9 +122,8 @@ class FullscreenControls extends PureComponent {
     showVideoToggleControl: true,
     airPlayEnabled: true,
     googleCastEnabled: true,
+    isCasting: false,
   };
-
-  state = { isCasting: false, castPosition: 0 };
 
   fader = new Animated.Value(1);
 
@@ -185,12 +172,10 @@ class FullscreenControls extends PureComponent {
   };
 
   handlePlay = () => {
-    if (this.state.isCasting) GoogleCast.play();
     this.props.client.mutate({ mutation: PLAY });
   };
 
   handlePause = () => {
-    if (this.state.isCasting) GoogleCast.pause();
     this.props.client.mutate({ mutation: PAUSE });
   };
 
@@ -233,23 +218,6 @@ class FullscreenControls extends PureComponent {
     }
   };
 
-  handleCastConnected = () => {
-    this.setState({ isCasting: true });
-    this.handleHideVideo();
-    this.handleMute();
-  };
-
-  handleCastEnded = () => {
-    this.setState({ isCasting: false });
-    this.handlePause();
-    this.handleShowVideo();
-    this.handleUnMute();
-  };
-
-  handleUpdateCastPosition = (castPosition) => {
-    this.setState({ castPosition });
-  };
-
   queueClose = () => {
     this.closeTimeout = setTimeout(this.handleControlVisibility, 5000);
   };
@@ -259,8 +227,8 @@ class FullscreenControls extends PureComponent {
       {this.props.showAudioToggleControl ? (
         <IconSm
           onPress={this.isMuted ? this.handleUnMute : this.handleMute}
-          name={this.isMuted && !this.state.isCasting ? 'mute' : 'volume'}
-          disabled={isLoading || this.state.isCasting}
+          name={this.isMuted && !this.props.isCasting ? 'mute' : 'volume'}
+          disabled={isLoading || this.props.isCasting}
         />
       ) : (
         <IconSm name="empty" />
@@ -268,7 +236,8 @@ class FullscreenControls extends PureComponent {
       <IconMd
         onPress={() =>
           this.state.isCasting
-            ? GoogleCast.seek(this.state.castPosition - 30)
+            ? // TODO this should happen in the controller
+              GoogleCast.seek(this.state.castPosition - 30)
             : skip(-30)
         }
         name={'skip-back-thirty'}
@@ -282,7 +251,8 @@ class FullscreenControls extends PureComponent {
       <IconMd
         onPress={() =>
           this.state.isCasting
-            ? GoogleCast.seek(this.state.castPosition + 30)
+            ? // TODO this should happen in the controller
+              GoogleCast.seek(this.state.castPosition + 30)
             : skip(30)
         }
         name={'skip-forward-thirty'}
@@ -291,8 +261,8 @@ class FullscreenControls extends PureComponent {
       {this.props.showVideoToggleControl ? (
         <IconSm
           onPress={this.isVideo ? this.handleHideVideo : this.handleShowVideo}
-          name={this.isVideo && !this.state.isCasting ? 'video' : 'video-off'}
-          disabled={isLoading || this.state.isCasting}
+          name={this.isVideo && !this.props.isCasting ? 'video' : 'video-off'}
+          disabled={isLoading || this.props.isCasting}
         />
       ) : (
         <IconSm name="empty" />
@@ -338,18 +308,7 @@ class FullscreenControls extends PureComponent {
                   {Platform.OS === 'ios' && this.props.airPlayEnabled ? (
                     <AirPlayButton />
                   ) : null}
-                  {this.props.googleCastEnabled ? (
-                    <GoogleCastButton
-                      media={this.props.castMedia}
-                      onCastConnected={this.handleCastConnected}
-                      onCastEnded={this.handleCastEnded}
-                      onUpdateCastPosition={this.handleUpdateCastPosition}
-                      onPlay={this.handlePlay}
-                      onPause={this.handlePause}
-                      playerPositionAnimation={this.props.playhead.currentTime}
-                      castPosition={this.state.castPosition}
-                    />
-                  ) : null}
+                  {this.props.googleCastEnabled ? <GoogleCastButton /> : null}
                 </CastButtons>
                 <PlayHead>
                   <Seeker onScrubbing={this.handleOnScrubbing} />

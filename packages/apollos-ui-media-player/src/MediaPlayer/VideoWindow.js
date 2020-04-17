@@ -36,6 +36,7 @@ class VideoWindow extends PureComponent {
     onLoadStart: PropTypes.func,
     VideoComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     // onBuffer: PropTypes.func,
+    posterOnly: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -109,28 +110,30 @@ class VideoWindow extends PureComponent {
     const { VideoComponent } = this.props;
 
     return [
-      <VideoComponent
-        ref={this.setVideoRef}
-        source={mediaPlayer.currentTrack.mediaSource}
-        paused={!mediaPlayer.isPlaying}
-        audioOnly={!mediaPlayer.showVideo}
-        ignoreSilentSwitch={'ignore'}
-        allowsExternalPlayback
-        playInBackground
-        playWhenInactive
-        onAudioBecomingNoisy={this.handlePause}
-        onEnd={this.handleOnEnd}
-        onError={this.handleOnError}
-        resizeMode={'contain'}
-        onLoadStart={this.handleOnLoadStart}
-        onLoad={this.handleOnLoad}
-        // onBuffer={this.handleOnBuffer}
-        onProgress={this.handleOnProgress}
-        style={StyleSheet.absoluteFill}
-        volume={mediaPlayer.muted ? 0 : 1}
-        repeat
-        key="video"
-      />,
+      !this.props.posterOnly ? (
+        <VideoComponent
+          ref={this.setVideoRef}
+          source={mediaPlayer.currentTrack.mediaSource}
+          paused={!mediaPlayer.isPlaying}
+          audioOnly={!mediaPlayer.showVideo}
+          ignoreSilentSwitch={'ignore'}
+          allowsExternalPlayback
+          playInBackground
+          playWhenInactive
+          onAudioBecomingNoisy={this.handlePause}
+          onEnd={this.handleOnEnd}
+          onError={this.handleOnError}
+          resizeMode={'contain'}
+          onLoadStart={this.handleOnLoadStart}
+          onLoad={this.handleOnLoad}
+          // onBuffer={this.handleOnBuffer}
+          onProgress={this.handleOnProgress}
+          style={StyleSheet.absoluteFill}
+          volume={mediaPlayer.muted ? 0 : 1}
+          repeat
+          key="video"
+        />
+      ) : null,
       // there's currently a bug on android where react-native-video's poster doesn't ever go away
       // So we use our own image copmonent...which is nicer cuz we can show a nice fading animation too!
       <Animated.Image
