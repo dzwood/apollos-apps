@@ -1,8 +1,16 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import GoogleCast from 'react-native-google-cast';
 import { PLAY, PAUSE } from './mutations';
+
+const styles = StyleSheet.create({
+  animatedPosterImage: {
+    ...StyleSheet.absoluteFillObject,
+    resizeMode: 'cover',
+  },
+});
 
 const Controller = ({ client, media, playerPositionAnimation }) => {
   useEffect(() => {
@@ -56,8 +64,13 @@ const Controller = ({ client, media, playerPositionAnimation }) => {
     );
   }, []);
 
-  // render nothing
-  return null;
+  return (
+    <Animated.Image
+      key="poster"
+      style={[styles.animatedPosterImage]}
+      source={get(media, 'currentTrack.posterSources', [])}
+    />
+  );
 };
 
 Controller.propTypes = {

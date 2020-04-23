@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { Query, withApollo } from 'react-apollo';
 import { get } from 'lodash';
 
-import { styled } from '@apollosproject/ui-kit';
+import { styled, ActivityIndicator } from '@apollosproject/ui-kit';
 
 import MiniControls, { MINI_PLAYER_HEIGHT } from './MiniControls';
 import FullscreenControls from './FullscreenControls';
@@ -201,33 +201,38 @@ class FullscreenPlayer extends PureComponent {
       >
         {this.props.googleCastEnabled ? (
           <Query query={GET_CAST_INFO}>
-            {({ data: { mediaPlayer: cast = {} } = {} }) => (
-              <PlayheadConsumer>
-                {({ currentTime }) => (
-                  <GoogleCastController
-                    client={this.props.client}
-                    media={cast}
-                    playerPositionAnimation={currentTime}
-                  />
-                )}
-              </PlayheadConsumer>
-            )}
+            {({ data: { mediaPlayer: cast = {} } = {}, loading }) =>
+              loading ? (
+                <ActivityIndicator size={'large'} />
+              ) : (
+                <PlayheadConsumer>
+                  {({ currentTime }) => (
+                    <GoogleCastController
+                      client={this.props.client}
+                      media={cast}
+                      playerPositionAnimation={currentTime}
+                    />
+                  )}
+                </PlayheadConsumer>
+              )
+            }
           </Query>
         ) : null}
-        <VideoSizer
-          isFullscreen={isFullscreen}
-          isVideo={get(mediaPlayer, 'currentTrack.isVideo')}
-        >
-          <ControlsConsumer>
-            {(controlHandlers) => (
-              <VideoWindow
-                posterOnly={this.props.googleCastEnabled && isCasting}
-                VideoComponent={this.props.VideoWindowComponent}
-                {...controlHandlers}
-              />
-            )}
-          </ControlsConsumer>
-        </VideoSizer>
+        {!isCasting ? (
+          <VideoSizer
+            isFullscreen={isFullscreen}
+            isVideo={get(mediaPlayer, 'currentTrack.isVideo')}
+          >
+            <ControlsConsumer>
+              {(controlHandlers) => (
+                <VideoWindow
+                  VideoComponent={this.props.VideoWindowComponent}
+                  {...controlHandlers}
+                />
+              )}
+            </ControlsConsumer>
+          </VideoSizer>
+        ) : null}
         <Animated.View style={this.fullscreenControlsAnimation}>
           <FullscreenControls
             showAudioToggleControl={this.props.showAudioToggleControl}

@@ -110,30 +110,28 @@ class VideoWindow extends PureComponent {
     const { VideoComponent } = this.props;
 
     return [
-      !this.props.posterOnly ? (
-        <VideoComponent
-          ref={this.setVideoRef}
-          source={mediaPlayer.currentTrack.mediaSource}
-          paused={!mediaPlayer.isPlaying}
-          audioOnly={!mediaPlayer.showVideo}
-          ignoreSilentSwitch={'ignore'}
-          allowsExternalPlayback
-          playInBackground
-          playWhenInactive
-          onAudioBecomingNoisy={this.handlePause}
-          onEnd={this.handleOnEnd}
-          onError={this.handleOnError}
-          resizeMode={'contain'}
-          onLoadStart={this.handleOnLoadStart}
-          onLoad={this.handleOnLoad}
-          // onBuffer={this.handleOnBuffer}
-          onProgress={this.handleOnProgress}
-          style={StyleSheet.absoluteFill}
-          volume={mediaPlayer.muted ? 0 : 1}
-          repeat
-          key="video"
-        />
-      ) : null,
+      <VideoComponent
+        ref={this.setVideoRef}
+        source={mediaPlayer.currentTrack.mediaSource}
+        paused={!mediaPlayer.isPlaying}
+        audioOnly={!mediaPlayer.showVideo}
+        ignoreSilentSwitch={'ignore'}
+        allowsExternalPlayback
+        playInBackground
+        playWhenInactive
+        onAudioBecomingNoisy={this.handlePause}
+        onEnd={this.handleOnEnd}
+        onError={this.handleOnError}
+        resizeMode={'contain'}
+        onLoadStart={this.handleOnLoadStart}
+        onLoad={this.handleOnLoad}
+        // onBuffer={this.handleOnBuffer}
+        onProgress={this.handleOnProgress}
+        style={StyleSheet.absoluteFill}
+        volume={mediaPlayer.muted ? 0 : 1}
+        repeat
+        key="video"
+      />,
       // there's currently a bug on android where react-native-video's poster doesn't ever go away
       // So we use our own image copmonent...which is nicer cuz we can show a nice fading animation too!
       <Animated.Image
