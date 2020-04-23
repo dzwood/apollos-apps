@@ -200,23 +200,14 @@ class FullscreenPlayer extends PureComponent {
           : {})}
       >
         {this.props.googleCastEnabled ? (
-          <Query query={GET_CAST_INFO}>
-            {({ data: { mediaPlayer: cast = {} } = {}, loading }) =>
-              loading ? (
-                <ActivityIndicator size={'large'} />
-              ) : (
-                <PlayheadConsumer>
-                  {({ currentTime }) => (
-                    <GoogleCastController
-                      client={this.props.client}
-                      media={cast}
-                      playerPositionAnimation={currentTime}
-                    />
-                  )}
-                </PlayheadConsumer>
-              )
-            }
-          </Query>
+          <PlayheadConsumer>
+            {({ currentTime }) => (
+              <GoogleCastController
+                client={this.props.client}
+                playerPositionAnimation={currentTime}
+              />
+            )}
+          </PlayheadConsumer>
         ) : null}
         {!isCasting ? (
           <VideoSizer

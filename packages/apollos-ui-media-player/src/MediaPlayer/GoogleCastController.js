@@ -3,7 +3,9 @@ import { Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import GoogleCast from 'react-native-google-cast';
+import { Query } from 'react-apollo';
 import { PLAY, PAUSE } from './mutations';
+import { GET_CAST_INFO } from './queries';
 
 const styles = StyleSheet.create({
   animatedPosterImage: {
@@ -89,4 +91,13 @@ Controller.propTypes = {
     }),
   }),
 };
-export default Controller;
+
+const ControllerWithData = ({ ...props }) => (
+  <Query query={GET_CAST_INFO}>
+    {({ data: { mediaPlayer: cast = {} } = {} }) => (
+      <Controller {...props} media={cast} />
+    )}
+  </Query>
+);
+
+export default ControllerWithData;
