@@ -167,6 +167,7 @@ class Seeker extends PureComponent {
   );
 
   render() {
+    console.log(this.props.currentTime);
     return (
       <Container style={this.props.style}>
         {!this.props.minimal ? (

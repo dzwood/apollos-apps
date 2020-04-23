@@ -125,6 +125,8 @@ class FullscreenControls extends PureComponent {
     isCasting: false,
   };
 
+  state = {};
+
   fader = new Animated.Value(1);
 
   controlsVisible = true;
@@ -173,10 +175,12 @@ class FullscreenControls extends PureComponent {
 
   handlePlay = () => {
     this.props.client.mutate({ mutation: PLAY });
+    if (this.props.isCasting) GoogleCast.play();
   };
 
   handlePause = () => {
     this.props.client.mutate({ mutation: PAUSE });
+    if (this.props.isCasting) GoogleCast.pause();
   };
 
   handleShowVideo = () => {
@@ -235,9 +239,8 @@ class FullscreenControls extends PureComponent {
       )}
       <IconMd
         onPress={() =>
-          this.state.isCasting
-            ? // TODO this should happen in the controller
-              GoogleCast.seek(this.state.castPosition - 30)
+          this.props.isCasting
+            ? GoogleCast.seek(this.state.castPosition - 30)
             : skip(-30)
         }
         name={'skip-back-thirty'}
@@ -250,9 +253,8 @@ class FullscreenControls extends PureComponent {
       />
       <IconMd
         onPress={() =>
-          this.state.isCasting
-            ? // TODO this should happen in the controller
-              GoogleCast.seek(this.state.castPosition + 30)
+          this.props.isCasting
+            ? GoogleCast.seek(this.state.castPosition + 30)
             : skip(30)
         }
         name={'skip-forward-thirty'}

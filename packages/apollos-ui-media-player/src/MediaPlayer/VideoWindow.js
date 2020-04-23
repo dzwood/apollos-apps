@@ -36,7 +36,6 @@ class VideoWindow extends PureComponent {
     onLoadStart: PropTypes.func,
     VideoComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     // onBuffer: PropTypes.func,
-    posterOnly: PropTypes.bool,
   };
 
   static defaultProps = {

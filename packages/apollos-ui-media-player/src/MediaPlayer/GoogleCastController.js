@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
-import { Animated } from 'react-native';
+import { Animated, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import GoogleCast from 'react-native-google-cast';
 import { Query } from 'react-apollo';
-import { PLAY, PAUSE } from './mutations';
+import {
+  PLAY,
+  PAUSE,
+  CAST_CONNECTED,
+  CAST_DISCONNECTED,
+  UPDATE_PLAYHEAD,
+} from './mutations';
 import { GET_CAST_INFO } from './queries';
+import { ControlsConsumer } from './PlayheadState';
 
 const styles = StyleSheet.create({
   animatedPosterImage: {
@@ -14,13 +21,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const Controller = ({ client, media, playerPositionAnimation }) => {
+const Controller = ({ client, media, playerPositionAnimation, skipTo }) => {
   useEffect(() => {
     // get Google Cast state on mount
-    // TODO: this should update seeker position and set player UI accordingly
-    // GoogleCast.getCastState().then((state) => {
-    // if (state === 'Connected') onCastConnected();
-    // });
+    GoogleCast.getCastState().then((state) => {
+      if (state === 'Connected') client.mutate({ mutation: CAST_CONNECTED });
+    });
 
     // Google Cast Connection established
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_STARTED, () => {
@@ -41,20 +47,24 @@ const Controller = ({ client, media, playerPositionAnimation }) => {
         // contentType: 'video/mp4', // Optional, default is "video/mp4"
         playPosition,
       });
+      client.mutate({ mutation: CAST_CONNECTED });
     });
 
     // Google Cast Disconnected (error provides explanation if ended forcefully)
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_ENDED, (error) => {
       console.log(error);
       client.mutate({ mutation: PAUSE });
+      client.mutate({ mutation: CAST_DISCONNECTED });
     });
 
     // Google Cast media status update
     GoogleCast.EventEmitter.addListener(
       GoogleCast.MEDIA_STATUS_UPDATED,
       ({ mediaStatus }) => {
-        // TODO update current time in local state
-        //
+        // update seeker head
+        // NOTE: only updates on a 10 sec interval
+        skipTo(mediaStatus.streamPosition);
+
         // NOTE: need to investigate if this is happening too often
         // may just need to check if player is already playing before hitting play again
         //
@@ -90,12 +100,15 @@ Controller.propTypes = {
       artist: PropTypes.string,
     }),
   }),
+  skipTo: PropTypes.func,
 };
 
 const ControllerWithData = ({ ...props }) => (
   <Query query={GET_CAST_INFO}>
     {({ data: { mediaPlayer: cast = {} } = {} }) => (
-      <Controller {...props} media={cast} />
+      <ControlsConsumer>
+        {({ skipTo }) => <Controller {...props} media={cast} skipTo={skipTo} />}
+      </ControlsConsumer>
     )}
   </Query>
 );
