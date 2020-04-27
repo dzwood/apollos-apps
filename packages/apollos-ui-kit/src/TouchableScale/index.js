@@ -54,7 +54,7 @@ class TouchableScale extends Component {
     return (
       <TouchableWithoutFeedback
         {...touchableProps}
-        {...(onPress
+        {...(onPress // fixes animation firing when there is no onPress function
           ? {
               onPress,
               onPressIn: this.handlePressIn,
