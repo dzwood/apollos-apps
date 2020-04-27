@@ -4,11 +4,12 @@ import { Animated, TouchableWithoutFeedback } from 'react-native';
 
 class TouchableScale extends Component {
   static propTypes = {
-    minScale: PropTypes.number,
-    springConfig: PropTypes.shape({}),
     active: PropTypes.bool,
-    style: PropTypes.any, // eslint-disable-line
     children: PropTypes.any, // eslint-disable-line
+    minScale: PropTypes.number,
+    onPress: PropTypes.func,
+    springConfig: PropTypes.shape({}),
+    style: PropTypes.any, // eslint-disable-line
   };
 
   static defaultProps = {
@@ -43,12 +44,23 @@ class TouchableScale extends Component {
   };
 
   render() {
-    const { minScale, style, children, ...touchableProps } = this.props;
+    const {
+      minScale,
+      style,
+      children,
+      onPress,
+      ...touchableProps
+    } = this.props;
     return (
       <TouchableWithoutFeedback
         {...touchableProps}
-        onPressIn={this.handlePressIn}
-        onPressOut={this.handlePressOut}
+        {...(onPress
+          ? {
+              onPress,
+              onPressIn: this.handlePressIn,
+              onPressOut: this.handlePressOut,
+            }
+          : {})}
       >
         <Animated.View style={[this.animatedStyle, style]}>
           {children}
