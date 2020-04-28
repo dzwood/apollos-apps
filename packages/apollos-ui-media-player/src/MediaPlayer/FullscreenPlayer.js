@@ -12,13 +12,13 @@ import PropTypes from 'prop-types';
 import { Query, withApollo } from 'react-apollo';
 import { get } from 'lodash';
 
-import { styled, ActivityIndicator } from '@apollosproject/ui-kit';
+import { styled } from '@apollosproject/ui-kit';
 
 import MiniControls, { MINI_PLAYER_HEIGHT } from './MiniControls';
 import FullscreenControls from './FullscreenControls';
 import VideoWindow from './VideoWindow';
 import MusicControls from './MusicControls';
-import { GET_FULL_VISIBILITY_STATE, GET_CAST_INFO } from './queries';
+import { GET_FULL_VISIBILITY_STATE } from './queries';
 import { EXIT_FULLSCREEN, GO_FULLSCREEN } from './mutations';
 import { Provider, ControlsConsumer, PlayheadConsumer } from './PlayheadState';
 import MediaPlayerSafeLayout from './MediaPlayerSafeLayout';
