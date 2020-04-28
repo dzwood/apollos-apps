@@ -51,7 +51,7 @@ class ActionListCard extends PureComponent {
 
     return (
       <Card isLoading={isLoading}>
-        <CardContent>{headerContent}</CardContent>
+       {headerContent ? (<CardContent>{headerContent}</CardContent>) : null}
         <Content>
           {actions.map((item) => (
             <ActionListItem
