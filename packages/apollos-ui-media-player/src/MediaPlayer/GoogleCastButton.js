@@ -12,7 +12,7 @@ const Wrapper = styled({
 const StyledCastButton = styled(({ theme }) => ({
   width: 40 + theme.sizing.baseUnit * 1.25,
   height: 40 + theme.sizing.baseUnit * 1.25,
-  tintColor: 'gray',
+  tintColor: theme.colors.paper,
 }))(CastButton);
 
 const CastBtn = () => (
