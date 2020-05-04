@@ -1,3 +1,26 @@
+v1.4.0: May 4, 2020
+
+- Adds backwards compatibility for contentCardComponentMapper (#1445) (f334e76b)
+- Adds Up Next Feature + Interactions Enhancements (#1444) (44b0ab28)
+- Adds Hero list feature API and ConnectedComponent (#1441) (7e23a3c8)
+- Adds Pull to refetch on Features feed (#1437) (2c2fb437)
+- Adds HeroListFeature component to ui-connected package (#1428) (e7ede76f)
+- Exposes Component prop on ContentCardComponentMapper (#1443) (f900e7c7)
+- Fixes crash in search on android (#1440) (83f9abf1)\
+
+v1.4.0-beta.2: April 27, 2020
+
+- Adds CalendarActionImages from Willow and for Willow (#1434) (e5538c45)
+- Adds ability for HTMLView to handle non-http links (#1432) (8e5478fa)
+- Adds Features feed incremental loading (#1425) (8db9fbbf)
+
+- Refactors ActionListCard to be ActionList component (#1427) (255d7778)
+- Pulls new content items when opening content single (#1431) (d4bd596b)
+- Updates token.js for longer auth expiration (#1429) (dc5501d9)
+
+- Fixes barStyle to be correct for light and dark theme types (#1433) (e1dc6df1)
+- Fixes Html content doubling issue (#1430) (67d59a91)
+
 v1.4.0-beta.1: April 17, 2020
 
 - Refactors FeaturedFeedConnected to be a feed of feeds using FlatList (#1423) (5143cd80)

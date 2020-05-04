@@ -12,12 +12,19 @@ const VerticalCardListFeatureConnected = ({
   FeaturedComponent,
   isFeatured,
   isLoading,
+  refetchRef,
   ...props
 }) => (
-  <Query query={GET_VERTICAL_CARD_LIST_FEATURE} variables={{ featureId }}>
-    {({ data, loading }) => {
+  <Query
+    query={GET_VERTICAL_CARD_LIST_FEATURE}
+    variables={{ featureId }}
+    fetchPolicy="cache-and-network"
+  >
+    {({ data, loading, refetch }) => {
       const featured = get(data, 'node.isFeatured') || isFeatured;
       const ComponentToRender = featured ? FeaturedComponent : Component;
+      if (featureId && refetch && refetchRef)
+        refetchRef({ refetch, id: featureId });
       return (
         <ComponentToRender
           {...get(data, 'node')}
@@ -50,6 +57,7 @@ VerticalCardListFeatureConnected.propTypes = {
   featureId: PropTypes.string.isRequired,
   isFeatured: PropTypes.bool,
   isLoading: PropTypes.bool,
+  refetchRef: PropTypes.func,
 };
 
 VerticalCardListFeatureConnected.defaultProps = {

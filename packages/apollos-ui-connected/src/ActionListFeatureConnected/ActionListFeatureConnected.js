@@ -9,17 +9,26 @@ function ActionListFeatureConnected({
   featureId,
   Component,
   isLoading,
+  refetchRef,
   ...props
 }) {
   return (
-    <Query query={GET_ACTION_LIST_FEATURE} variables={{ featureId }}>
-      {({ data, loading }) => (
-        <Component
-          {...get(data, 'node')}
-          {...props}
-          isLoading={loading || isLoading}
-        />
-      )}
+    <Query
+      query={GET_ACTION_LIST_FEATURE}
+      variables={{ featureId }}
+      fetchPolicy="cache-and-network"
+    >
+      {({ data, loading, refetch }) => {
+        if (featureId && refetch && refetchRef)
+          refetchRef({ refetch, id: featureId });
+        return (
+          <Component
+            {...get(data, 'node')}
+            {...props}
+            isLoading={loading || isLoading}
+          />
+        );
+      }}
     </Query>
   );
 }
@@ -32,6 +41,7 @@ ActionListFeatureConnected.propTypes = {
   ]),
   featureId: PropTypes.string.isRequired,
   isLoading: PropTypes.bool,
+  refetchRef: PropTypes.func,
 };
 
 ActionListFeatureConnected.defaultProps = {
