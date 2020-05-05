@@ -40,6 +40,7 @@ class Controller extends React.Component {
     // get Google Cast state on mount
     GoogleCast.getCastState().then((state) => {
       if (state === 'Connected') {
+        console.log('connected');
         this.props.client.mutate({ mutation: CAST_CONNECTED });
         this.props.onLoad({ duration: 0 });
       }
@@ -48,22 +49,18 @@ class Controller extends React.Component {
     // Google Cast Connection established
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_STARTED, () => {
       const { playerPositionAnimation, media, client } = this.props;
-      // TODO maybe could pull this from local state
-      let playPosition;
       playerPositionAnimation.stopAnimation((value) => {
-        playPosition = value;
-      });
-      GoogleCast.castMedia({
-        // TODO need to insure Google Cast can accept the format (maybe)
-        mediaUrl: get(media, 'currentTrack.mediaSource.uri', ''),
-        imageUrl: get(media, 'currentTrack.posterSources[0].uri', ''),
-        title: get(media, 'currentTrack.title', ''),
-        subtitle: get(media, 'currentTrack.artist', ''),
-        // TODO, get this information from API
-        // studio: 'Apollos Church',
-        // streamDuration: 596,
-        // contentType: 'video/mp4', // Optional, default is "video/mp4"
-        playPosition,
+        GoogleCast.castMedia({
+          mediaUrl: get(media, 'currentTrack.mediaSource.uri', ''),
+          imageUrl: get(media, 'currentTrack.posterSources[0].uri', ''),
+          title: get(media, 'currentTrack.title', ''),
+          subtitle: get(media, 'currentTrack.artist', ''),
+          // TODO, get this information from API
+          // studio: 'Apollos Church',
+          // streamDuration: 596,
+          // contentType: 'video/mp4', // Optional, default is "video/mp4"
+          playPosition: value,
+        });
       });
       client.mutate({ mutation: CAST_CONNECTED });
       // client.mutate({ mutation: PLAY });
@@ -71,7 +68,7 @@ class Controller extends React.Component {
 
     // Google Cast Disconnected (error provides explanation if ended forcefully)
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_ENDED, () => {
-      this.props.client.mutate({ mutation: PAUSE });
+      // this.props.client.mutate({ mutation: PAUSE });
       this.props.client.mutate({ mutation: CAST_DISCONNECTED });
     });
 
