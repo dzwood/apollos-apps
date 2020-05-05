@@ -246,11 +246,17 @@ class FullscreenControls extends PureComponent {
       ) : (
         <IconSm name="empty" />
       )}
-      <IconLg
-        onPress={this.isPlaying ? this.handlePause : this.handlePlay}
-        name={this.isPlaying ? 'pause' : 'play'}
-        disabled={isLoading}
-      />
+      {// TODO can be enabled once this bug is fixed
+      // https://github.com/react-native-google-cast/react-native-google-cast/issues/151
+      !this.props.isCasting ? (
+        <IconLg
+          onPress={this.isPlaying ? this.handlePause : this.handlePlay}
+          name={this.isPlaying ? 'pause' : 'play'}
+          disabled={isLoading}
+        />
+      ) : (
+        <IconSm name="empty" />
+      )}
       {!this.props.isCasting ? (
         <IconMd
           onPress={() => skip(30)}
@@ -313,10 +319,14 @@ class FullscreenControls extends PureComponent {
                   {this.props.googleCastEnabled ? <GoogleCastButton /> : null}
                 </CastButtons>
                 <PlayHead>
-                  <Seeker
-                    onScrubbing={this.handleOnScrubbing}
-                    isCasting={this.props.isCasting}
-                  />
+                  {// TODO can be enabled once this bug is fixed
+                  // https://github.com/react-native-google-cast/react-native-google-cast/issues/151
+                  !this.props.isCasting ? (
+                    <Seeker
+                      onScrubbing={this.handleOnScrubbing}
+                      isCasting={this.props.isCasting}
+                    />
+                  ) : null}
                 </PlayHead>
                 <ControlsConsumer>{this.renderPlayerControls}</ControlsConsumer>
               </LowerControls>

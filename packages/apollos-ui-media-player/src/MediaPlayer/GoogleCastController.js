@@ -30,6 +30,7 @@ class Controller extends React.Component {
         title: PropTypes.string,
         artist: PropTypes.string,
       }),
+      isCasting: PropTypes.bool,
     }),
     onLoad: PropTypes.func,
     onProgress: PropTypes.func,
@@ -72,7 +73,6 @@ class Controller extends React.Component {
       this.props.client.mutate({ mutation: CAST_DISCONNECTED });
     });
 
-    // TODO this is what we'll use to sync the cast with the current media
     // Google Cast media status update
     GoogleCast.EventEmitter.addListener(
       GoogleCast.MEDIA_STATUS_UPDATED,
@@ -101,22 +101,22 @@ class Controller extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.media.isCasting ? (
       <Animated.Image
         key="poster"
         style={[styles.animatedPosterImage]}
         source={get(this.props.media, 'currentTrack.posterSources', [])}
       />
-    );
+    ) : null;
   }
 }
 
 const ControllerWithData = ({ ...props }) => (
   <Query query={GET_CAST_INFO}>
-    {({ data: { mediaPlayer: cast = {} } = {} }) => (
+    {({ data: { mediaPlayer = {} } = {} }) => (
       <ControlsConsumer>
         {({ ...controls }) => (
-          <Controller {...props} media={cast} {...controls} />
+          <Controller {...props} media={mediaPlayer} {...controls} />
         )}
       </ControlsConsumer>
     )}

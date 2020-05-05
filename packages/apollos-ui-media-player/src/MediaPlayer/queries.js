@@ -127,6 +127,7 @@ const GET_CAST_INFO = gql`
         title
         artist
       }
+      isCasting
     }
   }
 `;
