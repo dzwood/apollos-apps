@@ -228,43 +228,43 @@ class FullscreenControls extends PureComponent {
 
   renderPlayerControls = ({ isLoading, skip }) => (
     <PlayControls>
-      {this.props.showAudioToggleControl ? (
+      {this.props.showAudioToggleControl && !this.props.isCasting ? (
         <IconSm
           onPress={this.isMuted ? this.handleUnMute : this.handleMute}
-          name={this.isMuted && !this.props.isCasting ? 'mute' : 'volume'}
-          disabled={isLoading || this.props.isCasting}
+          name={this.isMuted ? 'mute' : 'volume'}
+          disabled={isLoading}
         />
       ) : (
         <IconSm name="empty" />
       )}
-      <IconMd
-        onPress={() =>
-          this.props.isCasting
-            ? GoogleCast.seek(this.state.castPosition - 30)
-            : skip(-30)
-        }
-        name={'skip-back-thirty'}
-        disabled={isLoading}
-      />
+      {!this.props.isCasting ? (
+        <IconMd
+          onPress={() => skip(-30)}
+          name={'skip-back-thirty'}
+          disabled={isLoading}
+        />
+      ) : (
+        <IconSm name="empty" />
+      )}
       <IconLg
         onPress={this.isPlaying ? this.handlePause : this.handlePlay}
         name={this.isPlaying ? 'pause' : 'play'}
         disabled={isLoading}
       />
-      <IconMd
-        onPress={() =>
-          this.props.isCasting
-            ? GoogleCast.seek(this.state.castPosition + 30)
-            : skip(30)
-        }
-        name={'skip-forward-thirty'}
-        disabled={isLoading}
-      />
-      {this.props.showVideoToggleControl ? (
+      {!this.props.isCasting ? (
+        <IconMd
+          onPress={() => skip(30)}
+          name={'skip-forward-thirty'}
+          disabled={isLoading}
+        />
+      ) : (
+        <IconSm name="empty" />
+      )}
+      {this.props.showVideoToggleControl && !this.props.isCasting ? (
         <IconSm
           onPress={this.isVideo ? this.handleHideVideo : this.handleShowVideo}
-          name={this.isVideo && !this.props.isCasting ? 'video' : 'video-off'}
-          disabled={isLoading || this.props.isCasting}
+          name={this.isVideo ? 'video' : 'video-off'}
+          disabled={isLoading}
         />
       ) : (
         <IconSm name="empty" />
@@ -313,7 +313,10 @@ class FullscreenControls extends PureComponent {
                   {this.props.googleCastEnabled ? <GoogleCastButton /> : null}
                 </CastButtons>
                 <PlayHead>
-                  <Seeker onScrubbing={this.handleOnScrubbing} />
+                  <Seeker
+                    onScrubbing={this.handleOnScrubbing}
+                    isCasting={this.props.isCasting}
+                  />
                 </PlayHead>
                 <ControlsConsumer>{this.renderPlayerControls}</ControlsConsumer>
               </LowerControls>

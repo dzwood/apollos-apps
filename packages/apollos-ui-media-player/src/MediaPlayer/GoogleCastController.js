@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Animated, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
@@ -15,15 +15,39 @@ const styles = StyleSheet.create({
   },
 });
 
-const Controller = ({ client, media, playerPositionAnimation, skipTo }) => {
-  useEffect(() => {
+class Controller extends React.Component {
+  static propTypes = {
+    client: PropTypes.shape({
+      mutate: PropTypes.func,
+    }),
+    playerPositionAnimation: PropTypes.shape({ stopAnimation: PropTypes.func }),
+    media: PropTypes.shape({
+      currentTrack: PropTypes.shape({
+        mediaSource: PropTypes.shape({ uri: PropTypes.string }),
+        posterSources: PropTypes.arrayOf(
+          PropTypes.shape({ uri: PropTypes.string })
+        ),
+        title: PropTypes.string,
+        artist: PropTypes.string,
+      }),
+    }),
+    onLoad: PropTypes.func,
+    onProgress: PropTypes.func,
+    skipTo: PropTypes.func,
+  };
+
+  componentDidMount() {
     // get Google Cast state on mount
     GoogleCast.getCastState().then((state) => {
-      if (state === 'Connected') client.mutate({ mutation: CAST_CONNECTED });
+      if (state === 'Connected') {
+        this.props.client.mutate({ mutation: CAST_CONNECTED });
+        this.props.onLoad({ duration: 0 });
+      }
     });
 
     // Google Cast Connection established
     GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_STARTED, () => {
+      const { playerPositionAnimation, media, client } = this.props;
       // TODO maybe could pull this from local state
       let playPosition;
       playerPositionAnimation.stopAnimation((value) => {
@@ -42,66 +66,61 @@ const Controller = ({ client, media, playerPositionAnimation, skipTo }) => {
         playPosition,
       });
       client.mutate({ mutation: CAST_CONNECTED });
+      // client.mutate({ mutation: PLAY });
     });
 
     // Google Cast Disconnected (error provides explanation if ended forcefully)
-    GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_ENDED, (error) => {
-      console.log(error);
-      client.mutate({ mutation: PAUSE });
-      client.mutate({ mutation: CAST_DISCONNECTED });
+    GoogleCast.EventEmitter.addListener(GoogleCast.SESSION_ENDED, () => {
+      this.props.client.mutate({ mutation: PAUSE });
+      this.props.client.mutate({ mutation: CAST_DISCONNECTED });
     });
 
+    // TODO this is what we'll use to sync the cast with the current media
     // Google Cast media status update
     GoogleCast.EventEmitter.addListener(
       GoogleCast.MEDIA_STATUS_UPDATED,
       ({ mediaStatus }) => {
+        console.log('media status updated');
         // update seeker head
         // NOTE: only updates on a 10 sec interval
-        skipTo(mediaStatus.streamPosition);
+        this.props.onProgress({
+          currentTime: mediaStatus.streamPosition,
+          playableDuration: mediaStatus.streamDuration,
+          seekableDuration: mediaStatus.streamDuration,
+        });
+        this.props.skipTo(mediaStatus.streamPosition);
 
         // NOTE: need to investigate if this is happening too often
         // may just need to check if player is already playing before hitting play again
         //
         // I'm sure the library has these as constants but I couldn't find
         // them in the documentation
-        if (mediaStatus.playerState === 2) client.mutate({ mutation: PLAY });
-        if (mediaStatus.playerState === 3) client.mutate({ mutation: PAUSE });
+        if (mediaStatus.playerState === 2)
+          this.props.client.mutate({ mutation: PLAY });
+        if (mediaStatus.playerState === 3)
+          this.props.client.mutate({ mutation: PAUSE });
       }
     );
-  }, []);
+  }
 
-  return (
-    <Animated.Image
-      key="poster"
-      style={[styles.animatedPosterImage]}
-      source={get(media, 'currentTrack.posterSources', [])}
-    />
-  );
-};
-
-Controller.propTypes = {
-  client: PropTypes.shape({
-    mutate: PropTypes.func,
-  }),
-  playerPositionAnimation: PropTypes.shape({ stopAnimation: PropTypes.func }),
-  media: PropTypes.shape({
-    currentTrack: PropTypes.shape({
-      mediaSource: PropTypes.shape({ uri: PropTypes.string }),
-      posterSources: PropTypes.arrayOf(
-        PropTypes.shape({ uri: PropTypes.string })
-      ),
-      title: PropTypes.string,
-      artist: PropTypes.string,
-    }),
-  }),
-  skipTo: PropTypes.func,
-};
+  render() {
+    return (
+      <Animated.Image
+        key="poster"
+        style={[styles.animatedPosterImage]}
+        source={get(this.props.media, 'currentTrack.posterSources', [])}
+      />
+    );
+  }
+}
 
 const ControllerWithData = ({ ...props }) => (
   <Query query={GET_CAST_INFO}>
     {({ data: { mediaPlayer: cast = {} } = {} }) => (
       <ControlsConsumer>
-        {({ skipTo }) => <Controller {...props} media={cast} skipTo={skipTo} />}
+        {({ ...controls }) => (
+          <Controller {...props} media={cast} {...controls} />
+        )}
       </ControlsConsumer>
     )}
   </Query>
