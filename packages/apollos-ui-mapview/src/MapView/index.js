@@ -41,7 +41,7 @@ const StyledCampusCard = styled(
   'ui-mapview.MapView.StyledCampusCard'
 )(CampusCard);
 
-const StyledConfirmButton = withTheme(
+const ConfirmButton = withTheme(
   () => ({}),
   'ui-mapview.MapView.StyledConfirmButton'
 )(Button);
@@ -283,7 +283,7 @@ class MapView extends Component {
           </Animated.ScrollView>
           <MediaPlayerSpacer>
             <PaddedView>
-              <StyledConfirmButton
+              <ConfirmButton
                 title={this.props.buttonTitle}
                 pill={false}
                 type={'secondary'}
