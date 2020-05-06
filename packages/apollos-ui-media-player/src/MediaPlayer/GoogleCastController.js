@@ -41,7 +41,6 @@ class Controller extends React.Component {
     // get Google Cast state on mount
     GoogleCast.getCastState().then((state) => {
       if (state === 'Connected') {
-        console.log('connected');
         this.props.client.mutate({ mutation: CAST_CONNECTED });
         this.props.onLoad({ duration: 0 });
       }
@@ -77,7 +76,6 @@ class Controller extends React.Component {
     GoogleCast.EventEmitter.addListener(
       GoogleCast.MEDIA_STATUS_UPDATED,
       ({ mediaStatus }) => {
-        console.log('media status updated');
         // update seeker head
         // NOTE: only updates on a 10 sec interval
         this.props.onProgress({
